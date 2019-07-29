@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="PE">
+      <UniqueIdentifier>{03a55619-ec71-42d5-9913-4df1dd512129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VM">
+      <UniqueIdentifier>{753f1de2-1699-41d2-8a11-53531dfdc2f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="patch">
+      <UniqueIdentifier>{66e39546-ea26-4ce4-b329-7d84a16098c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PER">
+      <UniqueIdentifier>{f84ba87f-6ba2-4140-a194-d157485b3789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CompressLib">
+      <UniqueIdentifier>{e0ade61f-3e16-4237-bb87-3e8eb7eeb604}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PELib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PE\PeClass.h">
+      <Filter>PE</Filter>
+    </ClInclude>
+    <ClInclude Include="PE\PeProtect.h">
+      <Filter>PE</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\CCodeILFactory.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\CLink.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\comm.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\CryptErr.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\CVirtualMemory.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\CVMFactory.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\InterpretHandler.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\VCommand.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\vmdisasm.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="PE\PEStruct.h">
+      <Filter>PE</Filter>
+    </ClInclude>
+    <ClInclude Include="Patch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PE\CryptVar.h">
+      <Filter>PE</Filter>
+    </ClInclude>
+    <ClInclude Include="PE\PEMake.h">
+      <Filter>PE</Filter>
+    </ClInclude>
+    <ClInclude Include="mem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PER\PER.h">
+      <Filter>PER</Filter>
+    </ClInclude>
+    <ClInclude Include="CompressLib\aplib.h">
+      <Filter>CompressLib</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\Structs.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+    <ClInclude Include="VM\CTree.h">
+      <Filter>VM</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PELib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PE\PeClass.cpp">
+      <Filter>PE</Filter>
+    </ClCompile>
+    <ClCompile Include="PE\PeProtect.cpp">
+      <Filter>PE</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\CCodeILFactory.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\CLink.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\comm.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\CryptErr.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\CVirtualMemory.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\CVMFactory.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\InterpretHandler.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\VCommand.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\vmdisasm.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="VM\vmserv.cpp">
+      <Filter>VM</Filter>
+    </ClCompile>
+    <ClCompile Include="PE\CryptVar.cpp">
+      <Filter>PE</Filter>
+    </ClCompile>
+    <ClCompile Include="PE\PEMake.cpp">
+      <Filter>PE</Filter>
+    </ClCompile>
+    <ClCompile Include="mem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PER\PER.cpp">
+      <Filter>PER</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="patch\patch1.asm">
+      <Filter>patch</Filter>
+    </CustomBuild>
+    <CustomBuild Include="patch\patch2.asm">
+      <Filter>patch</Filter>
+    </CustomBuild>
+    <CustomBuild Include="patch\patch3.asm">
+      <Filter>patch</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

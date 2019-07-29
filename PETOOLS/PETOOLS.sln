@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PETOOLS", "PETOOLS\PETOOLS.vcxproj", "{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dump", "Dump\Dump.vcxproj", "{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Disassembler", "Disassembler\Disassembler.vcxproj", "{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Synchro", "Synchro\Synchro.vcxproj", "{D9B01622-CD6F-44B3-9ADA-8A849002D510}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4858E49D-2D26-49A3-A94F-A9F6EC21FE67}"
+	ProjectSection(SolutionItems) = preProject
+		测试文档.txt = 测试文档.txt
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryPool", "MemoryPool\MemoryPool.vcxproj", "{0E580F73-5386-4B41-8BDD-3D0A9857D43F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PELib", "PELib\PELib.vcxproj", "{49E180EF-03AF-433C-9678-CD556B56B7A1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PEMake", "PEMake\PEMake.vcxproj", "{6BAB94D8-31A1-43A5-8666-2BC9789B446A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Debug|Win32.Build.0 = Debug|Win32
+		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Release|Win32.ActiveCfg = Release|Win32
+		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Release|Win32.Build.0 = Release|Win32
+		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Debug|Win32.Build.0 = Debug|Win32
+		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Release|Win32.ActiveCfg = Release|Win32
+		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Release|Win32.Build.0 = Release|Win32
+		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Debug|Win32.Build.0 = Debug|Win32
+		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Release|Win32.ActiveCfg = Release|Win32
+		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Release|Win32.Build.0 = Release|Win32
+		{D9B01622-CD6F-44B3-9ADA-8A849002D510}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D9B01622-CD6F-44B3-9ADA-8A849002D510}.Debug|Win32.Build.0 = Debug|Win32
+		{D9B01622-CD6F-44B3-9ADA-8A849002D510}.Release|Win32.ActiveCfg = Release|Win32
+		{D9B01622-CD6F-44B3-9ADA-8A849002D510}.Release|Win32.Build.0 = Release|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|Win32.Build.0 = Debug|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|Win32.ActiveCfg = Release|Win32
+		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|Win32.Build.0 = Release|Win32
+		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Debug|Win32.Build.0 = Debug|Win32
+		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Release|Win32.ActiveCfg = Release|Win32
+		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Release|Win32.Build.0 = Release|Win32
+		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Debug|Win32.Build.0 = Debug|Win32
+		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Release|Win32.ActiveCfg = Release|Win32
+		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

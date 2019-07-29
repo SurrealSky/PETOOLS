@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Assistant">
+      <UniqueIdentifier>{aca3e5de-9a6e-490f-a0ff-d51ab68cb20b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ControlsClass">
+      <UniqueIdentifier>{9bb16d05-43b9-4f6f-b9a9-6f43332c03db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\PETOOLS.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\PETOOLS.ico">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PETOOLS.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PETOOLSDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Ini.h">
+      <Filter>Assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="LOG.h">
+      <Filter>Assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dump\Dump.h">
+      <Filter>Assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpFunc.h">
+      <Filter>Assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobeVar.h">
+      <Filter>Assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogFirst.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyResource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DisaDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressDialog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSectionDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AddPatch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EncryptDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TabPage1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TabPage2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCEdit.h">
+      <Filter>ControlsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCStatic.h">
+      <Filter>ControlsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCStatus.h">
+      <Filter>ControlsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MyListCtrl.h">
+      <Filter>ControlsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="ProBarThread.h">
+      <Filter>ControlsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="PosCalcDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PETOOLS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PETOOLSDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Ini.cpp">
+      <Filter>Assistant</Filter>
+    </ClCompile>
+    <ClCompile Include="LOG.cpp">
+      <Filter>Assistant</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpFunc.cpp">
+      <Filter>Assistant</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogFirst.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobeVar.cpp">
+      <Filter>Assistant</Filter>
+    </ClCompile>
+    <ClCompile Include="DisaDialog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressDialog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSectionDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AddPatch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="EncryptDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TabPage1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TabPage2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCEdit.cpp">
+      <Filter>ControlsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCStatic.cpp">
+      <Filter>ControlsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCStatus.cpp">
+      <Filter>ControlsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="MyListCtrl.cpp">
+      <Filter>ControlsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="ProBarThread.cpp">
+      <Filter>ControlsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="PosCalcDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PETOOLS.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
