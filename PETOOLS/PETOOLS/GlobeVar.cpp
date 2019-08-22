@@ -1,7 +1,5 @@
 #include"GlobeVar.h"
 
-HANDLE g_DumpThread;
-
 const char *UNUSE="N/A";
 
 void Create16EditWindow(unsigned char *buffer,unsigned int size,unsigned int startoff,unsigned int endoff)

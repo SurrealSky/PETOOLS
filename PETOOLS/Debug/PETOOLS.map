@@ -1,6 +1,6 @@
  PETOOLS
 
- Timestamp is 5d5eb93d (Thu Aug 22 23:48:13 2019)
+ Timestamp is 5d5eba11 (Thu Aug 22 23:51:45 2019)
 
  Preferred load address is 00400000
 
@@ -3679,7 +3679,6 @@
  0003:00001d40       ?m_nMap@CTrace@ATL@@1PAUCategoryMap@12@A 0047bd40     AddPatch.obj
  0003:00004440       ?_pAtlAutoThreadModule@ATL@@3PAUIAtlAutoThreadModule@1@A 0047e440     GlobeVar.obj
  0003:00004444       ?_pAtlModule@ATL@@3PAVCAtlModule@1@A 0047e444     GlobeVar.obj
- 0003:0000447c       ?g_DumpThread@@3PAXA       0047e47c     GlobeVar.obj
  0003:0000448c       ?_pPerfRegFunc@ATL@@3P6AJPAUHINSTANCE__@@@ZA 0047e48c     GlobeVar.obj
  0003:00004490       ?_pPerfUnRegFunc@ATL@@3P6AJXZA 0047e490     GlobeVar.obj
  0003:00004494       ?_AtlRegisterPerUser@ATL@@3_NA 0047e494     GlobeVar.obj

@@ -30,8 +30,6 @@ extern const char *UNUSE;
 extern TCHAR *_TUNUSE;
 #define xxLength	8
 
-extern HANDLE g_DumpThread;
-
 
 void Create16EditWindow(unsigned char *buffer, unsigned int size, unsigned int startoff, unsigned int endoff);
 
