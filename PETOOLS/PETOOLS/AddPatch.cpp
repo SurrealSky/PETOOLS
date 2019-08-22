@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 #include"PETOOLSDlg.h"
 #include"ProBarThread.h"
-#include"../Disassembler/ODDisassm/disasm.h"
+#include"../Common/disasm/disasm.h"
 
 
 // CAddPatch ¶Ô»°¿ò

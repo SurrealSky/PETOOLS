@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include<Windows.h>
 #include "../Common/MiniDump.h"
-#include"..\Synchro\Synchro.h"
 #include"..\MemoryPool\MemoryPool.h"
 #include"../OtherLib/16Edit/16EditDll.h"
 
