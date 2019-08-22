@@ -109,6 +109,7 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Common\disasm\disasm.h" />
     <ClInclude Include="CompressLib\aplib.h" />
     <ClInclude Include="mem.h" />
     <ClInclude Include="Patch.h" />
@@ -132,6 +133,9 @@
     <ClInclude Include="VM\vmdisasm.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Common\disasm\asmserv.cpp" />
+    <ClCompile Include="..\Common\disasm\assembl.cpp" />
+    <ClCompile Include="..\Common\disasm\disasm.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

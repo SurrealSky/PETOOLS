@@ -17,18 +17,6 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #pragma once
 
-#ifdef _USRDLL
-#define DIPPER_EXPORTS 1
-#else
-#undef  DIPPER_EXPORTS
-#endif
-
-#ifdef DIPPER_EXPORTS
-#define DIPPEREXPORTS_API __declspec(dllexport)
-#else
-#define DIPPEREXPORTS_API __declspec(dllimport)
-#endif
-
 #ifndef MAINPROG
 #define odunique extern
 #else
@@ -414,11 +402,11 @@ odunique int       iswindowsnt;          // When checking for dangers, assume NT
 //bughoho
 odunique int	   stoperand;			 //当前的循环
 
-DIPPEREXPORTS_API	int    Assemble(char *cmd,ulong ip,t_asmmodel *model,int attempt,
+int    Assemble(char *cmd,ulong ip,t_asmmodel *model,int attempt,
 				int constsize,char *errtext);
 int    Checkcondition(int code,ulong flags);
 int    Decodeaddress(ulong addr,char *symb,int nsymb,char *comment);
-DIPPEREXPORTS_API ulong  Disasm(char *src,ulong srcsize,ulong srcip,
+ulong  Disasm(char *src,ulong srcsize,ulong srcip,
 			  t_disasm *disasm,int disasmmode);
 ulong  Disassembleback(char *block,ulong base,ulong size,ulong ip,int n);
 ulong  Disassembleforward(char *block,ulong base,ulong size,ulong ip,int n);

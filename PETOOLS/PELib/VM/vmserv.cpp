@@ -1,6 +1,6 @@
 #include"../PELib.h"
 #include "VCommand.h"
-#include "../../Disassembler/ODDisassm/disasm.h"
+#include "../../Common/disasm/disasm.h"
 #include "vmdisasm.h"
 
 const char *vregname[3][14] = 

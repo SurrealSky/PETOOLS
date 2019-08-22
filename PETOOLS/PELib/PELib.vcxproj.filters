@@ -28,6 +28,9 @@
     <Filter Include="CompressLib">
       <UniqueIdentifier>{e0ade61f-3e16-4237-bb87-3e8eb7eeb604}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{64af77a8-c5a8-4caa-9a09-6da92fe0a656}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -96,6 +99,9 @@
     <ClInclude Include="VM\CTree.h">
       <Filter>VM</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\disasm\disasm.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PELib.cpp">
@@ -151,6 +157,15 @@
     </ClCompile>
     <ClCompile Include="PER\PER.cpp">
       <Filter>PER</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\disasm.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\asmserv.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\assembl.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

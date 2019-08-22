@@ -1,6 +1,5 @@
 #include"../PELib.h"
 #include<time.h>
-#include "../../Disassembler/ODDisassm/disasm.h"
 #include "vmdisasm.h"
 
 // 为一个索引数组随机排序.

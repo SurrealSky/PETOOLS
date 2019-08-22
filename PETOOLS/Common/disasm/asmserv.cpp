@@ -20,8 +20,6 @@
 
 #define STRICT
 
-#include "stdafx.h"
-
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
