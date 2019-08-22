@@ -2,7 +2,7 @@
 #pragma once
 #include "stdafx.h"
 #include<Windows.h>
-#include "..\Dump\Dump.h"
+#include "../Common/MiniDump.h"
 #include"..\Synchro\Synchro.h"
 #include"..\MemoryPool\MemoryPool.h"
 #include"../OtherLib/16Edit/16EditDll.h"

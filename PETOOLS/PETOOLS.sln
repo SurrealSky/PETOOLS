@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PETOOLS", "PETOOLS\PETOOLS.vcxproj", "{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dump", "Dump\Dump.vcxproj", "{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Disassembler", "Disassembler\Disassembler.vcxproj", "{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}"
 EndProject
@@ -30,10 +30,6 @@ Global
 		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Debug|Win32.Build.0 = Debug|Win32
 		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Release|Win32.ActiveCfg = Release|Win32
 		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Release|Win32.Build.0 = Release|Win32
-		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Debug|Win32.Build.0 = Debug|Win32
-		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Release|Win32.ActiveCfg = Release|Win32
-		{F2D2DCBE-B7EB-48B8-8D1A-511AB4CAFE19}.Release|Win32.Build.0 = Release|Win32
 		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Debug|Win32.ActiveCfg = Debug|Win32
 		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Debug|Win32.Build.0 = Debug|Win32
 		{FFBF7FD8-4746-40BA-970B-1CC1CBEF0773}.Release|Win32.ActiveCfg = Release|Win32

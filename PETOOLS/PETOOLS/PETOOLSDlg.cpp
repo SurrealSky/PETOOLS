@@ -11,6 +11,8 @@
 #include"AddSectionDlg.h"
 #include"AddPatch.h"
 #include"EncryptDlg.h"
+#include"../Common/DebugLog.h"
+#include"../Common/MiniDump.h"
 
 
 //#ifdef _DEBUG
@@ -207,19 +209,19 @@ BOOL CPETOOLSDlg::OnInitDialog()
 	if(!this->SetDumpFunc())
 	{
 		//设置对话框日志
-		mLog.LogControl("Dump线程设置失败");
+		DebugLog("Dump线程设置失败");
 		return FALSE;
 	}
 
-	mLog.LogControl("Dump线程设置完毕");
+	DebugLog("Dump线程设置完毕");
 	
 	if(!this->SetDlgUI())
 	{
 		//设置对话框日志
-		mLog.LogControl("UI设置创建失败");
+		DebugLog("UI设置创建失败");
 		return FALSE;
 	}
-	mLog.LogControl("主对话框UI设置完毕");
+	DebugLog("主对话框UI设置完毕");
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -400,13 +402,7 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 //用于设置Dump线程
 BOOL CPETOOLSDlg::SetDumpFunc(void)
 {
-	SetUnhandledExceptionFilter(HelpFunc::GPTUnhandledExceptionFilter);
-
-	::g_DumpThread=CreateThread(NULL,0,HelpFunc::ThreadProc,NULL,CREATE_SUSPENDED,NULL);
-	if(g_DumpThread==NULL)
-	{
-		return FALSE;
-	}
+	CMiniDump::EnableAutoDump(true);
 	return TRUE;
 }
 
@@ -440,38 +436,38 @@ void CPETOOLSDlg::OnBnClickedMfcbutton1()
 	//加载文件
 	if(!mPEMake.PELoadFile(m_Path.GetBuffer(0),"r"))     //只读方式打开文件
 	{
-		mLog.LogControl("PeStruct初始化失败!");
+		DebugLog("PeStruct初始化失败!");
 		return;
 	}
 
 	//开始分析
-	mLog.LogControl("开始分析PE文件");
+	DebugLog("开始分析PE文件");
 
 	if(!mPEMake.CheckPESig())
 	{
-		mLog.LogControl("PE文件错误");
+		DebugLog("PE文件错误");
 		return;
 	}
 
 	if(mPEMake.Analysis())
 	{
-		mLog.LogControl("PE文件分析完毕");
+		DebugLog("PE文件分析完毕");
 		mPEMake.SetAnalysised(true);
 	}else
 	{
-		mLog.LogControl("PE分析失败");
+		DebugLog("PE分析失败");
 		return;
 	} 
 
 	//pProBarThread.SetProValue(50);
-	mLog.LogControl("开始设置对话框控件的值");
+	DebugLog("开始设置对话框控件的值");
 
 	if(this->SetCtrlContent())
 	{
-		mLog.LogControl("对话框值设置完毕");
+		DebugLog("对话框值设置完毕");
 	}else
 	{
-		mLog.LogControl("对话框值设置失败");
+		DebugLog("对话框值设置失败");
 		return;
 	}
 	//pProBarThread.SetProValue(100);
@@ -962,7 +958,7 @@ void CPETOOLSDlg::OnClsRelocData()
 		OnSaveAs();
 	}
 
-	mLog.LogControl("菜单-功能-去重定位表:去除成功!");
+	DebugLog("菜单-功能-去重定位表:去除成功!");
 	//更新界面
 	this->SendMessage(WM_UPDATEUI,NULL,NULL);
 	MessageBox("重定位表去除成功!");
@@ -989,7 +985,7 @@ void CPETOOLSDlg::OnEncryptImportTable()
 	}
 
 	mPEMake.EncryptImportTable();
-	mLog.LogControl("菜单-功能-导入表加密:加密成功!");
+	DebugLog("菜单-功能-导入表加密:加密成功!");
 	//更新界面
 	this->SendMessage(WM_UPDATEUI,NULL,NULL);
 	MessageBox("导入表加密成功!");
@@ -1014,10 +1010,10 @@ afx_msg LRESULT CPETOOLSDlg::OnUpdateUi(WPARAM wParam, LPARAM lParam)
 	//重置内容
 	if(this->SetCtrlContent())
 	{
-		mLog.LogControl("对话框值设置完毕");
+		DebugLog("对话框值设置完毕");
 	}else
 	{
-		mLog.LogControl("对话框值设置失败");
+		DebugLog("对话框值设置失败");
 	}
 	return 0;
 }

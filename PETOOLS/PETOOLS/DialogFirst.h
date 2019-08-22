@@ -1,6 +1,6 @@
 #pragma once
-#include "Ini.h"
-#include "LOG.h"
+#include "../Common/Ini.h"
+#include "../Common/log4z.h"
 #include "GlobeVar.h"
 #include "MFCStatic.h"
 #include "mfcedit.h"
@@ -50,7 +50,6 @@ private:
 	void Reset();
 	static BOOL CALLBACK EnumChildProc(HWND hwnd,LPARAM lParam);
 public:
-	LOG m_Log;
 	Ini m_Ini;
 	int	dwArgu;
 	UiVisible	mUiVisible;

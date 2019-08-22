@@ -19,6 +19,9 @@
     <Filter Include="ControlsClass">
       <UniqueIdentifier>{9bb16d05-43b9-4f6f-b9a9-6f43332c03db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{190770a1-c831-4826-8e45-62f3662f5ac6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -45,16 +48,7 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Ini.h">
-      <Filter>Assistant</Filter>
-    </ClInclude>
-    <ClInclude Include="LOG.h">
-      <Filter>Assistant</Filter>
-    </ClInclude>
     <ClInclude Include="..\Dump\Dump.h">
-      <Filter>Assistant</Filter>
-    </ClInclude>
-    <ClInclude Include="HelpFunc.h">
       <Filter>Assistant</Filter>
     </ClInclude>
     <ClInclude Include="GlobeVar.h">
@@ -105,6 +99,18 @@
     <ClInclude Include="PosCalcDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\Common\log4z.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DebugLog.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Ini.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\MiniDump.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PETOOLS.cpp">
@@ -115,15 +121,6 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Ini.cpp">
-      <Filter>Assistant</Filter>
-    </ClCompile>
-    <ClCompile Include="LOG.cpp">
-      <Filter>Assistant</Filter>
-    </ClCompile>
-    <ClCompile Include="HelpFunc.cpp">
-      <Filter>Assistant</Filter>
     </ClCompile>
     <ClCompile Include="DialogFirst.cpp">
       <Filter>源文件</Filter>
@@ -169,6 +166,18 @@
     </ClCompile>
     <ClCompile Include="PosCalcDlg.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\log4z.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DebugLog.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Ini.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\MiniDump.cpp">
+      <Filter>common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

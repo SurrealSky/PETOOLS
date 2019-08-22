@@ -4,13 +4,11 @@
 
 #pragma once
 #include "afxcmn.h"
-#include "Ini.h"
+#include "../Common/Ini.h"
 #include "mfcstatic.h"
 #include "afxeditbrowsectrl.h"
 #include "afxbutton.h"
-#include "LOG.h"
 #include <locale.h>
-#include "HelpFunc.h"
 #include "MFCEdit.h"
 #include "afxfontcombobox.h"
 #include "MFCStatus.h"
@@ -52,7 +50,6 @@ protected:
 
 public:
 	//相关变量
-	LOG mLog;
 	Ini mIni;
 	PEMake mPEMake;
 	MFCStatus m_Status;

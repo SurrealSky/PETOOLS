@@ -121,6 +121,10 @@
     <None Include="res\PETOOLS.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Common\DebugLog.h" />
+    <ClInclude Include="..\Common\Ini.h" />
+    <ClInclude Include="..\Common\log4z.h" />
+    <ClInclude Include="..\Common\MiniDump.h" />
     <ClInclude Include="..\Dump\Dump.h" />
     <ClInclude Include="AddPatch.h" />
     <ClInclude Include="AddSectionDlg.h" />
@@ -128,9 +132,6 @@
     <ClInclude Include="DisaDialog.h" />
     <ClInclude Include="EncryptDlg.h" />
     <ClInclude Include="GlobeVar.h" />
-    <ClInclude Include="HelpFunc.h" />
-    <ClInclude Include="Ini.h" />
-    <ClInclude Include="LOG.h" />
     <ClInclude Include="MFCEdit.h" />
     <ClInclude Include="MFCStatic.h" />
     <ClInclude Include="MFCStatus.h" />
@@ -148,6 +149,14 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Common\DebugLog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Common\Ini.cpp" />
+    <ClCompile Include="..\Common\log4z.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Common\MiniDump.cpp" />
     <ClCompile Include="AddPatch.cpp" />
     <ClCompile Include="AddSectionDlg.cpp" />
     <ClCompile Include="DialogFirst.cpp" />
@@ -155,14 +164,6 @@
     <ClCompile Include="EncryptDlg.cpp" />
     <ClCompile Include="GlobeVar.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="HelpFunc.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Ini.cpp" />
-    <ClCompile Include="LOG.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="MFCEdit.cpp" />
