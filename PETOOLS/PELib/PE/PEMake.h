@@ -36,4 +36,5 @@ public:
 	bool Protect1A();
 	bool Protect2A();
 	bool Protect3A();
+	bool Protect4A();
 };

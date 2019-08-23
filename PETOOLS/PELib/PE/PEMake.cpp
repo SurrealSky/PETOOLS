@@ -105,6 +105,16 @@ bool PEMake::Protect2A()
 
 bool PEMake::Protect3A()
 {
-	//return ptrPeProtect->EncryptThree(".peMake");
-	return ptrPeProtect->TestDis();
+	//¿Ç3
+	unsigned int mShell_nSize = (DWORD)(&_patch3_ShellCodeEnd_) - (DWORD)(&_patch3_ShellCodeBegin_);
+	char *pData = new char[mShell_nSize];
+	memset(pData, 0, mShell_nSize);
+	memcpy(pData, &_patch3_ShellCodeBegin_, mShell_nSize);
+	return ptrPeProtect->EncryptTwo(".peMake", pData, mShell_nSize, (DWORD)&_patch3_offset_entry_jump - (DWORD)&_patch3_ShellCodeBegin_);
+}
+
+bool PEMake::Protect4A()
+{
+	//¿Ç4
+	return ptrPeProtect->EncryptThree(".peMake");
 }
