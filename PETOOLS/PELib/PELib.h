@@ -9,5 +9,3 @@
 #pragma comment(lib, "shlwapi.lib")
 #include"CompressLib\aplib.h"
 #pragma comment(lib,"CompressLib\\aplib.lib")
-
-#pragma comment(lib,"Disassembler.lib")
