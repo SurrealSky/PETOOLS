@@ -6,9 +6,6 @@
 #include"..\MemoryPool\MemoryPool.h"
 #include"../OtherLib/16Edit/16EditDll.h"
 
-#pragma comment(lib,"Disassembler.lib")
-#pragma comment(lib,"Dump.lib")
-#pragma comment(lib,"Synchro.lib")
 #pragma comment(lib,"MemoryPool.lib")
 #pragma comment(lib,"PELib.lib")
 #pragma comment(lib,"..\\OtherLib\\16Edit\\16Edit.lib")

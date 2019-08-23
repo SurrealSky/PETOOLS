@@ -48,9 +48,6 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Dump\Dump.h">
-      <Filter>Assistant</Filter>
-    </ClInclude>
     <ClInclude Include="GlobeVar.h">
       <Filter>Assistant</Filter>
     </ClInclude>
@@ -109,6 +106,9 @@
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\Common\MiniDump.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\disasm\disasm.h">
       <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
@@ -177,6 +177,15 @@
       <Filter>common</Filter>
     </ClCompile>
     <ClCompile Include="..\Common\MiniDump.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\asmserv.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\assembl.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\disasm.cpp">
       <Filter>common</Filter>
     </ClCompile>
   </ItemGroup>

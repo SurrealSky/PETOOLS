@@ -122,10 +122,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Common\DebugLog.h" />
+    <ClInclude Include="..\Common\disasm\disasm.h" />
     <ClInclude Include="..\Common\Ini.h" />
     <ClInclude Include="..\Common\log4z.h" />
     <ClInclude Include="..\Common\MiniDump.h" />
-    <ClInclude Include="..\Dump\Dump.h" />
     <ClInclude Include="AddPatch.h" />
     <ClInclude Include="AddSectionDlg.h" />
     <ClInclude Include="DialogFirst.h" />
@@ -150,6 +150,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Common\DebugLog.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\asmserv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\assembl.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\Common\disasm\disasm.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\Common\Ini.cpp" />
