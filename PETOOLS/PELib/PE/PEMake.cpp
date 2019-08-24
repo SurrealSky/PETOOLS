@@ -81,7 +81,6 @@ bool PEMake::AddPatch(const char *pName, const void *pPatch, const unsigned int 
 
 bool PEMake::Protect1A()
 {
-	//¿Ç1
 	unsigned int mShell_nSize =(DWORD) (&_patch1_ShellCodeEnd_) - (DWORD)(&_patch1_ShellCodeBegin_);
 	char *pData=new char[mShell_nSize];
 	memset(pData,0,mShell_nSize);
@@ -91,9 +90,13 @@ bool PEMake::Protect1A()
 	return bret;
 }
 
+bool PEMake::Protect1B()
+{
+	return true;
+}
+
 bool PEMake::Protect2A()
 {
-	//¿Ç2
 	unsigned int mShell_nSize =(DWORD) (&_patch2_ShellCodeEnd_) - (DWORD)(&_patch2_ShellCodeBegin_);
 	char *pData=new char[mShell_nSize];
 	memset(pData,0,mShell_nSize);
