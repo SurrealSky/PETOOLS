@@ -1,6 +1,6 @@
 #include"../PELib.h"
 #include "InterpretHandler.h"
-#include"../../Common/disasm/disasm.h"
+#include<disasm/disasm.h>
 
 CInterpretHandler::CInterpretHandler(void)
 {

@@ -49,7 +49,7 @@ void CAddSectionDlg::OnBnClickedButton1()
 	int size=StrToInt(strSize);
 	if(size==0)
 		size=0x200;
-	bool bRet=pMainDlg->mPEMake.AddSectionToEnd(strName.GetBuffer(0),size);
+	bool bRet=pMainDlg->mPEMake.AddSectionToEnd((STu8*)strName.GetBuffer(0),size);
 	if(bRet)
 		CDialogEx::OnOK();
 	else

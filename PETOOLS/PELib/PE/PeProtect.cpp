@@ -4,7 +4,6 @@
 #include "../VM/CVMFactory.h"
 #include "../VM/CCodeILFactory.h"
 #include"../VM/CryptErr.h"
-#include"../mem.h"
 #include"CryptVar.h"
 #include"../Patch.h"
 #include<time.h>
@@ -335,7 +334,7 @@ bool PeProtect::RebuiltSections()
 		}
 		dwFileSize+=FileAlignmentSize(mBaseCtx->pe.mSectionsVector[i].SizeOfRawData);
 	}
-	char *filebuffer=WZHMem::SGIVirtualAlloc(dwFileSize);
+	STu8 *filebuffer= MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc,dwFileSize);
 	FillMemory(filebuffer,dwFileSize,0);
 
 	char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
@@ -373,7 +372,7 @@ bool PeProtect::RebuiltSections()
 		mBaseCtx->pe.mSectionsVector[0].PointerToRawData);
 		pTmp+=sizeof(SectionHeader);
 
-		WZHMem::SGIVirtualDeallocate(mBaseCtx->pVirMem,mBaseCtx->size);
+		MemMgr::GetInstance().CommonDeallocate(TypeSGIVirtualAllocTAlloc,mBaseCtx->pVirMem,mBaseCtx->size);
 		mBaseCtx->pVirMem=filebuffer;
 		mBaseCtx->size=dwFileSize;
 
@@ -386,11 +385,11 @@ bool PeProtect::AddOverlay(PeClass *p,size_t size)
 	//判断size是否为文件对齐粒度的整数倍
 	if(size%dwAlignment!=0) return false;
 
-	char *pTmp=WZHMem::SGIVirtualAlloc(mBaseCtx->size+size);
+	STu8 *pTmp= MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc, mBaseCtx->size+size);
 	if(pTmp==NULL) return false;
 	memcpy(pTmp,mBaseCtx->pVirMem,mBaseCtx->size);
 	memset(pTmp+mBaseCtx->size,0x78,size);
-	WZHMem::SGIVirtualDeallocate(mBaseCtx->pVirMem,mBaseCtx->size);
+	MemMgr::GetInstance().CommonDeallocate(TypeSGIVirtualAllocTAlloc,mBaseCtx->pVirMem,mBaseCtx->size);
 	mBaseCtx->pVirMem=pTmp;
 	pTmp=NULL;
 	mBaseCtx->size+=size;
@@ -408,7 +407,7 @@ DWORD PeProtect::GetNewSection()
 *参数二：添加补丁大小
 *参数三：返回添加的区域起始RVA
 */
-bool PeProtect::AddSectionData(const char *pName,const size_t size,DWORD &mRetAddr)
+bool PeProtect::AddSectionData(const STu8 *pName,const size_t size,DWORD &mRetAddr)
 {
 	//首先计算区段后数据是否够存储IMAGE_SIZEOF_SECTION_HEADER大小
 	if(mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections>96)
@@ -440,7 +439,7 @@ bool PeProtect::AddSectionData(const char *pName,const size_t size,DWORD &mRetAd
 	return false;
 }
 
-bool PeProtect::AddSectionToEnd(const char *pName,const size_t size)
+bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size)
 {
 	//首先计算区段后数据是否够存储IMAGE_SIZEOF_SECTION_HEADER大小
 	if(mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections>96)
@@ -477,8 +476,8 @@ bool PeProtect::AddSectionToEnd(const char *pName,const size_t size)
 	}
 
 	SectionHeader mSectionHeader={0};
-	if(strlen(pName)<=IMAGE_SIZEOF_SHORT_NAME)
-		memcpy_s(mSectionHeader.Name, IMAGE_SIZEOF_SHORT_NAME, pName, strlen(pName));
+	if(strlen((char*)pName)<=IMAGE_SIZEOF_SHORT_NAME)
+		memcpy_s(mSectionHeader.Name, IMAGE_SIZEOF_SHORT_NAME, pName, strlen((char*)pName));
 	else
 		memcpy_s(mSectionHeader.Name,IMAGE_SIZEOF_SHORT_NAME,pName,IMAGE_SIZEOF_SHORT_NAME);
 	mSectionHeader.Misc.VirtualSize=size;   //节数据在没有对齐前真实尺寸
@@ -495,11 +494,11 @@ bool PeProtect::AddSectionToEnd(const char *pName,const size_t size)
 	
 
 	//修正影像数据
-	char *pTmp=NULL;
-	pTmp=WZHMem::SGIVirtualAlloc(mBaseCtx->size+FileAlignmentSize(size));
+	STu8 *pTmp=NULL;
+	pTmp= MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc,mBaseCtx->size+FileAlignmentSize(size));
 	if(pTmp==NULL) return false;
 	memcpy(pTmp,mBaseCtx->pVirMem,mBaseCtx->size);
-	WZHMem::SGIVirtualDeallocate(mBaseCtx->pVirMem,mBaseCtx->size);
+	MemMgr::GetInstance().CommonDeallocate(TypeSGIVirtualAllocTAlloc,mBaseCtx->pVirMem,mBaseCtx->size);
 	mBaseCtx->size+=FileAlignmentSize(size);
 	mBaseCtx->pVirMem=pTmp;
 	pTmp=NULL;
@@ -510,7 +509,7 @@ bool PeProtect::AddSectionToEnd(const char *pName,const size_t size)
 	mBaseCtx->pe.mSectionsVector.push_back(mSectionHeader);
 
 	//修正影像PE数据
-	pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
+	pTmp=mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
 	((NtHeader*)pTmp)->FileHeader.NumberOfSections++;
 	((NtHeader*)pTmp)->OptionalHeader.SizeOfImage=SectionAlignmentSize(mSectionHeader.VirtualAddress+mSectionHeader.SizeOfRawData);
 	pTmp=NULL;
@@ -525,11 +524,11 @@ bool PeProtect::ExpandLastSection(const size_t size,DWORD &iRetAddrRva)
 	iRetAddrRva=mBaseCtx->pe.mSectionsVector.back().VirtualAddress+mBaseCtx->pe.mSectionsVector.back().SizeOfRawData;
 
 	//修正影像数据
-	char *pTmp=NULL;
-	pTmp=WZHMem::SGIVirtualAlloc(mBaseCtx->size+FileAlignmentSize(size));
+	STu8 *pTmp=NULL;
+	pTmp= MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc, mBaseCtx->size+FileAlignmentSize(size));
 	if(pTmp==NULL) return false;
 	memcpy(pTmp,mBaseCtx->pVirMem,mBaseCtx->size);
-	WZHMem::SGIVirtualDeallocate(mBaseCtx->pVirMem,mBaseCtx->size);
+	MemMgr::GetInstance().CommonDeallocate(TypeSGIVirtualAllocTAlloc,mBaseCtx->pVirMem,mBaseCtx->size);
 	mBaseCtx->size+=FileAlignmentSize(size);
 	mBaseCtx->pVirMem=pTmp;
 	pTmp=NULL;
@@ -542,7 +541,7 @@ bool PeProtect::ExpandLastSection(const size_t size,DWORD &iRetAddrRva)
 	mBaseCtx->pe.mSectionsVector.back().Characteristics|=IMAGE_SCN_CNT_INITIALIZED_DATA|IMAGE_SCN_CNT_CODE|IMAGE_SCN_MEM_EXECUTE|IMAGE_SCN_MEM_READ|IMAGE_SCN_MEM_WRITE;
 	
 	//修正影像PE数据
-	pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
+	pTmp=mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
 	((NtHeader*)pTmp)->OptionalHeader.SizeOfImage=SectionAlignmentSize(mBaseCtx->pe.mSectionsVector.back().VirtualAddress+
 		mBaseCtx->pe.mSectionsVector.back().SizeOfRawData);
 	pTmp=pTmp+(((NtHeader*)pTmp)->FileHeader.NumberOfSections-1)*sizeof(SectionHeader)+sizeof(NtHeader);//定位最后一个区段
@@ -805,7 +804,7 @@ return true;
 *参数三：补丁数据大小
 *参数四：补丁修正原始OPE地址的偏移
 */
-bool PeProtect::AddPatch(const char *pName,const void *pPatch,const unsigned int dwSize,unsigned int mOffset)
+bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int dwSize,unsigned int mOffset)
 {
 	//增加区段
 	DWORD mRetAddr=0;
@@ -839,7 +838,7 @@ bool PeProtect::AddPatch(const char *pName,const void *pPatch,const unsigned int
 *参数三：补丁数据大小
 *参数四：补丁修正原始OPE地址的偏移
 */
-bool PeProtect::EncryptOne(const char *pName,const void *pPatch,const unsigned int dwSize,const unsigned int mOffset)
+bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned int dwSize,const unsigned int mOffset)
 {
 	//增加区段
 	DWORD iRetRvaAddr=0;
@@ -874,7 +873,7 @@ bool PeProtect::EncryptOne(const char *pName,const void *pPatch,const unsigned i
     }  
 	memcpy(pTmp,encrypt_table,sizeof(encrypt_table));
 	//加密节区数据(此处若存在.txtbss段数据，则失败)
-	char *_offset_stop=mBaseCtx->pVirMem+RvaToFoa(iRetRvaAddr);
+	STu8 *_offset_stop=mBaseCtx->pVirMem+RvaToFoa(iRetRvaAddr);
 	for(int i=0;i<mBaseCtx->pe.mSectionsVector.size();i++)
 	{
 		//当地址大于iRetRvaAddr补丁地址，不进行加密
@@ -920,7 +919,7 @@ bool PeProtect::EncryptOne(const char *pName,const void *pPatch,const unsigned i
 *参数三：补丁数据大小
 *参数四：补丁修正原始OPE地址的偏移
 */
-bool PeProtect::EncryptTwo(const char *pName,const void *pPatch,const unsigned int dwSize,const unsigned int mOffset)
+bool PeProtect::EncryptTwo(const STu8 *pName,const void *pPatch,const unsigned int dwSize,const unsigned int mOffset)
 {
 	//check MZ
 	if(mBaseCtx->pe.mDosHeader.e_magic!=IMAGE_DOS_SIGNATURE)
@@ -1057,7 +1056,7 @@ bool PeProtect::EncryptTwo(const char *pName,const void *pPatch,const unsigned i
 	DWORD dwEncSize=(DWORD)&_patch3_LABEL_OEP_JUMP_CODE_END_-(DWORD)&_patch3_LABEL_OEP_JUMP_CODE_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
 	DWORD dwDecOffset=(DWORD)&_patch3_LABEL_OepJumpDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	char *SecDecryptBuff=new char[OEP_PER_SIZE];
+	STu8 *SecDecryptBuff=new STu8[OEP_PER_SIZE];
 	mPer.MyMakePER(SecDecryptBuff,OEP_PER_SIZE);
 	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,OEP_PER_SIZE);
 	delete []SecDecryptBuff;
@@ -1069,7 +1068,7 @@ bool PeProtect::EncryptTwo(const char *pName,const void *pPatch,const unsigned i
 	dwEncSize=(DWORD)&_patch3_LABEL_RO_EXPLORER_EXE_END_-(DWORD)&_patch3_LABEL_RO_SectionNames_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
 	dwDecOffset=(DWORD)&_patch3_LABEL_DecryptSectionsInfoLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new char[SEC_PER_SIZE];
+	SecDecryptBuff=new STu8[SEC_PER_SIZE];
 	mPer.MyMakePER(SecDecryptBuff,SEC_PER_SIZE);
 	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,SEC_PER_SIZE);
 	delete []SecDecryptBuff;
@@ -1083,7 +1082,7 @@ bool PeProtect::EncryptTwo(const char *pName,const void *pPatch,const unsigned i
 	dwEncSize=(DWORD)&_patch3_LABEL_VARIABLE_CRYPT_END_-(DWORD)&_patch3_LABEL_VARIABLE_CRYPT_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
 	dwDecOffset=(DWORD)&_patch3_LABEL_VariableDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new char[VAR_PER_SIZE];
+	SecDecryptBuff=new STu8[VAR_PER_SIZE];
 	mPer.MyMakePER(SecDecryptBuff,VAR_PER_SIZE);
 	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,VAR_PER_SIZE);
 	delete []SecDecryptBuff;
@@ -1095,7 +1094,7 @@ bool PeProtect::EncryptTwo(const char *pName,const void *pPatch,const unsigned i
 	dwEncSize=(DWORD)&_patch3_PackEncrypt_END_-(DWORD)&_patch3_PackEncrypt_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
 	dwDecOffset=(DWORD)&_patch3_LABEL_PackDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new char[VAR_PER_SIZE];
+	SecDecryptBuff=new STu8[VAR_PER_SIZE];
 	mPer.MyMakePER(SecDecryptBuff,VAR_PER_SIZE);
 	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,VAR_PER_SIZE);
 	delete []SecDecryptBuff;
@@ -1131,7 +1130,7 @@ bool PeProtect::EncryptTwo(const char *pName,const void *pPatch,const unsigned i
 /*
 *加密方式三
 */
-bool PeProtect::EncryptThree(const char *strSectionName)
+bool PeProtect::EncryptThree(const STu8 *strSectionName)
 {
 	DWORD pStartAddr=0;
 	DWORD size=0;
@@ -1205,7 +1204,7 @@ bool PeProtect::EncryptThree(const char *strSectionName)
 /*
 *使用map加载函数加密
 */
-bool PeProtect::MapEncrypt(const char *strSectionName,MapStructrue* stu)
+bool PeProtect::MapEncrypt(const STu8 *strSectionName,MapStructrue* stu)
 {
 	//CCodeILFactory codefactory;
 	////CLink CodeList;
@@ -1261,7 +1260,7 @@ bool PeProtect::MapEncrypt(const char *strSectionName,MapStructrue* stu)
 /*
 *转发器
 */
-bool PeProtect::CheckifForwarderChain(char* pFileImage,DWORD pITBaseRO)
+bool PeProtect::CheckifForwarderChain(STu8* pFileImage,DWORD pITBaseRO)
 {
 	ImportDescriptor import_descriptor;// -> IID
 	CopyMemory(&import_descriptor,
@@ -1274,7 +1273,7 @@ bool PeProtect::CheckifForwarderChain(char* pFileImage,DWORD pITBaseRO)
 /*
 *OCX类型
 */
-bool PeProtect::ITMaker(char* pFileImage,DWORD pITBaseRO)
+bool PeProtect::ITMaker(STu8* pFileImage,DWORD pITBaseRO)
 {
 	return true;
 }
@@ -1285,7 +1284,7 @@ bool PeProtect::ITMaker(char* pFileImage,DWORD pITBaseRO)
 // return values:
 // 1 - success
 // 0 - too much IID's !
-DWORD PeProtect::EnDeCryptString(char* Base,DWORD dwRO)
+DWORD PeProtect::EnDeCryptString(STu8* Base,DWORD dwRO)
 {
 	UCHAR _temp;
 	for(int i=0;i<255;i++)//DllCryptLoop
@@ -1304,7 +1303,7 @@ DWORD PeProtect::EnDeCryptString(char* Base,DWORD dwRO)
 // return values:
 // 1 - success
 // 0 - too much IID's !
-DWORD PeProtect::ProcessOrgIT(char* pFileImage,DWORD pITBaseRO)
+DWORD PeProtect::ProcessOrgIT(STu8* pFileImage,DWORD pITBaseRO)
 {
 	DWORD stupid_num;
 	DWORD dwIIDNum;
@@ -1372,9 +1371,9 @@ DWORD PeProtect::ProcessOrgIT(char* pFileImage,DWORD pITBaseRO)
 
 //----------------------------------------------------------------
 // This function assembles Import Table for new section
-void PeProtect::AssembleIT(char* Base,DWORD dwNewSectionRO,DWORD dwNewSectionRVA)
+void PeProtect::AssembleIT(STu8* Base,DWORD dwNewSectionRO,DWORD dwNewSectionRVA)
 {
-	char* pAddress4IT=Base+dwNewSectionRO;//-> base of the new IT		
+	STu8* pAddress4IT=Base+dwNewSectionRO;//-> base of the new IT		
 	// Zero the memory for the new IT
 	FillMemory(Base+dwNewSectionRO,IT_SIZE,0x00);
 	// build a new,nice ImportTable :)
@@ -1413,7 +1412,7 @@ void PeProtect::AssembleIT(char* Base,DWORD dwNewSectionRO,DWORD dwNewSectionRVA
 //----------------------------------------------------------------
 // This function relocates the Thread Local Storage (TLS) Table
 // in different place
-void PeProtect::ProcessTlsTable(char* Base,DWORD dwCryptSectionRVA)
+void PeProtect::ProcessTlsTable(STu8* Base,DWORD dwCryptSectionRVA)
 {
 	//DWORD TlsDirAddr;
 	//// check whether there's a tls table
@@ -1447,7 +1446,7 @@ void PeProtect::CryptPE()
 	DWORD CryptSize;
 	DWORD dwDecOffset;
 	DWORD mRetAddr=mBaseCtx->pe.mSectionsVector.back().VirtualAddress;
-	char *SecDecryptBuff=new TCHAR[SEC_PER_SIZE];
+	STu8 *SecDecryptBuff=new STu8[SEC_PER_SIZE];
 	FillMemory(SecDecryptBuff,SEC_PER_SIZE,0x90);
 	for(int i=0;i<mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections;i++)
 	{
@@ -1637,7 +1636,7 @@ void PeProtect::CompressPE()
 	
 }
 
-void PeProtect::CryptResourceDirectory(char* Base,DWORD dwBaseRVA,DWORD dwRVA)
+void PeProtect::CryptResourceDirectory(STu8* Base,DWORD dwBaseRVA,DWORD dwRVA)
 {
 	DWORD i,dwOffSet;
 	IMAGE_RESOURCE_DIRECTORY		directory;
@@ -1684,7 +1683,7 @@ void PeProtect::CryptResourceDirectory(char* Base,DWORD dwBaseRVA,DWORD dwRVA)
 	}
 }
 //----------------------------------------------------------------
-void PeProtect::CompressResourceDirectory(char* Base,DWORD dwBaseRVA,DWORD dwRVA)
+void PeProtect::CompressResourceDirectory(STu8* Base,DWORD dwBaseRVA,DWORD dwRVA)
 {
 	//UCHAR *pIn		= NULL;
 	//UCHAR *pOut		= NULL;
@@ -1818,7 +1817,7 @@ void PeProtect::RemoveSectionNames()
 	}
 }
 
-DWORD PeProtect::PreAllocateVariable(char* Base)
+DWORD PeProtect::PreAllocateVariable(STu8* Base)
 {
 	DWORD l;
 	//----- PRE LOADER VARIABLES -----
@@ -2157,7 +2156,7 @@ DWORD PeProtect::PreAllocateVariable(char* Base)
 	return(dwRO);
 }
 
-void PeProtect::PosAllocateVariable(char* Base,DWORD mOffset)
+void PeProtect::PosAllocateVariable(STu8* Base,DWORD mOffset)
 {
 	//----- POST LOADER VARIABLES -----
 	DWORD dwRO=mOffset;
@@ -2398,7 +2397,7 @@ const sShitStruct ShitTable[ShitItems]={
 };
 
 //----------------------------------------------------------------
-void PeProtect::FillWithShit(char* Base,DWORD dwSize)
+void PeProtect::FillWithShit(STu8* Base,DWORD dwSize)
 {
 	DWORD dwRandom;
 	DWORD _dwSize=dwSize;
@@ -2419,7 +2418,7 @@ void PeProtect::FillWithShit(char* Base,DWORD dwSize)
 	}while(_dwSize!=0);
 }
 
-void PeProtect::CrypterPackerwithCall(char* pFuncBody,DWORD dwSize)
+void PeProtect::CrypterPackerwithCall(STu8* pFuncBody,DWORD dwSize)
 {
 	DWORD l=0;
 	DWORD64 tmp,tmp1;
@@ -2438,7 +2437,7 @@ void PeProtect::CrypterPackerwithCall(char* pFuncBody,DWORD dwSize)
 	}while(l!=dwSize);
 }
 
-DWORD PeProtect::GetChecksum(char* Base,DWORD FileSize)
+DWORD PeProtect::GetChecksum(STu8* Base,DWORD FileSize)
 {
 	DWORD	checksum,dwhold,dwdata;
 	DWORD64 dwtemp64;
@@ -2458,17 +2457,17 @@ DWORD PeProtect::GetChecksum(char* Base,DWORD FileSize)
 }
 
 //return Raw Data address of Loader Crypter Codes
-void PeProtect::GetEncryptRO(char* pFuncBody)
+void PeProtect::GetEncryptRO(STu8* pFuncBody)
 {
 }
 
 //return Raw Data address of OEP JUMP Codes
-void PeProtect::GetOepJumpCodeRO(char* pFuncBody)
+void PeProtect::GetOepJumpCodeRO(STu8* pFuncBody)
 {
 }
 
 // This functin encryptes the OEP JUMP Codes
-void PeProtect::OepJumpEncrypt(char* Base)
+void PeProtect::OepJumpEncrypt(STu8* Base)
 {
 	//DWORD i;
 	//UCHAR _temp=0;

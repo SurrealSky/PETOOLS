@@ -2,8 +2,19 @@
 #pragma once
 #include "stdafx.h"
 #include<Windows.h>
-#include "../Common/MiniDump.h"
-#include"..\MemoryPool\MemoryPool.h"
+#include<MiniDump.h>
+#include<LogLib\DebugLog.h>
+using namespace SurrealDebugLog;
+
+#include"../MemoryPool/MemMgr.h"
+using namespace SurrealMemMgr;
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\Debug\\MemMgr.lib")
+#else
+#pragma comment(lib, "..\\Release\\MemMgr.lib")
+#endif
+
 #include"../OtherLib/16Edit/16EditDll.h"
 
 #pragma comment(lib,"MemoryPool.lib")

@@ -34,7 +34,7 @@ public://映射文件
 public://分析函数
 	bool	CheckPeSig();
 	bool	Analysis();
-	void	ResourceAnalysis(const char *lpRes,const char *lpResDir,const int dwLevel);//资源表地址，目录地址，目录级别
+	void	ResourceAnalysis(const STu8 *lpRes,const STu8 *lpResDir,const int dwLevel);//资源表地址，目录地址，目录级别
 	const	DWORD	RvaToFoa(DWORD) const;
 	const	DWORD	FoaToRva(DWORD) const;
 	const	DWORD	SectionAlignmentSize(DWORD) const;

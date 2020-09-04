@@ -1,5 +1,5 @@
 #pragma once
-#include"../Common/Ini.h"
+#include<Ini.h>
 #include "afxwin.h"
 #include "MyListCtrl.h"
 #include "resource.h"

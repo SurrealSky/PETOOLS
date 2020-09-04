@@ -4,7 +4,7 @@
 
 #pragma once
 #include "afxcmn.h"
-#include "../Common/Ini.h"
+#include <Ini.h>
 #include "mfcstatic.h"
 #include "afxeditbrowsectrl.h"
 #include "afxbutton.h"

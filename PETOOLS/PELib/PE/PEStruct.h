@@ -4,6 +4,8 @@
 #include<map>
 #include<vector>
 #include<DelayImp.h>
+#include<typedef.h>
+using namespace SurrealTypes;
 
 #define PE_MODEL
 //#define PE_PLUS_MODEL
@@ -172,7 +174,7 @@ typedef struct {
 
 typedef struct {
 	std::string path;
-	char *pVirMem;
+	STu8 *pVirMem;
 	size_t size;
 	pe_file_t pe;
 } pe_ctx_t;

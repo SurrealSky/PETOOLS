@@ -44,6 +44,7 @@
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(SolutionDir)$(Configuration)\</LibraryPath>
     <GenerateManifest>true</GenerateManifest>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)\CommonLib\;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -109,9 +110,8 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Common\disasm\disasm.h" />
+    <ClInclude Include="..\CommonLib\disasm\disasm.h" />
     <ClInclude Include="CompressLib\aplib.h" />
-    <ClInclude Include="mem.h" />
     <ClInclude Include="Patch.h" />
     <ClInclude Include="PELib.h" />
     <ClInclude Include="PER\PER.h" />
@@ -133,9 +133,9 @@
     <ClInclude Include="VM\vmdisasm.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Common\disasm\asmserv.cpp" />
-    <ClCompile Include="..\Common\disasm\assembl.cpp" />
-    <ClCompile Include="..\Common\disasm\disasm.cpp" />
+    <ClCompile Include="..\CommonLib\disasm\asmserv.cpp" />
+    <ClCompile Include="..\CommonLib\disasm\assembl.cpp" />
+    <ClCompile Include="..\CommonLib\disasm\disasm.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -143,9 +143,6 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="mem.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PELib.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>

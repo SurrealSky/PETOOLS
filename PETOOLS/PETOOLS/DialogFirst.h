@@ -1,6 +1,5 @@
 #pragma once
-#include "../Common/Ini.h"
-#include "../Common/log4z.h"
+#include <Ini.h>
 #include "GlobeVar.h"
 #include "MFCStatic.h"
 #include "mfcedit.h"

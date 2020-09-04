@@ -1,7 +1,8 @@
 #pragma once
 #include "OtherMempryPool.h"
 #include "Pool.h"
-#include "MemoryPool.h"
+#include "MemMgr.h"
+using namespace SurrealMemMgr;
 
 const DWORD dwCount = 10000;
 const DWORD dwSize = 40960000;
@@ -21,35 +22,37 @@ typedef Allocator<char, SGIMemoryPool<false, dwSize, HeapAllocateTraits>> SGIHea
 typedef Allocator<char, SGIMemoryPool<true, dwSize> > SGIMTAllocator;
 
 
-class MemManager
+class MemMgr::MemManager
 {
 public:
 	MemManager(void);
+	MemManager(const MemManager&);
 	virtual ~MemManager(void);
 private:
-	static StdAllocT alloc1;
-	static SGIAllocT alloc2;
-	static SGIVirtualAllocT alloc3;
-	static SGIHeapAllocT alloc4;
-	static SGIMTAllocator alloc5;
-	//存储（内存地址-内存大小）
-	static std::map<void*,unsigned int> StdAllocTList;
-	static std::map<void*,unsigned int> SGIAllocTList;
-	static std::map<void*,unsigned int> SGIVirtualAllocTList;
-	static std::map<void*,unsigned int> SGIHeapAllocTList;
-	static std::map<void*,unsigned int> SGIMTAllocatorList;
+	StdAllocT alloc1;
+	SGIAllocT alloc2;
+	SGIVirtualAllocT alloc3;
+	SGIHeapAllocT alloc4;
+	SGIMTAllocator alloc5;
 private:
-	static char* StdAllocTAlloc(const DWORD dwSize);
-	static void StdAllocTDeallocate(char *p,const DWORD dwSize);
-	static char* SGIAllocTAlloc(const DWORD dwSize);
-	static void SGIAllocTDeallocate(char *p,const DWORD dwSize);
-	static char* SGIVirtualAllocTAlloc(const DWORD dwSize);
-	static void SGIVirtualAllocTDeallocate(char *p,const DWORD dwSize);
-	static char* SGIHeapAllocTAlloc(const DWORD dwSize);
-	static void SGIHeapAllocTDeallocate(char *p,const DWORD dwSize);
-	static char* MemManager::SGIMTAllocatorAlloc(const DWORD dwSize);
-	static void MemManager::SGIMTAllocatorDeallocate(char *p,const DWORD dwSize);
+	//存储（内存地址-内存大小）
+	std::map<void*,unsigned int> StdAllocTList;
+	std::map<void*,unsigned int> SGIAllocTList;
+	std::map<void*,unsigned int> SGIVirtualAllocTList;
+	std::map<void*,unsigned int> SGIHeapAllocTList;
+	std::map<void*,unsigned int> SGIMTAllocatorList;
+private:
+	char* StdAllocTAlloc(const DWORD dwSize);
+	void StdAllocTDeallocate(char *p,const DWORD dwSize);
+	char* SGIAllocTAlloc(const DWORD dwSize);
+	void SGIAllocTDeallocate(char *p,const DWORD dwSize);
+	char* SGIVirtualAllocTAlloc(const DWORD dwSize);
+	void SGIVirtualAllocTDeallocate(char *p,const DWORD dwSize);
+	char* SGIHeapAllocTAlloc(const DWORD dwSize);
+	void SGIHeapAllocTDeallocate(char *p,const DWORD dwSize);
+	char* SGIMTAllocatorAlloc(const DWORD dwSize);
+	void SGIMTAllocatorDeallocate(char *p,const DWORD dwSize);
 public:
-	static char* CommonAlloc(const WZHMemManager::MemAllocType,const DWORD dwSize);
-	static void CommonDeallocate(const WZHMemManager::MemAllocType,char *p,const DWORD dwSize=0);
+	char* CommonAlloc(const SurrealMemMgr::MemAllocType,const DWORD dwSize);
+	void CommonDeallocate(const SurrealMemMgr::MemAllocType,char *p,const DWORD dwSize=0);
 };

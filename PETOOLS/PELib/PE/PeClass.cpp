@@ -1,7 +1,6 @@
 #include"../PELib.h"
 #include "PeClass.h"
 #include"../VM/CryptErr.h"
-#include"../mem.h"
 #include<vector>
 
 PeClass::PeClass(void)
@@ -31,7 +30,7 @@ void PeClass::ClsCtx(pe_ctx_t& mC)
 {
 	if (mC.pVirMem)
 	{
-		WZHMem::SGIVirtualDeallocate(mC.pVirMem, mC.size);
+		MemMgr::GetInstance().CommonDeallocate(TypeSGIVirtualAllocTAlloc,mC.pVirMem, mC.size);
 		mC.pVirMem = 0;
 		mC.size = 0;
 		mC.path.clear();
@@ -57,7 +56,7 @@ void PeClass::CopyPeCtx(pe_ctx_t & mNewCtx,const pe_ctx_t& mOldCtx)
 	ClsCtx(mNewCtx);
 	mNewCtx.path=mOldCtx.path;
 	mNewCtx.size=mOldCtx.size;
-	mNewCtx.pVirMem=WZHMem::SGIVirtualAlloc(mOldCtx.size);
+	mNewCtx.pVirMem=MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc,mOldCtx.size);
 	CopyMemory(mNewCtx.pVirMem,mOldCtx.pVirMem,mOldCtx.size);
 	mNewCtx.pe=mOldCtx.pe;//(浅拷贝可能出现问题)
 }
@@ -88,7 +87,7 @@ bool PeClass::PeLoadFile(const char *path,const char *model)
 
 	mBaseCtx->size=dwSizeLow;
 
-	mBaseCtx->pVirMem=WZHMem::SGIVirtualAlloc(mBaseCtx->size);
+	mBaseCtx->pVirMem=MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc,mBaseCtx->size);
 	if(mBaseCtx->pVirMem==NULL) 
 	{
 		CloseHandle(mHandle);
@@ -545,7 +544,7 @@ bool PeClass::Analysis()
 	
 }
 
-void PeClass::ResourceAnalysis(const char *lpRes,const char *lpResDir,const int dwLevel)
+void PeClass::ResourceAnalysis(const STu8 *lpRes,const STu8 *lpResDir,const int dwLevel)
 {
 		ResourceDirectory mResourceDirectory={0};
 		memcpy_s(&mResourceDirectory,sizeof(mResourceDirectory),lpResDir,sizeof(IMAGE_RESOURCE_DIRECTORY));

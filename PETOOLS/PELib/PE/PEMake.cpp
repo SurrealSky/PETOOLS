@@ -2,7 +2,6 @@
 #include<Windows.h>
 #include"PeProtect.h"
 #include"../Patch.h"
-#include"../mem.h"
 
 
 PEMake::PEMake()
@@ -64,7 +63,7 @@ bool PEMake::ClsRelocDataDirectory()
 	return ptrPeProtect->ClsRelocDataDirectory();
 }
 
-bool PEMake::AddSectionToEnd(const char *data, unsigned int size)
+bool PEMake::AddSectionToEnd(const STu8 *data, unsigned int size)
 {
 	return ptrPeProtect->AddSectionToEnd(data,size);
 }
@@ -74,7 +73,7 @@ bool PEMake::EncryptImportTable()
 	return ptrPeProtect->EncryptImportTable();
 }
 
-bool PEMake::AddPatch(const char *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset)
+bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset)
 {
 	return ptrPeProtect->AddPatch(pName, pPatch, dwSize, mOffset);
 }
@@ -85,7 +84,7 @@ bool PEMake::Protect1A()
 	char *pData=new char[mShell_nSize];
 	memset(pData,0,mShell_nSize);
 	memcpy(pData,&_patch1_ShellCodeBegin_,mShell_nSize);
-	bool bret=ptrPeProtect->AddPatch(".PEMake",pData,mShell_nSize,(DWORD)&_patch1_offset_entry_jump-(DWORD)&_patch1_ShellCodeBegin_);
+	bool bret=ptrPeProtect->AddPatch((STu8*)".PEMake",pData,mShell_nSize,(DWORD)&_patch1_offset_entry_jump-(DWORD)&_patch1_ShellCodeBegin_);
 	delete []pData;
 	return bret;
 }
@@ -101,7 +100,7 @@ bool PEMake::Protect2A()
 	char *pData=new char[mShell_nSize];
 	memset(pData,0,mShell_nSize);
 	memcpy(pData,&_patch2_ShellCodeBegin_,mShell_nSize);
-	bool bret=ptrPeProtect->EncryptOne(".PEMake",pData,mShell_nSize,(DWORD)&_patch2_offset_entry_jump-(DWORD)&_patch2_ShellCodeBegin_);
+	bool bret=ptrPeProtect->EncryptOne((STu8*)".PEMake",pData,mShell_nSize,(DWORD)&_patch2_offset_entry_jump-(DWORD)&_patch2_ShellCodeBegin_);
 	delete []pData;
 	return bret;
 }
@@ -113,11 +112,11 @@ bool PEMake::Protect3A()
 	char *pData = new char[mShell_nSize];
 	memset(pData, 0, mShell_nSize);
 	memcpy(pData, &_patch3_ShellCodeBegin_, mShell_nSize);
-	return ptrPeProtect->EncryptTwo(".peMake", pData, mShell_nSize, (DWORD)&_patch3_offset_entry_jump - (DWORD)&_patch3_ShellCodeBegin_);
+	return ptrPeProtect->EncryptTwo((STu8*)(".peMake"), pData, mShell_nSize, (DWORD)&_patch3_offset_entry_jump - (DWORD)&_patch3_ShellCodeBegin_);
 }
 
 bool PEMake::Protect4A()
 {
 	//¿Ç4
-	return ptrPeProtect->EncryptThree(".peMake");
+	return ptrPeProtect->EncryptThree((STu8*)".peMake");
 }

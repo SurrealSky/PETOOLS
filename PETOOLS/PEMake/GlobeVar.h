@@ -1,12 +1,18 @@
 //此处用于定义全局的宏定义
 #pragma once
 #include<Windows.h>
-#include"..\MemoryPool\MemoryPool.h"
+#include<typedef.h>
 #include"../PELib/PE/PEMake.h"
-
-
-#pragma comment(lib,"MemoryPool.lib")
 #pragma comment(lib,"PELib.lib")
+
+#include"../MemoryPool/MemMgr.h"
+using namespace SurrealMemMgr;
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\Debug\\MemMgr.lib")
+#else
+#pragma comment(lib, "..\\Release\\MemMgr.lib")
+#endif
 
 #ifdef UNICODE
 #define MAX_LENGTH 128

@@ -1,0 +1,64 @@
+#include<stdio.h>
+#include<Windows.h>
+#include "MiniDump.h"
+
+
+CMiniDump::CMiniDump()
+{
+}
+
+
+CMiniDump::~CMiniDump()
+{
+}
+
+void CMiniDump::EnableAutoDump(STbool bEnable)
+{
+	if (bEnable)
+	{
+		SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)ApplicationCrashHandler);
+	}
+}
+
+LONG CMiniDump::ApplicationCrashHandler(EXCEPTION_POINTERS *pException)
+{
+	/*if (IsDebuggerPresent())
+	{
+	return EXCEPTION_CONTINUE_SEARCH;
+	}*/
+
+	STu8 szDumpDir[MAX_PATH] = { 0 };
+	STu8 szDumpFile[MAX_PATH] = { 0 };
+	STu8 szMsg[MAX_PATH] = { 0 };
+	SYSTEMTIME	stTime = { 0 };
+	// 构建dump文件路径;
+	GetLocalTime(&stTime);
+	::GetCurrentDirectory(MAX_PATH, (char*)szDumpDir);
+	TSprintf((char*)szDumpFile,
+		"%s\\%04d%02d%02d_%02d%02d%02d.dmp", szDumpDir,
+		stTime.wYear, stTime.wMonth, stTime.wDay,
+		stTime.wHour, stTime.wMinute, stTime.wSecond);
+	// 创建dump文件;
+	CreateDumpFile((char*)szDumpFile, pException);
+
+	// 弹出一个错误对话框或者提示上传， 并退出程序;
+	TSprintf((char*)szMsg, "I'm so sorry, but the program crashed.\r\ndump file : %s", szDumpFile);
+	FatalAppExit(-1, (char*)szMsg);
+
+	return EXCEPTION_EXECUTE_HANDLER;
+}
+
+void CMiniDump::CreateDumpFile(LPCTSTR strPath, EXCEPTION_POINTERS *pException)
+{
+	// 创建Dump文件;
+	HANDLE hDumpFile = CreateFile(strPath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	// Dump信息;
+	MINIDUMP_EXCEPTION_INFORMATION dumpInfo;
+	dumpInfo.ExceptionPointers = pException;
+	dumpInfo.ThreadId = GetCurrentThreadId();
+	dumpInfo.ClientPointers = TRUE;
+
+	// 写入Dump文件内容;
+	MiniDumpWriteDump(GetCurrentProcess(), GetCurrentProcessId(), hDumpFile, MiniDumpNormal, &dumpInfo, NULL, NULL);
+	CloseHandle(hDumpFile);
+}

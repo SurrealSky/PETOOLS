@@ -1,47 +1,42 @@
 #include "StdAfx.h"
 #include "MemManager.h"
+#include<LogLib\DebugLog.h>
 
-using namespace WZHMemManager;
-
-StdAllocT MemManager::alloc1;
-SGIAllocT MemManager::alloc2;
-SGIVirtualAllocT MemManager::alloc3;
-SGIHeapAllocT MemManager::alloc4;
-SGIMTAllocator MemManager::alloc5;
-
-std::map<void*,unsigned int> MemManager::StdAllocTList;
-std::map<void*,unsigned int> MemManager::SGIAllocTList;
-std::map<void*,unsigned int> MemManager::SGIVirtualAllocTList;
-std::map<void*,unsigned int> MemManager::SGIHeapAllocTList;
-std::map<void*,unsigned int> MemManager::SGIMTAllocatorList;
-
-MemManager::MemManager(void)
+MemMgr::MemManager::MemManager(void)
 {
-	MemManager::StdAllocTList.clear();
-	MemManager::SGIAllocTList.clear();
-	MemManager::SGIVirtualAllocTList.clear();
-	MemManager::SGIHeapAllocTList.clear();
-	MemManager::SGIMTAllocatorList.clear();
+	StdAllocTList.clear();
+	SGIAllocTList.clear();
+	SGIVirtualAllocTList.clear();
+	SGIHeapAllocTList.clear();
+	SGIMTAllocatorList.clear();
 }
 
-MemManager::~MemManager(void)
+MemMgr::MemManager::MemManager(const MemManager &m)
+{
+
+}
+
+MemMgr::MemManager::~MemManager(void)
 {
 	//Çå³ýÄÚ´æ
+	SurrealDebugLog::DebugLog("MemManager","start free all alloc...");
 	map<void*, unsigned int>::iterator it;
 	if(MemManager::StdAllocTList.size()>0)
 	{
 		for(it=MemManager::StdAllocTList.begin();it!=MemManager::StdAllocTList.end();++it)
 		{
 			alloc1.deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeStdAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::StdAllocTList.clear();
 
-	if(MemManager::SGIAllocTList.size()>0)
+	if(SGIAllocTList.size()>0)
 	{
 		for(it=MemManager::SGIAllocTList.begin();it!=MemManager::SGIAllocTList.end();++it)
 		{
-			alloc1.deallocate((char*)it->first,it->second);
+			alloc2.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIAllocTList.clear();
@@ -50,7 +45,8 @@ MemManager::~MemManager(void)
 	{
 		for(it=MemManager::SGIVirtualAllocTList.begin();it!=MemManager::SGIVirtualAllocTList.end();++it)
 		{
-			alloc1.deallocate((char*)it->first,it->second);
+			alloc3.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIVirtualAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIVirtualAllocTList.clear();
@@ -59,7 +55,8 @@ MemManager::~MemManager(void)
 	{
 		for(it=MemManager::SGIHeapAllocTList.begin();it!=MemManager::SGIHeapAllocTList.end();++it)
 		{
-			alloc1.deallocate((char*)it->first,it->second);
+			alloc4.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIHeapAllocTAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIHeapAllocTList.clear();
@@ -68,32 +65,34 @@ MemManager::~MemManager(void)
 	{
 		for(it=MemManager::SGIMTAllocatorList.begin();it!=MemManager::SGIMTAllocatorList.end();++it)
 		{
-			alloc1.deallocate((char*)it->first,it->second);
+			alloc5.Deallocate((char*)it->first,it->second);
+			SurrealDebugLog::DebugLog(SurrealDebugLog::string_format("%s:MemType=%02X,address=0x%08X,size=%X free!", "MemManager", TypeSGIMTAllocatorAlloc, it->first, it->second));
 		}
 	}
 	MemManager::SGIMTAllocatorList.clear();
 }
 
 
-char* MemManager::StdAllocTAlloc(const DWORD dwSize)
+char* MemMgr::MemManager::StdAllocTAlloc(const DWORD dwSize)
 {
-	char *_ptr=MemManager::alloc1.allocate(dwSize);
-	MemManager::StdAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
+	char *_ptr=alloc1.allocate(dwSize);
+	StdAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
 	return _ptr;
 }
-void MemManager::StdAllocTDeallocate(char *p,const DWORD dwSize)
+
+void MemMgr::MemManager::StdAllocTDeallocate(char *p,const DWORD dwSize)
 {
 	if(p!=NULL)
 	{
-		map<void*, unsigned int>::iterator it =MemManager::StdAllocTList.find(p);
-		if (it!=MemManager::StdAllocTList.end())
+		map<void*, unsigned int>::iterator it =StdAllocTList.find(p);
+		if (it!=StdAllocTList.end())
 		{
 			if(it->second!=dwSize)
 			{
 				//check size
 			}
 			alloc1.deallocate(p,dwSize);
-			MemManager::StdAllocTList.erase(it);
+			StdAllocTList.erase(it);
 		}
 		else
 		{
@@ -102,25 +101,26 @@ void MemManager::StdAllocTDeallocate(char *p,const DWORD dwSize)
 	}
 }
 
-char* MemManager::SGIAllocTAlloc(const DWORD dwSize)
+char* MemMgr::MemManager::SGIAllocTAlloc(const DWORD dwSize)
 {
-	char *_ptr=MemManager::alloc2.Allocate(dwSize);
-	MemManager::SGIAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
+	char *_ptr=alloc2.Allocate(dwSize);
+	SGIAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
 	return _ptr;
 }
-void MemManager::SGIAllocTDeallocate(char *p,const DWORD dwSize)
+
+void MemMgr::MemManager::SGIAllocTDeallocate(char *p,const DWORD dwSize)
 {
 	if(p!=NULL)
 	{
-		map<void*, unsigned int>::iterator it =MemManager::SGIAllocTList.find(p);
-		if (it!=MemManager::SGIAllocTList.end())
+		map<void*, unsigned int>::iterator it =SGIAllocTList.find(p);
+		if (it!=SGIAllocTList.end())
 		{
 			if(it->second!=dwSize)
 			{
 				//check size
 			}
 			alloc2.Deallocate(p,dwSize);
-			MemManager::SGIAllocTList.erase(it);
+			SGIAllocTList.erase(it);
 		}
 		else
 		{
@@ -129,25 +129,26 @@ void MemManager::SGIAllocTDeallocate(char *p,const DWORD dwSize)
 	}
 }
 
-char* MemManager::SGIVirtualAllocTAlloc(const DWORD dwSize)
+char* MemMgr::MemManager::SGIVirtualAllocTAlloc(const DWORD dwSize)
 {
-	char *_ptr=MemManager::alloc3.Allocate(dwSize);
-	MemManager::SGIVirtualAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
+	char *_ptr=alloc3.Allocate(dwSize);
+	SGIVirtualAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
 	return _ptr;
 }
-void MemManager::SGIVirtualAllocTDeallocate(char *p,const DWORD dwSize)
+
+void MemMgr::MemManager::SGIVirtualAllocTDeallocate(char *p,const DWORD dwSize)
 {
 	if(p!=NULL)
 	{
-		map<void*, unsigned int>::iterator it =MemManager::SGIVirtualAllocTList.find(p);
-		if (it!=MemManager::SGIVirtualAllocTList.end())
+		map<void*, unsigned int>::iterator it =SGIVirtualAllocTList.find(p);
+		if (it!=SGIVirtualAllocTList.end())
 		{
 			if(it->second!=dwSize)
 			{
 				//check size
 			}
 			alloc3.Deallocate(p,dwSize);
-			MemManager::SGIVirtualAllocTList.erase(it);
+			SGIVirtualAllocTList.erase(it);
 		}
 		else
 		{
@@ -156,25 +157,26 @@ void MemManager::SGIVirtualAllocTDeallocate(char *p,const DWORD dwSize)
 	}
 }
 
-char* MemManager::SGIHeapAllocTAlloc(const DWORD dwSize)
+char* MemMgr::MemManager::SGIHeapAllocTAlloc(const DWORD dwSize)
 {
-	char *_ptr=MemManager::alloc4.Allocate(dwSize);
-	MemManager::SGIHeapAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
+	char *_ptr=alloc4.Allocate(dwSize);
+	SGIHeapAllocTList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
 	return _ptr;
 }
-void MemManager::SGIHeapAllocTDeallocate(char *p,const DWORD dwSize)
+
+void MemMgr::MemManager::SGIHeapAllocTDeallocate(char *p,const DWORD dwSize)
 {
 	if(p!=NULL)
 	{
-		map<void*, unsigned int>::iterator it =MemManager::SGIHeapAllocTList.find(p);
-		if (it!=MemManager::SGIHeapAllocTList.end())
+		map<void*, unsigned int>::iterator it =SGIHeapAllocTList.find(p);
+		if (it!=SGIHeapAllocTList.end())
 		{
 			if(it->second!=dwSize)
 			{
 				//check size
 			}
 			alloc4.Deallocate(p,dwSize);
-			MemManager::SGIHeapAllocTList.erase(it);
+			SGIHeapAllocTList.erase(it);
 		}
 		else
 		{
@@ -183,25 +185,26 @@ void MemManager::SGIHeapAllocTDeallocate(char *p,const DWORD dwSize)
 	}
 }
 
-char* MemManager::SGIMTAllocatorAlloc(const DWORD dwSize)
+char* MemMgr::MemManager::SGIMTAllocatorAlloc(const DWORD dwSize)
 {
-	char *_ptr=MemManager::alloc5.Allocate(dwSize);
-	MemManager::SGIMTAllocatorList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
+	char *_ptr=alloc5.Allocate(dwSize);
+	SGIMTAllocatorList.insert(std::pair<void*,unsigned int>(_ptr,dwSize));
 	return _ptr;
 }
-void MemManager::SGIMTAllocatorDeallocate(char *p,const DWORD dwSize)
+
+void MemMgr::MemManager::SGIMTAllocatorDeallocate(char *p,const DWORD dwSize)
 {
 	if(p!=NULL)
 	{
 		map<void*, unsigned int>::iterator it =MemManager::SGIMTAllocatorList.find(p);
-		if (it!=MemManager::SGIMTAllocatorList.end())
+		if (it!=SGIMTAllocatorList.end())
 		{
 			if(it->second!=dwSize)
 			{
 				//check size
 			}
 			alloc5.Deallocate(p,dwSize);
-			MemManager::SGIMTAllocatorList.erase(it);
+			SGIMTAllocatorList.erase(it);
 		}
 		else
 		{
@@ -210,56 +213,57 @@ void MemManager::SGIMTAllocatorDeallocate(char *p,const DWORD dwSize)
 	}
 }
 
-char* MemManager::CommonAlloc(const MemAllocType _type,const DWORD dwSize)
+char* MemMgr::MemManager::CommonAlloc(const MemAllocType _type,const DWORD dwSize)
 {
 	switch(_type)
 	{
 	case TypeStdAllocTAlloc:
 		{
-			return MemManager::StdAllocTAlloc(dwSize);
+			return StdAllocTAlloc(dwSize);
 		}break;
 	case TypeSGIAllocTAlloc:
 		{
-			return MemManager::SGIAllocTAlloc(dwSize);
+			return SGIAllocTAlloc(dwSize);
 		}break;
 	case TypeSGIVirtualAllocTAlloc:
 		{
-			return MemManager::SGIVirtualAllocTAlloc(dwSize);
+			return SGIVirtualAllocTAlloc(dwSize);
 		}break;
 	case TypeSGIHeapAllocTAlloc:
 		{
-			return MemManager::SGIHeapAllocTAlloc(dwSize);
+			return SGIHeapAllocTAlloc(dwSize);
 		}break;
 	case TypeSGIMTAllocatorAlloc:
 		{
-			return MemManager::SGIMTAllocatorAlloc(dwSize);
+			return SGIMTAllocatorAlloc(dwSize);
 		}break;
 	}
 	return "";
 }
-void MemManager::CommonDeallocate(const MemAllocType _type,char *p,const DWORD dwSize)
+
+void MemMgr::MemManager::CommonDeallocate(const MemAllocType _type,char *p,const DWORD dwSize)
 {
 	switch(_type)
 	{
 		case TypeStdAllocTAlloc:
 		{
-			return MemManager::StdAllocTDeallocate(p,dwSize);
+			return StdAllocTDeallocate(p,dwSize);
 		}break;
 	case TypeSGIAllocTAlloc:
 		{
-			return MemManager::SGIAllocTDeallocate(p,dwSize);
+			return SGIAllocTDeallocate(p,dwSize);
 		}break;
 	case TypeSGIVirtualAllocTAlloc:
 		{
-			return MemManager::SGIVirtualAllocTDeallocate(p,dwSize);
+			return SGIVirtualAllocTDeallocate(p,dwSize);
 		}break;
 	case TypeSGIHeapAllocTAlloc:
 		{
-			return MemManager::SGIHeapAllocTDeallocate(p,dwSize);
+			return SGIHeapAllocTDeallocate(p,dwSize);
 		}break;
 	case TypeSGIMTAllocatorAlloc:
 		{
-			return MemManager::SGIMTAllocatorDeallocate(p,dwSize);
+			return SGIMTAllocatorDeallocate(p,dwSize);
 		}break;
 	}
 }

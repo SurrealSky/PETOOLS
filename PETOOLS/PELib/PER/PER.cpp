@@ -318,7 +318,7 @@ UCHAR PER::EncodeRoutine(UCHAR Value,UCHAR Count)
 	return(regAL);
 }
 
-void PER::EncryptBuff(char* Base,DWORD dwRVA,DWORD dwSize)
+void PER::EncryptBuff(STu8* Base,DWORD dwRVA,DWORD dwSize)
 {
 	UCHAR _temp;
 	UCHAR count=UCHAR(dwSize);
@@ -333,7 +333,7 @@ void PER::EncryptBuff(char* Base,DWORD dwRVA,DWORD dwSize)
 	DWORD WW=regBL;
 }
 
-void PER::MakePER(char* pDecryptBuff,DWORD dwSize)
+void PER::MakePER(STu8* pDecryptBuff,DWORD dwSize)
 {
 	DWORD dwCurRandNum;
 	DWORD dwRandom;
@@ -398,7 +398,7 @@ void PER::MakePER(char* pDecryptBuff,DWORD dwSize)
 	CopyMemory(pDecryptBuff,pDEC,dwSize);//-> DecryptBuffer
 }
 
-void PER::MyMakePER(char *pDecryptBuff,DWORD dwSize)
+void PER::MyMakePER(STu8 *pDecryptBuff,DWORD dwSize)
 {
 	FillMemory(pDecryptBuff,dwSize,0x90);
 	//BB BC000000   mov     ebx, 0BC
@@ -412,7 +412,7 @@ void PER::MyMakePER(char *pDecryptBuff,DWORD dwSize)
 	pDecryptBuff[6]=0xC3;
 }
 
-void PER::MyEasyEncrypt(char* pDecryptBuff,DWORD dwSize)
+void PER::MyEasyEncrypt(STu8* pDecryptBuff,DWORD dwSize)
 {
 	for(int i=0;i<dwSize;i++)
 	{

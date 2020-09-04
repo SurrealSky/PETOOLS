@@ -11,8 +11,8 @@
 #include"AddSectionDlg.h"
 #include"AddPatch.h"
 #include"EncryptDlg.h"
-#include"../Common/DebugLog.h"
-#include"../Common/MiniDump.h"
+#include<LogLib\DebugLog.h>
+#include<MiniDump.h>
 
 
 //#ifdef _DEBUG

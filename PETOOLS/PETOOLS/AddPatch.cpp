@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 #include"PETOOLSDlg.h"
 #include"ProBarThread.h"
-#include"../Common/disasm/disasm.h"
+#include<disasm/disasm.h>
 
 
 // CAddPatch 对话框
@@ -91,7 +91,7 @@ void CAddPatch::OnBnClickedOk()
 		AfxMessageBox("修正偏移为空!");
 		return;
 	}
-	bool bRet=pMainDlg->mPEMake.AddPatch(strName.GetBuffer(0),pPatch,dwSize,StrToInt(strOffset));
+	bool bRet=pMainDlg->mPEMake.AddPatch((STu8*)strName.GetBuffer(0),pPatch,dwSize,StrToInt(strOffset));
 	if(bRet)
 		CDialogEx::OnOK();
 	else

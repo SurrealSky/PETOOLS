@@ -6,7 +6,7 @@
 #include "afxdialogex.h"
 #include "ProBarThread.h"
 #include"PETOOLSDlg.h"
-#include"../Common/disasm/disasm.h"
+#include<disasm/disasm.h>
 
 // CDisaDialog ¶Ô»°¿ò
 

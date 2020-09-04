@@ -22,6 +22,15 @@
     <Filter Include="Include\MultiThread">
       <UniqueIdentifier>{02880961-194b-444a-9232-9f04558a8caa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommonLib">
+      <UniqueIdentifier>{f9a1942a-42c6-4857-8516-02338a7affa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Export">
+      <UniqueIdentifier>{55556d64-66fe-4d64-869f-59531d138642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\LogLib">
+      <UniqueIdentifier>{c4f4d888-d0fa-4d72-ae28-d5b432804971}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -66,11 +75,20 @@
     <ClInclude Include="QPerformance.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MemoryPool.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MemManager.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\typedef.h">
+      <Filter>CommonLib</Filter>
+    </ClInclude>
+    <ClInclude Include="MemMgr.h">
+      <Filter>Export</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\LogLib\DebugLog.h">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CommonLib\LogLib\log4z.h">
+      <Filter>CommonLib\LogLib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,11 +98,17 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryPool.cpp">
-      <Filter>头文件</Filter>
-    </ClCompile>
     <ClCompile Include="MemManager.cpp">
-      <Filter>头文件</Filter>
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MemMGR.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\LogLib\DebugLog.cpp">
+      <Filter>CommonLib\LogLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CommonLib\LogLib\log4z.cpp">
+      <Filter>CommonLib\LogLib</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

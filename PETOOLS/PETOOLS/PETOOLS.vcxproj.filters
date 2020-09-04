@@ -19,8 +19,14 @@
     <Filter Include="ControlsClass">
       <UniqueIdentifier>{9bb16d05-43b9-4f6f-b9a9-6f43332c03db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="common">
+    <Filter Include="CommonLib">
       <UniqueIdentifier>{190770a1-c831-4826-8e45-62f3662f5ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\LogLib">
+      <UniqueIdentifier>{45e0e910-4eb6-473c-9670-b7a4e8d3b499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonLib\disasm">
+      <UniqueIdentifier>{5f86cbbb-d6fa-45bd-9b80-a9f4e5e2c5d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,20 +102,20 @@
     <ClInclude Include="PosCalcDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\log4z.h">
-      <Filter>common</Filter>
+    <ClInclude Include="..\CommonLib\LogLib\DebugLog.h">
+      <Filter>CommonLib\LogLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\DebugLog.h">
-      <Filter>common</Filter>
+    <ClInclude Include="..\CommonLib\LogLib\log4z.h">
+      <Filter>CommonLib\LogLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\Ini.h">
-      <Filter>common</Filter>
+    <ClInclude Include="..\CommonLib\MiniDump.h">
+      <Filter>CommonLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\MiniDump.h">
-      <Filter>common</Filter>
+    <ClInclude Include="..\CommonLib\Ini.h">
+      <Filter>CommonLib</Filter>
     </ClInclude>
-    <ClInclude Include="..\Common\disasm\disasm.h">
-      <Filter>common</Filter>
+    <ClInclude Include="..\CommonLib\disasm\disasm.h">
+      <Filter>CommonLib\disasm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,26 +173,26 @@
     <ClCompile Include="PosCalcDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\log4z.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\LogLib\DebugLog.cpp">
+      <Filter>CommonLib\LogLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\DebugLog.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\LogLib\log4z.cpp">
+      <Filter>CommonLib\LogLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\Ini.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\MiniDump.cpp">
+      <Filter>CommonLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\MiniDump.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\Ini.cpp">
+      <Filter>CommonLib</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\disasm\asmserv.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\disasm\asmserv.cpp">
+      <Filter>CommonLib\disasm</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\disasm\assembl.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\disasm\assembl.cpp">
+      <Filter>CommonLib\disasm</Filter>
     </ClCompile>
-    <ClCompile Include="..\Common\disasm\disasm.cpp">
-      <Filter>common</Filter>
+    <ClCompile Include="..\CommonLib\disasm\disasm.cpp">
+      <Filter>CommonLib\disasm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include<map>
 #include<list>
-#include"../../Common/disasm/disasm.h"
+#include<disasm/disasm.h>
 
 typedef struct _CFunctionCode
 {
