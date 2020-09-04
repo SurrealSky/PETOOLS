@@ -1,5 +1,5 @@
-
-// PETOOLSDlg.cpp : ÊµÏÖÎÄ¼ş
+ï»¿
+// PETOOLSDlg.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -13,6 +13,8 @@
 #include"EncryptDlg.h"
 #include<LogLib\DebugLog.h>
 #include<MiniDump.h>
+#include"DataDirectoryDlg.h"
+#include"SectionsDlg.h"
 
 
 //#ifdef _DEBUG
@@ -20,7 +22,7 @@
 //#endif
 
 
-// CPETOOLSDlg ¶Ô»°¿ò
+// CPETOOLSDlg å¯¹è¯æ¡†
 
 CPETOOLSDlg *MainDlg;
 
@@ -28,16 +30,10 @@ CPETOOLSDlg::CPETOOLSDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CPETOOLSDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-	pFrameDlg = NULL;
 	pPosCalcDlg = NULL;
 }
 CPETOOLSDlg::~CPETOOLSDlg()
 {
-	if (pFrameDlg != NULL) 
-	{
-		delete pFrameDlg;
-		pFrameDlg = NULL;
-	}
 	if (pPosCalcDlg != NULL)
 	{
 		delete pPosCalcDlg;
@@ -57,12 +53,12 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC4, m_Static4);
 	DDX_Control(pDX, IDC_STATIC5, m_Static5);
 	DDX_Control(pDX, IDC_STATIC6, m_Static6);
-	DDX_Control(pDX, IDC_STATIC7, m_Static7);
-	DDX_Control(pDX, IDC_STATIC8, m_Static8);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE3, m_Edit3);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE4, m_Edit4);
+	//DDX_Control(pDX, IDC_STATIC7, m_Static7);
+	//DDX_Control(pDX, IDC_STATIC8, m_Static8);
+	//DDX_Control(pDX, IDC_MFCEDITBROWSE3, m_Edit3);
+	//DDX_Control(pDX, IDC_MFCEDITBROWSE4, m_Edit4);
 	DDX_Control(pDX, IDC_MFCBUTTON2, m_Button2);
-	DDX_Control(pDX, IDC_COMBOBOXEX1, m_ComboBox1);
+	//DDX_Control(pDX, IDC_COMBOBOXEX1, m_ComboBox1);
 	DDX_Control(pDX, IDC_STATIC9, m_Static9);
 	DDX_Control(pDX, IDC_STATIC10, m_Static10);
 	DDX_Control(pDX, IDC_STATIC11, m_Static11);
@@ -101,16 +97,6 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC44, m_Static44);
 	DDX_Control(pDX, IDC_STATIC45, m_Static45);
 	DDX_Control(pDX, IDC_STATIC46, m_Static46);
-	DDX_Control(pDX, IDC_STATIC47, m_Static47);
-	DDX_Control(pDX, IDC_STATIC48, m_Static48);
-	DDX_Control(pDX, IDC_STATIC49, m_Static49);
-	DDX_Control(pDX, IDC_STATIC50, m_Static50);
-	DDX_Control(pDX, IDC_STATIC51, m_Static51);
-	DDX_Control(pDX, IDC_STATIC52, m_Static52);
-	DDX_Control(pDX, IDC_STATIC53, m_Static53);
-	DDX_Control(pDX, IDC_STATIC54, m_Static54);
-	DDX_Control(pDX, IDC_STATIC55, m_Static55);
-	DDX_Control(pDX, IDC_STATIC56, m_Static56);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE5, m_Edit5);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE6, m_Edit6);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE7, m_Edit7);
@@ -148,19 +134,8 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MFCEDITBROWSE39, m_Edit39);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE40, m_Edit40);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE41, m_Edit41);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE42, m_Edit42);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE43, m_Edit43);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE44, m_Edit44);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE45, m_Edit45);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE46, m_Edit46);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE47, m_Edit47);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE48, m_Edit48);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE49, m_Edit49);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE50, m_Edit50);
-	DDX_Control(pDX, IDC_MFCEDITBROWSE51, m_Edit51);
 	DDX_Control(pDX, IDC_MFCBUTTON3, m_Button3);
-	DDX_Control(pDX, IDC_MFCBUTTON4, m_Button4);
-	DDX_Control(pDX, IDC_COMBOBOXEX2, m_ComboBox2);
+	DDX_Control(pDX, IDC_MFCBUTTON5, m_Button5);
 }
 
 BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
@@ -168,10 +143,8 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_MFCBUTTON1, &CPETOOLSDlg::OnBnClickedMfcbutton1)
 	ON_BN_CLICKED(IDC_MFCBUTTON3, &CPETOOLSDlg::OnBnClickedMfcbutton3)
-	ON_BN_CLICKED(IDC_MFCBUTTON4, &CPETOOLSDlg::OnBnClickedMfcbutton4)
+	ON_BN_CLICKED(IDC_MFCBUTTON5, &CPETOOLSDlg::OnBnClickedMfcbutton5)
 	ON_WM_MOUSEMOVE()
-	ON_CBN_SELCHANGE(IDC_COMBOBOXEX1, &CPETOOLSDlg::OnCbnSelchangeComboboxex1)
-	ON_CBN_SELCHANGE(IDC_COMBOBOXEX2, &CPETOOLSDlg::OnCbnSelchangeComboboxex2)
 	ON_BN_CLICKED(IDC_MFCBUTTON2, &CPETOOLSDlg::OnBnClickedMfcbutton2)
 	ON_COMMAND(ID_32771, &CPETOOLSDlg::OnOpen)
 	ON_COMMAND(ID_Disa, &CPETOOLSDlg::OnDisa)
@@ -190,54 +163,54 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CPETOOLSDlg ÏûÏ¢´¦Àí³ÌĞò
+// CPETOOLSDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CPETOOLSDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 
-	//ÉèÖÃ±¾µØÖĞÎÄ×Ö·û¼¯
+	//è®¾ç½®æœ¬åœ°ä¸­æ–‡å­—ç¬¦é›†
 	setlocale(LC_ALL,"chs");
-	//³õÊ¼»¯È«¾Ö±äÁ¿
+	//åˆå§‹åŒ–å…¨å±€å˜é‡
 	::MainDlg=this;
-	//°²×°Òì³£Á´
+	//å®‰è£…å¼‚å¸¸é“¾
 	if(!this->SetDumpFunc())
 	{
-		//ÉèÖÃ¶Ô»°¿òÈÕÖ¾
-		DebugLog("DumpÏß³ÌÉèÖÃÊ§°Ü");
+		//è®¾ç½®å¯¹è¯æ¡†æ—¥å¿—
+		DebugLog("Dumpçº¿ç¨‹è®¾ç½®å¤±è´¥");
 		return FALSE;
 	}
 
-	DebugLog("DumpÏß³ÌÉèÖÃÍê±Ï");
+	DebugLog("Dumpçº¿ç¨‹è®¾ç½®å®Œæ¯•");
 	
 	if(!this->SetDlgUI())
 	{
-		//ÉèÖÃ¶Ô»°¿òÈÕÖ¾
-		DebugLog("UIÉèÖÃ´´½¨Ê§°Ü");
+		//è®¾ç½®å¯¹è¯æ¡†æ—¥å¿—
+		DebugLog("UIè®¾ç½®åˆ›å»ºå¤±è´¥");
 		return FALSE;
 	}
-	DebugLog("Ö÷¶Ô»°¿òUIÉèÖÃÍê±Ï");
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	DebugLog("ä¸»å¯¹è¯æ¡†UIè®¾ç½®å®Œæ¯•");
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CPETOOLSDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -245,7 +218,7 @@ void CPETOOLSDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -254,17 +227,17 @@ void CPETOOLSDlg::OnPaint()
 	}
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CPETOOLSDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-//ÓÃÓÚÉèÖÃÖ÷¶Ô»°¿òµÄUI
+//ç”¨äºè®¾ç½®ä¸»å¯¹è¯æ¡†çš„UI
 BOOL CPETOOLSDlg::SetDlgUI(void)
 {
-	//³õÊ¼»¯MainFrame UI½çÃæ
+	//åˆå§‹åŒ–MainFrame UIç•Œé¢
 	int x=0,y=0,height=0,width=0;
 	TCHAR TextDisplay[MAX_PATH]={0};
 	height=mIni.GetIntKey("configure.ini","MainFrame","height");
@@ -273,15 +246,15 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->GetWindowRect(&rect);
 	this->MoveWindow(rect.left,rect.top,width,height,TRUE);
 
-	//³õÊ¼»¯½çÃæ¿Ø¼şUI
+	//åˆå§‹åŒ–ç•Œé¢æ§ä»¶UI
 	this->SetControlUI("configure.ini",&this->m_Static1,"Static1");
 	this->SetControlUI("configure.ini",&this->m_Static2,"Static2");
 	this->SetControlUI("configure.ini",&this->m_Static3,"Static3");
 	this->SetControlUI("configure.ini",&this->m_Static4,"Static4");
 	this->SetControlUI("configure.ini",&this->m_Static5,"Static5");
 	this->SetControlUI("configure.ini",&this->m_Static6,"Static6");
-	this->SetControlUI("configure.ini",&this->m_Static7,"Static7");
-	this->SetControlUI("configure.ini",&this->m_Static8,"Static8");
+	//this->SetControlUI("configure.ini",&this->m_Static7,"Static7");
+	//this->SetControlUI("configure.ini",&this->m_Static8,"Static8");
 	this->SetControlUI("configure.ini",&this->m_Static9,"Static9");
 	this->SetControlUI("configure.ini",&this->m_Static10,"Static10");
 	this->SetControlUI("configure.ini",&this->m_Static11,"Static11");
@@ -320,23 +293,13 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini",&this->m_Static44,"Static44",FALSE);
 	this->SetControlUI("configure.ini",&this->m_Static45,"Static45",FALSE);
 	this->SetControlUI("configure.ini",&this->m_Static46,"Static46",FALSE);
-	this->SetControlUI("configure.ini",&this->m_Static47,"Static47");
-	this->SetControlUI("configure.ini",&this->m_Static48,"Static48");
-	this->SetControlUI("configure.ini",&this->m_Static49,"Static49");
-	this->SetControlUI("configure.ini",&this->m_Static50,"Static50");
-	this->SetControlUI("configure.ini",&this->m_Static51,"Static51");
-	this->SetControlUI("configure.ini",&this->m_Static52,"Static52");
-	this->SetControlUI("configure.ini",&this->m_Static53,"Static53",FALSE);
-	this->SetControlUI("configure.ini",&this->m_Static54,"Static54",FALSE);
-	this->SetControlUI("configure.ini",&this->m_Static55,"Static55",FALSE);
-	this->SetControlUI("configure.ini",&this->m_Static56,"Static56",FALSE);
 
 	this->SetControlUI("configure.ini",&this->m_Edit1,"Edit1",TRUE);
 	this->m_Edit1.SetWindowText("D:\\calc.exe");
 
 	this->SetControlUI("configure.ini",&this->m_Edit2,"Edit2",FALSE);
-	this->SetControlUI("configure.ini",&this->m_Edit3,"Edit3",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit4,"Edit4",TRUE);
+	//this->SetControlUI("configure.ini",&this->m_Edit3,"Edit3",TRUE);
+	//this->SetControlUI("configure.ini",&this->m_Edit4,"Edit4",TRUE);
 	this->SetControlUI("configure.ini",&this->m_Edit5,"Edit5",TRUE);
 	this->SetControlUI("configure.ini",&this->m_Edit6,"Edit6",TRUE);
 	this->SetControlUI("configure.ini",&this->m_Edit7,"Edit7",TRUE);
@@ -374,51 +337,38 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini",&this->m_Edit39,"Edit39",TRUE,FALSE);
 	this->SetControlUI("configure.ini",&this->m_Edit40,"Edit40",TRUE,FALSE);
 	this->SetControlUI("configure.ini",&this->m_Edit41,"Edit41",TRUE,FALSE);
-	this->SetControlUI("configure.ini",&this->m_Edit42,"Edit42",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit43,"Edit43",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit44,"Edit44",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit45,"Edit45",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit46,"Edit46",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit47,"Edit47",TRUE);
-	this->SetControlUI("configure.ini",&this->m_Edit48,"Edit48",TRUE,FALSE);
-	this->SetControlUI("configure.ini",&this->m_Edit49,"Edit49",TRUE,FALSE);
-	this->SetControlUI("configure.ini",&this->m_Edit50,"Edit50",TRUE,FALSE);
-	this->SetControlUI("configure.ini",&this->m_Edit51,"Edit51",TRUE,FALSE);
 
 	this->SetControlUI("configure.ini",&this->m_Button1,"Button1");
 	this->SetControlUI("configure.ini",&this->m_Button2,"Button2");
-	this->SetControlUI("configure.ini",&this->m_Button3,"Button3>>");
-	this->SetControlUI("configure.ini",&this->m_Button4,"Button4>>");
-
-	this->SetControlUI("configure.ini",&this->m_ComboBox1,"ComboBox1");
-	this->SetControlUI("configure.ini",&this->m_ComboBox2,"ComboBox2");
-	//´´½¨×´Ì¬À¸
+	this->SetControlUI("configure.ini",&this->m_Button3,"Button3");
+	this->SetControlUI("configure.ini", &this->m_Button5, "Button5");
+	//åˆ›å»ºçŠ¶æ€æ 
 	this->m_Status.Create(WS_CHILD|WS_VISIBLE|CCS_BOTTOM,CRect(0,0,0,0), this, IDC_STATUSBARCTRL);
 	this->m_Status.SetUI();
 
 	return TRUE;
 }
 
-//ÓÃÓÚÉèÖÃDumpÏß³Ì
+//ç”¨äºè®¾ç½®Dumpçº¿ç¨‹
 BOOL CPETOOLSDlg::SetDumpFunc(void)
 {
 	CMiniDump::EnableAutoDump(true);
 	return TRUE;
 }
 
-//·ÖÎö°´Å¥ÊÂ¼ş´¦Àí´úÂë
+//åˆ†ææŒ‰é’®äº‹ä»¶å¤„ç†ä»£ç 
 void CPETOOLSDlg::OnBnClickedMfcbutton1()
 {
-	//Çå¿Õ½çÃæ
+	//æ¸…ç©ºç•Œé¢
 	this->Reset();
 	
-	//¿ªÆô½ø¶ÈÌõ
+	//å¼€å¯è¿›åº¦æ¡
 	//CProBarThread pProBarThread;
 	//pProBarThread.Create();
 
 	//pProBarThread.SetProValue(0);
 
-	//ĞèÒªµÈ´ıÏß³ÌµÈ´ıÍê³É
+	//éœ€è¦ç­‰å¾…çº¿ç¨‹ç­‰å¾…å®Œæˆ
 	if(mPEMake.isAnalysised())
 	{
 		mPEMake.PEUnload();
@@ -428,46 +378,46 @@ void CPETOOLSDlg::OnBnClickedMfcbutton1()
 	this->m_Edit1.GetWindowText(m_Path);
 	if(m_Path.GetLength()==0)
 	{
-		::MessageBox(this->m_hWnd,"ÇëÑ¡ÔñÒª·ÖÎöµÄÎÄ¼ş","¾¯¸æ",MB_OK);
+		::MessageBox(this->m_hWnd,"è¯·é€‰æ‹©è¦åˆ†æçš„æ–‡ä»¶","è­¦å‘Š",MB_OK);
 		return;
 	}
 	//pProBarThread.SetProValue(20);
 
-	//¼ÓÔØÎÄ¼ş
-	if(!mPEMake.PELoadFile(m_Path.GetBuffer(0),"r"))     //Ö»¶Á·½Ê½´ò¿ªÎÄ¼ş
+	//åŠ è½½æ–‡ä»¶
+	if(!mPEMake.PELoadFile(m_Path.GetBuffer(0),"r"))     //åªè¯»æ–¹å¼æ‰“å¼€æ–‡ä»¶
 	{
-		DebugLog("PeStruct³õÊ¼»¯Ê§°Ü!");
+		DebugLog("PeStructåˆå§‹åŒ–å¤±è´¥!");
 		return;
 	}
 
-	//¿ªÊ¼·ÖÎö
-	DebugLog("¿ªÊ¼·ÖÎöPEÎÄ¼ş");
+	//å¼€å§‹åˆ†æ
+	DebugLog("å¼€å§‹åˆ†æPEæ–‡ä»¶");
 
 	if(!mPEMake.CheckPESig())
 	{
-		DebugLog("PEÎÄ¼ş´íÎó");
+		DebugLog("PEæ–‡ä»¶é”™è¯¯");
 		return;
 	}
 
 	if(mPEMake.Analysis())
 	{
-		DebugLog("PEÎÄ¼ş·ÖÎöÍê±Ï");
+		DebugLog("PEæ–‡ä»¶åˆ†æå®Œæ¯•");
 		mPEMake.SetAnalysised(true);
 	}else
 	{
-		DebugLog("PE·ÖÎöÊ§°Ü");
+		DebugLog("PEåˆ†æå¤±è´¥");
 		return;
 	} 
 
 	//pProBarThread.SetProValue(50);
-	DebugLog("¿ªÊ¼ÉèÖÃ¶Ô»°¿ò¿Ø¼şµÄÖµ");
+	DebugLog("å¼€å§‹è®¾ç½®å¯¹è¯æ¡†æ§ä»¶çš„å€¼");
 
 	if(this->SetCtrlContent())
 	{
-		DebugLog("¶Ô»°¿òÖµÉèÖÃÍê±Ï");
+		DebugLog("å¯¹è¯æ¡†å€¼è®¾ç½®å®Œæ¯•");
 	}else
 	{
-		DebugLog("¶Ô»°¿òÖµÉèÖÃÊ§°Ü");
+		DebugLog("å¯¹è¯æ¡†å€¼è®¾ç½®å¤±è´¥");
 		return;
 	}
 	//pProBarThread.SetProValue(100);
@@ -529,89 +479,58 @@ void CPETOOLSDlg::SetControlUI(TCHAR pFile[],CWnd *m_Ctrl,TCHAR *m_tag,BOOL isVi
 	isVisible?m_Ctrl->ShowWindow(SW_SHOW):m_Ctrl->ShowWindow(SW_HIDE);
 }
 
-//Çø¶ÎÇĞ»»
+//åŒºæ®µåˆ‡æ¢
 void CPETOOLSDlg::OnBnClickedMfcbutton3()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
-	TCHAR Buffer[20]={0};
-	this->m_Button3.GetWindowText(Buffer,sizeof(Buffer));
-	if(_tcscmp(Buffer,"ÇĞ»»>>")==0)
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	if (!mPEMake.isAnalysised())
 	{
-		this->m_Button3.SetWindowText("ÇĞ»»<<");
-		for(int i=this->m_Static17.GetDlgCtrlID(),j=this->m_Edit12.GetDlgCtrlID();i<=this->m_Static36.GetDlgCtrlID();i++,j++)
-		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_HIDE);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_HIDE);
-		}
-		for(int i=this->m_Static37.GetDlgCtrlID(),j=this->m_Edit32.GetDlgCtrlID();i<=this->m_Static46.GetDlgCtrlID();i++,j++)
-		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_SHOW);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_SHOW);
-		}
-	}else
-	{
-		this->m_Button3.SetWindowText("ÇĞ»»>>");
-
-		for(int i=this->m_Static17.GetDlgCtrlID(),j=this->m_Edit12.GetDlgCtrlID();i<=this->m_Static36.GetDlgCtrlID();i++,j++)
-		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_SHOW);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_SHOW);
-		}
-		for(int i=this->m_Static37.GetDlgCtrlID(),j=this->m_Edit32.GetDlgCtrlID();i<=this->m_Static46.GetDlgCtrlID();i++,j++)
-		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_HIDE);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_HIDE);
-		}
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
+		return;
 	}
+	SectionsDlg dlg(this);
+	dlg.DoModal();
 }
 
-//Çø¶ÎÇĞ»»
-void CPETOOLSDlg::OnBnClickedMfcbutton4()
+//headeråˆ‡æ¢
+void CPETOOLSDlg::OnBnClickedMfcbutton5()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
-	TCHAR Buffer[20]={0};
-	this->m_Button4.GetWindowText(Buffer,sizeof(Buffer));
-	if(_tcscmp(Buffer,"ÇĞ»»>>")==0)
+	TCHAR Buffer[20] = { 0 };
+	this->m_Button5.GetWindowText(Buffer, sizeof(Buffer));
+	if (_tcscmp(Buffer, "åˆ‡æ¢>>") == 0)
 	{
-		this->m_Button4.SetWindowText("ÇĞ»»<<");
-		for(int i=this->m_Static47.GetDlgCtrlID(),j=this->m_Edit42.GetDlgCtrlID();i<=this->m_Static52.GetDlgCtrlID();i++,j++)
+		this->m_Button5.SetWindowText("åˆ‡æ¢<<");
+		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
 		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
 			m_Static->ShowWindow(SW_HIDE);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
 			m_Edit->ShowWindow(SW_HIDE);
 		}
-		for(int i=this->m_Static53.GetDlgCtrlID(),j=this->m_Edit48.GetDlgCtrlID();i<=this->m_Static56.GetDlgCtrlID();i++,j++)
+		for (int i = this->m_Static37.GetDlgCtrlID(), j = this->m_Edit32.GetDlgCtrlID(); i <= this->m_Static46.GetDlgCtrlID(); i++, j++)
 		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
 			m_Static->ShowWindow(SW_SHOW);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
 			m_Edit->ShowWindow(SW_SHOW);
 		}
-	}else
+	}
+	else
 	{
-		this->m_Button4.SetWindowText("ÇĞ»»>>");
+		this->m_Button5.SetWindowText("åˆ‡æ¢>>");
 
-		for(int i=this->m_Static47.GetDlgCtrlID(),j=this->m_Edit42.GetDlgCtrlID();i<=this->m_Static52.GetDlgCtrlID();i++,j++)
+		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
 		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
 			m_Static->ShowWindow(SW_SHOW);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
 			m_Edit->ShowWindow(SW_SHOW);
 		}
-		for(int i=this->m_Static53.GetDlgCtrlID(),j=this->m_Edit48.GetDlgCtrlID();i<=this->m_Static56.GetDlgCtrlID();i++,j++)
+		for (int i = this->m_Static37.GetDlgCtrlID(), j = this->m_Edit32.GetDlgCtrlID(); i <= this->m_Static46.GetDlgCtrlID(); i++, j++)
 		{
-			MFCStatic *m_Static=static_cast<MFCStatic *>(this->GetDlgItem(i));
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
 			m_Static->ShowWindow(SW_HIDE);
-			MFCEdit *m_Edit=static_cast<MFCEdit *>(this->GetDlgItem(j));
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
 			m_Edit->ShowWindow(SW_HIDE);
 		}
 	}
@@ -735,137 +654,30 @@ BOOL CPETOOLSDlg::SetCtrlContent()
 	strFormat.Format("%d", mPEMake.mPeCtx.pe.mNtHeader.OptionalHeader.NumberOfRvaAndSizes);
 	m_Edit41.SetWindowText(strFormat);
 
-	//Ôö¼ÓÊı¾İÄ¿Â¼ÏîÄ¿
-	m_ComboBox1.ResetContent();
-	for(int i=0;i<IMAGE_NUMBEROF_DIRECTORY_ENTRIES;i++)
-	{
-		COMBOBOXEXITEM item;
-		item.mask = CBEIF_TEXT;
-		item.iItem = i;
-		switch (i)
-		{
-		case 0:
-			item.pszText = "µ¼³ö±í"; break;
-		case 1:
-			item.pszText = "µ¼Èë±í"; break;
-		case 2:
-			item.pszText = "×ÊÔ´±í"; break;
-		case 3:
-			item.pszText = "Òì³£±í"; break;
-		case 4:
-			item.pszText = "°²È«"; break;
-		case 5:
-			item.pszText = "ÖØ¶¨Î»±í"; break;
-		case 6:
-			item.pszText = "µ÷ÊÔ"; break;
-		case 7:
-			item.pszText = "°æÈ¨"; break;
-		case 8:
-			item.pszText = "È«¾ÖÖ¸Õë"; break;
-		case 9:
-			item.pszText = "TLS±í"; break;
-		case 10:
-			item.pszText = "ÔØÈëÅäÖÃ"; break;
-		case 11:
-			item.pszText = "°ó¶¨µ¼Èë±í"; break;
-		case 12:
-			item.pszText = "IAT"; break;
-		case 13:
-			item.pszText = "ÑÓ³Ùµ¼Èë±í"; break;
-		case 14:
-			item.pszText = "CLRÔËĞĞÊ±"; break;
-		case 15:
-			item.pszText = "ÏµÍ³±£Áô"; break;
-		}
-		this->m_ComboBox1.InsertItem(&item);
-	}
-	m_ComboBox1.SetCurSel(0);
-	OnCbnSelchangeComboboxex1();
-	//Ôö¼ÓÇø¶Î¿Ø¼şÊı¾İ
-	this->m_ComboBox2.ResetContent();
-	for(int i=0;i<mPEMake.mPeCtx.pe.mNtHeader.FileHeader.NumberOfSections;i++)
-	{
-		COMBOBOXEXITEM item;
-		item.mask = CBEIF_TEXT;
-		item.iItem = i;
-		strFormat.Format("SECTION HEADER #%d",i+1);
-		item.pszText=strFormat.GetBuffer(0);
-		m_ComboBox2.InsertItem(&item);
-	}
-	m_ComboBox2.SetCurSel(0);
-	OnCbnSelchangeComboboxex2();
-	
 	return TRUE;
-}
-
-void CPETOOLSDlg::OnCbnSelchangeComboboxex1()
-{
-	
-	int dwIndex=m_ComboBox1.GetCurSel();
-	CString strFormat;
-	strFormat.Format("0X%08X", mPEMake.mPeCtx.pe.mNtHeader.OptionalHeader.DataDirectory[dwIndex].VirtualAddress);
-	m_Edit3.SetWindowText(strFormat);
-	strFormat.Format("0X%X", mPEMake.mPeCtx.pe.mNtHeader.OptionalHeader.DataDirectory[dwIndex].Size);
-	m_Edit4.SetWindowText(strFormat);
-	
-}
-
-void CPETOOLSDlg::OnCbnSelchangeComboboxex2()
-{
-	
-	// ¿ªÊ¼½âÎöÇø¶ÎĞÅÏ¢±í½á¹¹
-	int dwIndex=m_ComboBox2.GetCurSel();
-
-	CString strFormat;
-	strFormat.Format("%s", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].Name);
-	m_Edit42.SetWindowText(strFormat);
-
-	strFormat.Format("0X%X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].Misc.VirtualSize);
-	this->m_Edit43.SetWindowText(strFormat);
-
-	strFormat.Format("0X%08X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].VirtualAddress);
-	this->m_Edit44.SetWindowText(strFormat);
-
-	strFormat.Format("0X%X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].SizeOfRawData);
-	this->m_Edit45.SetWindowText(strFormat);
-
-	strFormat.Format("0X%08X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].PointerToRawData);
-	this->m_Edit46.SetWindowText(strFormat);
-
-	strFormat.Format("0X%08X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].PointerToRelocations);
-	this->m_Edit47.SetWindowText(strFormat);
-
-	strFormat.Format("0X%08X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].PointerToLinenumbers);
-	this->m_Edit48.SetWindowText(strFormat);
-
-	strFormat.Format("%d", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].NumberOfRelocations);
-	this->m_Edit49.SetWindowText(strFormat);
-
-	strFormat.Format("%d", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].NumberOfLinenumbers);
-	this->m_Edit50.SetWindowText(strFormat);
-
-	strFormat.Format("0X%08X", mPEMake.mPeCtx.pe.mSectionsVector[dwIndex].Characteristics);
-	this->m_Edit51.SetWindowText(strFormat);
-	
 }
 
 void CPETOOLSDlg::Reset()
 {
-	//½«ËùÓĞµÄ¿Ø¼şÄÚÈİºÍ×´Ì¬»¹Ô­
+	//å°†æ‰€æœ‰çš„æ§ä»¶å†…å®¹å’ŒçŠ¶æ€è¿˜åŸ
 	EnumChildWindows(this->m_hWnd,CPETOOLSDlg::EnumChildProc,(LPARAM)this);
-	//mPEMakeĞ¶ÔØ
+	//mPEMakeå¸è½½
 	mPEMake.PEUnload();
 }
 
-//´ò¿ªÊı¾İÄ¿Â¼
+//æ•°æ®ç›®å½•è¡¨-æ›´å¤š
 void CPETOOLSDlg::OnBnClickedMfcbutton2()
 {
 	if(!mPEMake.isAnalysised())
 	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
 		return;
 	}
-	int dwIndex=m_ComboBox1.GetCurSel();
+	DataDirectoryDlg dlg(this);
+	dlg.DoModal();
+	
+	
+	/*int dwIndex=m_ComboBox1.GetCurSel();
 	DWORD m_Size= mPEMake.mPeCtx.pe.mNtHeader.OptionalHeader.DataDirectory[dwIndex].Size;
 	if(m_Size==0) 
 	{
@@ -879,8 +691,8 @@ void CPETOOLSDlg::OnBnClickedMfcbutton2()
 	}
 	pFrameDlg->Init(dwIndex);
 	pFrameDlg->ShowWindow(SW_SHOW);
-
-	//Ä£Ì¬ÏÔÊ¾
+*/
+	//æ¨¡æ€æ˜¾ç¤º
 	//DialogFirst mFrameDlg(this);
 	//mFrameDlg.SetArgu(dwIndex);
 	//mFrameDlg.DoModal();
@@ -906,50 +718,115 @@ BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
 	return TRUE;
 }
 
-//²Ëµ¥-´ò¿ª
+//æ–‡ä»¶-æ‰“å¼€
 void CPETOOLSDlg::OnOpen()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-	CFileDialog dlg(TRUE);///TRUEÎªOPEN¶Ô»°¿ò£¬FALSEÎªSAVE AS¶Ô»°¿ò  
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	CFileDialog dlg(TRUE);///TRUEä¸ºOPENå¯¹è¯æ¡†ï¼ŒFALSEä¸ºSAVE ASå¯¹è¯æ¡†  
 	if(dlg.DoModal()==IDOK)  
 		this->m_Edit1.SetWindowText(dlg.GetPathName());
 }
-//²Ëµ¥-·´»ã±à
+
+//æ–‡ä»¶-ä¿å­˜
+void CPETOOLSDlg::OnSaveFile()
+{
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
+		return;
+	}
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	if (IDYES == MessageBox("æ˜¯å¦ä¿å­˜æ–‡ä»¶", "ä¿å­˜", MB_YESNO | MB_ICONQUESTION))
+	{
+		CFile mFile(mPEMake.mPeCtx.path.c_str(), CFile::modeCreate | CFile::modeNoTruncate | CFile::modeReadWrite);
+		mFile.SetLength(0);
+		mFile.Write(mPEMake.mPeCtx.pVirMem, mPEMake.mPeCtx.size);
+		mFile.Close();
+	}
+}
+
+//æ–‡ä»¶-å¦å­˜ä¸º
+void CPETOOLSDlg::OnSaveAs()
+{
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
+		return;
+	}
+	CFileDialog dlg(FALSE, "exe", mPEMake.mPeCtx.path.c_str(), OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, "TXT Files(*.exe)|*.exe|All Files(*.*)|*.*");
+	///TRUEä¸ºOPENå¯¹è¯æ¡†ï¼ŒFALSEä¸ºSAVE ASå¯¹è¯æ¡†  
+	if (dlg.DoModal() == IDOK)
+	{
+		CFile mFile(dlg.GetPathName(), CFile::modeCreate | CFile::modeReadWrite);
+		mFile.Write(mPEMake.mPeCtx.pVirMem, mPEMake.mPeCtx.size);
+		mFile.Close();
+		AfxMessageBox("å¦å­˜æˆåŠŸ");
+	}
+
+}
+
+
+//ç¼–è¾‘-é‡ç½®
+void CPETOOLSDlg::OnReset()
+{
+	mPEMake.PEUnload();
+	//å°†æ‰€æœ‰çš„æ§ä»¶å†…å®¹å’ŒçŠ¶æ€è¿˜åŸ
+	EnumChildWindows(this->m_hWnd, CPETOOLSDlg::EnumChildProc, (LPARAM)this);
+
+}
+
+//åå…­è¿›åˆ¶æµè§ˆ
+void CPETOOLSDlg::OnHexEditView()
+{
+	Create16EditWindow((unsigned char *)(mPEMake.mPeCtx.pVirMem), mPEMake.mPeCtx.size, 0, 0);
+}
+
+
+//åŠŸèƒ½-åæ±‡ç¼–
 void CPETOOLSDlg::OnDisa()
 {
 	
 	if(!this->mPEMake.isAnalysised())
 	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
 		return;
 	}
 	CDisaDialog DDia(this);
 	DDia.DoModal();
 	
 }
-//²Ëµ¥-ÖØÖÃ
-void CPETOOLSDlg::OnReset()
+
+//åŠŸèƒ½-æ·»åŠ åŒºæ®µ
+void CPETOOLSDlg::OnAddSection()
 {
-	
-	mPEMake.PEUnload();
-	//½«ËùÓĞµÄ¿Ø¼şÄÚÈİºÍ×´Ì¬»¹Ô­
-	EnumChildWindows(this->m_hWnd,CPETOOLSDlg::EnumChildProc,(LPARAM)this);
-	
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
+		return;
+	}
+	CAddSectionDlg mDlg(this);
+	if (mDlg.DoModal() == IDOK)
+	{
+		OnSaveAs();
+	}
+	else
+		AfxMessageBox("æ·»åŠ å¤±è´¥!");
 }
 
-//²Ëµ¥-¹¦ÄÜ-È¥ÖØ¶¨Î»±í
+//åŠŸèƒ½-å»é‡å®šä½è¡¨
 void CPETOOLSDlg::OnClsRelocData()
 {
 	
-	 //TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+	 //TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 	if(!mPEMake.isAnalysised())
 	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
 		return;
 	}
 	if(mPEMake.mPeCtx.pe.mRelocsVector.size()==0)
 	{
-		AfxMessageBox("ÎŞÖØ¶¨Î»±í");
+		AfxMessageBox("æ— é‡å®šä½è¡¨");
 		return;
 	}
 
@@ -958,158 +835,75 @@ void CPETOOLSDlg::OnClsRelocData()
 		OnSaveAs();
 	}
 
-	DebugLog("²Ëµ¥-¹¦ÄÜ-È¥ÖØ¶¨Î»±í:È¥³ı³É¹¦!");
-	//¸üĞÂ½çÃæ
+	DebugLog("èœå•-åŠŸèƒ½-å»é‡å®šä½è¡¨:å»é™¤æˆåŠŸ!");
+	//æ›´æ–°ç•Œé¢
 	this->SendMessage(WM_UPDATEUI,NULL,NULL);
-	MessageBox("ÖØ¶¨Î»±íÈ¥³ı³É¹¦!");
+	MessageBox("é‡å®šä½è¡¨å»é™¤æˆåŠŸ!");
 
-	//´ËÖÖ·½·¨±×¶Ë£¬Èç¹ûÎªDLL£¬Ôòµ±ÎŞ·¨¼ÓÔØµ½È±Ê¡»ùÖ·£¬Ôò´úÂëÎŞ·¨½øĞĞÖØ¶¨Î»³ö´í
-	//¸üºÃµÄ·½·¨ÊÇ¶Ô´úÂëÖĞÖØ¶¨Î»Ïî½øĞĞÖØĞÂ±àÂë¼ÆËã£¬²Î¿¼¡¶Windows PE¡·P182¡£
+	//æ­¤ç§æ–¹æ³•å¼Šç«¯ï¼Œå¦‚æœä¸ºDLLï¼Œåˆ™å½“æ— æ³•åŠ è½½åˆ°ç¼ºçœåŸºå€ï¼Œåˆ™ä»£ç æ— æ³•è¿›è¡Œé‡å®šä½å‡ºé”™
+	//æ›´å¥½çš„æ–¹æ³•æ˜¯å¯¹ä»£ç ä¸­é‡å®šä½é¡¹è¿›è¡Œé‡æ–°ç¼–ç è®¡ç®—ï¼Œå‚è€ƒã€ŠWindows PEã€‹P182ã€‚
 	
 }
 
-//²Ëµ¥-¹¦ÄÜ-¼ÓÃÜÊäÈë±í
-void CPETOOLSDlg::OnEncryptImportTable()
-{
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
-		return;
-	}
-	if (mPEMake.mPeCtx.pe.mImportsVector.size() == 0)
-	{
-		AfxMessageBox("ÎŞµ¼Èë±í");
-		return;
-	}
-
-	mPEMake.EncryptImportTable();
-	DebugLog("²Ëµ¥-¹¦ÄÜ-µ¼Èë±í¼ÓÃÜ:¼ÓÃÜ³É¹¦!");
-	//¸üĞÂ½çÃæ
-	this->SendMessage(WM_UPDATEUI,NULL,NULL);
-	MessageBox("µ¼Èë±í¼ÓÃÜ³É¹¦!");
-}
-
-//²Ëµ¥-¹¦ÄÜ-²âÊÔ
-void CPETOOLSDlg::OnTest()
-{
-	 //TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-	if(!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
-		return;
-	}
-}
-
-
-afx_msg LRESULT CPETOOLSDlg::OnUpdateUi(WPARAM wParam, LPARAM lParam)
-{
-	//Çå¿Õ¿Ø¼şÄÚÈİ
-	EnumChildWindows(this->m_hWnd,CPETOOLSDlg::EnumChildProc,(LPARAM)this);
-	//ÖØÖÃÄÚÈİ
-	if(this->SetCtrlContent())
-	{
-		DebugLog("¶Ô»°¿òÖµÉèÖÃÍê±Ï");
-	}else
-	{
-		DebugLog("¶Ô»°¿òÖµÉèÖÃÊ§°Ü");
-	}
-	return 0;
-}
-
-//±£´æÎÄ¼ş
-void CPETOOLSDlg::OnSaveFile()
-{
-	if(!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
-		return;
-	}
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-	if(IDYES==MessageBox("ÊÇ·ñ±£´æÎÄ¼ş","±£´æ",MB_YESNO|MB_ICONQUESTION))
-	{
-		CFile mFile(mPEMake.mPeCtx.path.c_str(),CFile::modeCreate|CFile::modeNoTruncate|CFile::modeReadWrite);
-		mFile.SetLength(0);
-		mFile.Write(mPEMake.mPeCtx.pVirMem, mPEMake.mPeCtx.size);
-		mFile.Close();
-	}
-}
-
-//Áí´æÎª
-void CPETOOLSDlg::OnSaveAs()
-{
-	if(!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
-		return;
-	}
-	CFileDialog dlg(FALSE,"exe", mPEMake.mPeCtx.path.c_str(),OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,"TXT Files(*.exe)|*.exe|All Files(*.*)|*.*");
-   ///TRUEÎªOPEN¶Ô»°¿ò£¬FALSEÎªSAVE AS¶Ô»°¿ò  
-	if(dlg.DoModal()==IDOK)  
-	{
-		CFile mFile(dlg.GetPathName(),CFile::modeCreate|CFile::modeReadWrite);
-		mFile.Write(mPEMake.mPeCtx.pVirMem, mPEMake.mPeCtx.size);
-		mFile.Close();
-		AfxMessageBox("Áí´æ³É¹¦");
-	}
-	
-}
-
-//Ìí¼Ó²¹¶¡¹¦ÄÜ
+//åŠŸèƒ½-æ·»åŠ è¡¥ä¸
 void CPETOOLSDlg::OnAddPatch()
 {
-	//Ê×ÏÈÌí¼ÓÇø¶Î
-	if(!mPEMake.isAnalysised())
+	//é¦–å…ˆæ·»åŠ åŒºæ®µ
+	if (!mPEMake.isAnalysised())
 	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
 		return;
 	}
 	CAddPatch mDlg(this);
-	if(mDlg.DoModal()==IDOK)  
+	if (mDlg.DoModal() == IDOK)
 	{
 		OnSaveAs();
 	}
 }
 
-//Ìí¼ÓÇø¶Î¹¦ÄÜ
-void CPETOOLSDlg::OnAddSection()
-{
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
-	if(!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
-		return;
-	}
-	CAddSectionDlg mDlg(this);
-	if(mDlg.DoModal()==IDOK)  
-	{
-		OnSaveAs();
-	}
-	else
-		AfxMessageBox("Ìí¼ÓÊ§°Ü!");
-}
-
-//¼ÓÃÜ
+//åŠŸèƒ½-åŠ å¯†
 void CPETOOLSDlg::OnEncrypt()
 {
-	if(!mPEMake.isAnalysised())
+	if (!mPEMake.isAnalysised())
 	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
 		return;
 	}
 	CEncryptDlg mDlg(this);
 	mDlg.DoModal();
-	
+
 }
 
-//Î»ÖÃ¼ÆËãÆ÷
-void CPETOOLSDlg::OnPosCalc()
+//åŠŸèƒ½-å¯¼å…¥è¡¨åŠ å¯†
+void CPETOOLSDlg::OnEncryptImportTable()
 {
-	// TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+
 	if (!mPEMake.isAnalysised())
 	{
-		AfxMessageBox("ÇëÏÈ·ÖÎöPEÎÄ¼ş");
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
+		return;
+	}
+	if (mPEMake.mPeCtx.pe.mImportsVector.size() == 0)
+	{
+		AfxMessageBox("æ— å¯¼å…¥è¡¨");
+		return;
+	}
+
+	mPEMake.EncryptImportTable();
+	DebugLog("èœå•-åŠŸèƒ½-å¯¼å…¥è¡¨åŠ å¯†:åŠ å¯†æˆåŠŸ!");
+	//æ›´æ–°ç•Œé¢
+	this->SendMessage(WM_UPDATEUI,NULL,NULL);
+	MessageBox("å¯¼å…¥è¡¨åŠ å¯†æˆåŠŸ!");
+}
+
+//åŠŸèƒ½-ä½ç½®è®¡ç®—å™¨
+void CPETOOLSDlg::OnPosCalc()
+{
+	// TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
 		return;
 	}
 	if (pPosCalcDlg == NULL)
@@ -1120,8 +914,31 @@ void CPETOOLSDlg::OnPosCalc()
 	pPosCalcDlg->ShowWindow(SW_SHOW);
 }
 
-//Ê®Áù½øÖÆä¯ÀÀ
-void CPETOOLSDlg::OnHexEditView()
+//åŠŸèƒ½-æµ‹è¯•åŠŸèƒ½é¡¹
+void CPETOOLSDlg::OnTest()
 {
-	Create16EditWindow((unsigned char *)(mPEMake.mPeCtx.pVirMem), mPEMake.mPeCtx.size, 0, 0);
+	 //TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
+	if(!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("è¯·å…ˆåˆ†æPEæ–‡ä»¶");
+		return;
+	}
 }
+
+
+afx_msg LRESULT CPETOOLSDlg::OnUpdateUi(WPARAM wParam, LPARAM lParam)
+{
+	//æ¸…ç©ºæ§ä»¶å†…å®¹
+	EnumChildWindows(this->m_hWnd,CPETOOLSDlg::EnumChildProc,(LPARAM)this);
+	//é‡ç½®å†…å®¹
+	if(this->SetCtrlContent())
+	{
+		DebugLog("å¯¹è¯æ¡†å€¼è®¾ç½®å®Œæ¯•");
+	}else
+	{
+		DebugLog("å¯¹è¯æ¡†å€¼è®¾ç½®å¤±è´¥");
+	}
+	return 0;
+}
+
+

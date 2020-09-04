@@ -129,6 +129,7 @@
     <ClInclude Include="..\CommonLib\MiniDump.h" />
     <ClInclude Include="AddPatch.h" />
     <ClInclude Include="AddSectionDlg.h" />
+    <ClInclude Include="DataDirectoryDlg.h" />
     <ClInclude Include="DialogFirst.h" />
     <ClInclude Include="DisaDialog.h" />
     <ClInclude Include="EncryptDlg.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="ProBarThread.h" />
     <ClInclude Include="ProgressDialog.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SectionsDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TabPage1.h" />
     <ClInclude Include="TabPage2.h" />
@@ -173,6 +175,7 @@
     </ClCompile>
     <ClCompile Include="AddPatch.cpp" />
     <ClCompile Include="AddSectionDlg.cpp" />
+    <ClCompile Include="DataDirectoryDlg.cpp" />
     <ClCompile Include="DialogFirst.cpp" />
     <ClCompile Include="DisaDialog.cpp" />
     <ClCompile Include="EncryptDlg.cpp" />
@@ -189,6 +192,7 @@
     <ClCompile Include="PosCalcDlg.cpp" />
     <ClCompile Include="ProBarThread.cpp" />
     <ClCompile Include="ProgressDialog.cpp" />
+    <ClCompile Include="SectionsDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

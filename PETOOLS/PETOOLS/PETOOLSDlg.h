@@ -14,7 +14,6 @@
 #include "MFCStatus.h"
 #include "afxwin.h"
 #include <strsafe.h>
-#include "DialogFirst.h"
 #include"GlobeVar.h"
 #include <typeinfo.h>
 #include"ProgressDialog.h"
@@ -62,12 +61,11 @@ public:
 	MFCStatic m_Static4;
 	MFCStatic m_Static5;
 	MFCStatic m_Static6;
-	MFCStatic m_Static7;
-	MFCStatic m_Static8;
-	MFCEdit m_Edit3;
-	MFCEdit m_Edit4;
+	//MFCStatic m_Static7;
+	//MFCStatic m_Static8;
+	//MFCEdit m_Edit3;
+	//MFCEdit m_Edit4;
 	CMFCButton m_Button2;
-	CComboBoxEx m_ComboBox1;
 	MFCStatic m_Static9;
 
 	MFCStatic m_Static10;
@@ -147,29 +145,7 @@ public:
 	MFCEdit m_Edit40;
 	MFCEdit m_Edit41;
 	CMFCButton m_Button3;
-	MFCStatic m_Static47;
-	MFCStatic m_Static48;
-	MFCStatic m_Static49;
-	MFCStatic m_Static50;
-	MFCStatic m_Static51;
-	MFCStatic m_Static52;
-	MFCStatic m_Static53;
-	MFCStatic m_Static54;
-	MFCStatic m_Static55;
-	MFCStatic m_Static56;
-	MFCEdit m_Edit42;
-	MFCEdit m_Edit43;
-	MFCEdit m_Edit44;
-	MFCEdit m_Edit45;
-	MFCEdit m_Edit46;
-	MFCEdit m_Edit47;
-	MFCEdit m_Edit48;
-	MFCEdit m_Edit49;
-	MFCEdit m_Edit50;
-	MFCEdit m_Edit51;
-	CComboBoxEx m_ComboBox2;
-	CMFCButton m_Button4;
-	DialogFirst *pFrameDlg;
+	CMFCButton m_Button5;
 	CPosCalcDlg *pPosCalcDlg;
 public:
 	//相关方法
@@ -186,9 +162,7 @@ public:
 public:
 	afx_msg void OnBnClickedMfcbutton1();
 	afx_msg void OnBnClickedMfcbutton3();
-	afx_msg void OnBnClickedMfcbutton4();
-	afx_msg void OnCbnSelchangeComboboxex1();
-	afx_msg void OnCbnSelchangeComboboxex2();
+	afx_msg void OnBnClickedMfcbutton5();
 	afx_msg void OnBnClickedMfcbutton2();
 public:
 	afx_msg void OnOpen();
@@ -207,4 +181,5 @@ public:
 	afx_msg void OnEncrypt();
 	afx_msg void OnPosCalc();
 	afx_msg void OnHexEditView();
+	
 };
