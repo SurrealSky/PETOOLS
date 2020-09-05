@@ -20,7 +20,7 @@ namespace SurrealDebugLog
 		return std::string(buf.get(), buf.get() + size - 1); // We don't want the '\0' inside
 	}
 
-#define Dbg
+//#define Dbg
 
 	void DebugLog(const std::string &OutputString);
 
