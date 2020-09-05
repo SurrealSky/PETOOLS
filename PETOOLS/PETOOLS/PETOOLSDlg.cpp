@@ -136,6 +136,7 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MFCEDITBROWSE41, m_Edit41);
 	DDX_Control(pDX, IDC_MFCBUTTON3, m_Button3);
 	DDX_Control(pDX, IDC_MFCBUTTON5, m_Button5);
+	DDX_Control(pDX, IDC_MFCBUTTON6, m_Button4);
 }
 
 BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
@@ -160,6 +161,7 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_COMMAND(ID_32785, &CPETOOLSDlg::OnEncrypt)
 	ON_COMMAND(ID_32786, &CPETOOLSDlg::OnPosCalc)
 	ON_COMMAND(ID_32787, &CPETOOLSDlg::OnHexEditView)
+	ON_BN_CLICKED(IDC_MFCBUTTON6, &CPETOOLSDlg::OnBnClickedMfcbutton6)
 END_MESSAGE_MAP()
 
 
@@ -341,7 +343,9 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini",&this->m_Button1,"Button1");
 	this->SetControlUI("configure.ini",&this->m_Button2,"Button2");
 	this->SetControlUI("configure.ini",&this->m_Button3,"Button3");
+	this->SetControlUI("configure.ini", &this->m_Button4, "Button4");
 	this->SetControlUI("configure.ini", &this->m_Button5, "Button5");
+	
 	//创建状态栏
 	this->m_Status.Create(WS_CHILD|WS_VISIBLE|CCS_BOTTOM,CRect(0,0,0,0), this, IDC_STATUSBARCTRL);
 	this->m_Status.SetUI();
@@ -479,63 +483,6 @@ void CPETOOLSDlg::SetControlUI(TCHAR pFile[],CWnd *m_Ctrl,TCHAR *m_tag,BOOL isVi
 	isVisible?m_Ctrl->ShowWindow(SW_SHOW):m_Ctrl->ShowWindow(SW_HIDE);
 }
 
-//区段切换
-void CPETOOLSDlg::OnBnClickedMfcbutton3()
-{
-	// TODO: 在此添加控件通知处理程序代码
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-	SectionsDlg dlg(this);
-	dlg.DoModal();
-}
-
-//header切换
-void CPETOOLSDlg::OnBnClickedMfcbutton5()
-{
-	TCHAR Buffer[20] = { 0 };
-	this->m_Button5.GetWindowText(Buffer, sizeof(Buffer));
-	if (_tcscmp(Buffer, "切换>>") == 0)
-	{
-		this->m_Button5.SetWindowText("切换<<");
-		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
-		{
-			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_HIDE);
-			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_HIDE);
-		}
-		for (int i = this->m_Static37.GetDlgCtrlID(), j = this->m_Edit32.GetDlgCtrlID(); i <= this->m_Static46.GetDlgCtrlID(); i++, j++)
-		{
-			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_SHOW);
-			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_SHOW);
-		}
-	}
-	else
-	{
-		this->m_Button5.SetWindowText("切换>>");
-
-		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
-		{
-			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_SHOW);
-			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_SHOW);
-		}
-		for (int i = this->m_Static37.GetDlgCtrlID(), j = this->m_Edit32.GetDlgCtrlID(); i <= this->m_Static46.GetDlgCtrlID(); i++, j++)
-		{
-			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
-			m_Static->ShowWindow(SW_HIDE);
-			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
-			m_Edit->ShowWindow(SW_HIDE);
-		}
-	}
-}
-
 BOOL CPETOOLSDlg::SetCtrlContent()
 {
 	
@@ -665,7 +612,51 @@ void CPETOOLSDlg::Reset()
 	mPEMake.PEUnload();
 }
 
-//数据目录表-更多
+//按钮-切换
+void CPETOOLSDlg::OnBnClickedMfcbutton5()
+{
+	TCHAR Buffer[20] = { 0 };
+	this->m_Button5.GetWindowText(Buffer, sizeof(Buffer));
+	if (_tcscmp(Buffer, "切换>>") == 0)
+	{
+		this->m_Button5.SetWindowText("切换<<");
+		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
+		{
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
+			m_Static->ShowWindow(SW_HIDE);
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
+			m_Edit->ShowWindow(SW_HIDE);
+		}
+		for (int i = this->m_Static37.GetDlgCtrlID(), j = this->m_Edit32.GetDlgCtrlID(); i <= this->m_Static46.GetDlgCtrlID(); i++, j++)
+		{
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
+			m_Static->ShowWindow(SW_SHOW);
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
+			m_Edit->ShowWindow(SW_SHOW);
+		}
+	}
+	else
+	{
+		this->m_Button5.SetWindowText("切换>>");
+
+		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
+		{
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
+			m_Static->ShowWindow(SW_SHOW);
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
+			m_Edit->ShowWindow(SW_SHOW);
+		}
+		for (int i = this->m_Static37.GetDlgCtrlID(), j = this->m_Edit32.GetDlgCtrlID(); i <= this->m_Static46.GetDlgCtrlID(); i++, j++)
+		{
+			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
+			m_Static->ShowWindow(SW_HIDE);
+			MFCEdit *m_Edit = static_cast<MFCEdit *>(this->GetDlgItem(j));
+			m_Edit->ShowWindow(SW_HIDE);
+		}
+	}
+}
+
+//按钮-目录
 void CPETOOLSDlg::OnBnClickedMfcbutton2()
 {
 	if(!mPEMake.isAnalysised())
@@ -697,6 +688,36 @@ void CPETOOLSDlg::OnBnClickedMfcbutton2()
 	//mFrameDlg.SetArgu(dwIndex);
 	//mFrameDlg.DoModal();
 	
+}
+
+//按钮-区段
+void CPETOOLSDlg::OnBnClickedMfcbutton3()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
+	SectionsDlg dlg(this);
+	dlg.DoModal();
+}
+
+//按钮-位置计算器
+void CPETOOLSDlg::OnBnClickedMfcbutton6()
+{
+	// TODO: 在此添加命令处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
+	if (pPosCalcDlg == NULL)
+	{
+		pPosCalcDlg = new CPosCalcDlg(this);
+		pPosCalcDlg->Create(IDD_DIALOG8, this);
+	}
+	pPosCalcDlg->ShowWindow(SW_SHOW);
 }
 
 BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
@@ -765,7 +786,6 @@ void CPETOOLSDlg::OnSaveAs()
 
 }
 
-
 //编辑-重置
 void CPETOOLSDlg::OnReset()
 {
@@ -780,7 +800,6 @@ void CPETOOLSDlg::OnHexEditView()
 {
 	Create16EditWindow((unsigned char *)(mPEMake.mPeCtx.pVirMem), mPEMake.mPeCtx.size, 0, 0);
 }
-
 
 //功能-反汇编
 void CPETOOLSDlg::OnDisa()
