@@ -182,4 +182,5 @@ public:
 	afx_msg void OnHexEditView();
 	afx_msg void OnBnClickedMfcbutton6();
 	afx_msg void OnBnClickedMfcbutton7();
+	afx_msg void OnBnClickedMfcbutton8();
 };

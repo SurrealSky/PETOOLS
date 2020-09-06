@@ -1,6 +1,6 @@
  PETOOLS
 
- Timestamp is 5f544672 (Sun Sep  6 10:16:18 2020)
+ Timestamp is 5f54c9ef (Sun Sep  6 19:37:19 2020)
 
  Preferred load address is 00400000
 
@@ -59,13 +59,13 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
  0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
  0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
- 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
- 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
  0000:0000002c       __tls_array                0000002c     <absolute>
  0000:000000ea       ___safe_se_handler_count   000000ea     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
@@ -86,18 +86,19 @@
  0001:000083b0       ??$_strupr_s@$0BAA@@@YAHAAY0BAA@D@Z 004093b0 f i assembl.obj
  0001:00008410       ?Assemble@@YAHPADKPAUt_asmmodel@@HH0@Z 00409410 f   assembl.obj
  0001:0000b160       ?EnumChildProc@CPETOOLSDlg@@SGHPAUHWND__@@J@Z 0040c160 f   PETOOLSDlg.obj
- 0001:0000b990       ?Height@CRect@@QBEHXZ      0040c990 f i PETOOLSDlg.obj
- 0001:0000c9c0       ?Reset@CPETOOLSDlg@@QAEXXZ 0040d9c0 f   PETOOLSDlg.obj
- 0001:0000cb50       __tcscmp                   0040db50 f i PETOOLSDlg.obj
- 0001:0000e550       ??0CRect@@QAE@HHHH@Z       0040f550 f i PETOOLSDlg.obj
+ 0001:0000b260       __tcscmp                   0040c260 f i PETOOLSDlg.obj
+ 0001:0000b3f0       ?OnInitDialog@CPETOOLSDlg@@MAEHXZ 0040c3f0 f   PETOOLSDlg.obj
+ 0001:0000b990       ?GetThisMessageMap@CPETOOLSDlg@@KGPBUAFX_MSGMAP@@XZ 0040c990 f   PETOOLSDlg.obj
+ 0001:0000cb50       ?SetDumpFunc@CPETOOLSDlg@@QAEHXZ 0040db50 f   PETOOLSDlg.obj
+ 0001:0000e550       ??1CPETOOLSDlg@@UAE@XZ     0040f550 f   PETOOLSDlg.obj
  0001:0000eb60       _powl                      0040fb60 f i assembl.obj
  0001:0000ebd0       ??$__vcrt_va_start_verify_argument_type@PBD@@YAXXZ 0040fbd0 f i disasm.obj
  0001:0000ec00       ??$sprintf_s@$0BAA@@@YAHAAY0BAA@DPBDZZ 0040fc00 f i disasm.obj
  0001:0000ec70       ?Checkcondition@@YAHHK@Z   0040fc70 f   disasm.obj
  0001:00011b60       ?Disasm@@YAKPADKKPAUt_disasm@@H@Z 00412b60 f   disasm.obj
- 0001:00014180       ??_GCPETOOLSDlg@@UAEPAXI@Z 00415180 f i PETOOLSDlg.obj
- 0001:00014180       ??_ECPETOOLSDlg@@UAEPAXI@Z 00415180 f i PETOOLSDlg.obj
- 0001:000141f0       ?DoDataExchange@CPETOOLSDlg@@MAEXPAVCDataExchange@@@Z 004151f0 f   PETOOLSDlg.obj
+ 0001:000141f0       ??_ECPETOOLSDlg@@UAEPAXI@Z 004151f0 f i PETOOLSDlg.obj
+ 0001:000141f0       ??_GCPETOOLSDlg@@UAEPAXI@Z 004151f0 f i PETOOLSDlg.obj
+ 0001:00014260       ?DoDataExchange@CPETOOLSDlg@@MAEXPAVCDataExchange@@@Z 00415260 f   PETOOLSDlg.obj
  0001:000152d0       __vsprintf_s_l             004162d0 f i disasm.obj
  0001:00015380       _vsprintf_s                00416380 f i disasm.obj
  0001:000153e0       ??0Ini@@QAE@XZ             004163e0 f   Ini.obj
@@ -142,8 +143,8 @@
  0001:00016680       ?_Orphan_all@_Container_base12@std@@QAEXXZ 00417680 f i DebugLog.obj
  0001:00016790       ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX_NI@Z 00417790 f i DebugLog.obj
  0001:000168b0       ?__empty_global_delete@@YAXPAX@Z 004178b0 f i DebugLog.obj
- 0001:000168e0       ?__global_delete@@YAXPAXI@Z 004178e0 f i DebugLog.obj
  0001:000168e0       ?__empty_global_delete@@YAXPAXI@Z 004178e0 f i DebugLog.obj
+ 0001:000168e0       ?__global_delete@@YAXPAXI@Z 004178e0 f i DebugLog.obj
  0001:00016910       ?address@?$_Wrap_alloc@V?$allocator@U_Container_proxy@std@@@std@@@std@@QBEPAU_Container_proxy@2@AAU32@@Z 00417910 f i DebugLog.obj
  0001:00016970       ?assign@?$char_traits@D@std@@SAXAADABD@Z 00417970 f i DebugLog.obj
  0001:000169b0       ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z 004179b0 f i DebugLog.obj
@@ -684,16 +685,16 @@
  0001:0002b850       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@QAEPAXI@Z 0042c850 f i log4z.obj
  0001:0002b8c0       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ULoggerInfo@log4z@zsummer@@@std@@QAEPAXI@Z 0042c8c0 f i log4z.obj
  0001:0002b940       ??_G?$pair@_JV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEPAXI@Z 0042c940 f i log4z.obj
- 0001:0002b9b0       ??_GILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042c9b0 f i log4z.obj
  0001:0002b9b0       ??_EILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042c9b0 f i log4z.obj
+ 0001:0002b9b0       ??_GILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042c9b0 f i log4z.obj
  0001:0002ba20       ??_ELockHelper@log4z@zsummer@@UAEPAXI@Z 0042ca20 f i log4z.obj
  0001:0002ba20       ??_GLockHelper@log4z@zsummer@@UAEPAXI@Z 0042ca20 f i log4z.obj
- 0001:0002ba90       ??_GLogerManager@log4z@zsummer@@UAEPAXI@Z 0042ca90 f i log4z.obj
  0001:0002ba90       ??_ELogerManager@log4z@zsummer@@UAEPAXI@Z 0042ca90 f i log4z.obj
+ 0001:0002ba90       ??_GLogerManager@log4z@zsummer@@UAEPAXI@Z 0042ca90 f i log4z.obj
  0001:0002bb10       ??_GSemHelper@log4z@zsummer@@UAEPAXI@Z 0042cb10 f i log4z.obj
  0001:0002bb10       ??_ESemHelper@log4z@zsummer@@UAEPAXI@Z 0042cb10 f i log4z.obj
- 0001:0002bb80       ??_GThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042cb80 f i log4z.obj
  0001:0002bb80       ??_EThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042cb80 f i log4z.obj
+ 0001:0002bb80       ??_GThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042cb80 f i log4z.obj
  0001:0002bbf0       ?_Adopt@_Iterator_base0@std@@QAEXPBX@Z 0042cbf0 f i log4z.obj
  0001:0002bc30       ?_Adopt@_Iterator_base12@std@@QAEXPBU_Container_base12@2@@Z 0042cc30 f i log4z.obj
  0001:0002bde0       ?_Alloc_proxy@?$_Deque_alloc@U?$_Deque_base_types@PAULogData@log4z@zsummer@@V?$allocator@PAULogData@log4z@zsummer@@@std@@@std@@@std@@QAEXXZ 0042cde0 f i log4z.obj
@@ -1154,8 +1155,8 @@
  0001:00045430       ?OnBnClickedButton1@CAddSectionDlg@@QAEXXZ 00446430 f   AddSectionDlg.obj
  0001:00045690       ??0CAddSectionDlg@@QAE@PAVCWnd@@@Z 00446690 f   AddSectionDlg.obj
  0001:00045770       ??1CAddSectionDlg@@UAE@XZ  00446770 f   AddSectionDlg.obj
- 0001:000457f0       ??_ECAddSectionDlg@@UAEPAXI@Z 004467f0 f i AddSectionDlg.obj
  0001:000457f0       ??_GCAddSectionDlg@@UAEPAXI@Z 004467f0 f i AddSectionDlg.obj
+ 0001:000457f0       ??_ECAddSectionDlg@@UAEPAXI@Z 004467f0 f i AddSectionDlg.obj
  0001:00045880       ?DoDataExchange@CAddSectionDlg@@MAEXPAVCDataExchange@@@Z 00446880 f   AddSectionDlg.obj
  0001:00045910       ?GetMessageMap@CAddSectionDlg@@MBEPBUAFX_MSGMAP@@XZ 00446910 f   AddSectionDlg.obj
  0001:00045960       ?GetRuntimeClass@CAddSectionDlg@@UBEPAUCRuntimeClass@@XZ 00446960 f   AddSectionDlg.obj
@@ -1190,8 +1191,8 @@
  0001:00048100       ??A?$vector@U_ResourceItem@@V?$allocator@U_ResourceItem@@@std@@@std@@QAEAAU_ResourceItem@@I@Z 00449100 f i DialogFirst.obj
  0001:00048220       ??B_bstr_t@@QBEPADXZ       00449220 f i DialogFirst.obj
  0001:000482a0       ??_GData_t@_bstr_t@@AAEPAXI@Z 004492a0 f i DialogFirst.obj
- 0001:00048310       ??_EDialogFirst@@UAEPAXI@Z 00449310 f i DialogFirst.obj
  0001:00048310       ??_GDialogFirst@@UAEPAXI@Z 00449310 f i DialogFirst.obj
+ 0001:00048310       ??_EDialogFirst@@UAEPAXI@Z 00449310 f i DialogFirst.obj
  0001:000483a0       ?DoDataExchange@DialogFirst@@MAEXPAVCDataExchange@@@Z 004493a0 f   DialogFirst.obj
  0001:00048740       ?EnumChildProc@DialogFirst@@CGHPAUHWND__@@J@Z 00449740 f   DialogFirst.obj
  0001:00048870       ?GetMessageMap@DialogFirst@@MBEPBUAFX_MSGMAP@@XZ 00449870 f   DialogFirst.obj
@@ -1351,8 +1352,8 @@
  0001:0004ff50       ??B?$CTraceCategoryEx@$01$0A@@ATL@@QAEIXZ 00450f50 f i GlobeVar.obj
  0001:0004ff90       ??B?$CTraceCategoryEx@$0CA@$0A@@ATL@@QAEIXZ 00450f90 f i GlobeVar.obj
  0001:0004ffd0       ??RCTraceFileAndLineInfo@ATL@@QBAXHIPBDZZ 00450fd0 f i GlobeVar.obj
- 0001:000500f0       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 004510f0 f i GlobeVar.obj
  0001:000500f0       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 004510f0 f i GlobeVar.obj
+ 0001:000500f0       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 004510f0 f i GlobeVar.obj
  0001:00050160       ??_ECWin32Heap@ATL@@UAEPAXI@Z 00451160 f i GlobeVar.obj
  0001:00050160       ??_GCWin32Heap@ATL@@UAEPAXI@Z 00451160 f i GlobeVar.obj
  0001:000501d0       ??_H@YGXPAXIIP6EPAX0@Z@Z   004511d0 f i GlobeVar.obj
@@ -1403,8 +1404,8 @@
  0001:00052590       __vsnprintf_s_l            00453590 f i GlobeVar.obj
  0001:00052640       ??0MFCEdit@@QAE@XZ         00453640 f   MFCEdit.obj
  0001:000526a0       ??1MFCEdit@@UAE@XZ         004536a0 f   MFCEdit.obj
- 0001:00052700       ??_GMFCEdit@@UAEPAXI@Z     00453700 f i MFCEdit.obj
  0001:00052700       ??_EMFCEdit@@UAEPAXI@Z     00453700 f i MFCEdit.obj
+ 0001:00052700       ??_GMFCEdit@@UAEPAXI@Z     00453700 f i MFCEdit.obj
  0001:00052790       ?GetMessageMap@MFCEdit@@MBEPBUAFX_MSGMAP@@XZ 00453790 f   MFCEdit.obj
  0001:000527e0       ?GetRuntimeClass@MFCEdit@@UBEPAUCRuntimeClass@@XZ 004537e0 f   MFCEdit.obj
  0001:00052820       ?GetThisClass@MFCEdit@@SGPAUCRuntimeClass@@XZ 00453820 f   MFCEdit.obj
@@ -1485,8 +1486,8 @@
  0001:00056070       ?size@?$vector@U_ThunkItem@@V?$allocator@U_ThunkItem@@@std@@@std@@QBEIXZ 00457070 f i MyListCtrl.obj
  0001:000560e0       ??0CPETOOLSApp@@QAE@XZ     004570e0 f   PETOOLS.obj
  0001:00056150       ??1CPETOOLSApp@@UAE@XZ     00457150 f i PETOOLS.obj
- 0001:000561a0       ??_ECPETOOLSApp@@UAEPAXI@Z 004571a0 f i PETOOLS.obj
  0001:000561a0       ??_GCPETOOLSApp@@UAEPAXI@Z 004571a0 f i PETOOLS.obj
+ 0001:000561a0       ??_ECPETOOLSApp@@UAEPAXI@Z 004571a0 f i PETOOLS.obj
  0001:00056230       ?GetApplicationRecoveryParameter@CWinApp@@UAEPAXXZ 00457230 f i PETOOLS.obj
  0001:00056270       ?GetApplicationRecoveryPingInterval@CWinApp@@UAEKXZ 00457270 f i PETOOLS.obj
  0001:000562b0       ?GetApplicationRestartFlags@CWinApp@@UAEKXZ 004572b0 f i PETOOLS.obj
@@ -1521,17 +1522,17 @@
  0001:000587a0       ?OnHexEditView@CPETOOLSDlg@@QAEXXZ 004597a0 f   PETOOLSDlg.obj
  0001:00058810       ?OnBnClickedMfcbutton6@CPETOOLSDlg@@QAEXXZ 00459810 f   PETOOLSDlg.obj
  0001:00058960       ?OnBnClickedMfcbutton7@CPETOOLSDlg@@QAEXXZ 00459960 f   PETOOLSDlg.obj
- 0001:00059160       ??0CPETOOLSDlg@@QAE@PAVCWnd@@@Z 0045a160 f   PETOOLSDlg.obj
- 0001:00059910       ??1CPETOOLSDlg@@UAE@XZ     0045a910 f   PETOOLSDlg.obj
- 0001:0005a4f0       ?GetMessageMap@CPETOOLSDlg@@MBEPBUAFX_MSGMAP@@XZ 0045b4f0 f   PETOOLSDlg.obj
- 0001:0005a540       ?GetThisMessageMap@CPETOOLSDlg@@KGPBUAFX_MSGMAP@@XZ 0045b540 f   PETOOLSDlg.obj
- 0001:0005a810       ?OnInitDialog@CPETOOLSDlg@@MAEHXZ 0045b810 f   PETOOLSDlg.obj
- 0001:0005ab70       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCMFCButton@@PAD@Z 0045bb70 f   PETOOLSDlg.obj
- 0001:0005ad00       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCWnd@@PADH@Z 0045bd00 f   PETOOLSDlg.obj
- 0001:0005afa0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCEdit@@PADHH@Z 0045bfa0 f   PETOOLSDlg.obj
- 0001:0005b0e0       ?SetDlgUI@CPETOOLSDlg@@QAEHXZ 0045c0e0 f   PETOOLSDlg.obj
- 0001:0005bdc0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCStatic@@PADH@Z 0045cdc0 f   PETOOLSDlg.obj
- 0001:0005cd40       ?SetDumpFunc@CPETOOLSDlg@@QAEHXZ 0045dd40 f   PETOOLSDlg.obj
+ 0001:000589f0       ??0CPETOOLSDlg@@QAE@PAVCWnd@@@Z 004599f0 f   PETOOLSDlg.obj
+ 0001:00059160       ?OnBnClickedMfcbutton8@CPETOOLSDlg@@QAEXXZ 0045a160 f   PETOOLSDlg.obj
+ 0001:00059910       ??0CRect@@QAE@HHHH@Z       0045a910 f i PETOOLSDlg.obj
+ 0001:0005a540       ?GetMessageMap@CPETOOLSDlg@@MBEPBUAFX_MSGMAP@@XZ 0045b540 f   PETOOLSDlg.obj
+ 0001:0005a810       ?Height@CRect@@QBEHXZ      0045b810 f i PETOOLSDlg.obj
+ 0001:0005ab70       ?Reset@CPETOOLSDlg@@QAEXXZ 0045bb70 f   PETOOLSDlg.obj
+ 0001:0005ad00       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCMFCButton@@PAD@Z 0045bd00 f   PETOOLSDlg.obj
+ 0001:0005afa0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCWnd@@PADH@Z 0045bfa0 f   PETOOLSDlg.obj
+ 0001:0005b0e0       ?SetCtrlContent@CPETOOLSDlg@@QAEHXZ 0045c0e0 f   PETOOLSDlg.obj
+ 0001:0005bdc0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCEdit@@PADHH@Z 0045cdc0 f   PETOOLSDlg.obj
+ 0001:0005bf00       ?SetDlgUI@CPETOOLSDlg@@QAEHXZ 0045cf00 f   PETOOLSDlg.obj
  0001:0005cf30       ?OnBnClickedButton1@CPosCalcDlg@@QAEXXZ 0045df30 f   PosCalcDlg.obj
  0001:0005cfe0       ?OnBnClickedButton2@CPosCalcDlg@@QAEXXZ 0045dfe0 f   PosCalcDlg.obj
  0001:0005d090       ?OnBnClickedButton3@CPosCalcDlg@@QAEXXZ 0045e090 f   PosCalcDlg.obj
@@ -1552,8 +1553,8 @@
  0001:0005df80       ?OnSetValue@CProBarThread@@QAEXIJ@Z 0045ef80 f   ProBarThread.obj
  0001:0005dfc0       ??0CProBarThread@@QAE@XZ   0045efc0 f   ProBarThread.obj
  0001:0005e020       ??1CProBarThread@@UAE@XZ   0045f020 f   ProBarThread.obj
- 0001:0005e080       ??_GCProBarThread@@UAEPAXI@Z 0045f080 f i ProBarThread.obj
  0001:0005e080       ??_ECProBarThread@@UAEPAXI@Z 0045f080 f i ProBarThread.obj
+ 0001:0005e080       ??_GCProBarThread@@UAEPAXI@Z 0045f080 f i ProBarThread.obj
  0001:0005e110       ?Create@CProBarThread@@QAEXXZ 0045f110 f   ProBarThread.obj
  0001:0005e340       ?CreateObject@CProBarThread@@SGPAVCObject@@XZ 0045f340 f   ProBarThread.obj
  0001:0005e420       ?ExitInstance@CProBarThread@@UAEHXZ 0045f420 f   ProBarThread.obj
@@ -1568,8 +1569,8 @@
  0001:0005e8c0       ?_GetBaseClass@CProBarThread@@KGPAUCRuntimeClass@@XZ 0045f8c0 f   ProBarThread.obj
  0001:0005e910       ??0CProgressDialog@@QAE@PAVCWnd@@@Z 0045f910 f   ProgressDialog.obj
  0001:0005e9d0       ??1CProgressDialog@@UAE@XZ 0045f9d0 f   ProgressDialog.obj
- 0001:0005ea40       ??_ECProgressDialog@@UAEPAXI@Z 0045fa40 f i ProgressDialog.obj
  0001:0005ea40       ??_GCProgressDialog@@UAEPAXI@Z 0045fa40 f i ProgressDialog.obj
+ 0001:0005ea40       ??_ECProgressDialog@@UAEPAXI@Z 0045fa40 f i ProgressDialog.obj
  0001:0005ead0       ?DoDataExchange@CProgressDialog@@MAEXPAVCDataExchange@@@Z 0045fad0 f   ProgressDialog.obj
  0001:0005eb50       ?GetMessageMap@CProgressDialog@@MBEPBUAFX_MSGMAP@@XZ 0045fb50 f   ProgressDialog.obj
  0001:0005eba0       ?GetRuntimeClass@CProgressDialog@@UBEPAUCRuntimeClass@@XZ 0045fba0 f   ProgressDialog.obj
@@ -1579,8 +1580,8 @@
  0001:0005ecb0       ??0SectionsDlg@@QAE@PAVCWnd@@@Z 0045fcb0 f   SectionsDlg.obj
  0001:0005ed80       ??1SectionsDlg@@UAE@XZ     0045fd80 f   SectionsDlg.obj
  0001:0005edf0       ??A?$vector@U_IMAGE_SECTION_HEADER@@V?$allocator@U_IMAGE_SECTION_HEADER@@@std@@@std@@QAEAAU_IMAGE_SECTION_HEADER@@I@Z 0045fdf0 f i SectionsDlg.obj
- 0001:0005ef10       ??_ESectionsDlg@@UAEPAXI@Z 0045ff10 f i SectionsDlg.obj
  0001:0005ef10       ??_GSectionsDlg@@UAEPAXI@Z 0045ff10 f i SectionsDlg.obj
+ 0001:0005ef10       ??_ESectionsDlg@@UAEPAXI@Z 0045ff10 f i SectionsDlg.obj
  0001:0005efa0       ?DoDataExchange@SectionsDlg@@MAEXPAVCDataExchange@@@Z 0045ffa0 f   SectionsDlg.obj
  0001:0005f020       ?GetMessageMap@SectionsDlg@@MBEPBUAFX_MSGMAP@@XZ 00460020 f   SectionsDlg.obj
  0001:0005f070       ?GetRuntimeClass@SectionsDlg@@UBEPAUCRuntimeClass@@XZ 00460070 f   SectionsDlg.obj
@@ -1601,8 +1602,8 @@
  0001:0005fae0       ??0CTabPage1@@QAE@PAVCWnd@@@Z 00460ae0 f   TabPage1.obj
  0001:0005fbf0       ??1CTabPage1@@UAE@XZ       00460bf0 f   TabPage1.obj
  0001:0005fc80       ??BCRect@@QAEPAUtagRECT@@XZ 00460c80 f i TabPage1.obj
- 0001:0005fcc0       ??_GCTabPage1@@UAEPAXI@Z   00460cc0 f i TabPage1.obj
  0001:0005fcc0       ??_ECTabPage1@@UAEPAXI@Z   00460cc0 f i TabPage1.obj
+ 0001:0005fcc0       ??_GCTabPage1@@UAEPAXI@Z   00460cc0 f i TabPage1.obj
  0001:0005fd50       ?DoDataExchange@CTabPage1@@MAEXPAVCDataExchange@@@Z 00460d50 f   TabPage1.obj
  0001:0005fe00       ?GetMessageMap@CTabPage1@@MBEPBUAFX_MSGMAP@@XZ 00460e00 f   TabPage1.obj
  0001:0005fe50       ?GetRuntimeClass@CTabPage1@@UBEPAUCRuntimeClass@@XZ 00460e50 f   TabPage1.obj
@@ -1615,8 +1616,8 @@
  0001:000603d0       ?OnBnClickedButton1@CTabPage2@@QAEXXZ 004613d0 f   TabPage2.obj
  0001:00060410       ??0CTabPage2@@QAE@PAVCWnd@@@Z 00461410 f   TabPage2.obj
  0001:00060500       ??1CTabPage2@@UAE@XZ       00461500 f   TabPage2.obj
- 0001:00060590       ??_GCTabPage2@@UAEPAXI@Z   00461590 f i TabPage2.obj
  0001:00060590       ??_ECTabPage2@@UAEPAXI@Z   00461590 f i TabPage2.obj
+ 0001:00060590       ??_GCTabPage2@@UAEPAXI@Z   00461590 f i TabPage2.obj
  0001:00060620       ?DoDataExchange@CTabPage2@@MAEXPAVCDataExchange@@@Z 00461620 f   TabPage2.obj
  0001:000606d0       ?GetMessageMap@CTabPage2@@MBEPBUAFX_MSGMAP@@XZ 004616d0 f   TabPage2.obj
  0001:00060720       ?GetRuntimeClass@CTabPage2@@UBEPAUCRuntimeClass@@XZ 00461720 f   TabPage2.obj
@@ -1686,8 +1687,8 @@
  0001:00062690       __aulldiv                  00463690 f   MSVCRTD:ulldiv.obj
  0001:00062720       __aullrem                  00463720 f   MSVCRTD:ullrem.obj
  0001:000627c0       ??1type_info@@UAE@XZ       004637c0 f   MSVCRTD:std_type_info_static.obj
- 0001:000627e0       ??_Etype_info@@UAEPAXI@Z   004637e0 f i MSVCRTD:std_type_info_static.obj
  0001:000627e0       ??_Gtype_info@@UAEPAXI@Z   004637e0 f i MSVCRTD:std_type_info_static.obj
+ 0001:000627e0       ??_Etype_info@@UAEPAXI@Z   004637e0 f i MSVCRTD:std_type_info_static.obj
  0001:00062820       ??_V@YAXPAX@Z              00463820 f   MSVCRTD:delete_array.obj
  0001:00062840       __alloca_probe             00463840 f   MSVCRTD:chkstk.obj
  0001:00062840       __chkstk                   00463840 f   MSVCRTD:chkstk.obj
@@ -1717,12 +1718,12 @@
  0001:000638c0       ??1bad_alloc@std@@UAE@XZ   004648c0 f i MSVCRTD:throw_bad_alloc.obj
  0001:000638e0       ??1bad_array_new_length@std@@UAE@XZ 004648e0 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063900       ??1exception@std@@UAE@XZ   00464900 f i MSVCRTD:throw_bad_alloc.obj
- 0001:00063930       ??_Ebad_alloc@std@@UAEPAXI@Z 00464930 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063930       ??_Gbad_alloc@std@@UAEPAXI@Z 00464930 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:00063930       ??_Ebad_alloc@std@@UAEPAXI@Z 00464930 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063970       ??_Gbad_array_new_length@std@@UAEPAXI@Z 00464970 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063970       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00464970 f i MSVCRTD:throw_bad_alloc.obj
- 0001:000639b0       ??_Gexception@std@@UAEPAXI@Z 004649b0 f i MSVCRTD:throw_bad_alloc.obj
  0001:000639b0       ??_Eexception@std@@UAEPAXI@Z 004649b0 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:000639b0       ??_Gexception@std@@UAEPAXI@Z 004649b0 f i MSVCRTD:throw_bad_alloc.obj
  0001:000639f0       ?__scrt_throw_std_bad_alloc@@YAXXZ 004649f0 f   MSVCRTD:throw_bad_alloc.obj
  0001:00063a20       ?__scrt_throw_std_bad_array_new_length@@YAXXZ 00464a20 f   MSVCRTD:throw_bad_alloc.obj
  0001:00063a50       ?what@exception@std@@UBEPBDXZ 00464a50 f i MSVCRTD:throw_bad_alloc.obj
@@ -2230,8 +2231,8 @@
  0001:000678f0       ??0_com_error@@QAE@ABV0@@Z 004688f0 f i comsuppwd:comraise.obj
  0001:000679a0       ??0_com_error@@QAE@JPAUIErrorInfo@@_N@Z 004689a0 f i comsuppwd:comraise.obj
  0001:00067a50       ??1_com_error@@UAE@XZ      00468a50 f i comsuppwd:comraise.obj
- 0001:00067b00       ??_G_com_error@@UAEPAXI@Z  00468b00 f i comsuppwd:comraise.obj
  0001:00067b00       ??_E_com_error@@UAEPAXI@Z  00468b00 f i comsuppwd:comraise.obj
+ 0001:00067b00       ??_G_com_error@@UAEPAXI@Z  00468b00 f i comsuppwd:comraise.obj
  0001:00067b50       ?_com_raise_error@@YGXJPAUIErrorInfo@@@Z 00468b50 f   comsuppwd:comraise.obj
  0001:00067bb0       ?_com_dispatch_raw_method@@YAJPAUIDispatch@@JGGPAXPB_WZZ 00468bb0 f   comsuppwd:invkprxy.obj
  0001:00067ca0       ?_com_dispatch_raw_propget@@YGJPAUIDispatch@@JGPAX@Z 00468ca0 f   comsuppwd:invkprxy.obj
@@ -2369,12 +2370,12 @@
  0001:00069974       _VariantChangeType@16      0046a974 f   oleaut32:OLEAUT32.dll
  0001:0006997a       _SetErrorInfo@8            0046a97a f   oleaut32:OLEAUT32.dll
  0001:00069980       _CreateErrorInfo@4         0046a980 f   oleaut32:OLEAUT32.dll
+ 0001:00069990       ___vcrt_initialize         0046a990 f   MSVCRTD:ucrt_stubs.obj
  0001:00069990       ___scrt_stub_for_acrt_initialize 0046a990 f   MSVCRTD:ucrt_stubs.obj
  0001:00069990       ___acrt_initialize         0046a990 f   MSVCRTD:ucrt_stubs.obj
- 0001:00069990       ___vcrt_initialize         0046a990 f   MSVCRTD:ucrt_stubs.obj
  0001:000699a0       ___scrt_stub_for_acrt_thread_attach 0046a9a0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000699a0       ___acrt_thread_attach      0046a9a0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699a0       ___vcrt_thread_attach      0046a9a0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000699a0       ___acrt_thread_attach      0046a9a0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699b0       ___vcrt_thread_detach      0046a9b0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699b0       ___scrt_stub_for_acrt_thread_detach 0046a9b0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699b0       ___acrt_thread_detach      0046a9b0 f   MSVCRTD:ucrt_stubs.obj
@@ -2382,11 +2383,11 @@
  0001:000699c0       ___vcrt_uninitialize       0046a9c0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699c0       ___acrt_uninitialize       0046a9c0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699d0       ___vcrt_uninitialize_critical 0046a9d0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000699d0       ___acrt_uninitialize_critical 0046a9d0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699d0       ___scrt_stub_for_acrt_uninitialize_critical 0046a9d0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000699e0       ___scrt_stub_for_is_c_termination_complete 0046a9e0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000699d0       ___acrt_uninitialize_critical 0046a9d0 f   MSVCRTD:ucrt_stubs.obj
  0001:000699e0       __is_c_termination_complete 0046a9e0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000699f0       ?SetCtrlContent@CPETOOLSDlg@@QAEHXZ 0046a9f0 f   PETOOLSDlg.obj
+ 0001:000699e0       ___scrt_stub_for_is_c_termination_complete 0046a9e0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000699f0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCStatic@@PADH@Z 0046a9f0 f   PETOOLSDlg.obj
  0001:00071650       ??__Fcache@?1??GetCDCCacheInstance@CImage@ATL@@CAPAVCDCCache@12@XZ@YAXXZ 00472650 f i GlobeVar.obj
  0001:000716a0       ??__FgdiPlus@?1??GetInitGDIPlusInstance@CImage@ATL@@CAPAVCInitGDIPlus@12@XZ@YAXXZ 004726a0 f i GlobeVar.obj
  0001:000716f0       ??__FstrHeap@?1??GetInstance@CAtlStringMgr@ATL@@SAPAUIAtlStringMgr@2@XZ@YAXXZ 004726f0 f i GlobeVar.obj

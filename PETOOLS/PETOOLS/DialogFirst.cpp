@@ -430,7 +430,7 @@ unsigned int __stdcall DialogFirst::WorkThreadProc(void *lpParameter)
 		Dialog->SetRelay();
 	}else
 	{
-		Dialog->CloseWindow();
+		//Dialog->CloseWindow();
 		AfxMessageBox("N/A");
 		return FALSE;
 	}

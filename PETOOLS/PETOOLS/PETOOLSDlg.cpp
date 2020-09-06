@@ -165,6 +165,7 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_COMMAND(ID_32787, &CPETOOLSDlg::OnHexEditView)
 	ON_BN_CLICKED(IDC_MFCBUTTON6, &CPETOOLSDlg::OnBnClickedMfcbutton6)
 	ON_BN_CLICKED(IDC_MFCBUTTON7, &CPETOOLSDlg::OnBnClickedMfcbutton7)
+	ON_BN_CLICKED(IDC_MFCBUTTON8, &CPETOOLSDlg::OnBnClickedMfcbutton8)
 END_MESSAGE_MAP()
 
 
@@ -729,7 +730,23 @@ void CPETOOLSDlg::OnBnClickedMfcbutton6()
 void CPETOOLSDlg::OnBnClickedMfcbutton7()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
 	Create16EditWindow((unsigned char *)(mPEMake.mPeCtx.pVirMem), mPEMake.mPeCtx.size, 0, 0);
+}
+
+//按钮-dump
+void CPETOOLSDlg::OnBnClickedMfcbutton8()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
 }
 
 BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
@@ -971,5 +988,4 @@ afx_msg LRESULT CPETOOLSDlg::OnUpdateUi(WPARAM wParam, LPARAM lParam)
 	}
 	return 0;
 }
-
 
