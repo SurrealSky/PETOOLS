@@ -138,6 +138,7 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MFCBUTTON5, m_Button5);
 	DDX_Control(pDX, IDC_MFCBUTTON6, m_Button4);
 	DDX_Control(pDX, IDC_MFCBUTTON7, m_Button6);
+	DDX_Control(pDX, IDC_MFCBUTTON8, m_Button7);
 }
 
 BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
@@ -348,6 +349,7 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini", &this->m_Button4, "Button4");
 	this->SetControlUI("configure.ini", &this->m_Button5, "Button5");
 	this->SetControlUI("configure.ini", &this->m_Button6, "Button6");
+	this->SetControlUI("configure.ini", &this->m_Button7, "Button7");
 	
 	//创建状态栏
 	this->m_Status.Create(WS_CHILD|WS_VISIBLE|CCS_BOTTOM,CRect(0,0,0,0), this, IDC_STATUSBARCTRL);

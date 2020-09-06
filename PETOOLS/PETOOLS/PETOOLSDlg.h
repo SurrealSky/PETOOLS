@@ -144,6 +144,7 @@ public:
 	CMFCButton m_Button4;
 	CMFCButton m_Button5;
 	CMFCButton m_Button6;
+	CMFCButton m_Button7;
 	CPosCalcDlg *pPosCalcDlg;
 public:
 	//相关方法
