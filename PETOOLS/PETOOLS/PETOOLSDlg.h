@@ -61,10 +61,6 @@ public:
 	MFCStatic m_Static4;
 	MFCStatic m_Static5;
 	MFCStatic m_Static6;
-	//MFCStatic m_Static7;
-	//MFCStatic m_Static8;
-	//MFCEdit m_Edit3;
-	//MFCEdit m_Edit4;
 	CMFCButton m_Button2;
 	MFCStatic m_Static9;
 
@@ -145,7 +141,9 @@ public:
 	MFCEdit m_Edit40;
 	MFCEdit m_Edit41;
 	CMFCButton m_Button3;
+	CMFCButton m_Button4;
 	CMFCButton m_Button5;
+	CMFCButton m_Button6;
 	CPosCalcDlg *pPosCalcDlg;
 public:
 	//相关方法
@@ -181,7 +179,6 @@ public:
 	afx_msg void OnEncrypt();
 	afx_msg void OnPosCalc();
 	afx_msg void OnHexEditView();
-	
-	CMFCButton m_Button4;
 	afx_msg void OnBnClickedMfcbutton6();
+	afx_msg void OnBnClickedMfcbutton7();
 };

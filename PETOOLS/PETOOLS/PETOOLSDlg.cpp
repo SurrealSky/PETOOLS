@@ -137,6 +137,7 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MFCBUTTON3, m_Button3);
 	DDX_Control(pDX, IDC_MFCBUTTON5, m_Button5);
 	DDX_Control(pDX, IDC_MFCBUTTON6, m_Button4);
+	DDX_Control(pDX, IDC_MFCBUTTON7, m_Button6);
 }
 
 BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
@@ -162,6 +163,7 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_COMMAND(ID_32786, &CPETOOLSDlg::OnPosCalc)
 	ON_COMMAND(ID_32787, &CPETOOLSDlg::OnHexEditView)
 	ON_BN_CLICKED(IDC_MFCBUTTON6, &CPETOOLSDlg::OnBnClickedMfcbutton6)
+	ON_BN_CLICKED(IDC_MFCBUTTON7, &CPETOOLSDlg::OnBnClickedMfcbutton7)
 END_MESSAGE_MAP()
 
 
@@ -345,6 +347,7 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini",&this->m_Button3,"Button3");
 	this->SetControlUI("configure.ini", &this->m_Button4, "Button4");
 	this->SetControlUI("configure.ini", &this->m_Button5, "Button5");
+	this->SetControlUI("configure.ini", &this->m_Button6, "Button6");
 	
 	//创建状态栏
 	this->m_Status.Create(WS_CHILD|WS_VISIBLE|CCS_BOTTOM,CRect(0,0,0,0), this, IDC_STATUSBARCTRL);
@@ -718,6 +721,13 @@ void CPETOOLSDlg::OnBnClickedMfcbutton6()
 		pPosCalcDlg->Create(IDD_DIALOG8, this);
 	}
 	pPosCalcDlg->ShowWindow(SW_SHOW);
+}
+
+//按钮-十六进制
+void CPETOOLSDlg::OnBnClickedMfcbutton7()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	Create16EditWindow((unsigned char *)(mPEMake.mPeCtx.pVirMem), mPEMake.mPeCtx.size, 0, 0);
 }
 
 BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
