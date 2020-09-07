@@ -54,6 +54,8 @@ using namespace SurrealTypes;
 #define	BoundForwarderRef		IMAGE_BOUND_FORWARDER_REF
 #define	DebugDirectoryItem		IMAGE_DEBUG_DIRECTORY
 
+#define DEFAULT_FILEALIGNMENT	0x200
+
 
 //导出表定义
 typedef struct _OrdinalFuncs

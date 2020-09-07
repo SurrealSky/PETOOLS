@@ -38,4 +38,6 @@ public:
 	bool Protect2A();	//第二类壳A（书本21章）EXE加密，外壳还原IAT，并对所有区段解密
 	bool Protect3A();	//yoda壳
 	bool Protect4A();
+public:
+	bool WriteCtx2VirMem();
 };

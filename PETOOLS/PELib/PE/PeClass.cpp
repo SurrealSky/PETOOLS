@@ -764,3 +764,22 @@ const DWORD PeClass::FileAlignmentSize(DWORD RawSize) const
 	return result;
 }
 
+bool PeClass::WriteCtx2VirMem()
+{
+	//假设区段位置不变//32位
+
+	STu32 uVirMemSize = mBaseCtx->pe.mDosHeader.e_lfanew;//DOS头和STUB总大小
+
+	//NT HEADER
+	uVirMemSize += sizeof(NtHeader);
+
+	//SECTIONS TABLE
+	uVirMemSize = uVirMemSize + mBaseCtx->pe.mSectionsVector.size() * sizeof(SectionHeader);
+
+	//SECTIONS DATA
+	mBaseCtx->pe.mNtHeader.OptionalHeader.FileAlignment;
+
+	//OVERLAY DATA
+
+	return true;
+}
