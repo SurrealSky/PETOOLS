@@ -158,20 +158,24 @@ typedef struct _Overlay
 
 //PE头定义
 typedef struct {
+	//文件存储映射
 	DosHeader	mDosHeader;
 	NtHeader	mNtHeader;
 	MagicValue	wMagic;
 	std::vector<SectionHeader> mSectionsVector;
-	Export					mExport;     
-	std::vector<ImportItem>	mImportsVector;
-	std::vector<RelocItem>	mRelocsVector;
-	std::vector<ResourceItem>	mResourcesVector;
-	std::vector<DelayItem>		mDelaysVector;
-	TlsDirectory		mTlsDirrctory;
-	LoadConfigDirctory	mLoadConfigDirctory;
-	std::vector<BoundItem>	mBoundsVector;
-	std::vector<DebugDirectoryItem>	mDebugDirectorysVector;
 	Overlay			mOverlay;
+
+	//结构化数据
+	Export						mExport;			//导出表     
+	std::vector<ImportItem>		mImportsVector;		//导入表
+	std::vector<ResourceItem>	mResourcesVector;	//资源表
+	std::vector<RelocItem>		mRelocsVector;		//重定位表
+	
+	std::vector<DelayItem>		mDelaysVector;		//延迟导入表
+	TlsDirectory				mTlsDirrctory;		//TLS表
+	LoadConfigDirctory			mLoadConfigDirctory;	//载入配置表
+	std::vector<BoundItem>		mBoundsVector;			//绑定导入表
+	std::vector<DebugDirectoryItem>	mDebugDirectorysVector;//调试信息表
 } pe_file_t;
 
 typedef struct {

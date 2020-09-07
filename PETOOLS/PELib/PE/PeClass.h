@@ -42,9 +42,8 @@ public://分析函数
 private:
 	bool	WriteDosHeader();
 	bool	WriteDosStub();
-	bool	WriteSignature();
-	bool	WriteImageFileHeader();
-	bool	WriteImageOptionalHeader();
+	bool	WriteNtHeader();
+	bool	ChangeSectionTable();//不影响节区数据的更改
 public:
 	//将Ctx结构写入VirMem
 	bool	WriteCtx2VirMem();

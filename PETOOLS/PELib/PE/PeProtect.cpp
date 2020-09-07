@@ -208,11 +208,14 @@ bool PeProtect::ClsRelocDataDirectory()
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size=0;
 
 	//修改影像数据
-	char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress=0;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size=0;
-	//清除重定位标志
-	((NtHeader*)pTmp)->FileHeader.Characteristics|=IMAGE_FILE_RELOCS_STRIPPED;
+	//char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
+	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress=0;
+	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size=0;
+	////清除重定位标志
+	//((NtHeader*)pTmp)->FileHeader.Characteristics|=IMAGE_FILE_RELOCS_STRIPPED;
+
+	//修改影像数据
+	WriteCtx2VirMem();
 	return true;
 }
 
@@ -226,10 +229,12 @@ bool PeProtect::ClsImportDataDirectory()
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size=0;
 
 	//修改影像数据
-	char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
+	/*char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
 	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress=0;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size=0;
+	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size=0;*/
 
+	//修改影像数据
+	WriteCtx2VirMem();
 	return true;
 }
 
@@ -242,11 +247,13 @@ bool PeProtect::ClsBoundImportDirectory()
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT].VirtualAddress=0;
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT].Size=0;
 
-	//修改影像数据
-	char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT].VirtualAddress=0;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT].Size=0;
+	////修改影像数据
+	//char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
+	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT].VirtualAddress=0;
+	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT].Size=0;
 
+	//修改影像数据
+	WriteCtx2VirMem();
 	return true;
 }
 
@@ -260,12 +267,15 @@ bool PeProtect::EliminateDebug()
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].VirtualAddress=0;
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].Size=0;
 
+	////修改影像数据
+	//char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
+	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].VirtualAddress=0;
+	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].Size=0;
+	////清除重定位标志
+	//((NtHeader*)pTmp)->FileHeader.Characteristics|=IMAGE_DIRECTORY_ENTRY_DEBUG;
+
 	//修改影像数据
-	char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].VirtualAddress=0;
-	((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_DEBUG].Size=0;
-	//清除重定位标志
-	((NtHeader*)pTmp)->FileHeader.Characteristics|=IMAGE_DIRECTORY_ENTRY_DEBUG;
+	WriteCtx2VirMem();
 	return true;
 }
 
@@ -402,6 +412,49 @@ DWORD PeProtect::GetNewSection()
 	return SectionAlignmentSize( mBaseCtx->pe.mSectionsVector[SectionNum-1].VirtualAddress + mBaseCtx->pe.mSectionsVector[SectionNum-1].Misc.VirtualSize);
 }
 
+//判断是否可添加一个区段
+bool PeProtect::IsEnableAddNewSection()
+{
+	bool isEnable = true;
+
+	//首先计算区段后数据是否够存储IMAGE_SIZEOF_SECTION_HEADER大小
+	if (mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections>96)
+	{
+		isEnable = false;
+	}
+	//判断overlay
+	if (mBaseCtx->pe.mOverlay.isExist)
+	{
+		//存在overlay，如果overlay后移的话，程序引用overlay中的数据可能出错了，
+		//如果添加到overlay之后的话，那么无法判断是否存在overlay了
+		isEnable = false;
+	}
+	//判断添加位置
+	DWORD dwAlignment = mBaseCtx->pe.mNtHeader.OptionalHeader.FileAlignment;
+	DWORD dwOffset = mBaseCtx->pe.mDosHeader.e_lfanew + sizeof(mBaseCtx->pe.mNtHeader) +
+		mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections*IMAGE_SIZEOF_SECTION_HEADER;
+
+	//这里我们假设的是节区数据是从文件对齐大小位置开始的
+	if (FileAlignmentSize(dwOffset) - dwOffset<IMAGE_SIZEOF_SECTION_HEADER * 2)
+	{
+		//节区表头空间不足，可考虑扩大最后一个区段空间，将补丁代码添加进去
+		isEnable = false;
+	}
+
+	//当节区数据不是从文件对齐大小开始时，需要根据数据目录中的表的文件对齐位置判断
+	//(如windows notepad.exe,calc.exe)
+	for (int i = 0; i < IMAGE_NUMBEROF_DIRECTORY_ENTRIES; i++)
+	{
+		if (mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[i].VirtualAddress != 0)
+		{
+			DWORD foa = RvaToFoa(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[i].VirtualAddress);
+			if (dwOffset - foa < IMAGE_SIZEOF_SECTION_HEADER * 2)
+				isEnable = false;
+		}
+	}
+	return isEnable;
+}
+
 /*
 *参数一：区段名
 *参数二：添加补丁大小
@@ -409,24 +462,7 @@ DWORD PeProtect::GetNewSection()
 */
 bool PeProtect::AddSectionData(const STu8 *pName,const size_t size,DWORD &mRetAddr)
 {
-	//首先计算区段后数据是否够存储IMAGE_SIZEOF_SECTION_HEADER大小
-	if(mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections>96)
-	{
-		return false;
-	}
-	//判断overlay
-	if(mBaseCtx->pe.mOverlay.isExist)
-	{
-		//存在overlay，如果overlay后移的话，程序引用overlay中的数据可能出错了，
-		//如果添加到overlay之后的话，那么无法判断是否存在overlay了
-		return false;
-	}
-	//判断添加位置
-	DWORD dwAlignment=mBaseCtx->pe.mNtHeader.OptionalHeader.FileAlignment;
-	DWORD dwOffset=mBaseCtx->pe.mDosHeader.e_lfanew+sizeof(mBaseCtx->pe.mNtHeader)+
-		mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections*IMAGE_SIZEOF_SECTION_HEADER;
-
-	if(FileAlignmentSize(dwOffset)-dwOffset<IMAGE_SIZEOF_SECTION_HEADER*2)
+	if(!IsEnableAddNewSection())
 	{
 		//节区表头空间不足，可考虑扩大最后一个区段空间，将补丁代码添加进去
 		return ExpandLastSection(size,mRetAddr);
@@ -441,39 +477,7 @@ bool PeProtect::AddSectionData(const STu8 *pName,const size_t size,DWORD &mRetAd
 
 bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size)
 {
-	//首先计算区段后数据是否够存储IMAGE_SIZEOF_SECTION_HEADER大小
-	if(mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections>96)
-	{
-		return false;
-	}
-	//判断overlay
-	if(mBaseCtx->pe.mOverlay.isExist)
-	{
-		//存在overlay，如果overlay后移的话，程序引用overlay中的数据可能出错了，
-		//如果添加到overlay之后的话，那么无法判断是否存在overlay了
-		return false;
-	}
-	//判断添加位置
-	DWORD dwAlignment=mBaseCtx->pe.mNtHeader.OptionalHeader.FileAlignment;
-	DWORD dwOffset=mBaseCtx->pe.mDosHeader.e_lfanew+sizeof(mBaseCtx->pe.mNtHeader)+
-		mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections*IMAGE_SIZEOF_SECTION_HEADER;
-
-	if(FileAlignmentSize(dwOffset)-dwOffset<IMAGE_SIZEOF_SECTION_HEADER*2)
-	{
-		//节区表头空间不足，可考虑扩大最后一个区段空间，将补丁代码添加进去
-		return false;
-	}
-
-	//根据数据目录中的结构判断(如windows notepad.exe)
-	for (int i = 0; i < IMAGE_NUMBEROF_DIRECTORY_ENTRIES; i++)
-	{
-		if (mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[i].VirtualAddress != 0)
-		{
-			DWORD foa = RvaToFoa(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[i].VirtualAddress);
-			if (dwOffset -foa<IMAGE_SIZEOF_SECTION_HEADER * 2)
-				return false;
-		}
-	}
+	if (!IsEnableAddNewSection()) return false;
 
 	SectionHeader mSectionHeader={0};
 	if(strlen((char*)pName)<=IMAGE_SIZEOF_SHORT_NAME)
@@ -513,8 +517,9 @@ bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size)
 	((NtHeader*)pTmp)->FileHeader.NumberOfSections++;
 	((NtHeader*)pTmp)->OptionalHeader.SizeOfImage=SectionAlignmentSize(mSectionHeader.VirtualAddress+mSectionHeader.SizeOfRawData);
 	pTmp=NULL;
+	DWORD dwOffset = mBaseCtx->pe.mDosHeader.e_lfanew + sizeof(mBaseCtx->pe.mNtHeader) +
+		mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections*IMAGE_SIZEOF_SECTION_HEADER;
 	memcpy((char*)mBaseCtx->pVirMem+dwOffset,&mSectionHeader,IMAGE_SIZEOF_SECTION_HEADER);
-
 	return true;
 }
 

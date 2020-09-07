@@ -65,5 +65,6 @@ public:
 	bool TestDis();
 private:
 	bool ExpandLastSection(const size_t,DWORD &);
+	bool IsEnableAddNewSection();
 };
 
