@@ -518,7 +518,7 @@ bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size)
 	((NtHeader*)pTmp)->OptionalHeader.SizeOfImage=SectionAlignmentSize(mSectionHeader.VirtualAddress+mSectionHeader.SizeOfRawData);
 	pTmp=NULL;
 	DWORD dwOffset = mBaseCtx->pe.mDosHeader.e_lfanew + sizeof(mBaseCtx->pe.mNtHeader) +
-		mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections*IMAGE_SIZEOF_SECTION_HEADER;
+		(mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections-1)*IMAGE_SIZEOF_SECTION_HEADER;
 	memcpy((char*)mBaseCtx->pVirMem+dwOffset,&mSectionHeader,IMAGE_SIZEOF_SECTION_HEADER);
 	return true;
 }

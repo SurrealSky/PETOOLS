@@ -1,6 +1,6 @@
  PETOOLS
 
- Timestamp is 5f55e680 (Mon Sep  7 15:51:28 2020)
+ Timestamp is 5f56293f (Mon Sep  7 20:36:15 2020)
 
  Preferred load address is 00400000
 
@@ -59,15 +59,15 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_iat_table         00000000     <absolute>
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
  0000:00000000       ___guard_fids_table        00000000     <absolute>
- 0000:00000000       ___guard_iat_count         00000000     <absolute>
- 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
  0000:0000002c       __tls_array                0000002c     <absolute>
- 0000:000000ea       ___safe_se_handler_count   000000ea     <absolute>
+ 0000:000000ec       ___safe_se_handler_count   000000ec     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00007280       ??$__vcrt_va_start_verify_argument_type@QBD@@YAXXZ 00408280 f i asmserv.obj
@@ -85,11 +85,23 @@
  0001:00008350       _sprintf                   00409350 f i asmserv.obj
  0001:000083d0       ??$_strupr_s@$0BAA@@@YAHAAY0BAA@D@Z 004093d0 f i assembl.obj
  0001:00008430       ?Assemble@@YAHPADKPAUt_asmmodel@@HH0@Z 00409430 f   assembl.obj
+ 0001:0000b180       ?OnBnClickedMfcbutton2@CPETOOLSDlg@@QAEXXZ 0040c180 f   PETOOLSDlg.obj
+ 0001:0000b4c0       ?OnDisa@CPETOOLSDlg@@QAEXXZ 0040c4c0 f   PETOOLSDlg.obj
+ 0001:0000b5c0       ?OnSaveAs@CPETOOLSDlg@@QAEXXZ 0040c5c0 f   PETOOLSDlg.obj
+ 0001:0000b7b0       ?OnAddPatch@CPETOOLSDlg@@QAEXXZ 0040c7b0 f   PETOOLSDlg.obj
+ 0001:0000b8b0       ?OnEncrypt@CPETOOLSDlg@@QAEXXZ 0040c8b0 f   PETOOLSDlg.obj
+ 0001:0000b9b0       ?OnPosCalc@CPETOOLSDlg@@QAEXXZ 0040c9b0 f   PETOOLSDlg.obj
+ 0001:0000bb00       ?EnumChildProc@CPETOOLSDlg@@SGHPAUHWND__@@J@Z 0040cb00 f   PETOOLSDlg.obj
+ 0001:0000c9e0       ?Height@CRect@@QBEHXZ      0040d9e0 f i PETOOLSDlg.obj
+ 0001:0000e570       ??0CRect@@QAE@HHHH@Z       0040f570 f i PETOOLSDlg.obj
  0001:0000eb80       _powl                      0040fb80 f i assembl.obj
  0001:0000ebf0       ??$__vcrt_va_start_verify_argument_type@PBD@@YAXXZ 0040fbf0 f i disasm.obj
  0001:0000ec20       ??$sprintf_s@$0BAA@@@YAHAAY0BAA@DPBDZZ 0040fc20 f i disasm.obj
  0001:0000ec90       ?Checkcondition@@YAHHK@Z   0040fc90 f   disasm.obj
+ 0001:000109b0       ?Reset@CPETOOLSDlg@@QAEXXZ 004119b0 f   PETOOLSDlg.obj
+ 0001:00010b40       __tcscmp                   00411b40 f i PETOOLSDlg.obj
  0001:00011b80       ?Disasm@@YAKPADKKPAUt_disasm@@H@Z 00412b80 f   disasm.obj
+ 0001:000141a0       ?OnBnClickedMfcbutton9@CPETOOLSDlg@@QAEXXZ 004151a0 f   PETOOLSDlg.obj
  0001:000152f0       __vsprintf_s_l             004162f0 f i disasm.obj
  0001:000153a0       _vsprintf_s                004163a0 f i disasm.obj
  0001:00015400       ??0Ini@@QAE@XZ             00416400 f   Ini.obj
@@ -134,8 +146,8 @@
  0001:000166a0       ?_Orphan_all@_Container_base12@std@@QAEXXZ 004176a0 f i DebugLog.obj
  0001:000167b0       ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX_NI@Z 004177b0 f i DebugLog.obj
  0001:000168d0       ?__empty_global_delete@@YAXPAX@Z 004178d0 f i DebugLog.obj
- 0001:00016900       ?__empty_global_delete@@YAXPAXI@Z 00417900 f i DebugLog.obj
  0001:00016900       ?__global_delete@@YAXPAXI@Z 00417900 f i DebugLog.obj
+ 0001:00016900       ?__empty_global_delete@@YAXPAXI@Z 00417900 f i DebugLog.obj
  0001:00016930       ?address@?$_Wrap_alloc@V?$allocator@U_Container_proxy@std@@@std@@@std@@QBEPAU_Container_proxy@2@AAU32@@Z 00417930 f i DebugLog.obj
  0001:00016990       ?assign@?$char_traits@D@std@@SAXAADABD@Z 00417990 f i DebugLog.obj
  0001:000169d0       ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z 004179d0 f i DebugLog.obj
@@ -680,12 +692,12 @@
  0001:0002b9d0       ??_EILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042c9d0 f i log4z.obj
  0001:0002ba40       ??_ELockHelper@log4z@zsummer@@UAEPAXI@Z 0042ca40 f i log4z.obj
  0001:0002ba40       ??_GLockHelper@log4z@zsummer@@UAEPAXI@Z 0042ca40 f i log4z.obj
- 0001:0002bab0       ??_ELogerManager@log4z@zsummer@@UAEPAXI@Z 0042cab0 f i log4z.obj
  0001:0002bab0       ??_GLogerManager@log4z@zsummer@@UAEPAXI@Z 0042cab0 f i log4z.obj
- 0001:0002bb30       ??_GSemHelper@log4z@zsummer@@UAEPAXI@Z 0042cb30 f i log4z.obj
+ 0001:0002bab0       ??_ELogerManager@log4z@zsummer@@UAEPAXI@Z 0042cab0 f i log4z.obj
  0001:0002bb30       ??_ESemHelper@log4z@zsummer@@UAEPAXI@Z 0042cb30 f i log4z.obj
- 0001:0002bba0       ??_EThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042cba0 f i log4z.obj
+ 0001:0002bb30       ??_GSemHelper@log4z@zsummer@@UAEPAXI@Z 0042cb30 f i log4z.obj
  0001:0002bba0       ??_GThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042cba0 f i log4z.obj
+ 0001:0002bba0       ??_EThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042cba0 f i log4z.obj
  0001:0002bc10       ?_Adopt@_Iterator_base0@std@@QAEXPBX@Z 0042cc10 f i log4z.obj
  0001:0002bc50       ?_Adopt@_Iterator_base12@std@@QAEXPBU_Container_base12@2@@Z 0042cc50 f i log4z.obj
  0001:0002be00       ?_Alloc_proxy@?$_Deque_alloc@U?$_Deque_base_types@PAULogData@log4z@zsummer@@V?$allocator@PAULogData@log4z@zsummer@@@std@@@std@@@std@@QAEXXZ 0042ce00 f i log4z.obj
@@ -1158,8 +1170,8 @@
  0001:00045b00       ?OnBnClickedMfcbutton@DataDirectoryDlg@@QAEXI@Z 00446b00 f   DataDirectoryDlg.obj
  0001:000461d0       ??0DataDirectoryDlg@@QAE@PAVCWnd@@@Z 004471d0 f   DataDirectoryDlg.obj
  0001:00046250       ??1DataDirectoryDlg@@UAE@XZ 00447250 f   DataDirectoryDlg.obj
- 0001:00046340       ??_EDataDirectoryDlg@@UAEPAXI@Z 00447340 f i DataDirectoryDlg.obj
  0001:00046340       ??_GDataDirectoryDlg@@UAEPAXI@Z 00447340 f i DataDirectoryDlg.obj
+ 0001:00046340       ??_EDataDirectoryDlg@@UAEPAXI@Z 00447340 f i DataDirectoryDlg.obj
  0001:000463d0       ?DoDataExchange@DataDirectoryDlg@@MAEXPAVCDataExchange@@@Z 004473d0 f   DataDirectoryDlg.obj
  0001:00046430       ?GetMessageMap@DataDirectoryDlg@@MBEPBUAFX_MSGMAP@@XZ 00447430 f   DataDirectoryDlg.obj
  0001:00046480       ?GetRuntimeClass@DataDirectoryDlg@@UBEPAUCRuntimeClass@@XZ 00447480 f   DataDirectoryDlg.obj
@@ -1182,8 +1194,8 @@
  0001:00048120       ??A?$vector@U_ResourceItem@@V?$allocator@U_ResourceItem@@@std@@@std@@QAEAAU_ResourceItem@@I@Z 00449120 f i DialogFirst.obj
  0001:00048240       ??B_bstr_t@@QBEPADXZ       00449240 f i DialogFirst.obj
  0001:000482c0       ??_GData_t@_bstr_t@@AAEPAXI@Z 004492c0 f i DialogFirst.obj
- 0001:00048330       ??_EDialogFirst@@UAEPAXI@Z 00449330 f i DialogFirst.obj
  0001:00048330       ??_GDialogFirst@@UAEPAXI@Z 00449330 f i DialogFirst.obj
+ 0001:00048330       ??_EDialogFirst@@UAEPAXI@Z 00449330 f i DialogFirst.obj
  0001:000483c0       ?DoDataExchange@DialogFirst@@MAEXPAVCDataExchange@@@Z 004493c0 f   DialogFirst.obj
  0001:00048760       ?EnumChildProc@DialogFirst@@CGHPAUHWND__@@J@Z 00449760 f   DialogFirst.obj
  0001:00048890       ?GetMessageMap@DialogFirst@@MBEPBUAFX_MSGMAP@@XZ 00449890 f   DialogFirst.obj
@@ -1267,8 +1279,8 @@
  0001:0004def0       ?OnMsgSave@CEncryptDlg@@IAEJIJ@Z 0044eef0 f   EncryptDlg.obj
  0001:0004df30       ??0CEncryptDlg@@QAE@PAVCWnd@@@Z 0044ef30 f   EncryptDlg.obj
  0001:0004e030       ??1CEncryptDlg@@UAE@XZ     0044f030 f   EncryptDlg.obj
- 0001:0004e0c0       ??_GCEncryptDlg@@UAEPAXI@Z 0044f0c0 f i EncryptDlg.obj
  0001:0004e0c0       ??_ECEncryptDlg@@UAEPAXI@Z 0044f0c0 f i EncryptDlg.obj
+ 0001:0004e0c0       ??_GCEncryptDlg@@UAEPAXI@Z 0044f0c0 f i EncryptDlg.obj
  0001:0004e150       ?DoDataExchange@CEncryptDlg@@MAEXPAVCDataExchange@@@Z 0044f150 f   EncryptDlg.obj
  0001:0004e1d0       ?GetMessageMap@CEncryptDlg@@MBEPBUAFX_MSGMAP@@XZ 0044f1d0 f   EncryptDlg.obj
  0001:0004e220       ?GetRuntimeClass@CEncryptDlg@@UBEPAUCRuntimeClass@@XZ 0044f220 f   EncryptDlg.obj
@@ -1395,8 +1407,8 @@
  0001:000525b0       __vsnprintf_s_l            004535b0 f i GlobeVar.obj
  0001:00052660       ??0MFCEdit@@QAE@XZ         00453660 f   MFCEdit.obj
  0001:000526c0       ??1MFCEdit@@UAE@XZ         004536c0 f   MFCEdit.obj
- 0001:00052720       ??_EMFCEdit@@UAEPAXI@Z     00453720 f i MFCEdit.obj
  0001:00052720       ??_GMFCEdit@@UAEPAXI@Z     00453720 f i MFCEdit.obj
+ 0001:00052720       ??_EMFCEdit@@UAEPAXI@Z     00453720 f i MFCEdit.obj
  0001:000527b0       ?GetMessageMap@MFCEdit@@MBEPBUAFX_MSGMAP@@XZ 004537b0 f   MFCEdit.obj
  0001:00052800       ?GetRuntimeClass@MFCEdit@@UBEPAUCRuntimeClass@@XZ 00453800 f   MFCEdit.obj
  0001:00052840       ?GetThisClass@MFCEdit@@SGPAUCRuntimeClass@@XZ 00453840 f   MFCEdit.obj
@@ -1477,8 +1489,8 @@
  0001:00056090       ?size@?$vector@U_ThunkItem@@V?$allocator@U_ThunkItem@@@std@@@std@@QBEIXZ 00457090 f i MyListCtrl.obj
  0001:00056100       ??0CPETOOLSApp@@QAE@XZ     00457100 f   PETOOLS.obj
  0001:00056170       ??1CPETOOLSApp@@UAE@XZ     00457170 f i PETOOLS.obj
- 0001:000561c0       ??_ECPETOOLSApp@@UAEPAXI@Z 004571c0 f i PETOOLS.obj
  0001:000561c0       ??_GCPETOOLSApp@@UAEPAXI@Z 004571c0 f i PETOOLS.obj
+ 0001:000561c0       ??_ECPETOOLSApp@@UAEPAXI@Z 004571c0 f i PETOOLS.obj
  0001:00056250       ?GetApplicationRecoveryParameter@CWinApp@@UAEPAXXZ 00457250 f i PETOOLS.obj
  0001:00056290       ?GetApplicationRecoveryPingInterval@CWinApp@@UAEKXZ 00457290 f i PETOOLS.obj
  0001:000562d0       ?GetApplicationRestartFlags@CWinApp@@UAEKXZ 004572d0 f i PETOOLS.obj
@@ -1494,46 +1506,35 @@
  0001:00056820       ?OnPaint@CPETOOLSDlg@@IAEXXZ 00457820 f   PETOOLSDlg.obj
  0001:00056a20       ?OnQueryDragIcon@CPETOOLSDlg@@IAEPAUHICON__@@XZ 00457a20 f   PETOOLSDlg.obj
  0001:00056a60       ?OnBnClickedMfcbutton1@CPETOOLSDlg@@QAEXXZ 00457a60 f   PETOOLSDlg.obj
- 0001:00056f90       ?OnBnClickedMfcbutton3@CPETOOLSDlg@@QAEXXZ 00457f90 f   PETOOLSDlg.obj
- 0001:000570c0       ?OnBnClickedMfcbutton5@CPETOOLSDlg@@QAEXXZ 004580c0 f   PETOOLSDlg.obj
- 0001:000574c0       ?OnBnClickedMfcbutton2@CPETOOLSDlg@@QAEXXZ 004584c0 f   PETOOLSDlg.obj
- 0001:000575f0       ?OnOpen@CPETOOLSDlg@@QAEXXZ 004585f0 f   PETOOLSDlg.obj
- 0001:00057780       ?OnDisa@CPETOOLSDlg@@QAEXXZ 00458780 f   PETOOLSDlg.obj
- 0001:000578c0       ?OnReset@CPETOOLSDlg@@QAEXXZ 004588c0 f   PETOOLSDlg.obj
- 0001:00057950       ?OnClsRelocData@CPETOOLSDlg@@QAEXXZ 00458950 f   PETOOLSDlg.obj
- 0001:00057af0       ?OnEncryptImportTable@CPETOOLSDlg@@QAEXXZ 00458af0 f   PETOOLSDlg.obj
- 0001:00057c80       ?OnTest@CPETOOLSDlg@@QAEXXZ 00458c80 f   PETOOLSDlg.obj
- 0001:00057d20       ?OnUpdateUi@CPETOOLSDlg@@IAEJIJ@Z 00458d20 f   PETOOLSDlg.obj
- 0001:00057e80       ?OnSaveFile@CPETOOLSDlg@@QAEXXZ 00458e80 f   PETOOLSDlg.obj
- 0001:00058010       ?OnSaveAs@CPETOOLSDlg@@QAEXXZ 00459010 f   PETOOLSDlg.obj
- 0001:00058270       ?OnAddPatch@CPETOOLSDlg@@QAEXXZ 00459270 f   PETOOLSDlg.obj
- 0001:000583b0       ?OnAddSection@CPETOOLSDlg@@QAEXXZ 004593b0 f   PETOOLSDlg.obj
- 0001:00058500       ?OnEncrypt@CPETOOLSDlg@@QAEXXZ 00459500 f   PETOOLSDlg.obj
- 0001:00058640       ?OnPosCalc@CPETOOLSDlg@@QAEXXZ 00459640 f   PETOOLSDlg.obj
- 0001:000587e0       ?OnHexEditView@CPETOOLSDlg@@QAEXXZ 004597e0 f   PETOOLSDlg.obj
- 0001:00058850       ?OnBnClickedMfcbutton6@CPETOOLSDlg@@QAEXXZ 00459850 f   PETOOLSDlg.obj
- 0001:000589f0       ?OnBnClickedMfcbutton7@CPETOOLSDlg@@QAEXXZ 004599f0 f   PETOOLSDlg.obj
- 0001:00058aa0       ?OnBnClickedMfcbutton8@CPETOOLSDlg@@QAEXXZ 00459aa0 f   PETOOLSDlg.obj
- 0001:00058b20       ??0CPETOOLSDlg@@QAE@PAVCWnd@@@Z 00459b20 f   PETOOLSDlg.obj
- 0001:00059440       ??0CRect@@QAE@HHHH@Z       0045a440 f i PETOOLSDlg.obj
- 0001:000594b0       ??1CPETOOLSDlg@@UAE@XZ     0045a4b0 f   PETOOLSDlg.obj
- 0001:00059c00       ??_GCPETOOLSDlg@@UAEPAXI@Z 0045ac00 f i PETOOLSDlg.obj
- 0001:00059c00       ??_ECPETOOLSDlg@@UAEPAXI@Z 0045ac00 f i PETOOLSDlg.obj
- 0001:00059c90       ?DoDataExchange@CPETOOLSDlg@@MAEXPAVCDataExchange@@@Z 0045ac90 f   PETOOLSDlg.obj
- 0001:0005a710       ?EnumChildProc@CPETOOLSDlg@@SGHPAUHWND__@@J@Z 0045b710 f   PETOOLSDlg.obj
- 0001:0005a840       ?GetMessageMap@CPETOOLSDlg@@MBEPBUAFX_MSGMAP@@XZ 0045b840 f   PETOOLSDlg.obj
- 0001:0005a890       ?GetThisMessageMap@CPETOOLSDlg@@KGPBUAFX_MSGMAP@@XZ 0045b890 f   PETOOLSDlg.obj
- 0001:0005a8d0       ?Height@CRect@@QBEHXZ      0045b8d0 f i PETOOLSDlg.obj
- 0001:0005a920       ?OnInitDialog@CPETOOLSDlg@@MAEHXZ 0045b920 f   PETOOLSDlg.obj
- 0001:0005ab60       ?Reset@CPETOOLSDlg@@QAEXXZ 0045bb60 f   PETOOLSDlg.obj
- 0001:0005abf0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCMFCButton@@PAD@Z 0045bbf0 f   PETOOLSDlg.obj
- 0001:0005adf0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCWnd@@PADH@Z 0045bdf0 f   PETOOLSDlg.obj
- 0001:0005af50       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCEdit@@PADHH@Z 0045bf50 f   PETOOLSDlg.obj
- 0001:0005b0e0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCStatic@@PADH@Z 0045c0e0 f   PETOOLSDlg.obj
- 0001:0005b380       ?SetCtrlContent@CPETOOLSDlg@@QAEHXZ 0045c380 f   PETOOLSDlg.obj
- 0001:0005c1a0       ?SetDlgUI@CPETOOLSDlg@@QAEHXZ 0045d1a0 f   PETOOLSDlg.obj
- 0001:0005d0d0       ?SetDumpFunc@CPETOOLSDlg@@QAEHXZ 0045e0d0 f   PETOOLSDlg.obj
- 0001:0005d130       __tcscmp                   0045e130 f i PETOOLSDlg.obj
+ 0001:000570c0       ?OnBnClickedMfcbutton3@CPETOOLSDlg@@QAEXXZ 004580c0 f   PETOOLSDlg.obj
+ 0001:000574c0       ?OnBnClickedMfcbutton4@CPETOOLSDlg@@QAEXXZ 004584c0 f   PETOOLSDlg.obj
+ 0001:000575f0       ?OnBnClickedMfcbutton5@CPETOOLSDlg@@QAEXXZ 004585f0 f   PETOOLSDlg.obj
+ 0001:00057780       ?OnBnClickedMfcbutton6@CPETOOLSDlg@@QAEXXZ 00458780 f   PETOOLSDlg.obj
+ 0001:000578c0       ?OnBnClickedMfcbutton7@CPETOOLSDlg@@QAEXXZ 004588c0 f   PETOOLSDlg.obj
+ 0001:00057950       ?OnBnClickedMfcbutton8@CPETOOLSDlg@@QAEXXZ 00458950 f   PETOOLSDlg.obj
+ 0001:00057af0       ?OnOpen@CPETOOLSDlg@@QAEXXZ 00458af0 f   PETOOLSDlg.obj
+ 0001:00057d20       ?OnReset@CPETOOLSDlg@@QAEXXZ 00458d20 f   PETOOLSDlg.obj
+ 0001:00057e80       ?OnClsRelocData@CPETOOLSDlg@@QAEXXZ 00458e80 f   PETOOLSDlg.obj
+ 0001:00058010       ?OnEncryptImportTable@CPETOOLSDlg@@QAEXXZ 00459010 f   PETOOLSDlg.obj
+ 0001:00058270       ?OnTest@CPETOOLSDlg@@QAEXXZ 00459270 f   PETOOLSDlg.obj
+ 0001:000583b0       ?OnUpdateUi@CPETOOLSDlg@@IAEJIJ@Z 004593b0 f   PETOOLSDlg.obj
+ 0001:00058500       ?OnSaveFile@CPETOOLSDlg@@QAEXXZ 00459500 f   PETOOLSDlg.obj
+ 0001:00058850       ?OnAddSection@CPETOOLSDlg@@QAEXXZ 00459850 f   PETOOLSDlg.obj
+ 0001:00058b20       ?OnHexEditView@CPETOOLSDlg@@QAEXXZ 00459b20 f   PETOOLSDlg.obj
+ 0001:00058b80       ??_GCPETOOLSDlg@@UAEPAXI@Z 00459b80 f i PETOOLSDlg.obj
+ 0001:00058b80       ??_ECPETOOLSDlg@@UAEPAXI@Z 00459b80 f i PETOOLSDlg.obj
+ 0001:00058bf0       ?DoDataExchange@CPETOOLSDlg@@MAEXPAVCDataExchange@@@Z 00459bf0 f   PETOOLSDlg.obj
+ 0001:000594b0       ??0CPETOOLSDlg@@QAE@PAVCWnd@@@Z 0045a4b0 f   PETOOLSDlg.obj
+ 0001:00059c90       ??1CPETOOLSDlg@@UAE@XZ     0045ac90 f   PETOOLSDlg.obj
+ 0001:0005a8d0       ?GetMessageMap@CPETOOLSDlg@@MBEPBUAFX_MSGMAP@@XZ 0045b8d0 f   PETOOLSDlg.obj
+ 0001:0005a920       ?GetThisMessageMap@CPETOOLSDlg@@KGPBUAFX_MSGMAP@@XZ 0045b920 f   PETOOLSDlg.obj
+ 0001:0005abf0       ?OnInitDialog@CPETOOLSDlg@@MAEHXZ 0045bbf0 f   PETOOLSDlg.obj
+ 0001:0005af50       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCMFCButton@@PAD@Z 0045bf50 f   PETOOLSDlg.obj
+ 0001:0005b0e0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVCWnd@@PADH@Z 0045c0e0 f   PETOOLSDlg.obj
+ 0001:0005b380       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCEdit@@PADHH@Z 0045c380 f   PETOOLSDlg.obj
+ 0001:0005b4c0       ?SetDlgUI@CPETOOLSDlg@@QAEHXZ 0045c4c0 f   PETOOLSDlg.obj
+ 0001:0005c1a0       ?SetControlUI@CPETOOLSDlg@@QAEXQADPAVMFCStatic@@PADH@Z 0045d1a0 f   PETOOLSDlg.obj
+ 0001:0005d190       ?SetDumpFunc@CPETOOLSDlg@@QAEHXZ 0045e190 f   PETOOLSDlg.obj
  0001:0005d380       ?OnBnClickedButton1@CPosCalcDlg@@QAEXXZ 0045e380 f   PosCalcDlg.obj
  0001:0005d430       ?OnBnClickedButton2@CPosCalcDlg@@QAEXXZ 0045e430 f   PosCalcDlg.obj
  0001:0005d4e0       ?OnBnClickedButton3@CPosCalcDlg@@QAEXXZ 0045e4e0 f   PosCalcDlg.obj
@@ -1581,8 +1582,8 @@
  0001:0005f100       ??0SectionsDlg@@QAE@PAVCWnd@@@Z 00460100 f   SectionsDlg.obj
  0001:0005f1d0       ??1SectionsDlg@@UAE@XZ     004601d0 f   SectionsDlg.obj
  0001:0005f240       ??A?$vector@U_IMAGE_SECTION_HEADER@@V?$allocator@U_IMAGE_SECTION_HEADER@@@std@@@std@@QAEAAU_IMAGE_SECTION_HEADER@@I@Z 00460240 f i SectionsDlg.obj
- 0001:0005f360       ??_GSectionsDlg@@UAEPAXI@Z 00460360 f i SectionsDlg.obj
  0001:0005f360       ??_ESectionsDlg@@UAEPAXI@Z 00460360 f i SectionsDlg.obj
+ 0001:0005f360       ??_GSectionsDlg@@UAEPAXI@Z 00460360 f i SectionsDlg.obj
  0001:0005f3f0       ?DoDataExchange@SectionsDlg@@MAEXPAVCDataExchange@@@Z 004603f0 f   SectionsDlg.obj
  0001:0005f470       ?GetMessageMap@SectionsDlg@@MBEPBUAFX_MSGMAP@@XZ 00460470 f   SectionsDlg.obj
  0001:0005f4c0       ?GetRuntimeClass@SectionsDlg@@UBEPAUCRuntimeClass@@XZ 004604c0 f   SectionsDlg.obj
@@ -1603,8 +1604,8 @@
  0001:0005ff30       ??0CTabPage1@@QAE@PAVCWnd@@@Z 00460f30 f   TabPage1.obj
  0001:00060040       ??1CTabPage1@@UAE@XZ       00461040 f   TabPage1.obj
  0001:000600d0       ??BCRect@@QAEPAUtagRECT@@XZ 004610d0 f i TabPage1.obj
- 0001:00060110       ??_GCTabPage1@@UAEPAXI@Z   00461110 f i TabPage1.obj
  0001:00060110       ??_ECTabPage1@@UAEPAXI@Z   00461110 f i TabPage1.obj
+ 0001:00060110       ??_GCTabPage1@@UAEPAXI@Z   00461110 f i TabPage1.obj
  0001:000601a0       ?DoDataExchange@CTabPage1@@MAEXPAVCDataExchange@@@Z 004611a0 f   TabPage1.obj
  0001:00060250       ?GetMessageMap@CTabPage1@@MBEPBUAFX_MSGMAP@@XZ 00461250 f   TabPage1.obj
  0001:000602a0       ?GetRuntimeClass@CTabPage1@@UBEPAUCRuntimeClass@@XZ 004612a0 f   TabPage1.obj
@@ -1691,8 +1692,8 @@
  0001:00062c30       ??_Gtype_info@@UAEPAXI@Z   00463c30 f i MSVCRTD:std_type_info_static.obj
  0001:00062c30       ??_Etype_info@@UAEPAXI@Z   00463c30 f i MSVCRTD:std_type_info_static.obj
  0001:00062c70       ??_V@YAXPAX@Z              00463c70 f   MSVCRTD:delete_array.obj
- 0001:00062c90       __alloca_probe             00463c90 f   MSVCRTD:chkstk.obj
  0001:00062c90       __chkstk                   00463c90 f   MSVCRTD:chkstk.obj
+ 0001:00062c90       __alloca_probe             00463c90 f   MSVCRTD:chkstk.obj
  0001:000630a0       ?get_app_type@__scrt_winmain_policy@@SA?AW4_crt_app_type@@XZ 004640a0 f i MSVCRTD:exe_winmain.obj
  0001:000630f0       _WinMainCRTStartup         004640f0 f   MSVCRTD:exe_winmain.obj
  0001:000632a0       ?_RTC_AllocaFailure@@YAXPAXPAU_RTC_ALLOCA_NODE@@H@Z 004642a0 f   MSVCRTD:_error_.obj
@@ -1721,8 +1722,8 @@
  0001:00063d50       ??1exception@std@@UAE@XZ   00464d50 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063d80       ??_Gbad_alloc@std@@UAEPAXI@Z 00464d80 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063d80       ??_Ebad_alloc@std@@UAEPAXI@Z 00464d80 f i MSVCRTD:throw_bad_alloc.obj
- 0001:00063dc0       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00464dc0 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063dc0       ??_Gbad_array_new_length@std@@UAEPAXI@Z 00464dc0 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:00063dc0       ??_Ebad_array_new_length@std@@UAEPAXI@Z 00464dc0 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063e00       ??_Eexception@std@@UAEPAXI@Z 00464e00 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063e00       ??_Gexception@std@@UAEPAXI@Z 00464e00 f i MSVCRTD:throw_bad_alloc.obj
  0001:00063e40       ?__scrt_throw_std_bad_alloc@@YAXXZ 00464e40 f   MSVCRTD:throw_bad_alloc.obj
@@ -2371,23 +2372,24 @@
  0001:00069dd4       _VariantChangeType@16      0046add4 f   oleaut32:OLEAUT32.dll
  0001:00069dda       _SetErrorInfo@8            0046adda f   oleaut32:OLEAUT32.dll
  0001:00069de0       _CreateErrorInfo@4         0046ade0 f   oleaut32:OLEAUT32.dll
- 0001:00069df0       ___vcrt_initialize         0046adf0 f   MSVCRTD:ucrt_stubs.obj
  0001:00069df0       ___acrt_initialize         0046adf0 f   MSVCRTD:ucrt_stubs.obj
  0001:00069df0       ___scrt_stub_for_acrt_initialize 0046adf0 f   MSVCRTD:ucrt_stubs.obj
- 0001:00069e00       ___vcrt_thread_attach      0046ae00 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069df0       ___vcrt_initialize         0046adf0 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e00       ___scrt_stub_for_acrt_thread_attach 0046ae00 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069e00       ___vcrt_thread_attach      0046ae00 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e00       ___acrt_thread_attach      0046ae00 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e10       ___vcrt_thread_detach      0046ae10 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e10       ___scrt_stub_for_acrt_thread_detach 0046ae10 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e10       ___acrt_thread_detach      0046ae10 f   MSVCRTD:ucrt_stubs.obj
- 0001:00069e20       ___acrt_uninitialize       0046ae20 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e20       ___scrt_stub_for_acrt_uninitialize 0046ae20 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069e20       ___acrt_uninitialize       0046ae20 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e20       ___vcrt_uninitialize       0046ae20 f   MSVCRTD:ucrt_stubs.obj
- 0001:00069e30       ___scrt_stub_for_acrt_uninitialize_critical 0046ae30 f   MSVCRTD:ucrt_stubs.obj
- 0001:00069e30       ___vcrt_uninitialize_critical 0046ae30 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e30       ___acrt_uninitialize_critical 0046ae30 f   MSVCRTD:ucrt_stubs.obj
- 0001:00069e40       __is_c_termination_complete 0046ae40 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069e30       ___vcrt_uninitialize_critical 0046ae30 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069e30       ___scrt_stub_for_acrt_uninitialize_critical 0046ae30 f   MSVCRTD:ucrt_stubs.obj
  0001:00069e40       ___scrt_stub_for_is_c_termination_complete 0046ae40 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069e40       __is_c_termination_complete 0046ae40 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00069e50       ?SetCtrlContent@CPETOOLSDlg@@QAEHXZ 0046ae50 f   PETOOLSDlg.obj
  0001:00071b30       ??__Fcache@?1??GetCDCCacheInstance@CImage@ATL@@CAPAVCDCCache@12@XZ@YAXXZ 00472b30 f i GlobeVar.obj
  0001:00071b80       ??__FgdiPlus@?1??GetInitGDIPlusInstance@CImage@ATL@@CAPAVCInitGDIPlus@12@XZ@YAXXZ 00472b80 f i GlobeVar.obj
  0001:00071bd0       ??__FstrHeap@?1??GetInstance@CAtlStringMgr@ATL@@SAPAUIAtlStringMgr@2@XZ@YAXXZ 00472bd0 f i GlobeVar.obj
@@ -2407,6 +2409,24 @@
  0002:00000f50       ?cmddata@@3QBUt_cmddata@@B 00474f50     asmserv.obj
  0002:00003d18       ?vxdcmd@@3Ut_cmddata@@B    00477d18     asmserv.obj
  0002:00003d30       ?dangerous@@3QBUt_cmddata@@B 00477d30     asmserv.obj
+ 0002:00003d94       ??_C@_08NAIOJAOG@Static46?$AA@ 00477d94     PETOOLSDlg.obj
+ 0002:00003da0       ??_C@_0M@FFBKLGDO@D?3?2calc?4exe?$AA@ 00477da0     PETOOLSDlg.obj
+ 0002:00003dac       ??_C@_07PMFMJPJH@Button9?$AA@ 00477dac     PETOOLSDlg.obj
+ 0002:00003dc0       ??_C@_0P@BPDPJEDG@PE?N?D?$LM?$PO?$LH?V?N?v?M?j?$LB?O?$AA@ 00477dc0     PETOOLSDlg.obj
+ 0002:00003dd0       ??_C@_0BH@PHMNNICG@?$LP?$KK?J?$LM?I?h?V?C?$LG?T?$LL?$LA?$LP?r?$LP?X?$LM?$PO?$LF?D?V?$LF?$AA@ 00477dd0     PETOOLSDlg.obj
+ 0002:00003dec       ??_C@_06LLEDLONC@?G?P?$LL?$LL?$DO?$DO?$AA@ 00477dec     PETOOLSDlg.obj
+ 0002:00003df4       ??_C@_0BB@BKKJHJE@?$LG?T?$LL?$LA?$LP?r?V?$LF?I?h?V?C?J?$KH?$LA?$NM?$AA@ 00477df4     PETOOLSDlg.obj
+ 0002:00003e08       ??_C@_0BA@NAEFGFDP@?$LF?$LM?H?k?$LB?m?$LM?S?C?$NM?$LD?I?$LJ?$KG?$CB?$AA@ 00477e08     PETOOLSDlg.obj
+ 0002:00003e1c       ??_C@_0N@PMLKJFOO@?J?G?$LH?q?$LB?$KD?$LE?f?N?D?$LM?$PO?$AA@ 00477e1c     PETOOLSDlg.obj
+ 0002:00003e40       ??_C@_0BC@NGEIOBLI@?V?X?$LG?$KI?N?$LL?$LB?m?H?$KF?$LD?$PN?$LD?I?$LJ?$KG?$CB?$AA@ 00477e40     PETOOLSDlg.obj
+ 0002:00003e5c       ??_C@_08NEEIFCHO@?A?m?$LE?f?$LD?I?$LJ?$KG?$AA@ 00477e5c     PETOOLSDlg.obj
+ 0002:00003e68       ??_C@_08JCHGJIAJ@?N?$NO?$LF?$LM?H?k?$LB?m?$AA@ 00477e68     PETOOLSDlg.obj
+ 0002:00003e8c       ??_C@_01KDCPPGHE@r?$AA@    00477e8c     PETOOLSDlg.obj
+ 0002:00003ea0       ??_C@_0BB@LKNJOAMB@?$LG?T?$LL?$LA?$LP?r?V?$LF?I?h?V?C?M?j?$LB?O?$AA@ 00477ea0     PETOOLSDlg.obj
+ 0002:00003eb4       ??_C@_0BP@JGJJJPFN@?$LC?K?$LF?$KF?9?$LJ?$KG?D?$NM?9?H?$KF?V?X?$LG?$KI?N?$LL?$LB?m?3?H?$KF?$LD?$PN?$LD?I?$LJ?$KG?$CB?$AA@ 00477eb4     PETOOLSDlg.obj
+ 0002:00003ee0       ??_C@_0L@JBGKMMDL@?N?$NO?V?X?$LG?$KI?N?$LL?$LB?m?$AA@ 00477ee0     PETOOLSDlg.obj
+ 0002:00003eec       ??_C@_0CK@EGPBCGMD@TXT?5Files?$CI?$CK?4exe?$CJ?$HM?$CK?4exe?$HMAll?5Files@ 00477eec     PETOOLSDlg.obj
+ 0002:00003f18       ??_C@_0BP@JJONBLOI@?$LC?K?$LF?$KF?9?$LJ?$KG?D?$NM?9?$LF?$LM?H?k?$LB?m?$LM?S?C?$NM?3?$LM?S?C?$NM?$LD?I?$LJ?$KG?$CB?$AA@ 00477f18     PETOOLSDlg.obj
  0002:000046f0       ??_C@_02CNCKMBBD@AL?$AA@   004786f0     asmserv.obj
  0002:000046f4       ??_C@_02COKOBFHN@CL?$AA@   004786f4     asmserv.obj
  0002:000046f8       ??_C@_02CLOBADPI@DL?$AA@   004786f8     asmserv.obj
@@ -3091,7 +3111,7 @@
  0002:00006514       ??_C@_0M@GBDCECLF@LOCK?5prefix?$AA@ 0047a514     disasm.obj
  0002:00006524       ??_C@_0BK@KDMBFBHJ@Unaligned?5stack?5operation?$AA@ 0047a524     disasm.obj
  0002:00006544       ??_C@_17CNPHIMPH@?$AA?$CF?$AAl?$AAs?$AA?$AA@ 0047a544     DebugLog.obj
- 0002:00006550       ??_C@_1JA@DKOIEICI@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047a550     DebugLog.obj
+ 0002:00006550       ??_C@_1JA@MLONGMJL@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047a550     DebugLog.obj
  0002:000065fc       ??_C@_1CG@JNLFBNGN@?$AA?$CC?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAa?$AAr?$AAg?$AAu?$AAm?$AAe?$AAn?$AAt?$AA?$CC?$AA?$AA@ 0047a5fc     DebugLog.obj
  0002:0000662c       ??_C@_0BN@HMCJOMKN@_Count?5?$DM?$DN?5?$CIsize_t?$CJ?$CI?91?$CJ?5?1?5_Sz?$AA@ 0047a62c     DebugLog.obj
  0002:00006650       ??_C@_1EI@MLOBABC@?$AA?$CC?$AA_?$AAC?$AAo?$AAu?$AAn?$AAt?$AA?5?$AA?$DM?$AA?$DN?$AA?5?$AA?$CI?$AAs?$AAi?$AAz?$AAe?$AA_?$AAt?$AA?$CJ?$AA?$CI?$AA?9?$AA1?$AA?$CJ?$AA?5?$AA?1?$AA?5?$AA_?$AAS?$AAz?$AA?$CC?$AA?5?$AA?$CG@ 0047a650     DebugLog.obj
@@ -3115,7 +3135,7 @@
  0002:00006b4c       ??_C@_09LKHEAJFI@LOG_FATAL?$AA@ 0047ab4c     log4z.obj
  0002:00006b58       ??_C@_04KGFMLCPK@Main?$AA@ 0047ab58     log4z.obj
  0002:00006b60       ??_C@_06GLOIENHC@?4?1log?1?$AA@ 0047ab60     log4z.obj
- 0002:00006b68       ??_C@_1JA@MHADJNIL@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047ab68     log4z.obj
+ 0002:00006b68       ??_C@_1JA@DGAGLJDI@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047ab68     log4z.obj
  0002:00006c14       ??_C@_1DC@POOIKBAO@?$AAI?$AAT?$AAE?$AAR?$AAA?$AAT?$AAO?$AAR?$AA?5?$AAL?$AAI?$AAS?$AAT?$AA?5?$AAC?$AAO?$AAR?$AAR?$AAU?$AAP?$AAT?$AAE?$AAD?$AA?$CB?$AA?$AA@ 0047ac14     log4z.obj
  0002:00006c50       ??_C@_0BE@LMNLACIC@_Ptr_container?5?$CB?$DN?50?$AA@ 0047ac50     log4z.obj
  0002:00006c68       ??_C@_1DG@HGDKEBPG@?$AA?$CC?$AA_?$AAP?$AAt?$AAr?$AA_?$AAc?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?$CC?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA0?$AA?$AA@ 0047ac68     log4z.obj
@@ -3183,23 +3203,23 @@
  0002:00007664       ??_C@_0BO@JCLBGKFM@?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?5?$AN?6?$AA@ 0047b664     log4z.obj
  0002:00007688       ??_C@_0DJ@IAMOEBK@log4z?3?5closeLogger?5can?5not?5close@ 0047b688     log4z.obj
  0002:000076d0       ??_C@_0EI@HICJOEIN@?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?5?5log4z?5thread?5@ 0047b6d0     log4z.obj
- 0002:00007728       ??_C@_0DD@HPBOEDCC@d?3?2?$LD?L?P?r?2petools?2petools?2commonli@ 0047b728     log4z.obj
+ 0002:00007728       ??_C@_0DD@DABCKCEF@f?3?2?$LD?L?P?r?2petools?2petools?2commonli@ 0047b728     log4z.obj
  0002:00007768       ??_C@_0L@DBMLCDJJ@logger?5id?$DN?$AA@ 0047b768     log4z.obj
  0002:00007778       ??_C@_05JKEDABGG@?5key?$DN?$AA@ 0047b778     log4z.obj
  0002:00007780       ??_C@_06NGDKEHGB@?5name?$DN?$AA@ 0047b780     log4z.obj
  0002:00007788       ??_C@_06MKCPKPMM@?5path?$DN?$AA@ 0047b788     log4z.obj
  0002:00007790       ??_C@_07CGMLJCBM@?5level?$DN?$AA@ 0047b790     log4z.obj
  0002:0000779c       ??_C@_09KFDBCJFN@?5display?$DN?$AA@ 0047b79c     log4z.obj
- 0002:000077a8       ??_C@_1IK@BHJCIFB@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047b7a8     log4z.obj
+ 0002:000077a8       ??_C@_1IK@MNNBDCMH@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047b7a8     log4z.obj
  0002:00007850       ??_C@_1DO@CFEEPGGJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 0047b850     log4z.obj
  0002:0000789c       ??_C@_0CI@FNPHFCCM@Standard?5C?$CL?$CL?5Libraries?5Invalid?5A@ 0047b89c     log4z.obj
  0002:000078d0       ??_C@_1FO@GJIHNDLM@?$AA?$CC?$AAS?$AAt?$AAa?$AAn?$AAd?$AAa?$AAr?$AAd?$AA?5?$AAC?$AA?$CL?$AA?$CL?$AA?5?$AAL?$AAi?$AAb?$AAr?$AAa?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAI?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5@ 0047b8d0     log4z.obj
  0002:00007940       ??_C@_1BOI@HCKICPEB@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 0047b940     log4z.obj
- 0002:00007b90       ??_C@_1IM@NCODKBJH@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047bb90     log4z.obj
+ 0002:00007b90       ??_C@_1IM@IJKLJNJ@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047bb90     log4z.obj
  0002:00007c38       ??_C@_1DA@JIKEAPDO@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAe?$AAm?$AAp?$AAt?$AAy?$AA?5?$AAb?$AAe?$AAf?$AAo?$AAr?$AAe?$AA?5?$AAp?$AAo?$AAp?$AA?$AA@ 0047bc38     log4z.obj
- 0002:00007c78       ??_C@_1IK@ENFOGHIC@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047bc78     log4z.obj
+ 0002:00007c78       ??_C@_1IK@IBPGHNBE@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047bc78     log4z.obj
  0002:00007d20       ??_C@_1CO@FNIDKHMC@?$AAd?$AAe?$AAq?$AAu?$AAe?$AA?5?$AAe?$AAm?$AAp?$AAt?$AAy?$AA?5?$AAb?$AAe?$AAf?$AAo?$AAr?$AAe?$AA?5?$AAp?$AAo?$AAp?$AA?$AA@ 0047bd20     log4z.obj
- 0002:00007d58       ??_C@_1IO@EADHKMNI@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047bd58     log4z.obj
+ 0002:00007d58       ??_C@_1IO@DNKBIMHM@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047bd58     log4z.obj
  0002:00007e04       ??_C@_1DM@GMPLOCPK@?$AAs?$AAt?$AAr?$AAi?$AAn?$AAg?$AA?5?$AAs?$AAu?$AAb?$AAs?$AAc?$AAr?$AAi?$AAp?$AAt?$AA?5?$AAo?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 0047be04     log4z.obj
  0002:00007e50       ??_C@_1EG@EHJFMBHJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAi?$AAn?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 0047be50     log4z.obj
  0002:00007ea4       ??_C@_0CE@OFMIGAMM@Standard?5C?$CL?$CL?5Libraries?5Out?5of?5Ra@ 0047bea4     log4z.obj
@@ -3221,7 +3241,7 @@
  0002:00008af0       ??_C@_1BAG@NDHNNHBF@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAD?$AAe?$AAq?$AAu?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs@ 0047caf0     log4z.obj
  0002:00008c2c       ??_C@_0BC@KBDMBKEH@deque?$DMT?$DO?5too?5long?$AA@ 0047cc2c     log4z.obj
  0002:00008c48       ??_C@_1BKK@NKNEDAJK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 0047cc48     log4z.obj
- 0002:00008e48       ??_C@_1II@MMKOEKPG@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047ce48     log4z.obj
+ 0002:00008e48       ??_C@_1II@HAGJJDJA@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047ce48     log4z.obj
  0002:00008ef0       ??_C@_1EA@JDNDELPC@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?$AA@ 0047cef0     log4z.obj
  0002:00008f40       ??_C@_1BKI@HKIMBOED@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAL?$AAi?$AAs?$AAt?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 0047cf40     log4z.obj
  0002:00009140       ??_C@_1EC@HILJLMMC@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa?$AAb?$AAl?$AAe@ 0047d140     log4z.obj
@@ -3240,9 +3260,9 @@
  0002:00009bac       ??_C@_1CK@EOPGIILJ@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAn?$AAu?$AAl?$AAl?$AA?5?$AAp?$AAo?$AAi?$AAn?$AAt?$AAe?$AAr?$AA?$AA@ 0047dbac     log4z.obj
  0002:00009be0       ??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@ 0047dbe0     log4z.obj
  0002:00009bf4       ??_C@_1CO@DGLIKNHI@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 0047dbf4     log4z.obj
- 0002:00009c30       ??_C@_1JC@ELNBGKIG@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047dc30     log4z.obj
+ 0002:00009c30       ??_C@_1JC@LIDKICCJ@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047dc30     log4z.obj
  0002:00009ce0       ??_C@_1EC@KLICFBGL@?$AAc?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?5?$AAf?$AAo?$AAr?$AA?5?$AAs?$AAw?$AAa?$AAp@ 0047dce0     log4z.obj
- 0002:00009d30       ??_C@_1IG@CDANFHMM@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047dd30     log4z.obj
+ 0002:00009d30       ??_C@_1IG@KIOCJIGN@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047dd30     log4z.obj
  0002:00009dd0       ??_C@_1EG@BPNHNPIG@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAn?$AAs?$AAe?$AAr?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5?$AAr?$AAa?$AAn@ 0047ddd0     log4z.obj
  0002:00009e24       ??_C@_1DI@MDELDGPI@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 0047de24     log4z.obj
  0002:00009e68       ??_C@_1BKI@CJEDELEH@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAL?$AAi?$AAs?$AAt?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 0047de68     log4z.obj
@@ -3258,7 +3278,7 @@
  0002:0000a7e4       ??_C@_0BC@PGMFNIFA@atlTraceException?$AA@ 0047e7e4     AddPatch.obj
  0002:0000a7fc       ??_C@_17LGGGMOOB@?$AA?$CF?$AAh?$AAs?$AA?$AA@ 0047e7fc     AddPatch.obj
  0002:0000a808       ??_C@_1EO@EBPPKGOM@?$AAf?$AAa?$AAl?$AAs?$AAe?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA?$CC?$AAT?$AAo?$AAo?$AA?5?$AAm?$AAa?$AAn?$AAy?$AA?5?$AAc?$AAa?$AAt?$AAe?$AAg?$AAo?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAd?$AAe@ 0047e808     AddPatch.obj
- 0002:0000a868       ??_C@_1KC@LMLKMJJ@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047e868     AddPatch.obj
+ 0002:0000a868       ??_C@_1KC@OKBBEKIO@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 0047e868     AddPatch.obj
  0002:0000a92c       ?classCAddPatch@CAddPatch@@2UCRuntimeClass@@B 0047e92c     AddPatch.obj
  0002:0000a954       ??_7CAddPatch@@6B@         0047e954     AddPatch.obj
  0002:0000ab3c       ??_C@_09CAHNAPMO@CAddPatch?$AA@ 0047eb3c     AddPatch.obj
@@ -3353,7 +3373,7 @@
  0002:0000b648       ??_C@_1DM@LHGCHCBA@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAs?$AAu?$AAb?$AAs?$AAc?$AAr?$AAi?$AAp?$AAt?$AA?5?$AAo?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 0047f648     DialogFirst.obj
  0002:0000b690       ??_C@_1KK@IFGNPJEI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAs?$AAt?$AAr?$AAu?$AAc?$AAt?$AA?5?$AA_?$AAD?$AAe?$AAl?$AAa?$AAy?$AAI?$AAt?$AAe?$AAm?$AA?0?$AAc?$AAl@ 0047f690     DialogFirst.obj
  0002:0000b760       ??_C@_1KK@KMNALLEN@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAs?$AAt?$AAr?$AAu?$AAc?$AAt?$AA?5?$AA_?$AAR?$AAe?$AAl?$AAo?$AAc?$AAI?$AAt?$AAe?$AAm?$AA?0?$AAc?$AAl@ 0047f760     DialogFirst.obj
- 0002:0000b840       ??_C@_1LG@IILAMNCI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAs?$AAt?$AAr?$AAu?$AAc?$AAt?$AA?5?$AA_?$AAR?$AAe?$AAs?$AAo?$AAu?$AAr?$AAc?$AAe?$AAI?$AAt?$AAe?$AAm@ 0047f840     DialogFirst.obj
+ 0002:0000b830       ??_C@_1LG@IILAMNCI@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAs?$AAt?$AAr?$AAu?$AAc?$AAt?$AA?5?$AA_?$AAR?$AAe?$AAs?$AAo?$AAu?$AAr?$AAc?$AAe?$AAI?$AAt?$AAe?$AAm@ 0047f830     DialogFirst.obj
  0002:0000b910       ??_C@_1KO@NAOMGGBC@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAs?$AAt?$AAr?$AAu?$AAc?$AAt?$AA?5?$AA_?$AAI?$AAm?$AAp?$AAo?$AAr?$AAt?$AAI?$AAt?$AAe?$AAm?$AA?0?$AAc@ 0047f910     DialogFirst.obj
  0002:0000b9e0       ??_C@_1LG@MBAPNEF@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?$DM?$AAs?$AAt?$AAr?$AAu?$AAc?$AAt?$AA?5?$AA_?$AAO?$AAr?$AAd?$AAi?$AAn?$AAa?$AAl?$AAF?$AAu?$AAn?$AAc?$AAs@ 0047f9e0     DialogFirst.obj
  0002:0000bae4       ?classCDisaDialog@CDisaDialog@@2UCRuntimeClass@@B 0047fae4     DisaDialog.obj
@@ -3402,7 +3422,7 @@
  0002:0000c0ec       ?CLSID_WinFormsControl@@3U_GUID@@B 004800ec     GlobeVar.obj
  0002:0000c100       _IID_IAxWinAmbientDispatchEx 00480100     GlobeVar.obj
  0002:0000c114       ??_C@_13COJANIEC@?$AA0?$AA?$AA@ 00480114     GlobeVar.obj
- 0002:0000c118       ??_C@_1KC@HIGAMOBK@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480118     GlobeVar.obj
+ 0002:0000c118       ??_C@_1KC@JJLKCIAN@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480118     GlobeVar.obj
  0002:0000c1dc       ??_C@_0BA@MKMIKKJB@atlTraceGeneral?$AA@ 004801dc     GlobeVar.obj
  0002:0000c1f0       ??_C@_0M@DGPFJEBB@atlTraceCOM?$AA@ 004801f0     GlobeVar.obj
  0002:0000c200       ??_C@_0L@LHELAKBP@atlTraceQI?$AA@ 00480200     GlobeVar.obj
@@ -3431,22 +3451,22 @@
  0002:0000c3b4       ??_C@_1BM@GBBOFEAE@?$AA_?$AA_?$AAa?$AAt?$AAl?$AA_?$AAc?$AAo?$AAn?$AAd?$AAV?$AAa?$AAl?$AA?$AA@ 004803b4     GlobeVar.obj
  0002:0000c3dc       ??_7CWin32Heap@ATL@@6B@    004803dc     GlobeVar.obj
  0002:0000c3f4       ??_C@_1BG@CLPBKBHG@?$AAh?$AAH?$AAe?$AAa?$AAp?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 004803f4     GlobeVar.obj
- 0002:0000c410       ??_C@_1JO@MDHCMBJF@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480410     GlobeVar.obj
+ 0002:0000c410       ??_C@_1JO@DEJPKBMH@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480410     GlobeVar.obj
  0002:0000c4d0       ??_C@_1BC@PMINONJG@?$AAb?$AAS?$AAu?$AAc?$AAc?$AAe?$AAs?$AAs?$AA?$AA@ 004804d0     GlobeVar.obj
  0002:0000c4e8       ??_C@_1BE@BLGCOAPB@?$AAn?$AAR?$AAe?$AAf?$AAs?$AA?5?$AA?$DO?$AA?5?$AA0?$AA?$AA@ 004804e8     GlobeVar.obj
- 0002:0000c500       ??_C@_1KG@EDGLFGGJ@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480500     GlobeVar.obj
+ 0002:0000c500       ??_C@_1KG@IPBAGKCG@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480500     GlobeVar.obj
  0002:0000c5c8       ??_C@_1CA@MEFFJNJ@?$AAp?$AAS?$AAt?$AAr?$AAi?$AAn?$AAg?$AAM?$AAg?$AAr?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 004805c8     GlobeVar.obj
- 0002:0000c5f0       ??_C@_1KA@NPMEJJPP@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004805f0     GlobeVar.obj
- 0002:0000c6b0       ??_C@_0FA@KKCFHKFG@c?3?2program?5files?5?$CIx86?$CJ?2microsoft@ 004806b0     GlobeVar.obj
+ 0002:0000c5f0       ??_C@_1KA@BKPLDAJM@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004805f0     GlobeVar.obj
+ 0002:0000c6b0       ??_C@_0FA@PONDLCDN@d?3?2program?5files?5?$CIx86?$CJ?2microsoft@ 004806b0     GlobeVar.obj
  0002:0000c710       ??_C@_0EA@EJEMLPD@ERROR?5?3?5Unable?5to?5initialize?5cri@ 00480710     GlobeVar.obj
  0002:0000c760       ??_C@_0ED@GFNHMOFC@ERROR?5?3?5Unable?5to?5initialize?5cri@ 00480760     GlobeVar.obj
  0002:0000c7b4       ??_7CAtlStringMgr@ATL@@6B@ 004807b4     GlobeVar.obj
- 0002:0000c7d8       ??_C@_1JO@ELKMDGCG@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004807d8     GlobeVar.obj
+ 0002:0000c7d8       ??_C@_1JO@LMEBFGHE@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004807d8     GlobeVar.obj
  0002:0000c898       ??_C@_1BG@IEBIBJEI@?$AAp?$AAD?$AAa?$AAt?$AAa?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 00480898     GlobeVar.obj
  0002:0000c8b4       ??_C@_1DE@KEEBDKDC@?$AAp?$AAD?$AAa?$AAt?$AAa?$AA?9?$AA?$DO?$AAp?$AAS?$AAt?$AAr?$AAi?$AAn?$AAg?$AAM?$AAg?$AAr?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AAt?$AAh?$AAi?$AAs?$AA?$AA@ 004808b4     GlobeVar.obj
  0002:0000c8f4       ??_C@_0BE@KEBGCGNB@File?5access?5error?5?$CB?$AA@ 004808f4     GlobeVar.obj
  0002:0000c90c       ??_C@_0N@EPLDCJJF@16EditLoader?$AA@ 0048090c     GlobeVar.obj
- 0002:0000c920       ??_C@_1KI@FIEDFAIM@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480920     GlobeVar.obj
+ 0002:0000c920       ??_C@_1KI@MNLDLK@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00480920     GlobeVar.obj
  0002:0000c9f0       ??_C@_1EA@JHMKKLFC@?$AAn?$AAI?$AAn?$AAd?$AAe?$AAx?$AA?5?$AA?$DO?$AA?$DN?$AA?5?$AA0?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AAn?$AAI?$AAn?$AAd?$AAe?$AAx?$AA?5?$AA?$DM?$AA?5?$AAm?$AA_?$AAn?$AAS?$AAi?$AAz?$AAe?$AA?$AA@ 004809f0     GlobeVar.obj
  0002:0000ca3c       ??_C@_1BK@NHECDDNK@?$AAm?$AA_?$AAp?$AAD?$AAa?$AAt?$AAa?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 00480a3c     GlobeVar.obj
  0002:0000ca84       ?classMFCEdit@MFCEdit@@2UCRuntimeClass@@B 00480a84     MFCEdit.obj
@@ -3483,121 +3503,106 @@
  0002:0000dd48       ??_C@_07CBDMIEHM@Static4?$AA@ 00481d48     PETOOLSDlg.obj
  0002:0000dd54       ??_C@_07DICHLFDN@Static5?$AA@ 00481d54     PETOOLSDlg.obj
  0002:0000dd60       ??_C@_07BDAKOGPO@Static6?$AA@ 00481d60     PETOOLSDlg.obj
- 0002:0000dd6c       ??_C@_07JEJCPKDB@Static9?$AA@ 00481d6c     PETOOLSDlg.obj
- 0002:0000dd78       ??_C@_08IABPPFIL@Static10?$AA@ 00481d78     PETOOLSDlg.obj
- 0002:0000dd84       ??_C@_08JJAEMEMK@Static11?$AA@ 00481d84     PETOOLSDlg.obj
- 0002:0000dd90       ??_C@_08LCCJJHAJ@Static12?$AA@ 00481d90     PETOOLSDlg.obj
- 0002:0000dd9c       ??_C@_08KLDCKGEI@Static13?$AA@ 00481d9c     PETOOLSDlg.obj
- 0002:0000dda8       ??_C@_08OEHDDAIP@Static14?$AA@ 00481da8     PETOOLSDlg.obj
- 0002:0000ddb4       ??_C@_08PNGIABMO@Static15?$AA@ 00481db4     PETOOLSDlg.obj
- 0002:0000ddc0       ??_C@_08NGEFFCAN@Static16?$AA@ 00481dc0     PETOOLSDlg.obj
- 0002:0000ddcc       ??_C@_08MPFOGDEM@Static17?$AA@ 00481dcc     PETOOLSDlg.obj
- 0002:0000ddd8       ??_C@_08EIMGHPID@Static18?$AA@ 00481dd8     PETOOLSDlg.obj
- 0002:0000dde4       ??_C@_08FBNNEOMC@Static19?$AA@ 00481de4     PETOOLSDlg.obj
- 0002:0000ddf0       ??_C@_08ICFJELNC@Static20?$AA@ 00481df0     PETOOLSDlg.obj
- 0002:0000ddfc       ??_C@_08JLECHKJD@Static21?$AA@ 00481dfc     PETOOLSDlg.obj
- 0002:0000de08       ??_C@_08LAGPCJFA@Static22?$AA@ 00481e08     PETOOLSDlg.obj
- 0002:0000de14       ??_C@_08KJHEBIBB@Static23?$AA@ 00481e14     PETOOLSDlg.obj
- 0002:0000de20       ??_C@_08OGDFIONG@Static24?$AA@ 00481e20     PETOOLSDlg.obj
- 0002:0000de2c       ??_C@_08PPCOLPJH@Static25?$AA@ 00481e2c     PETOOLSDlg.obj
- 0002:0000de38       ??_C@_08NEADOMFE@Static26?$AA@ 00481e38     PETOOLSDlg.obj
- 0002:0000de44       ??_C@_08MNBINNBF@Static27?$AA@ 00481e44     PETOOLSDlg.obj
- 0002:0000de50       ??_C@_08EKIAMBNK@Static28?$AA@ 00481e50     PETOOLSDlg.obj
- 0002:0000de5c       ??_C@_08FDJLPAJL@Static29?$AA@ 00481e5c     PETOOLSDlg.obj
- 0002:0000de68       ??_C@_08IDJLCBOF@Static30?$AA@ 00481e68     PETOOLSDlg.obj
- 0002:0000de74       ??_C@_08JKIABAKE@Static31?$AA@ 00481e74     PETOOLSDlg.obj
- 0002:0000de80       ??_C@_08LBKNEDGH@Static32?$AA@ 00481e80     PETOOLSDlg.obj
- 0002:0000de8c       ??_C@_08KILGHCCG@Static33?$AA@ 00481e8c     PETOOLSDlg.obj
- 0002:0000de98       ??_C@_08OHPHOEOB@Static34?$AA@ 00481e98     PETOOLSDlg.obj
- 0002:0000dea4       ??_C@_08POOMNFKA@Static35?$AA@ 00481ea4     PETOOLSDlg.obj
- 0002:0000deb0       ??_C@_08NFMBIGGD@Static36?$AA@ 00481eb0     PETOOLSDlg.obj
- 0002:0000debc       ??_C@_08MMNKLHCC@Static37?$AA@ 00481ebc     PETOOLSDlg.obj
- 0002:0000dec8       ??_C@_08ELECKLON@Static38?$AA@ 00481ec8     PETOOLSDlg.obj
- 0002:0000ded4       ??_C@_08FCFJJKKM@Static39?$AA@ 00481ed4     PETOOLSDlg.obj
- 0002:0000dee0       ??_C@_08IGNEDHGA@Static40?$AA@ 00481ee0     PETOOLSDlg.obj
- 0002:0000deec       ??_C@_08JPMPAGCB@Static41?$AA@ 00481eec     PETOOLSDlg.obj
- 0002:0000def8       ??_C@_08LEOCFFOC@Static42?$AA@ 00481ef8     PETOOLSDlg.obj
- 0002:0000df04       ??_C@_08KNPJGEKD@Static43?$AA@ 00481f04     PETOOLSDlg.obj
- 0002:0000df10       ??_C@_08OCLIPCGE@Static44?$AA@ 00481f10     PETOOLSDlg.obj
- 0002:0000df1c       ??_C@_08PLKDMDCF@Static45?$AA@ 00481f1c     PETOOLSDlg.obj
- 0002:0000df28       ??_C@_08NAIOJAOG@Static46?$AA@ 00481f28     PETOOLSDlg.obj
- 0002:0000df34       ??_C@_05KOJBGLLJ@Edit1?$AA@ 00481f34     PETOOLSDlg.obj
- 0002:0000df3c       ??_C@_0M@FFBKLGDO@D?3?2calc?4exe?$AA@ 00481f3c     PETOOLSDlg.obj
- 0002:0000df4c       ??_C@_05IFLMDIHK@Edit2?$AA@ 00481f4c     PETOOLSDlg.obj
- 0002:0000df54       ??_C@_05MKPNKOLN@Edit5?$AA@ 00481f54     PETOOLSDlg.obj
- 0002:0000df5c       ??_C@_05OBNAPNHO@Edit6?$AA@ 00481f5c     PETOOLSDlg.obj
- 0002:0000df64       ??_C@_05PIMLMMDP@Edit7?$AA@ 00481f64     PETOOLSDlg.obj
- 0002:0000df6c       ??_C@_05HPFDNAPA@Edit8?$AA@ 00481f6c     PETOOLSDlg.obj
- 0002:0000df74       ??_C@_05GGEIOBLB@Edit9?$AA@ 00481f74     PETOOLSDlg.obj
- 0002:0000df7c       ??_C@_06GNFFKMLA@Edit10?$AA@ 00481f7c     PETOOLSDlg.obj
- 0002:0000df84       ??_C@_06HEEOJNPB@Edit11?$AA@ 00481f84     PETOOLSDlg.obj
- 0002:0000df8c       ??_C@_06FPGDMODC@Edit12?$AA@ 00481f8c     PETOOLSDlg.obj
- 0002:0000df94       ??_C@_06EGHIPPHD@Edit13?$AA@ 00481f94     PETOOLSDlg.obj
- 0002:0000df9c       ??_C@_06JDJGJLE@Edit14?$AA@ 00481f9c     PETOOLSDlg.obj
- 0002:0000dfa4       ??_C@_06BACCFIPF@Edit15?$AA@ 00481fa4     PETOOLSDlg.obj
- 0002:0000dfac       ??_C@_06DLAPALDG@Edit16?$AA@ 00481fac     PETOOLSDlg.obj
- 0002:0000dfb4       ??_C@_06CCBEDKHH@Edit17?$AA@ 00481fb4     PETOOLSDlg.obj
- 0002:0000dfbc       ??_C@_06KFIMCGLI@Edit18?$AA@ 00481fbc     PETOOLSDlg.obj
- 0002:0000dfc4       ??_C@_06LMJHBHPJ@Edit19?$AA@ 00481fc4     PETOOLSDlg.obj
- 0002:0000dfcc       ??_C@_06GPBDBCOJ@Edit20?$AA@ 00481fcc     PETOOLSDlg.obj
- 0002:0000dfd4       ??_C@_06HGAICDKI@Edit21?$AA@ 00481fd4     PETOOLSDlg.obj
- 0002:0000dfdc       ??_C@_06FNCFHAGL@Edit22?$AA@ 00481fdc     PETOOLSDlg.obj
- 0002:0000dfe4       ??_C@_06EEDOEBCK@Edit23?$AA@ 00481fe4     PETOOLSDlg.obj
- 0002:0000dfec       ??_C@_06LHPNHON@Edit24?$AA@ 00481fec     PETOOLSDlg.obj
- 0002:0000dff4       ??_C@_06BCGEOGKM@Edit25?$AA@ 00481ff4     PETOOLSDlg.obj
- 0002:0000dffc       ??_C@_06DJEJLFGP@Edit26?$AA@ 00481ffc     PETOOLSDlg.obj
- 0002:0000e004       ??_C@_06CAFCIECO@Edit27?$AA@ 00482004     PETOOLSDlg.obj
- 0002:0000e00c       ??_C@_06KHMKJIOB@Edit28?$AA@ 0048200c     PETOOLSDlg.obj
- 0002:0000e014       ??_C@_06LONBKJKA@Edit29?$AA@ 00482014     PETOOLSDlg.obj
- 0002:0000e01c       ??_C@_06GONBHINO@Edit30?$AA@ 0048201c     PETOOLSDlg.obj
- 0002:0000e024       ??_C@_06HHMKEJJP@Edit31?$AA@ 00482024     PETOOLSDlg.obj
- 0002:0000e02c       ??_C@_06FMOHBKFM@Edit32?$AA@ 0048202c     PETOOLSDlg.obj
- 0002:0000e034       ??_C@_06EFPMCLBN@Edit33?$AA@ 00482034     PETOOLSDlg.obj
- 0002:0000e03c       ??_C@_06KLNLNNK@Edit34?$AA@ 0048203c     PETOOLSDlg.obj
- 0002:0000e044       ??_C@_06BDKGIMJL@Edit35?$AA@ 00482044     PETOOLSDlg.obj
- 0002:0000e04c       ??_C@_06DIILNPFI@Edit36?$AA@ 0048204c     PETOOLSDlg.obj
- 0002:0000e054       ??_C@_06CBJAOOBJ@Edit37?$AA@ 00482054     PETOOLSDlg.obj
- 0002:0000e05c       ??_C@_06KGAIPCNG@Edit38?$AA@ 0048205c     PETOOLSDlg.obj
- 0002:0000e064       ??_C@_06LPBDMDJH@Edit39?$AA@ 00482064     PETOOLSDlg.obj
- 0002:0000e06c       ??_C@_06GLJOGOFL@Edit40?$AA@ 0048206c     PETOOLSDlg.obj
- 0002:0000e074       ??_C@_06HCIFFPBK@Edit41?$AA@ 00482074     PETOOLSDlg.obj
- 0002:0000e07c       ??_C@_07DEIFBFJP@Button1?$AA@ 0048207c     PETOOLSDlg.obj
- 0002:0000e088       ??_C@_07BPKIEGFM@Button2?$AA@ 00482088     PETOOLSDlg.obj
- 0002:0000e094       ??_C@_07GLDHHBN@Button3?$AA@ 00482094     PETOOLSDlg.obj
- 0002:0000e0a0       ??_C@_07EJPCOBNK@Button4?$AA@ 004820a0     PETOOLSDlg.obj
- 0002:0000e0ac       ??_C@_07FAOJNAJL@Button5?$AA@ 004820ac     PETOOLSDlg.obj
- 0002:0000e0b8       ??_C@_07HLMEIDFI@Button6?$AA@ 004820b8     PETOOLSDlg.obj
- 0002:0000e0c4       ??_C@_07GCNPLCBJ@Button7?$AA@ 004820c4     PETOOLSDlg.obj
- 0002:0000e0d0       ??_C@_04EAELEMAG@?$LO?$KP?$LI?f?$AA@ 004820d0     PETOOLSDlg.obj
- 0002:0000e0d8       ??_C@_0BD@HMHJBFJ@?G?k?Q?$KB?T?q?R?$KK?$LH?V?N?v?$LF?D?N?D?$LM?$PO?$AA@ 004820d8     PETOOLSDlg.obj
- 0002:0000e0f0       ??_C@_01KDCPPGHE@r?$AA@    004820f0     PETOOLSDlg.obj
- 0002:0000e0f4       ??_C@_0BE@JJLGEDAI@PeStruct?$LD?u?J?$LM?$LL?$KP?J?$KH?$LA?$NM?$CB?$AA@ 004820f4     PETOOLSDlg.obj
- 0002:0000e10c       ??_C@_0P@MMHHCCGM@?$LP?$KK?J?$LM?$LH?V?N?vPE?N?D?$LM?$PO?$AA@ 0048210c     PETOOLSDlg.obj
- 0002:0000e120       ??_C@_0L@LHADKNHM@PE?N?D?$LM?$PO?$LE?m?N?s?$AA@ 00482120     PETOOLSDlg.obj
- 0002:0000e130       ??_C@_0P@BPDPJEDG@PE?N?D?$LM?$PO?$LH?V?N?v?M?j?$LB?O?$AA@ 00482130     PETOOLSDlg.obj
- 0002:0000e144       ??_C@_0L@LMABDGAL@PE?$LH?V?N?v?J?$KH?$LA?$NM?$AA@ 00482144     PETOOLSDlg.obj
- 0002:0000e154       ??_C@_0BH@PHMNNICG@?$LP?$KK?J?$LM?I?h?V?C?$LG?T?$LL?$LA?$LP?r?$LP?X?$LM?$PO?$LF?D?V?$LF?$AA@ 00482154     PETOOLSDlg.obj
- 0002:0000e170       ??_C@_0BB@LKNJOAMB@?$LG?T?$LL?$LA?$LP?r?V?$LF?I?h?V?C?M?j?$LB?O?$AA@ 00482170     PETOOLSDlg.obj
- 0002:0000e184       ??_C@_0BB@BKKJHJE@?$LG?T?$LL?$LA?$LP?r?V?$LF?I?h?V?C?J?$KH?$LA?$NM?$AA@ 00482184     PETOOLSDlg.obj
- 0002:0000e198       ??_C@_01FJMABOPO@x?$AA@    00482198     PETOOLSDlg.obj
- 0002:0000e19c       ??_C@_01EANLCPLP@y?$AA@    0048219c     PETOOLSDlg.obj
- 0002:0000e1a0       ??_C@_04CIMGMMMG@text?$AA@ 004821a0     PETOOLSDlg.obj
- 0002:0000e1a8       ??_C@_06ICCHMNIM@0X?$CF04X?$AA@ 004821a8     PETOOLSDlg.obj
- 0002:0000e1b0       ??_C@_06LLEDLONC@?G?P?$LL?$LL?$DO?$DO?$AA@ 004821b0     PETOOLSDlg.obj
- 0002:0000e1b8       ??_C@_06IKPBAIDO@?G?P?$LL?$LL?$DM?$DM?$AA@ 004821b8     PETOOLSDlg.obj
- 0002:0000e1c0       ??_C@_0P@ODHHCLFI@?G?k?O?H?$LH?V?N?vPE?N?D?$LM?$PO?$AA@ 004821c0     PETOOLSDlg.obj
- 0002:0000e1d4       ??_C@_04IBNHJNAL@?$LB?$KD?$LE?f?$AA@ 004821d4     PETOOLSDlg.obj
- 0002:0000e1dc       ??_C@_0N@PMLKJFOO@?J?G?$LH?q?$LB?$KD?$LE?f?N?D?$LM?$PO?$AA@ 004821dc     PETOOLSDlg.obj
- 0002:0000e1ec       ??_C@_0CK@EGPBCGMD@TXT?5Files?$CI?$CK?4exe?$CJ?$HM?$CK?4exe?$HMAll?5Files@ 004821ec     PETOOLSDlg.obj
- 0002:0000e220       ??_C@_03JACLIBNI@exe?$AA@  00482220     PETOOLSDlg.obj
- 0002:0000e224       ??_C@_08NEEIFCHO@?A?m?$LE?f?$LD?I?$LJ?$KG?$AA@ 00482224     PETOOLSDlg.obj
- 0002:0000e230       ??_C@_09MJPHCMFD@?L?m?$LM?S?J?$KH?$LA?$NM?$CB?$AA@ 00482230     PETOOLSDlg.obj
- 0002:0000e23c       ??_C@_0L@JBGKMMDL@?N?$NO?V?X?$LG?$KI?N?$LL?$LB?m?$AA@ 0048223c     PETOOLSDlg.obj
- 0002:0000e24c       ??_C@_0BP@JGJJJPFN@?$LC?K?$LF?$KF?9?$LJ?$KG?D?$NM?9?H?$KF?V?X?$LG?$KI?N?$LL?$LB?m?3?H?$KF?$LD?$PN?$LD?I?$LJ?$KG?$CB?$AA@ 0048224c     PETOOLSDlg.obj
- 0002:0000e274       ??_C@_0BC@NGEIOBLI@?V?X?$LG?$KI?N?$LL?$LB?m?H?$KF?$LD?$PN?$LD?I?$LJ?$KG?$CB?$AA@ 00482274     PETOOLSDlg.obj
- 0002:0000e28c       ??_C@_08JCHGJIAJ@?N?$NO?$LF?$LM?H?k?$LB?m?$AA@ 0048228c     PETOOLSDlg.obj
- 0002:0000e298       ??_C@_0BP@JJONBLOI@?$LC?K?$LF?$KF?9?$LJ?$KG?D?$NM?9?$LF?$LM?H?k?$LB?m?$LM?S?C?$NM?3?$LM?S?C?$NM?$LD?I?$LJ?$KG?$CB?$AA@ 00482298     PETOOLSDlg.obj
- 0002:0000e2c0       ??_C@_0BA@NAEFGFDP@?$LF?$LM?H?k?$LB?m?$LM?S?C?$NM?$LD?I?$LJ?$KG?$CB?$AA@ 004822c0     PETOOLSDlg.obj
+ 0002:0000dd6c       ??_C@_07KBBNHLP@Static7?$AA@ 00481d6c     PETOOLSDlg.obj
+ 0002:0000dd78       ??_C@_07JEJCPKDB@Static9?$AA@ 00481d78     PETOOLSDlg.obj
+ 0002:0000dd84       ??_C@_08IABPPFIL@Static10?$AA@ 00481d84     PETOOLSDlg.obj
+ 0002:0000dd90       ??_C@_08JJAEMEMK@Static11?$AA@ 00481d90     PETOOLSDlg.obj
+ 0002:0000dd9c       ??_C@_08LCCJJHAJ@Static12?$AA@ 00481d9c     PETOOLSDlg.obj
+ 0002:0000dda8       ??_C@_08KLDCKGEI@Static13?$AA@ 00481da8     PETOOLSDlg.obj
+ 0002:0000ddb4       ??_C@_08OEHDDAIP@Static14?$AA@ 00481db4     PETOOLSDlg.obj
+ 0002:0000ddc0       ??_C@_08PNGIABMO@Static15?$AA@ 00481dc0     PETOOLSDlg.obj
+ 0002:0000ddcc       ??_C@_08NGEFFCAN@Static16?$AA@ 00481dcc     PETOOLSDlg.obj
+ 0002:0000ddd8       ??_C@_08MPFOGDEM@Static17?$AA@ 00481dd8     PETOOLSDlg.obj
+ 0002:0000dde4       ??_C@_08EIMGHPID@Static18?$AA@ 00481de4     PETOOLSDlg.obj
+ 0002:0000ddf0       ??_C@_08FBNNEOMC@Static19?$AA@ 00481df0     PETOOLSDlg.obj
+ 0002:0000ddfc       ??_C@_08ICFJELNC@Static20?$AA@ 00481dfc     PETOOLSDlg.obj
+ 0002:0000de08       ??_C@_08JLECHKJD@Static21?$AA@ 00481e08     PETOOLSDlg.obj
+ 0002:0000de14       ??_C@_08LAGPCJFA@Static22?$AA@ 00481e14     PETOOLSDlg.obj
+ 0002:0000de20       ??_C@_08KJHEBIBB@Static23?$AA@ 00481e20     PETOOLSDlg.obj
+ 0002:0000de2c       ??_C@_08OGDFIONG@Static24?$AA@ 00481e2c     PETOOLSDlg.obj
+ 0002:0000de38       ??_C@_08PPCOLPJH@Static25?$AA@ 00481e38     PETOOLSDlg.obj
+ 0002:0000de44       ??_C@_08NEADOMFE@Static26?$AA@ 00481e44     PETOOLSDlg.obj
+ 0002:0000de50       ??_C@_08MNBINNBF@Static27?$AA@ 00481e50     PETOOLSDlg.obj
+ 0002:0000de5c       ??_C@_08EKIAMBNK@Static28?$AA@ 00481e5c     PETOOLSDlg.obj
+ 0002:0000de68       ??_C@_08FDJLPAJL@Static29?$AA@ 00481e68     PETOOLSDlg.obj
+ 0002:0000de74       ??_C@_08IDJLCBOF@Static30?$AA@ 00481e74     PETOOLSDlg.obj
+ 0002:0000de80       ??_C@_08JKIABAKE@Static31?$AA@ 00481e80     PETOOLSDlg.obj
+ 0002:0000de8c       ??_C@_08LBKNEDGH@Static32?$AA@ 00481e8c     PETOOLSDlg.obj
+ 0002:0000de98       ??_C@_08KILGHCCG@Static33?$AA@ 00481e98     PETOOLSDlg.obj
+ 0002:0000dea4       ??_C@_08OHPHOEOB@Static34?$AA@ 00481ea4     PETOOLSDlg.obj
+ 0002:0000deb0       ??_C@_08POOMNFKA@Static35?$AA@ 00481eb0     PETOOLSDlg.obj
+ 0002:0000debc       ??_C@_08NFMBIGGD@Static36?$AA@ 00481ebc     PETOOLSDlg.obj
+ 0002:0000dec8       ??_C@_08MMNKLHCC@Static37?$AA@ 00481ec8     PETOOLSDlg.obj
+ 0002:0000ded4       ??_C@_08ELECKLON@Static38?$AA@ 00481ed4     PETOOLSDlg.obj
+ 0002:0000dee0       ??_C@_08FCFJJKKM@Static39?$AA@ 00481ee0     PETOOLSDlg.obj
+ 0002:0000deec       ??_C@_08IGNEDHGA@Static40?$AA@ 00481eec     PETOOLSDlg.obj
+ 0002:0000def8       ??_C@_08JPMPAGCB@Static41?$AA@ 00481ef8     PETOOLSDlg.obj
+ 0002:0000df04       ??_C@_08LEOCFFOC@Static42?$AA@ 00481f04     PETOOLSDlg.obj
+ 0002:0000df10       ??_C@_08KNPJGEKD@Static43?$AA@ 00481f10     PETOOLSDlg.obj
+ 0002:0000df1c       ??_C@_08OCLIPCGE@Static44?$AA@ 00481f1c     PETOOLSDlg.obj
+ 0002:0000df28       ??_C@_08PLKDMDCF@Static45?$AA@ 00481f28     PETOOLSDlg.obj
+ 0002:0000df3c       ??_C@_05KOJBGLLJ@Edit1?$AA@ 00481f3c     PETOOLSDlg.obj
+ 0002:0000df54       ??_C@_05IFLMDIHK@Edit2?$AA@ 00481f54     PETOOLSDlg.obj
+ 0002:0000df5c       ??_C@_05MKPNKOLN@Edit5?$AA@ 00481f5c     PETOOLSDlg.obj
+ 0002:0000df64       ??_C@_05OBNAPNHO@Edit6?$AA@ 00481f64     PETOOLSDlg.obj
+ 0002:0000df6c       ??_C@_05PIMLMMDP@Edit7?$AA@ 00481f6c     PETOOLSDlg.obj
+ 0002:0000df74       ??_C@_05HPFDNAPA@Edit8?$AA@ 00481f74     PETOOLSDlg.obj
+ 0002:0000df7c       ??_C@_05GGEIOBLB@Edit9?$AA@ 00481f7c     PETOOLSDlg.obj
+ 0002:0000df84       ??_C@_06GNFFKMLA@Edit10?$AA@ 00481f84     PETOOLSDlg.obj
+ 0002:0000df8c       ??_C@_06HEEOJNPB@Edit11?$AA@ 00481f8c     PETOOLSDlg.obj
+ 0002:0000df94       ??_C@_06FPGDMODC@Edit12?$AA@ 00481f94     PETOOLSDlg.obj
+ 0002:0000df9c       ??_C@_06EGHIPPHD@Edit13?$AA@ 00481f9c     PETOOLSDlg.obj
+ 0002:0000dfa4       ??_C@_06JDJGJLE@Edit14?$AA@ 00481fa4     PETOOLSDlg.obj
+ 0002:0000dfac       ??_C@_06BACCFIPF@Edit15?$AA@ 00481fac     PETOOLSDlg.obj
+ 0002:0000dfb4       ??_C@_06DLAPALDG@Edit16?$AA@ 00481fb4     PETOOLSDlg.obj
+ 0002:0000dfbc       ??_C@_06CCBEDKHH@Edit17?$AA@ 00481fbc     PETOOLSDlg.obj
+ 0002:0000dfc4       ??_C@_06KFIMCGLI@Edit18?$AA@ 00481fc4     PETOOLSDlg.obj
+ 0002:0000dfcc       ??_C@_06LMJHBHPJ@Edit19?$AA@ 00481fcc     PETOOLSDlg.obj
+ 0002:0000dfd4       ??_C@_06GPBDBCOJ@Edit20?$AA@ 00481fd4     PETOOLSDlg.obj
+ 0002:0000dfdc       ??_C@_06HGAICDKI@Edit21?$AA@ 00481fdc     PETOOLSDlg.obj
+ 0002:0000dfe4       ??_C@_06FNCFHAGL@Edit22?$AA@ 00481fe4     PETOOLSDlg.obj
+ 0002:0000dfec       ??_C@_06EEDOEBCK@Edit23?$AA@ 00481fec     PETOOLSDlg.obj
+ 0002:0000dff4       ??_C@_06LHPNHON@Edit24?$AA@ 00481ff4     PETOOLSDlg.obj
+ 0002:0000dffc       ??_C@_06BCGEOGKM@Edit25?$AA@ 00481ffc     PETOOLSDlg.obj
+ 0002:0000e004       ??_C@_06DJEJLFGP@Edit26?$AA@ 00482004     PETOOLSDlg.obj
+ 0002:0000e00c       ??_C@_06CAFCIECO@Edit27?$AA@ 0048200c     PETOOLSDlg.obj
+ 0002:0000e014       ??_C@_06KHMKJIOB@Edit28?$AA@ 00482014     PETOOLSDlg.obj
+ 0002:0000e01c       ??_C@_06LONBKJKA@Edit29?$AA@ 0048201c     PETOOLSDlg.obj
+ 0002:0000e024       ??_C@_06GONBHINO@Edit30?$AA@ 00482024     PETOOLSDlg.obj
+ 0002:0000e02c       ??_C@_06HHMKEJJP@Edit31?$AA@ 0048202c     PETOOLSDlg.obj
+ 0002:0000e034       ??_C@_06FMOHBKFM@Edit32?$AA@ 00482034     PETOOLSDlg.obj
+ 0002:0000e03c       ??_C@_06EFPMCLBN@Edit33?$AA@ 0048203c     PETOOLSDlg.obj
+ 0002:0000e044       ??_C@_06KLNLNNK@Edit34?$AA@ 00482044     PETOOLSDlg.obj
+ 0002:0000e04c       ??_C@_06BDKGIMJL@Edit35?$AA@ 0048204c     PETOOLSDlg.obj
+ 0002:0000e054       ??_C@_06DIILNPFI@Edit36?$AA@ 00482054     PETOOLSDlg.obj
+ 0002:0000e05c       ??_C@_06CBJAOOBJ@Edit37?$AA@ 0048205c     PETOOLSDlg.obj
+ 0002:0000e064       ??_C@_06KGAIPCNG@Edit38?$AA@ 00482064     PETOOLSDlg.obj
+ 0002:0000e06c       ??_C@_06LPBDMDJH@Edit39?$AA@ 0048206c     PETOOLSDlg.obj
+ 0002:0000e074       ??_C@_06GLJOGOFL@Edit40?$AA@ 00482074     PETOOLSDlg.obj
+ 0002:0000e07c       ??_C@_06HCIFFPBK@Edit41?$AA@ 0048207c     PETOOLSDlg.obj
+ 0002:0000e088       ??_C@_07DEIFBFJP@Button1?$AA@ 00482088     PETOOLSDlg.obj
+ 0002:0000e094       ??_C@_07BPKIEGFM@Button2?$AA@ 00482094     PETOOLSDlg.obj
+ 0002:0000e0a0       ??_C@_07GLDHHBN@Button3?$AA@ 004820a0     PETOOLSDlg.obj
+ 0002:0000e0ac       ??_C@_07EJPCOBNK@Button4?$AA@ 004820ac     PETOOLSDlg.obj
+ 0002:0000e0b8       ??_C@_07FAOJNAJL@Button5?$AA@ 004820b8     PETOOLSDlg.obj
+ 0002:0000e0c4       ??_C@_07HLMEIDFI@Button6?$AA@ 004820c4     PETOOLSDlg.obj
+ 0002:0000e0d0       ??_C@_07GCNPLCBJ@Button7?$AA@ 004820d0     PETOOLSDlg.obj
+ 0002:0000e0d8       ??_C@_07OFEHKONG@Button8?$AA@ 004820d8     PETOOLSDlg.obj
+ 0002:0000e0f4       ??_C@_04EAELEMAG@?$LO?$KP?$LI?f?$AA@ 004820f4     PETOOLSDlg.obj
+ 0002:0000e10c       ??_C@_0BD@HMHJBFJ@?G?k?Q?$KB?T?q?R?$KK?$LH?V?N?v?$LF?D?N?D?$LM?$PO?$AA@ 0048210c     PETOOLSDlg.obj
+ 0002:0000e130       ??_C@_0BE@JJLGEDAI@PeStruct?$LD?u?J?$LM?$LL?$KP?J?$KH?$LA?$NM?$CB?$AA@ 00482130     PETOOLSDlg.obj
+ 0002:0000e144       ??_C@_0P@MMHHCCGM@?$LP?$KK?J?$LM?$LH?V?N?vPE?N?D?$LM?$PO?$AA@ 00482144     PETOOLSDlg.obj
+ 0002:0000e154       ??_C@_0L@LHADKNHM@PE?N?D?$LM?$PO?$LE?m?N?s?$AA@ 00482154     PETOOLSDlg.obj
+ 0002:0000e184       ??_C@_0L@LMABDGAL@PE?$LH?V?N?v?J?$KH?$LA?$NM?$AA@ 00482184     PETOOLSDlg.obj
+ 0002:0000e1a8       ??_C@_01FJMABOPO@x?$AA@    004821a8     PETOOLSDlg.obj
+ 0002:0000e1b0       ??_C@_01EANLCPLP@y?$AA@    004821b0     PETOOLSDlg.obj
+ 0002:0000e1b8       ??_C@_04CIMGMMMG@text?$AA@ 004821b8     PETOOLSDlg.obj
+ 0002:0000e1c0       ??_C@_06ICCHMNIM@0X?$CF04X?$AA@ 004821c0     PETOOLSDlg.obj
+ 0002:0000e1dc       ??_C@_06IKPBAIDO@?G?P?$LL?$LL?$DM?$DM?$AA@ 004821dc     PETOOLSDlg.obj
+ 0002:0000e1ec       ??_C@_0P@ODHHCLFI@?G?k?O?H?$LH?V?N?vPE?N?D?$LM?$PO?$AA@ 004821ec     PETOOLSDlg.obj
+ 0002:0000e23c       ??_C@_09MJPHCMFD@?L?m?$LM?S?J?$KH?$LA?$NM?$CB?$AA@ 0048223c     PETOOLSDlg.obj
+ 0002:0000e24c       ??_C@_04IBNHJNAL@?$LB?$KD?$LE?f?$AA@ 0048224c     PETOOLSDlg.obj
+ 0002:0000e298       ??_C@_03JACLIBNI@exe?$AA@  00482298     PETOOLSDlg.obj
  0002:0000e390       ?classCPosCalcDlg@CPosCalcDlg@@2UCRuntimeClass@@B 00482390     PosCalcDlg.obj
  0002:0000e3b8       ??_7CPosCalcDlg@@6B@       004823b8     PosCalcDlg.obj
  0002:0000e5a0       ??_C@_0M@GNLGBPE@CPosCalcDlg?$AA@ 004825a0     PosCalcDlg.obj
@@ -4443,7 +4448,7 @@
  0003:00004a94       ?MainDlg@@3PAVCPETOOLSDlg@@A 00492a94     PETOOLSDlg.obj
  0003:00004a98       ?gWait@@3HC                00492a98     ProBarThread.obj
  0003:00004a9c       ?ProDialog@@3PAVCProgressDialog@@A 00492a9c     ProBarThread.obj
- 0003:00004aa4       ___@@_PchSym_@00@UKlsKprKroKluKopKrkUkvgllohUkvgllohUkvgllohUwvyftUhgwzucOlyq@9343CAE85F05E2CC 00492aa4     stdafx.obj
+ 0003:00004aa4       ___@@_PchSym_@00@UKlsKprKroKluKopKrkUkvgllohUkvgllohUkvgllohUwvyftUhgwzucOlyq@5C90CC39D601F14 00492aa4     stdafx.obj
  0003:00004ea4       ___scrt_current_native_startup_state 00492ea4     MSVCRTD:utility.obj
  0003:00004ea8       ___scrt_native_startup_lock 00492ea8     MSVCRTD:utility.obj
  0003:00004efc       __tls_index                00492efc     MSVCRTD:tlssup.obj
@@ -4977,14 +4982,14 @@
  0004:00000b5c       __imp___controlfp_s        00493b5c     ucrtd:ucrtbased.dll
  0004:00000b60       __imp___wmakepath_s        00493b60     ucrtd:ucrtbased.dll
  0004:00000b64       __imp___wsplitpath_s       00493b64     ucrtd:ucrtbased.dll
- 0004:00000b68       __imp___strnicmp           00493b68     ucrtd:ucrtbased.dll
  0004:00000b68       __imp__strnicmp            00493b68     ucrtd:ucrtbased.dll
+ 0004:00000b68       __imp___strnicmp           00493b68     ucrtd:ucrtbased.dll
  0004:00000b6c       __imp___strupr             00493b6c     ucrtd:ucrtbased.dll
  0004:00000b6c       __imp__strupr              00493b6c     ucrtd:ucrtbased.dll
- 0004:00000b70       __imp__memicmp             00493b70     ucrtd:ucrtbased.dll
  0004:00000b70       __imp___memicmp            00493b70     ucrtd:ucrtbased.dll
- 0004:00000b74       __imp__strlwr              00493b74     ucrtd:ucrtbased.dll
+ 0004:00000b70       __imp__memicmp             00493b70     ucrtd:ucrtbased.dll
  0004:00000b74       __imp___strlwr             00493b74     ucrtd:ucrtbased.dll
+ 0004:00000b74       __imp__strlwr              00493b74     ucrtd:ucrtbased.dll
  0004:00000b78       __imp___setmbcp            00493b78     ucrtd:ucrtbased.dll
  0004:00000b7c       __imp___recalloc           00493b7c     ucrtd:ucrtbased.dll
  0004:00000b80       __imp__strcat              00493b80     ucrtd:ucrtbased.dll

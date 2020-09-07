@@ -51,19 +51,26 @@ public:
 	//相关变量
 	Ini mIni;
 	PEMake mPEMake;
-	MFCStatus m_Status;
-	MFCStatic m_Static1;
-	MFCEdit m_Edit1;
 	CMFCButton m_Button1;
+	CMFCButton m_Button2;
+	CMFCButton m_Button3;
+	CMFCButton m_Button4;
+	CMFCButton m_Button5;
+	CMFCButton m_Button6;
+	CMFCButton m_Button7;
+	CMFCButton m_Button8;
+	CMFCButton m_Button9;
+
+	MFCStatus m_Status;
+
+	MFCStatic m_Static1;
 	MFCStatic m_Static2;
 	MFCStatic m_Static3;
-	MFCEdit m_Edit2;
 	MFCStatic m_Static4;
 	MFCStatic m_Static5;
 	MFCStatic m_Static6;
-	CMFCButton m_Button2;
+	MFCStatic m_Static7;
 	MFCStatic m_Static9;
-
 	MFCStatic m_Static10;
 	MFCStatic m_Static11;
 	MFCStatic m_Static12;
@@ -71,7 +78,6 @@ public:
 	MFCStatic m_Static14;
 	MFCStatic m_Static15;
 	MFCStatic m_Static16;
-
 	MFCStatic m_Static17;
 	MFCStatic m_Static18;
 	MFCStatic m_Static19;
@@ -103,6 +109,8 @@ public:
 	MFCStatic m_Static45;
 	MFCStatic m_Static46;
 
+	MFCEdit m_Edit1;
+	MFCEdit m_Edit2;
 	MFCEdit m_Edit5;
 	MFCEdit m_Edit6;
 	MFCEdit m_Edit7;
@@ -140,11 +148,7 @@ public:
 	MFCEdit m_Edit39;
 	MFCEdit m_Edit40;
 	MFCEdit m_Edit41;
-	CMFCButton m_Button3;
-	CMFCButton m_Button4;
-	CMFCButton m_Button5;
-	CMFCButton m_Button6;
-	CMFCButton m_Button7;
+	
 	CPosCalcDlg *pPosCalcDlg;
 public:
 	//相关方法
@@ -160,9 +164,13 @@ public:
 	static BOOL CALLBACK EnumChildProc(HWND hwnd,LPARAM lParam);
 public:
 	afx_msg void OnBnClickedMfcbutton1();
-	afx_msg void OnBnClickedMfcbutton3();
-	afx_msg void OnBnClickedMfcbutton5();
 	afx_msg void OnBnClickedMfcbutton2();
+	afx_msg void OnBnClickedMfcbutton3();
+	afx_msg void OnBnClickedMfcbutton4();
+	afx_msg void OnBnClickedMfcbutton5();
+	afx_msg void OnBnClickedMfcbutton6();
+	afx_msg void OnBnClickedMfcbutton7();
+	afx_msg void OnBnClickedMfcbutton8();
 public:
 	afx_msg void OnOpen();
 	afx_msg void OnDisa();
@@ -180,7 +188,5 @@ public:
 	afx_msg void OnEncrypt();
 	afx_msg void OnPosCalc();
 	afx_msg void OnHexEditView();
-	afx_msg void OnBnClickedMfcbutton6();
-	afx_msg void OnBnClickedMfcbutton7();
-	afx_msg void OnBnClickedMfcbutton8();
+	afx_msg void OnBnClickedMfcbutton9();
 };

@@ -44,21 +44,21 @@ CPETOOLSDlg::~CPETOOLSDlg()
 void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_MFCBUTTON1, m_Button1);
+	DDX_Control(pDX, IDC_MFCBUTTON2, m_Button2);
+	DDX_Control(pDX, IDC_MFCBUTTON3, m_Button3);
+	DDX_Control(pDX, IDC_MFCBUTTON4, m_Button4);
+	DDX_Control(pDX, IDC_MFCBUTTON5, m_Button5);
+	DDX_Control(pDX, IDC_MFCBUTTON6, m_Button6);
+	DDX_Control(pDX, IDC_MFCBUTTON7, m_Button7);
 	DDX_Control(pDX, IDC_STATIC1, m_Static1);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE1, m_Edit1);
-	DDX_Control(pDX, IDC_MFCBUTTON1, m_Button1);
 	DDX_Control(pDX, IDC_STATIC2, m_Static2);
 	DDX_Control(pDX, IDC_STATIC3, m_Static3);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE2, m_Edit2);
 	DDX_Control(pDX, IDC_STATIC4, m_Static4);
 	DDX_Control(pDX, IDC_STATIC5, m_Static5);
 	DDX_Control(pDX, IDC_STATIC6, m_Static6);
-	//DDX_Control(pDX, IDC_STATIC7, m_Static7);
-	//DDX_Control(pDX, IDC_STATIC8, m_Static8);
-	//DDX_Control(pDX, IDC_MFCEDITBROWSE3, m_Edit3);
-	//DDX_Control(pDX, IDC_MFCEDITBROWSE4, m_Edit4);
-	DDX_Control(pDX, IDC_MFCBUTTON2, m_Button2);
-	//DDX_Control(pDX, IDC_COMBOBOXEX1, m_ComboBox1);
 	DDX_Control(pDX, IDC_STATIC9, m_Static9);
 	DDX_Control(pDX, IDC_STATIC10, m_Static10);
 	DDX_Control(pDX, IDC_STATIC11, m_Static11);
@@ -134,21 +134,24 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MFCEDITBROWSE39, m_Edit39);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE40, m_Edit40);
 	DDX_Control(pDX, IDC_MFCEDITBROWSE41, m_Edit41);
-	DDX_Control(pDX, IDC_MFCBUTTON3, m_Button3);
-	DDX_Control(pDX, IDC_MFCBUTTON5, m_Button5);
-	DDX_Control(pDX, IDC_MFCBUTTON6, m_Button4);
-	DDX_Control(pDX, IDC_MFCBUTTON7, m_Button6);
-	DDX_Control(pDX, IDC_MFCBUTTON8, m_Button7);
+	DDX_Control(pDX, IDC_STATIC7, m_Static7);
+	DDX_Control(pDX, IDC_MFCBUTTON8, m_Button8);
+	DDX_Control(pDX, IDC_MFCBUTTON9, m_Button9);
 }
 
 BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_MFCBUTTON1, &CPETOOLSDlg::OnBnClickedMfcbutton1)
-	ON_BN_CLICKED(IDC_MFCBUTTON3, &CPETOOLSDlg::OnBnClickedMfcbutton3)
-	ON_BN_CLICKED(IDC_MFCBUTTON5, &CPETOOLSDlg::OnBnClickedMfcbutton5)
-	ON_WM_MOUSEMOVE()
 	ON_BN_CLICKED(IDC_MFCBUTTON2, &CPETOOLSDlg::OnBnClickedMfcbutton2)
+	ON_BN_CLICKED(IDC_MFCBUTTON3, &CPETOOLSDlg::OnBnClickedMfcbutton3)
+	ON_BN_CLICKED(IDC_MFCBUTTON4, &CPETOOLSDlg::OnBnClickedMfcbutton4)
+	ON_BN_CLICKED(IDC_MFCBUTTON5, &CPETOOLSDlg::OnBnClickedMfcbutton5)
+	ON_BN_CLICKED(IDC_MFCBUTTON6, &CPETOOLSDlg::OnBnClickedMfcbutton6)
+	ON_BN_CLICKED(IDC_MFCBUTTON7, &CPETOOLSDlg::OnBnClickedMfcbutton7)
+	ON_BN_CLICKED(IDC_MFCBUTTON8, &CPETOOLSDlg::OnBnClickedMfcbutton8)
+	ON_WM_MOUSEMOVE()
+	
 	ON_COMMAND(ID_32771, &CPETOOLSDlg::OnOpen)
 	ON_COMMAND(ID_Disa, &CPETOOLSDlg::OnDisa)
 	ON_COMMAND(ID_RESET, &CPETOOLSDlg::OnReset)
@@ -163,9 +166,8 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_COMMAND(ID_32785, &CPETOOLSDlg::OnEncrypt)
 	ON_COMMAND(ID_32786, &CPETOOLSDlg::OnPosCalc)
 	ON_COMMAND(ID_32787, &CPETOOLSDlg::OnHexEditView)
-	ON_BN_CLICKED(IDC_MFCBUTTON6, &CPETOOLSDlg::OnBnClickedMfcbutton6)
-	ON_BN_CLICKED(IDC_MFCBUTTON7, &CPETOOLSDlg::OnBnClickedMfcbutton7)
-	ON_BN_CLICKED(IDC_MFCBUTTON8, &CPETOOLSDlg::OnBnClickedMfcbutton8)
+	
+	ON_BN_CLICKED(IDC_MFCBUTTON9, &CPETOOLSDlg::OnBnClickedMfcbutton9)
 END_MESSAGE_MAP()
 
 
@@ -259,8 +261,7 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini",&this->m_Static4,"Static4");
 	this->SetControlUI("configure.ini",&this->m_Static5,"Static5");
 	this->SetControlUI("configure.ini",&this->m_Static6,"Static6");
-	//this->SetControlUI("configure.ini",&this->m_Static7,"Static7");
-	//this->SetControlUI("configure.ini",&this->m_Static8,"Static8");
+	this->SetControlUI("configure.ini",&this->m_Static7, "Static7");
 	this->SetControlUI("configure.ini",&this->m_Static9,"Static9");
 	this->SetControlUI("configure.ini",&this->m_Static10,"Static10");
 	this->SetControlUI("configure.ini",&this->m_Static11,"Static11");
@@ -351,6 +352,8 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini", &this->m_Button5, "Button5");
 	this->SetControlUI("configure.ini", &this->m_Button6, "Button6");
 	this->SetControlUI("configure.ini", &this->m_Button7, "Button7");
+	this->SetControlUI("configure.ini", &this->m_Button8, "Button8");
+	this->SetControlUI("configure.ini", &this->m_Button9, "Button9");
 	
 	//创建状态栏
 	this->m_Status.Create(WS_CHILD|WS_VISIBLE|CCS_BOTTOM,CRect(0,0,0,0), this, IDC_STATUSBARCTRL);
@@ -619,13 +622,13 @@ void CPETOOLSDlg::Reset()
 }
 
 //按钮-切换
-void CPETOOLSDlg::OnBnClickedMfcbutton5()
+void CPETOOLSDlg::OnBnClickedMfcbutton2()
 {
 	TCHAR Buffer[20] = { 0 };
-	this->m_Button5.GetWindowText(Buffer, sizeof(Buffer));
+	this->m_Button2.GetWindowText(Buffer, sizeof(Buffer));
 	if (_tcscmp(Buffer, "切换>>") == 0)
 	{
-		this->m_Button5.SetWindowText("切换<<");
+		this->m_Button2.SetWindowText("切换<<");
 		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
 		{
 			MFCStatic *m_Static = static_cast<MFCStatic *>(this->GetDlgItem(i));
@@ -643,7 +646,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton5()
 	}
 	else
 	{
-		this->m_Button5.SetWindowText("切换>>");
+		this->m_Button2.SetWindowText("切换>>");
 
 		for (int i = this->m_Static17.GetDlgCtrlID(), j = this->m_Edit12.GetDlgCtrlID(); i <= this->m_Static36.GetDlgCtrlID(); i++, j++)
 		{
@@ -663,7 +666,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton5()
 }
 
 //按钮-目录
-void CPETOOLSDlg::OnBnClickedMfcbutton2()
+void CPETOOLSDlg::OnBnClickedMfcbutton3()
 {
 	if(!mPEMake.isAnalysised())
 	{
@@ -697,7 +700,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton2()
 }
 
 //按钮-区段
-void CPETOOLSDlg::OnBnClickedMfcbutton3()
+void CPETOOLSDlg::OnBnClickedMfcbutton4()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	if (!mPEMake.isAnalysised())
@@ -710,7 +713,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton3()
 }
 
 //按钮-位置计算器
-void CPETOOLSDlg::OnBnClickedMfcbutton6()
+void CPETOOLSDlg::OnBnClickedMfcbutton5()
 {
 	// TODO: 在此添加命令处理程序代码
 	if (!mPEMake.isAnalysised())
@@ -727,7 +730,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton6()
 }
 
 //按钮-十六进制
-void CPETOOLSDlg::OnBnClickedMfcbutton7()
+void CPETOOLSDlg::OnBnClickedMfcbutton6()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	if (!mPEMake.isAnalysised())
@@ -739,7 +742,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton7()
 }
 
 //按钮-dump
-void CPETOOLSDlg::OnBnClickedMfcbutton8()
+void CPETOOLSDlg::OnBnClickedMfcbutton7()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	if (!mPEMake.isAnalysised())
@@ -747,6 +750,55 @@ void CPETOOLSDlg::OnBnClickedMfcbutton8()
 		AfxMessageBox("请先分析PE文件");
 		return;
 	}
+}
+
+//按钮-去重定位表
+void CPETOOLSDlg::OnBnClickedMfcbutton8()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	//TODO: 在此添加命令处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
+	if (mPEMake.mPeCtx.pe.mRelocsVector.size() == 0)
+	{
+		AfxMessageBox("无重定位表");
+		return;
+	}
+
+	if (mPEMake.ClsRelocDataDirectory())
+	{
+		OnSaveAs();
+	}
+
+	DebugLog("菜单-功能-去重定位表:去除成功!");
+	//更新界面
+	this->SendMessage(WM_UPDATEUI, NULL, NULL);
+	MessageBox("重定位表去除成功!");
+
+	//此种方法弊端，如果为DLL，则当无法加载到缺省基址，则代码无法进行重定位出错
+	//更好的方法是对代码中重定位项进行重新编码计算，参考《Windows PE》P182。
+}
+
+//功能-添加区段
+void CPETOOLSDlg::OnBnClickedMfcbutton9()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	// TODO: 在此添加命令处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
+	CAddSectionDlg mDlg(this);
+	if (mDlg.DoModal() == IDOK)
+	{
+		OnSaveAs();
+	}
+	else
+		AfxMessageBox("添加失败!");
 }
 
 BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
