@@ -565,7 +565,7 @@ bool PeProtect::EncryptImportTable()
 
 	//可考虑将导入表加密到overlay或者命名区段中
 	AddSectionToEnd(".baby",0x600, IMAGE_SCN_CNT_INITIALIZED_DATA | IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE);
-	ULONGLONG virtualaddr=0x5000;
+	STu32 virtualaddr=0x5000;
 
 	bool isPE32=true;         //32位/64位标志
 #ifdef PE_MODEL
