@@ -564,46 +564,44 @@ bool PeProtect::EncryptImportTable()
 	if(mBaseCtx->pe.mImportsVector.size()==0) return false;
 
 	//可考虑将导入表加密到overlay或者命名区段中
-	//AddSectionToEnd(p,".hoby",0x600);
-	//ULONGLONG virtualaddr=0x5000;
+	AddSectionToEnd(".baby",0x600, IMAGE_SCN_CNT_INITIALIZED_DATA | IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE);
+	ULONGLONG virtualaddr=0x5000;
 
-	//bool isPE32=true;         //32位/64位标志
-	//if(p->g_Magic==IMAGE_NT_OPTIONAL_HDR64_MAGIC)
-	//{
-	//	isPE32=false;
-	//}else if(p->g_Magic==IMAGE_NT_OPTIONAL_HDR32_MAGIC)
-	//{
-	//	isPE32=true;
-	//}
+	bool isPE32=true;         //32位/64位标志
+#ifdef PE_MODEL
+	isPE32 = true;
+#else
+	isPE32 = false;
+#endif // PE_MODEL
 
-	//void *pDescriptor=NULL,*pIatInt=NULL,*pDll=NULL,*pFuncName=NULL,*pRam=NULL,*pOffaet=NULL;
-	////unsigned int sumBytes=0;//总空间大小
-	//unsigned int sum=0,offset=0;  
-	//unsigned offset1=0,offset2=0,offset3=0,offset4=0; //依次分别为 descriptor，thunk，dllname，functionname结构大小
+	void *pDescriptor=NULL,*pIatInt=NULL,*pDll=NULL,*pFuncName=NULL,*pRam=NULL,*pOffaet=NULL;
+	//unsigned int sumBytes=0;//总空间大小
+	unsigned int sum=0,offset=0;  
+	unsigned offset1=0,offset2=0,offset3=0,offset4=0; //依次分别为 descriptor，thunk，dllname，functionname结构大小
 
 
-	////首先计算大小
-	//offset1=(p->g_Import.DescriptorSum+1)*sizeof(IMAGE_IMPORT_DESCRIPTOR); //包含末尾全0结构
-	//offset2=offset1;
-	//void* tmp=p->g_Import.pDll;        //计算dllname空间大小
-	//while(tmp)
-	//{
-	//	offset2+=(strlen(((PDllName)tmp)->name)+1);
-	//	tmp=((PDllName)tmp)->pNext;
-	//}
-	//offset3=offset2;
-	//sum=0;
-	//for(int i=0;i<p->g_Import.DescriptorSum;i++)
-	//{
-	//	sum=((p->g_Import.pThunks+i)->num+1)*2;        //thunk大小
-	//	if(isPE32)
-	//	{
-	//		offset3+=sizeof(IMAGE_THUNK_DATA32)*sum;
-	//	}else
-	//	{
-	//		offset3+=sizeof(IMAGE_THUNK_DATA64)*sum;
-	//	}
-	//}
+	//首先计算大小
+	offset1=(p->g_Import.DescriptorSum+1)*sizeof(IMAGE_IMPORT_DESCRIPTOR); //包含末尾全0结构
+	offset2=offset1;
+	void* tmp=p->g_Import.pDll;        //计算dllname空间大小
+	while(tmp)
+	{
+		offset2+=(strlen(((PDllName)tmp)->name)+1);
+		tmp=((PDllName)tmp)->pNext;
+	}
+	offset3=offset2;
+	sum=0;
+	for(int i=0;i<p->g_Import.DescriptorSum;i++)
+	{
+		sum=((p->g_Import.pThunks+i)->num+1)*2;        //thunk大小
+		if(isPE32)
+		{
+			offset3+=sizeof(IMAGE_THUNK_DATA32)*sum;
+		}else
+		{
+			offset3+=sizeof(IMAGE_THUNK_DATA64)*sum;
+		}
+	}
 
 	//offset4=offset3;
 	//for(int i=0;i<p->g_Import.DescriptorSum;i++)
@@ -761,47 +759,9 @@ bool PeProtect::EncryptImportTable()
 
 	//CloseHandle(hFile);
 	//free(pRam);
-
-
-	/*
-	this->AddSectionToEnd(p,".hoby",0x400);
-	unsigned int SectionNum=0;
-	if(p->g_Magic==IMAGE_NT_OPTIONAL_HDR64_MAGIC)
-	{
-		SectionNum=p->g_PE64.FileHeader.NumberOfSections;
-	}else if(p->g_Magic==IMAGE_NT_OPTIONAL_HDR32_MAGIC)
-	{
-		SectionNum=p->g_PE32.FileHeader.NumberOfSections;
-	}
-
-	//添加的区段里面写入数据
-	IMAGE_SECTION_HEADER m_Header={0};
-	memcpy_s(&m_Header,sizeof(IMAGE_SECTION_HEADER),(char *)(p->g_Sections)+(SectionNum-1)*sizeof(IMAGE_SECTION_HEADER),sizeof(IMAGE_SECTION_HEADER));
-
-	if(sumBytes>m_Header.SizeOfRawData)
-	{
-		p->m_Log.LogControl(L"处理导入表:处理失败，区段过小!");
-		return;
-	}
-
-
-	//写入文件
-	HANDLE hFile=CreateFile(p->Path,GENERIC_READ|GENERIC_WRITE,NULL,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
-	if(INVALID_HANDLE_VALUE==hFile)
-	{
-		p->m_Log.LogControl(L"处理导入表:打开文件失败!");
-		return;
-	}
-	unsigned rvabase=m_Header.VirtualAddress;
-	SetFilePointer(hFile,m_Header.PointerToRawData,0,FILE_BEGIN);
-
-	//开始写数据：首先计算固定的表需要的空间大小，然后计算不固定表末尾的偏移，在写DLL名字，在写函数名，再写thunk_data，最后写import_descriptor
-	CloseHandle(hFile);
-	free(pDll);
-	*/
-
 return true;
 }
+
 /*
 *加密方式一:第一类壳：PE文件添加补丁代码
 *参数一：区段名
