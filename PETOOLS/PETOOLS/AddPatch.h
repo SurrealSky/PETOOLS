@@ -2,6 +2,14 @@
 #include "afxwin.h"
 #include "afxcmn.h"
 #include"MyListCtrl.h"
+#include<pack\ByteBuffer.h>
+#include<list>
+
+typedef struct _ShellCode
+{
+	CString strBinFile;
+	ByteBuffer bin;
+}ShellCode;
 
 
 // CAddPatch ¶Ô»°¿ò
@@ -23,17 +31,16 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	virtual BOOL OnInitDialog();
-	CEdit mNameEdit;
-	CEdit mOffsetEdit;
 	afx_msg void OnBnClickedOk();
-	int m_Radio;
-	afx_msg void OnBnClickedRadio1();
-	afx_msg void OnBnClickedRadio2();
-	afx_msg void OnBnClickedRadio3();
 public:
-	BOOL InitDisaDate();
+	CEdit mNameEdit;
+	CComboBox mBinFile;
 	MyListCtrl mList;
-private:
-	unsigned char *pPatch;
-	unsigned int  dwSize;
+	std::list<ShellCode> shellcodes;
+	BOOL InitDisaDate(STu8*,STu32);
+	CString GetApplicationPath();
+	void LoadShellCodes(std::list<ShellCode>&);
+public:
+	afx_msg void OnCbnSelchangeCombo1();
+	afx_msg void OnBnClickedOk2();
 };

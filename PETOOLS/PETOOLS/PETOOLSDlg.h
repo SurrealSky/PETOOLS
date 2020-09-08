@@ -60,6 +60,8 @@ public:
 	CMFCButton m_Button7;
 	CMFCButton m_Button8;
 	CMFCButton m_Button9;
+	CMFCButton m_Button10;
+	CMFCButton m_Button11;
 
 	MFCStatus m_Status;
 
@@ -189,4 +191,6 @@ public:
 	afx_msg void OnPosCalc();
 	afx_msg void OnHexEditView();
 	afx_msg void OnBnClickedMfcbutton9();
+	afx_msg void OnBnClickedMfcbutton10();
+	afx_msg void OnBnClickedMfcbutton11();
 };

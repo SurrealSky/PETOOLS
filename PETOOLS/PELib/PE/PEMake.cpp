@@ -58,14 +58,24 @@ unsigned int PEMake::FoaToRva(unsigned int foa)
 	return ptrPeProtect->FoaToRva(foa);
 }
 
+STu32 PEMake::SectionAlignmentSize(STu32 size)
+{
+	return ptrPeProtect->SectionAlignmentSize(size);
+}
+
+STu32 PEMake::FileAlignmentSize(STu32 size)
+{
+	return  ptrPeProtect->FileAlignmentSize(size);
+}
+
 bool PEMake::ClsRelocDataDirectory()
 {
 	return ptrPeProtect->ClsRelocDataDirectory();
 }
 
-bool PEMake::AddSectionToEnd(const STu8 *data, unsigned int size)
+bool PEMake::AddSectionToEnd(const STu8 *data, const STu32 size,const STu32 chartics)
 {
-	return ptrPeProtect->AddSectionToEnd(data,size);
+	return ptrPeProtect->AddSectionToEnd(data,size, chartics);
 }
 
 bool PEMake::EncryptImportTable()
@@ -76,6 +86,11 @@ bool PEMake::EncryptImportTable()
 bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset)
 {
 	return ptrPeProtect->AddPatch(pName, pPatch, dwSize, mOffset);
+}
+
+bool PEMake::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const unsigned int dwSize)
+{
+	return ptrPeProtect->AddPatchAuto2OEP(pName, pPatch, dwSize);
 }
 
 bool PEMake::Protect1A()

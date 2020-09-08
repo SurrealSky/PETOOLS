@@ -132,7 +132,6 @@
     <ClInclude Include="DataDirectoryDlg.h" />
     <ClInclude Include="DialogFirst.h" />
     <ClInclude Include="DisaDialog.h" />
-    <ClInclude Include="EncryptDlg.h" />
     <ClInclude Include="GlobeVar.h" />
     <ClInclude Include="MFCEdit.h" />
     <ClInclude Include="MFCStatic.h" />
@@ -147,8 +146,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SectionsDlg.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="TabPage1.h" />
-    <ClInclude Include="TabPage2.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +175,6 @@
     <ClCompile Include="DataDirectoryDlg.cpp" />
     <ClCompile Include="DialogFirst.cpp" />
     <ClCompile Include="DisaDialog.cpp" />
-    <ClCompile Include="EncryptDlg.cpp" />
     <ClCompile Include="GlobeVar.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -197,8 +193,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TabPage1.cpp" />
-    <ClCompile Include="TabPage2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PETOOLS.rc" />

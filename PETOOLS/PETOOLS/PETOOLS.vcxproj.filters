@@ -75,15 +75,6 @@
     <ClInclude Include="AddPatch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="EncryptDlg.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TabPage1.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TabPage2.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MFCEdit.h">
       <Filter>ControlsClass</Filter>
     </ClInclude>
@@ -150,15 +141,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="AddPatch.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="EncryptDlg.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TabPage1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TabPage2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MFCEdit.cpp">

@@ -10,7 +10,6 @@
 #include"ProBarThread.h"
 #include"AddSectionDlg.h"
 #include"AddPatch.h"
-#include"EncryptDlg.h"
 #include<LogLib\DebugLog.h>
 #include<MiniDump.h>
 #include"DataDirectoryDlg.h"
@@ -137,6 +136,8 @@ void CPETOOLSDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC7, m_Static7);
 	DDX_Control(pDX, IDC_MFCBUTTON8, m_Button8);
 	DDX_Control(pDX, IDC_MFCBUTTON9, m_Button9);
+	DDX_Control(pDX, IDC_MFCBUTTON10, m_Button10);
+	DDX_Control(pDX, IDC_MFCBUTTON11, m_Button11);
 }
 
 BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
@@ -168,6 +169,8 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_COMMAND(ID_32787, &CPETOOLSDlg::OnHexEditView)
 	
 	ON_BN_CLICKED(IDC_MFCBUTTON9, &CPETOOLSDlg::OnBnClickedMfcbutton9)
+	ON_BN_CLICKED(IDC_MFCBUTTON10, &CPETOOLSDlg::OnBnClickedMfcbutton10)
+	ON_BN_CLICKED(IDC_MFCBUTTON11, &CPETOOLSDlg::OnBnClickedMfcbutton11)
 END_MESSAGE_MAP()
 
 
@@ -354,6 +357,8 @@ BOOL CPETOOLSDlg::SetDlgUI(void)
 	this->SetControlUI("configure.ini", &this->m_Button7, "Button7");
 	this->SetControlUI("configure.ini", &this->m_Button8, "Button8");
 	this->SetControlUI("configure.ini", &this->m_Button9, "Button9");
+	this->SetControlUI("configure.ini", &this->m_Button10, "Button10");
+	this->SetControlUI("configure.ini", &this->m_Button11, "Button11");
 	
 	//创建状态栏
 	this->m_Status.Create(WS_CHILD|WS_VISIBLE|CCS_BOTTOM,CRect(0,0,0,0), this, IDC_STATUSBARCTRL);
@@ -782,7 +787,7 @@ void CPETOOLSDlg::OnBnClickedMfcbutton8()
 	//更好的方法是对代码中重定位项进行重新编码计算，参考《Windows PE》P182。
 }
 
-//功能-添加区段
+//按钮-添加区段
 void CPETOOLSDlg::OnBnClickedMfcbutton9()
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -797,8 +802,45 @@ void CPETOOLSDlg::OnBnClickedMfcbutton9()
 	{
 		OnSaveAs();
 	}
-	else
-		AfxMessageBox("添加失败!");
+	/*else
+		AfxMessageBox("添加失败!");*/
+}
+
+//按钮-添加补丁
+void CPETOOLSDlg::OnBnClickedMfcbutton10()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
+	CAddPatch mDlg(this);
+	if (mDlg.DoModal() == IDOK)
+	{
+		OnSaveAs();
+	}
+}
+
+//按钮-导入表加密
+void CPETOOLSDlg::OnBnClickedMfcbutton11()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (!mPEMake.isAnalysised())
+	{
+		AfxMessageBox("请先分析PE文件");
+		return;
+	}
+	if (mPEMake.mPeCtx.pe.mImportsVector.size() == 0)
+	{
+		AfxMessageBox("无导入表");
+		return;
+	}
+
+	mPEMake.EncryptImportTable();
+	//更新界面
+	SendMessage(WM_UPDATEUI, NULL, NULL);
+	AfxMessageBox("导入表加密成功!");
 }
 
 BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
@@ -969,8 +1011,6 @@ void CPETOOLSDlg::OnEncrypt()
 		AfxMessageBox("请先分析PE文件");
 		return;
 	}
-	CEncryptDlg mDlg(this);
-	mDlg.DoModal();
 
 }
 
@@ -1041,4 +1081,3 @@ afx_msg LRESULT CPETOOLSDlg::OnUpdateUi(WPARAM wParam, LPARAM lParam)
 	}
 	return 0;
 }
-

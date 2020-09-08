@@ -23,5 +23,10 @@ public:
 	afx_msg void OnBnClickedButton1();
 	CEdit mNameEdit;
 	CEdit mDataLength;
+	CEdit mDataOffset;
+	CEdit mVirtualOffset;
+	CEdit mVirtualSize;
+	CEdit mSize;
 	virtual BOOL OnInitDialog();
+	afx_msg void OnEnChangeEdit4();
 };

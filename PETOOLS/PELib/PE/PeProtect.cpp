@@ -467,7 +467,7 @@ bool PeProtect::AddSectionData(const STu8 *pName,const size_t size,DWORD &mRetAd
 		//节区表头空间不足，可考虑扩大最后一个区段空间，将补丁代码添加进去
 		return ExpandLastSection(size,mRetAddr);
 	}
-	if(AddSectionToEnd(pName,size))
+	if(AddSectionToEnd(pName,size, IMAGE_SCN_CNT_INITIALIZED_DATA | IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE))
 	{
 		mRetAddr=mBaseCtx->pe.mSectionsVector.back().VirtualAddress;
 		return true;
@@ -475,7 +475,7 @@ bool PeProtect::AddSectionData(const STu8 *pName,const size_t size,DWORD &mRetAd
 	return false;
 }
 
-bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size)
+bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size, STu32 chartics)
 {
 	if (!IsEnableAddNewSection()) return false;
 
@@ -494,7 +494,7 @@ bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size)
 	mSectionHeader.PointerToRelocations=0;
 	mSectionHeader.NumberOfLinenumbers=0;
 	mSectionHeader.PointerToLinenumbers=0;
-	mSectionHeader.Characteristics=IMAGE_SCN_CNT_INITIALIZED_DATA|IMAGE_SCN_CNT_CODE|IMAGE_SCN_MEM_EXECUTE|IMAGE_SCN_MEM_READ|IMAGE_SCN_MEM_WRITE;
+	mSectionHeader.Characteristics= chartics;
 	
 
 	//修正影像数据
@@ -807,7 +807,7 @@ return true;
 *参数一：区段名
 *参数二：补丁数据
 *参数三：补丁数据大小
-*参数四：补丁修正原始OPE地址的偏移
+*参数四：E9 XX XX XX XX指令相对补丁起始偏移
 */
 bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int dwSize,unsigned int mOffset)
 {
@@ -816,26 +816,54 @@ bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int
 	if(!AddSectionData(pName,dwSize,mRetAddr)) return false;
 	
 	//复制补丁数据
-	DWORD dwOffset=mBaseCtx->pe.mSectionsVector.back().PointerToRawData; //最后一节的偏移
+	DWORD dwOffset=RvaToFoa(mRetAddr);
 	memcpy(mBaseCtx->pVirMem+dwOffset,pPatch,dwSize);
 	
 	//修正pe OEP
 	DWORD _rva_oldOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
-	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint=mBaseCtx->pe.mSectionsVector.back().VirtualAddress;
+	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint= mRetAddr;
 	//修正影像OEP
 	unsigned char *pTmp=(unsigned char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint=mBaseCtx->pe.mSectionsVector.back().VirtualAddress;
+	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint= mRetAddr;
 	DWORD _rva_newOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
-
-	////硬编码方式
-	//DWORD _foa_newOEP=RvaToFoa(_rva_newOEP);
-	//*(int*)(mBaseCtx->pVirMem+_foa_newOEP+dwSize-5)=_rva_oldOEP-_rva_newOEP-dwSize+1;
 
 	//尝试使用变量重定位方式
 	DWORD _foa_newOEP=RvaToFoa(_rva_newOEP);
 	*(int*)(mBaseCtx->pVirMem+_foa_newOEP+mOffset)=_rva_oldOEP-_rva_newOEP-mOffset-4;
 	return true;
 }
+
+/*
+*加密方式一:第一类壳：PE文件添加补丁代码(自动添加E9 XX XX XX XX指令)
+*参数一：区段名
+*参数二：补丁数据
+*参数三：补丁数据大小
+*/
+bool PeProtect::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const unsigned int dwSize)
+{
+	//增加区段
+	DWORD mRetAddr = 0;
+	if (!AddSectionData(pName, dwSize + 5, mRetAddr)) return false;
+
+	//复制补丁数据
+	DWORD dwOffset = RvaToFoa(mRetAddr);
+	memcpy(mBaseCtx->pVirMem + dwOffset, pPatch, dwSize);
+	*(mBaseCtx->pVirMem + dwOffset + dwSize) = 0xe9;	//jmp
+
+	//修正pe OEP
+	DWORD _rva_oldOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
+	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint = mRetAddr;
+	//修正影像OEP
+	unsigned char *pTmp = (unsigned char*)mBaseCtx->pVirMem + mBaseCtx->pe.mDosHeader.e_lfanew;
+	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint = mRetAddr;
+	DWORD _rva_newOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
+
+	//尝试使用变量重定位方式
+	DWORD _foa_newOEP = RvaToFoa(_rva_newOEP);
+	*(int*)(mBaseCtx->pVirMem + _foa_newOEP + dwSize + 1) = _rva_oldOEP - _rva_newOEP - dwSize - 5;
+	return true;
+}
+
 /*
 *加密方式二:第二类壳A
 *参数一：区段名

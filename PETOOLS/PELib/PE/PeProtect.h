@@ -55,9 +55,10 @@ public:
 	bool RebuiltSections();
 	bool EncryptImportTable();
 	bool AddSectionData(const STu8 *,const size_t,DWORD&);
-	bool AddSectionToEnd(const STu8 *,const size_t);
+	bool AddSectionToEnd(const STu8 *,const size_t,const STu32 chartics);
 	bool AddOverlay(PeClass *,size_t);
 	bool AddPatch(const STu8*,const void *,const unsigned int,const unsigned int);
+	bool AddPatchAuto2OEP(const STu8*, const void *, const unsigned int);
 	bool EncryptOne(const STu8*,const void*,const unsigned int,const unsigned int);
 	bool EncryptTwo(const STu8*,const void*,const unsigned int,const unsigned int);
 	bool EncryptThree(const STu8*);
