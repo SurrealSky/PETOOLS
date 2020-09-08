@@ -791,24 +791,6 @@ bool PeClass::ChangeSectionTable()
 
 bool PeClass::WriteCtx2VirMem()
 {
-	////假设区段位置不变//32位
-	//STu32 uVirMemSize = mBaseCtx->pe.mDosHeader.e_lfanew;//DOS头和STUB总大小
-	////NT HEADER
-	//uVirMemSize += sizeof(NtHeader);
-	////SECTIONS TABLE
-	//uVirMemSize = uVirMemSize + mBaseCtx->pe.mSectionsVector.size() * sizeof(SectionHeader);
-	////调整一下文件对齐
-	//uVirMemSize = FileAlignmentSize(uVirMemSize);
-	////SECTIONS DATA
-	//for (int i = 0; i < mBaseCtx->pe.mSectionsVector.size(); i++)
-	//{
-	//	uVirMemSize += mBaseCtx->pe.mSectionsVector[i].SizeOfRawData;
-	//}
-	////OVERLAY DATA
-	//if (mBaseCtx->pe.mOverlay.isExist)
-	//{
-	//	uVirMemSize += mBaseCtx->pe.mOverlay.dwSize;
-	//}
 	WriteDosHeader();
 	WriteDosStub();
 	WriteNtHeader();

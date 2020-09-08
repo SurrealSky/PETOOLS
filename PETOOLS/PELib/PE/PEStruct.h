@@ -25,9 +25,11 @@ using namespace SurrealTypes;
 #ifdef PE_MODEL
 #define	ThunkData		IMAGE_THUNK_DATA32
 #define	SnapByOrdinal	IMAGE_SNAP_BY_ORDINAL32
+#define OrdinalFlag		IMAGE_ORDINAL_FLAG32
 #else
 #define	ThunkData		IMAGE_THUNK_DATA64
 #define	SnapByOrdinal	IMAGE_SNAP_BY_ORDINAL64
+#define OrdinalFlag		IMAGE_ORDINAL_FLAG64
 #endif
 
 #define	ImportByName	IMAGE_IMPORT_BY_NAME

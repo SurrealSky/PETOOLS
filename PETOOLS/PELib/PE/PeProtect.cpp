@@ -564,8 +564,9 @@ bool PeProtect::EncryptImportTable()
 	if(mBaseCtx->pe.mImportsVector.size()==0) return false;
 
 	//可考虑将导入表加密到overlay或者命名区段中
-	AddSectionToEnd(".baby",0x600, IMAGE_SCN_CNT_INITIALIZED_DATA | IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE);
-	STu32 virtualaddr=0x5000;
+	STu8 name[] = ".baby";
+	AddSectionToEnd(name,0x1000, IMAGE_SCN_CNT_INITIALIZED_DATA | IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE);
+	STu32 virtualaddr= mBaseCtx->pe.mSectionsVector.back().VirtualAddress;
 
 	bool isPE32=true;         //32位/64位标志
 #ifdef PE_MODEL
@@ -575,191 +576,127 @@ bool PeProtect::EncryptImportTable()
 #endif // PE_MODEL
 
 	void *pDescriptor=NULL,*pIatInt=NULL,*pDll=NULL,*pFuncName=NULL,*pRam=NULL,*pOffaet=NULL;
-	//unsigned int sumBytes=0;//总空间大小
 	unsigned int sum=0,offset=0;  
 	unsigned offset1=0,offset2=0,offset3=0,offset4=0; //依次分别为 descriptor，thunk，dllname，functionname结构大小
 
-
 	//首先计算大小
-	offset1=(p->g_Import.DescriptorSum+1)*sizeof(IMAGE_IMPORT_DESCRIPTOR); //包含末尾全0结构
+	mBaseCtx->pe.mImportsVector.size();
+	offset1=(mBaseCtx->pe.mImportsVector.size()+1)*sizeof(IMAGE_IMPORT_DESCRIPTOR); //包含末尾全0结构
 	offset2=offset1;
-	void* tmp=p->g_Import.pDll;        //计算dllname空间大小
-	while(tmp)
+	//计算dllname空间大小
+	for (int i = 0; i < mBaseCtx->pe.mImportsVector.size(); i++)
 	{
-		offset2+=(strlen(((PDllName)tmp)->name)+1);
-		tmp=((PDllName)tmp)->pNext;
+		offset2 = offset2 + mBaseCtx->pe.mImportsVector[i].strDllName.size() + 1/*结尾\0*/;
 	}
 	offset3=offset2;
 	sum=0;
-	for(int i=0;i<p->g_Import.DescriptorSum;i++)
+	for(int i=0;i< mBaseCtx->pe.mImportsVector.size();i++)
 	{
-		sum=((p->g_Import.pThunks+i)->num+1)*2;        //thunk大小
+		sum= mBaseCtx->pe.mImportsVector[i].mThunksVector.size()+1/*最后一个空*/;
 		if(isPE32)
 		{
-			offset3+=sizeof(IMAGE_THUNK_DATA32)*sum;
+			offset3+=sizeof(ThunkItem)*sum;
 		}else
 		{
-			offset3+=sizeof(IMAGE_THUNK_DATA64)*sum;
+			offset3+=sizeof(ThunkItem)*sum;
 		}
 	}
 
-	//offset4=offset3;
-	//for(int i=0;i<p->g_Import.DescriptorSum;i++)
-	//{
-	//	tmp=(p->g_Import.pThunks+i)->pThunk;
-	//	while(tmp)
-	//	{
-	//		if(strcmp(UNUSE,PThunks(tmp)->FuncName)==0)
-	//		{
-	//			//相等，代表是以序列引入
-	//		}else
-	//		{
-	//			//以函数名方式引入
-	//			offset4+=sizeof(WORD);
-	//			offset4+=strlen(PThunks(tmp)->FuncName)+1;
-	//		}
-	//		tmp=PThunks(tmp)->pNext;
-	//	}
-	//}
-	////申请空间
-	//pRam=malloc(offset4);
-	//if(pRam==NULL)
-	//{
-	//	p->m_Log.LogControl(L"处理导入表:处理失败，内存分配失败!");
-	//	return;
-	//}
-	//memset(pRam,0,offset4);
-	//pOffaet=pRam;
-	////开始写入IMAGE_IMPORT_DESCRIPTOR
-	//for(int i=0;i<p->g_Import.DescriptorSum;i++)
-	//{
-	//	//IMAGE_IMPORT_DESCRIPTOR需要修正
-	//	//(PIMAGE_IMPORT_DESCRIPTOR(p->g_Import.pDescriptor)+i)->
-	//	memcpy_s((PIMAGE_IMPORT_DESCRIPTOR)pRam+i,sizeof(IMAGE_IMPORT_DESCRIPTOR),PIMAGE_IMPORT_DESCRIPTOR(p->g_Import.pDescriptor)+i,sizeof(IMAGE_IMPORT_DESCRIPTOR));
-	//}
-	////开始写入dllname
-	//tmp=p->g_Import.pDll;        //计算dllname空间大小
-	//sum=0;offset=0;
+	offset4=offset3;
+	for(int i=0;i<mBaseCtx->pe.mImportsVector.size();i++)
+	{
+		for (int j = 0; j < mBaseCtx->pe.mImportsVector[i].mThunksVector.size(); j++)
+		{
+			offset4 += sizeof(WORD);
+			offset4 += mBaseCtx->pe.mImportsVector[i].mThunksVector[j].strFuncName.size() + 1;
+		}
+	}
+	//申请空间
+	pRam=malloc(offset4);
+	if(pRam==NULL)
+	{
+		return false;
+	}
+	memset(pRam,0,offset4);
+	pOffaet=pRam;
+	//开始写入IMAGE_IMPORT_DESCRIPTOR
+	for(int i=0;i<mBaseCtx->pe.mImportsVector.size();i++)
+	{
+		//IMAGE_IMPORT_DESCRIPTOR需要修正
+		//(PIMAGE_IMPORT_DESCRIPTOR(p->g_Import.pDescriptor)+i)->
+		memcpy_s((ImportDescriptor*)pRam+i,sizeof(ImportDescriptor), &(mBaseCtx->pe.mImportsVector[i].mDescriptor),sizeof(ImportDescriptor));
+	}
+	//开始写入dllname
+	sum=0;offset=0;
+	for(int i=0;i<mBaseCtx->pe.mImportsVector.size();i++)
+	{
+		sum = mBaseCtx->pe.mImportsVector[i].strDllName.size() + 1;
+		memcpy_s((unsigned char *)pRam+offset1+offset,sum, mBaseCtx->pe.mImportsVector[i].strDllName.c_str(), mBaseCtx->pe.mImportsVector[i].strDllName.size());
+		//修正descriptor name字段
+		((ImportDescriptor*)pRam+i)->Name=offset1+offset+virtualaddr;
+		offset+=sum;
+	}
+	//开始写入thunk date,首先写入function name后写入thunkdata
+	sum=0;
+	for(int i=0,k=0;i<mBaseCtx->pe.mImportsVector.size();i++)
+	{
+		//在此修正descriptor
+		((ImportDescriptor*)pRam+i)->OriginalFirstThunk=virtualaddr+offset2+k*sizeof(DWORD);
+		((ImportDescriptor*)pRam+i)->FirstThunk=virtualaddr+offset2+k*sizeof(DWORD)+(offset3-offset2)/2;
+		
+		for (int j = 0; j < mBaseCtx->pe.mImportsVector[i].mThunksVector.size(); j++)
+		{
+			if (0/*strcmp(UNUSE, PThunks(tmp)->FuncName) == 0*/)
+			{
+				//相等，代表是以序列引入,最高位要置1
+				//if (isPE32)
+				//{
+					*(DWORD*)((unsigned char *)pRam + offset2 + k * sizeof(DWORD)) = mBaseCtx->pe.mImportsVector[i].mThunksVector[j].Ordinal | OrdinalFlag;
+					*(DWORD*)((unsigned char *)pRam + offset2 + (offset3 - offset2) / 2 + k * sizeof(DWORD)) = mBaseCtx->pe.mImportsVector[i].mThunksVector[j].Ordinal | OrdinalFlag;
+				//}
+				//else
+				//{
+					//*(ULONGLONG*)((unsigned char *)pRam + offset2 + k * sizeof(ULONGLONG)) = mBaseCtx->pe.mImportsVector[i].mThunksVector[j].Ordinal | OrdinalFlag;
+					//*(ULONGLONG*)((unsigned char *)pRam + offset2 + (offset3 - offset2) / 2 + k * sizeof(ULONGLONG)) = mBaseCtx->pe.mImportsVector[i].mThunksVector[j].Ordinal | OrdinalFlag;
+				//}
+				k++;//用于函数个数计算
+			}
+			else
+			{
+				//以函数名方式引入
+				if (isPE32)
+				{
+					*(DWORD*)((unsigned char *)pRam + offset2 + k * sizeof(DWORD)) = virtualaddr + offset3 + sum;
+					*(DWORD*)((unsigned char *)pRam + offset2 + (offset3 - offset2) / 2 + k * sizeof(DWORD)) = virtualaddr + offset3 + sum;
+				}
+				else
+				{
+					*(ULONGLONG*)((unsigned char *)pRam + offset2 + k * sizeof(ULONGLONG)) = virtualaddr + offset3 + sum;
+					*(ULONGLONG*)((unsigned char *)pRam + offset2 + (offset3 - offset2) / 2 + k * sizeof(ULONGLONG)) = virtualaddr + offset3 + sum;
+				}
 
-	//for(int i=0;i<p->g_Import.DescriptorSum;i++)
-	//{
-	//	sum=strlen(((PDllName)tmp)->name)+1;
-	//	memcpy_s((unsigned char *)pRam+offset1+offset,sum,((PDllName)tmp)->name,sum);
-	//	//修正descriptor name字段
-	//	(PIMAGE_IMPORT_DESCRIPTOR(pRam)+i)->Name=offset1+offset+virtualaddr;
+				memcpy_s((unsigned char *)pRam + offset3 + sum, sizeof(WORD), &mBaseCtx->pe.mImportsVector[i].mThunksVector[j].Ordinal, sizeof(WORD));
+				sum += sizeof(WORD);
+				unsigned int len = mBaseCtx->pe.mImportsVector[i].mThunksVector[j].strFuncName.size() + 1;
+				memcpy_s((unsigned char *)pRam + offset3 + sum, len, mBaseCtx->pe.mImportsVector[i].mThunksVector[j].strFuncName.c_str(), len);
+				sum += len;
+				k++;
+			}
+		}
+		k++;//用于空出其中的全0结构
+	}
+	//写入完毕，开始修改导入表地址
+	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress=virtualaddr;
+	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size=offset4;
+	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT].VirtualAddress=virtualaddr+offset2+(offset3-offset2)/2;  //需要修正
+	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT].Size=(offset3-offset2)/2;
 
-	//	offset+=sum;
-	//	tmp=((PDllName)tmp)->pNext;
-	//}
-	////开始写入thunk date,首先写入function name后写入thunkdata
-	//sum=0;
-	//for(int i=0,k=0;i<p->g_Import.DescriptorSum;i++)
-	//{
-	//	tmp=(p->g_Import.pThunks+i)->pThunk;
-	//	//在此修正descriptor
-	//	if(isPE32)
-	//	{
-	//		(PIMAGE_IMPORT_DESCRIPTOR(pRam)+i)->OriginalFirstThunk=virtualaddr+offset2+k*sizeof(DWORD);
-	//		(PIMAGE_IMPORT_DESCRIPTOR(pRam)+i)->FirstThunk=virtualaddr+offset2+k*sizeof(DWORD)+(offset3-offset2)/2;
-	//	}else
-	//	{
-	//		(PIMAGE_IMPORT_DESCRIPTOR(pRam)+i)->OriginalFirstThunk=virtualaddr+offset2+k*sizeof(DWORD);
-	//		(PIMAGE_IMPORT_DESCRIPTOR(pRam)+i)->FirstThunk=virtualaddr+offset2+k*sizeof(DWORD)+(offset3-offset2)/2;
-	//	}
-	//	while(tmp)
-	//	{
-	//		if(strcmp(UNUSE,PThunks(tmp)->FuncName)==0)
-	//		{
-	//			//相等，代表是以序列引入,最高位要置1
-	//			if(isPE32)
-	//			{
-	//				*(DWORD*)((unsigned char *)pRam+offset2+k*sizeof(DWORD))=PThunks(tmp)->Ordinal|IMAGE_ORDINAL_FLAG32;
-	//				*(DWORD*)((unsigned char *)pRam+offset2+(offset3-offset2)/2+k*sizeof(DWORD))=PThunks(tmp)->Ordinal|IMAGE_ORDINAL_FLAG32;
-	//			}else
-	//			{
-	//				*(ULONGLONG*)((unsigned char *)pRam+offset2+k*sizeof(ULONGLONG))=PThunks(tmp)->Ordinal|IMAGE_ORDINAL_FLAG64;
-	//				*(ULONGLONG*)((unsigned char *)pRam+offset2+(offset3-offset2)/2+k*sizeof(ULONGLONG))=PThunks(tmp)->Ordinal|IMAGE_ORDINAL_FLAG64;
-	//			}
-	//			k++;//用于函数个数计算
-	//		}else
-	//		{
-	//			//以函数名方式引入
-	//			if(isPE32)
-	//			{
-	//				*(DWORD*)((unsigned char *)pRam+offset2+k*sizeof(DWORD))=virtualaddr+offset3+sum;
-	//				*(DWORD*)((unsigned char *)pRam+offset2+(offset3-offset2)/2+k*sizeof(DWORD))=virtualaddr+offset3+sum;
-	//			}else
-	//			{
-	//				*(ULONGLONG*)((unsigned char *)pRam+offset2+k*sizeof(ULONGLONG))=virtualaddr+offset3+sum;
-	//				*(ULONGLONG*)((unsigned char *)pRam+offset2+(offset3-offset2)/2+k*sizeof(ULONGLONG))=virtualaddr+offset3+sum;
-	//			}
+	//复制进内存
+	WriteCtx2VirMem();
+	memcpy(mBaseCtx->pVirMem+, pRam, offset4);
 
-	//			memcpy_s((unsigned char *)pRam+offset3+sum,sizeof(WORD),&PThunks(tmp)->Ordinal,sizeof(WORD));
-	//			sum+=sizeof(WORD);
-	//			unsigned int len=strlen(PThunks(tmp)->FuncName)+1;
-	//			memcpy_s((unsigned char *)pRam+offset3+sum,len,PThunks(tmp)->FuncName,len);
-	//			sum+=len;
-	//			k++;
-	//		}
-	//		tmp=PThunks(tmp)->pNext;
-	//	}
-	//	k++;//用于空出其中的全0结构
-	//}
-	////写入完毕，开始修改导入表地址
-	//if(isPE32)
-	//{
-	//	p->g_PE32.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress=virtualaddr;
-	//	p->g_PE32.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size=offset4;
-	//	p->g_PE32.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT].VirtualAddress=virtualaddr+offset2+(offset3-offset2)/2;  //需要修正
-	//	p->g_PE32.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT].Size=(offset3-offset2)/2;
-	//}else
-	//{
-	//	p->g_PE64.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress=virtualaddr;
-	//	p->g_PE64.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].Size=offset4;
-
-	//	p->g_PE64.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT].VirtualAddress=virtualaddr+offset2+(offset3-offset2)/2; //需要修正
-	//	p->g_PE64.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IAT].Size=(offset3-offset2)/2;
-	//}
-	////开始整改文件
-	//HANDLE hFile=CreateFile(p->Path,GENERIC_READ|GENERIC_WRITE,NULL,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
-	//if(INVALID_HANDLE_VALUE==hFile)
-	//{
-	//	p->m_Log.LogControl(L"处理导入表:打开文件失败!");
-	//	return;
-	//}
-	////写入区段数据
-	//SetFilePointer(hFile,0x1600,0,FILE_BEGIN);
-	//DWORD NumBytesWrite=0;
-	//if(!WriteFile(hFile,pRam,offset4,&NumBytesWrite,NULL))
-	//{
-	//	p->m_Log.LogControl(L"导入表写入:写入失败!");
-	//	CloseHandle(hFile);
-	//	return;
-	//}
-	////修改地址
-	//SetFilePointer(hFile,p->g_FvoOffset.PEH_FVO,0,FILE_BEGIN);
-	//NumBytesWrite=0;
-	//if(isPE32)
-	//{
-	//	if(!WriteFile(hFile,&(p->g_PE32),sizeof(p->g_PE32),&NumBytesWrite,NULL))
-	//	{
-	//		p->m_Log.LogControl(L"擦除重定位表:文件写入失败!");
-	//		CloseHandle(hFile);
-	//		return;
-	//	}
-	//}else
-	//{
-	//	if(!WriteFile(hFile,&(p->g_PE64),sizeof(p->g_PE64),&NumBytesWrite,NULL))
-	//	{
-	//		p->m_Log.LogControl(L"擦除重定位表:文件写入失败!");
-	//		CloseHandle(hFile);
-	//		return;
-	//	}
-	//}
-
-	//CloseHandle(hFile);
-	//free(pRam);
-return true;
+	free(pRam);
+	return true;
 }
 
 /*
