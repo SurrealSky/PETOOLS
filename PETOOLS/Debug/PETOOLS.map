@@ -1,6 +1,6 @@
  PETOOLS
 
- Timestamp is 5f584469 (Wed Sep  9 10:56:41 2020)
+ Timestamp is 5f584c73 (Wed Sep  9 11:30:59 2020)
 
  Preferred load address is 00400000
 
@@ -59,16 +59,16 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
  0000:00000000       ___guard_longjmp_table     00000000     <absolute>
- 0000:00000000       ___guard_iat_table         00000000     <absolute>
- 0000:00000000       ___guard_iat_count         00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
  0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
  0000:0000002c       __tls_array                0000002c     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
- 0000:00000111       ___safe_se_handler_count   00000111     <absolute>
+ 0000:00000110       ___safe_se_handler_count   00000110     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00007a70       ??$__vcrt_va_start_verify_argument_type@QBD@@YAXXZ 00408a70 f i asmserv.obj
  0001:00007aa0       ?Decodeaddress@@YAHKPADH0@Z 00408aa0 f   asmserv.obj
@@ -134,8 +134,8 @@
  0001:00016e90       ?_Orphan_all@_Container_base12@std@@QAEXXZ 00417e90 f i DebugLog.obj
  0001:00016fa0       ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX_NI@Z 00417fa0 f i DebugLog.obj
  0001:000170c0       ?__empty_global_delete@@YAXPAX@Z 004180c0 f i DebugLog.obj
- 0001:000170f0       ?__global_delete@@YAXPAXI@Z 004180f0 f i DebugLog.obj
  0001:000170f0       ?__empty_global_delete@@YAXPAXI@Z 004180f0 f i DebugLog.obj
+ 0001:000170f0       ?__global_delete@@YAXPAXI@Z 004180f0 f i DebugLog.obj
  0001:00017120       ?address@?$_Wrap_alloc@V?$allocator@U_Container_proxy@std@@@std@@@std@@QBEPAU_Container_proxy@2@AAU32@@Z 00418120 f i DebugLog.obj
  0001:00017180       ?assign@?$char_traits@D@std@@SAXAADABD@Z 00418180 f i DebugLog.obj
  0001:000171c0       ?copy@?$char_traits@D@std@@SAPADPADPBDI@Z 004181c0 f i DebugLog.obj
@@ -678,12 +678,12 @@
  0001:0002c150       ??_G?$pair@_JV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEPAXI@Z 0042d150 f i log4z.obj
  0001:0002c1c0       ??_GILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042d1c0 f i log4z.obj
  0001:0002c1c0       ??_EILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042d1c0 f i log4z.obj
- 0001:0002c230       ??_GLockHelper@log4z@zsummer@@UAEPAXI@Z 0042d230 f i log4z.obj
  0001:0002c230       ??_ELockHelper@log4z@zsummer@@UAEPAXI@Z 0042d230 f i log4z.obj
+ 0001:0002c230       ??_GLockHelper@log4z@zsummer@@UAEPAXI@Z 0042d230 f i log4z.obj
  0001:0002c2a0       ??_GLogerManager@log4z@zsummer@@UAEPAXI@Z 0042d2a0 f i log4z.obj
  0001:0002c2a0       ??_ELogerManager@log4z@zsummer@@UAEPAXI@Z 0042d2a0 f i log4z.obj
- 0001:0002c320       ??_GSemHelper@log4z@zsummer@@UAEPAXI@Z 0042d320 f i log4z.obj
  0001:0002c320       ??_ESemHelper@log4z@zsummer@@UAEPAXI@Z 0042d320 f i log4z.obj
+ 0001:0002c320       ??_GSemHelper@log4z@zsummer@@UAEPAXI@Z 0042d320 f i log4z.obj
  0001:0002c390       ??_GThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042d390 f i log4z.obj
  0001:0002c390       ??_EThreadHelper@log4z@zsummer@@UAEPAXI@Z 0042d390 f i log4z.obj
  0001:0002c400       ?_Adopt@_Iterator_base0@std@@QAEXPBX@Z 0042d400 f i log4z.obj
@@ -1246,8 +1246,8 @@
  0001:00048750       ??E?$_List_iterator@V?$_List_val@U?$_List_simple_types@U_ShellCode@@@std@@@std@@@std@@QAEAAV01@XZ 00449750 f i AddPatch.obj
  0001:000487b0       ??_GByteBuffer@@UAEPAXI@Z  004497b0 f i AddPatch.obj
  0001:000487b0       ??_EByteBuffer@@UAEPAXI@Z  004497b0 f i AddPatch.obj
- 0001:00048820       ??_ECAddPatch@@UAEPAXI@Z   00449820 f i AddPatch.obj
  0001:00048820       ??_GCAddPatch@@UAEPAXI@Z   00449820 f i AddPatch.obj
+ 0001:00048820       ??_ECAddPatch@@UAEPAXI@Z   00449820 f i AddPatch.obj
  0001:000488b0       ??_G_ShellCode@@QAEPAXI@Z  004498b0 f i AddPatch.obj
  0001:00048920       ?DoDataExchange@CAddPatch@@MAEXPAVCDataExchange@@@Z 00449920 f   AddPatch.obj
  0001:000489d0       ?GetApplicationPath@CAddPatch@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ 004499d0 f   AddPatch.obj
@@ -1375,8 +1375,8 @@
  0001:0004dbf0       ??Y?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@U_IMAGE_SECTION_HEADER@@@std@@@std@@@std@@QAEAAV01@H@Z 0044ebf0 f i AddSectionDlg.obj
  0001:0004dd50       ??Y?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@U_IMAGE_SECTION_HEADER@@@std@@@std@@@std@@QAEAAV01@H@Z 0044ed50 f i AddSectionDlg.obj
  0001:0004ddb0       ??Z?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@U_IMAGE_SECTION_HEADER@@@std@@@std@@@std@@QAEAAV01@H@Z 0044edb0 f i AddSectionDlg.obj
- 0001:0004de10       ??_ECAddSectionDlg@@UAEPAXI@Z 0044ee10 f i AddSectionDlg.obj
  0001:0004de10       ??_GCAddSectionDlg@@UAEPAXI@Z 0044ee10 f i AddSectionDlg.obj
+ 0001:0004de10       ??_ECAddSectionDlg@@UAEPAXI@Z 0044ee10 f i AddSectionDlg.obj
  0001:0004dea0       ?DoDataExchange@CAddSectionDlg@@MAEXPAVCDataExchange@@@Z 0044eea0 f   AddSectionDlg.obj
  0001:0004dfb0       ?GetMessageMap@CAddSectionDlg@@MBEPBUAFX_MSGMAP@@XZ 0044efb0 f   AddSectionDlg.obj
  0001:0004e000       ?GetRuntimeClass@CAddSectionDlg@@UBEPAUCRuntimeClass@@XZ 0044f000 f   AddSectionDlg.obj
@@ -1486,8 +1486,8 @@
  0001:00055c70       ?size@?$vector@U_ResourceItem@@V?$allocator@U_ResourceItem@@@std@@@std@@QBEIXZ 00456c70 f i DialogFirst.obj
  0001:00055ed0       ??0CDisaDialog@@QAE@PAVCWnd@@@Z 00456ed0 f   DisaDialog.obj
  0001:00055fb0       ??1CDisaDialog@@UAE@XZ     00456fb0 f   DisaDialog.obj
- 0001:00056030       ??_ECDisaDialog@@UAEPAXI@Z 00457030 f i DisaDialog.obj
  0001:00056030       ??_GCDisaDialog@@UAEPAXI@Z 00457030 f i DisaDialog.obj
+ 0001:00056030       ??_ECDisaDialog@@UAEPAXI@Z 00457030 f i DisaDialog.obj
  0001:000560c0       ?DoDataExchange@CDisaDialog@@MAEXPAVCDataExchange@@@Z 004570c0 f   DisaDialog.obj
  0001:00056140       ?GetMessageMap@CDisaDialog@@MBEPBUAFX_MSGMAP@@XZ 00457140 f   DisaDialog.obj
  0001:00056190       ?GetRuntimeClass@CDisaDialog@@UBEPAUCRuntimeClass@@XZ 00457190 f   DisaDialog.obj
@@ -1565,8 +1565,8 @@
  0001:000586b0       ??RCTraceFileAndLineInfo@ATL@@QBAXHIPBDZZ 004596b0 f i GlobeVar.obj
  0001:000587d0       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 004597d0 f i GlobeVar.obj
  0001:000587d0       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 004597d0 f i GlobeVar.obj
- 0001:00058840       ??_GCWin32Heap@ATL@@UAEPAXI@Z 00459840 f i GlobeVar.obj
  0001:00058840       ??_ECWin32Heap@ATL@@UAEPAXI@Z 00459840 f i GlobeVar.obj
+ 0001:00058840       ??_GCWin32Heap@ATL@@UAEPAXI@Z 00459840 f i GlobeVar.obj
  0001:000588b0       ??_H@YGXPAXIIP6EPAX0@Z@Z   004598b0 f i GlobeVar.obj
  0001:00058960       ?AddRef@CStringData@ATL@@QAEXXZ 00459960 f i GlobeVar.obj
  0001:00058a00       ?Allocate@?$CHeapPtr@DVCCRTAllocator@ATL@@@ATL@@QAE_NI@Z 00459a00 f i GlobeVar.obj
@@ -1627,8 +1627,8 @@
  0001:0005b0e0       ?OnMouseLeave@MFCStatic@@QAEXXZ 0045c0e0 f   MFCStatic.obj
  0001:0005b160       ??0MFCStatic@@QAE@XZ       0045c160 f   MFCStatic.obj
  0001:0005b1c0       ??1MFCStatic@@UAE@XZ       0045c1c0 f   MFCStatic.obj
- 0001:0005b220       ??_EMFCStatic@@UAEPAXI@Z   0045c220 f i MFCStatic.obj
  0001:0005b220       ??_GMFCStatic@@UAEPAXI@Z   0045c220 f i MFCStatic.obj
+ 0001:0005b220       ??_EMFCStatic@@UAEPAXI@Z   0045c220 f i MFCStatic.obj
  0001:0005b2b0       ?GetMessageMap@MFCStatic@@MBEPBUAFX_MSGMAP@@XZ 0045c2b0 f   MFCStatic.obj
  0001:0005b300       ?GetRuntimeClass@MFCStatic@@UBEPAUCRuntimeClass@@XZ 0045c300 f   MFCStatic.obj
  0001:0005b340       ?GetThisClass@MFCStatic@@SGPAUCRuntimeClass@@XZ 0045c340 f   MFCStatic.obj
@@ -1741,8 +1741,8 @@
  0001:00061630       ??0CPETOOLSDlg@@QAE@PAVCWnd@@@Z 00462630 f   PETOOLSDlg.obj
  0001:00061fc0       ??0CRect@@QAE@HHHH@Z       00462fc0 f i PETOOLSDlg.obj
  0001:00062030       ??1CPETOOLSDlg@@UAE@XZ     00463030 f   PETOOLSDlg.obj
- 0001:000627e0       ??_GCPETOOLSDlg@@UAEPAXI@Z 004637e0 f i PETOOLSDlg.obj
  0001:000627e0       ??_ECPETOOLSDlg@@UAEPAXI@Z 004637e0 f i PETOOLSDlg.obj
+ 0001:000627e0       ??_GCPETOOLSDlg@@UAEPAXI@Z 004637e0 f i PETOOLSDlg.obj
  0001:00062870       ?DoDataExchange@CPETOOLSDlg@@MAEXPAVCDataExchange@@@Z 00463870 f   PETOOLSDlg.obj
  0001:00063380       ?EnumChildProc@CPETOOLSDlg@@SGHPAUHWND__@@J@Z 00464380 f   PETOOLSDlg.obj
  0001:000634b0       ?GetMessageMap@CPETOOLSDlg@@MBEPBUAFX_MSGMAP@@XZ 004644b0 f   PETOOLSDlg.obj
@@ -1766,8 +1766,8 @@
  0001:000669f0       ??0CPosCalcDlg@@QAE@PAVCWnd@@@Z 004679f0 f   PosCalcDlg.obj
  0001:00066b20       ??1CPosCalcDlg@@UAE@XZ     00467b20 f   PosCalcDlg.obj
  0001:00066be0       ??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z 00467be0 f i PosCalcDlg.obj
- 0001:00066d90       ??_GCPosCalcDlg@@UAEPAXI@Z 00467d90 f i PosCalcDlg.obj
  0001:00066d90       ??_ECPosCalcDlg@@UAEPAXI@Z 00467d90 f i PosCalcDlg.obj
+ 0001:00066d90       ??_GCPosCalcDlg@@UAEPAXI@Z 00467d90 f i PosCalcDlg.obj
  0001:00066e20       ?DoDataExchange@CPosCalcDlg@@MAEXPAVCDataExchange@@@Z 00467e20 f   PosCalcDlg.obj
  0001:00066ed0       ?GetMessageMap@CPosCalcDlg@@MBEPBUAFX_MSGMAP@@XZ 00467ed0 f   PosCalcDlg.obj
  0001:00066f20       ?GetRuntimeClass@CPosCalcDlg@@UBEPAUCRuntimeClass@@XZ 00467f20 f   PosCalcDlg.obj
@@ -1805,8 +1805,8 @@
  0001:00067e10       ??0SectionsDlg@@QAE@PAVCWnd@@@Z 00468e10 f   SectionsDlg.obj
  0001:00067ee0       ??1SectionsDlg@@UAE@XZ     00468ee0 f   SectionsDlg.obj
  0001:00067f50       ??A?$vector@U_IMAGE_SECTION_HEADER@@V?$allocator@U_IMAGE_SECTION_HEADER@@@std@@@std@@QAEAAU_IMAGE_SECTION_HEADER@@I@Z 00468f50 f i SectionsDlg.obj
- 0001:00068070       ??_GSectionsDlg@@UAEPAXI@Z 00469070 f i SectionsDlg.obj
  0001:00068070       ??_ESectionsDlg@@UAEPAXI@Z 00469070 f i SectionsDlg.obj
+ 0001:00068070       ??_GSectionsDlg@@UAEPAXI@Z 00469070 f i SectionsDlg.obj
  0001:00068100       ?DoDataExchange@SectionsDlg@@MAEXPAVCDataExchange@@@Z 00469100 f   SectionsDlg.obj
  0001:00068180       ?GetMessageMap@SectionsDlg@@MBEPBUAFX_MSGMAP@@XZ 00469180 f   SectionsDlg.obj
  0001:000681d0       ?GetRuntimeClass@SectionsDlg@@UBEPAUCRuntimeClass@@XZ 004691d0 f   SectionsDlg.obj
@@ -1885,8 +1885,8 @@
  0001:0006a6b0       ??_Etype_info@@UAEPAXI@Z   0046b6b0 f i MSVCRTD:std_type_info_static.obj
  0001:0006a6f0       ??_U@YAPAXI@Z              0046b6f0 f   MSVCRTD:new_array.obj
  0001:0006a710       ??_V@YAXPAX@Z              0046b710 f   MSVCRTD:delete_array.obj
- 0001:0006a730       __alloca_probe             0046b730 f   MSVCRTD:chkstk.obj
  0001:0006a730       __chkstk                   0046b730 f   MSVCRTD:chkstk.obj
+ 0001:0006a730       __alloca_probe             0046b730 f   MSVCRTD:chkstk.obj
  0001:0006ab40       ?get_app_type@__scrt_winmain_policy@@SA?AW4_crt_app_type@@XZ 0046bb40 f i MSVCRTD:exe_winmain.obj
  0001:0006ab90       _WinMainCRTStartup         0046bb90 f   MSVCRTD:exe_winmain.obj
  0001:0006ad40       ?_RTC_AllocaFailure@@YAXPAXPAU_RTC_ALLOCA_NODE@@H@Z 0046bd40 f   MSVCRTD:_error_.obj
@@ -1915,8 +1915,8 @@
  0001:0006b7f0       ??1exception@std@@UAE@XZ   0046c7f0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b820       ??_Gbad_alloc@std@@UAEPAXI@Z 0046c820 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b820       ??_Ebad_alloc@std@@UAEPAXI@Z 0046c820 f i MSVCRTD:throw_bad_alloc.obj
- 0001:0006b860       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0046c860 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b860       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0046c860 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:0006b860       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0046c860 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b8a0       ??_Gexception@std@@UAEPAXI@Z 0046c8a0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b8a0       ??_Eexception@std@@UAEPAXI@Z 0046c8a0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b8e0       ?__scrt_throw_std_bad_alloc@@YAXXZ 0046c8e0 f   MSVCRTD:throw_bad_alloc.obj
@@ -2584,23 +2584,23 @@
  0001:000718c4       _VariantChangeType@16      004728c4 f   oleaut32:OLEAUT32.dll
  0001:000718ca       _SetErrorInfo@8            004728ca f   oleaut32:OLEAUT32.dll
  0001:000718d0       _CreateErrorInfo@4         004728d0 f   oleaut32:OLEAUT32.dll
- 0001:000718e0       ___scrt_stub_for_acrt_initialize 004728e0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000718e0       ___vcrt_initialize         004728e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718e0       ___acrt_initialize         004728e0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000718f0       ___scrt_stub_for_acrt_thread_attach 004728f0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000718e0       ___vcrt_initialize         004728e0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000718e0       ___scrt_stub_for_acrt_initialize 004728e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718f0       ___vcrt_thread_attach      004728f0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000718f0       ___scrt_stub_for_acrt_thread_attach 004728f0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718f0       ___acrt_thread_attach      004728f0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071900       ___acrt_thread_detach      00472900 f   MSVCRTD:ucrt_stubs.obj
  0001:00071900       ___scrt_stub_for_acrt_thread_detach 00472900 f   MSVCRTD:ucrt_stubs.obj
  0001:00071900       ___vcrt_thread_detach      00472900 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071900       ___acrt_thread_detach      00472900 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071910       ___vcrt_uninitialize       00472910 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071910       ___acrt_uninitialize       00472910 f   MSVCRTD:ucrt_stubs.obj
  0001:00071910       ___scrt_stub_for_acrt_uninitialize 00472910 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071920       ___scrt_stub_for_acrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071910       ___acrt_uninitialize       00472910 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071910       ___vcrt_uninitialize       00472910 f   MSVCRTD:ucrt_stubs.obj
  0001:00071920       ___vcrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
  0001:00071920       ___acrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071930       ___scrt_stub_for_is_c_termination_complete 00472930 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071920       ___scrt_stub_for_acrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
  0001:00071930       __is_c_termination_complete 00472930 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071930       ___scrt_stub_for_is_c_termination_complete 00472930 f   MSVCRTD:ucrt_stubs.obj
  0001:0007a120       ??__Fcache@?1??GetCDCCacheInstance@CImage@ATL@@CAPAVCDCCache@12@XZ@YAXXZ 0047b120 f i GlobeVar.obj
  0001:0007a170       ??__FgdiPlus@?1??GetInitGDIPlusInstance@CImage@ATL@@CAPAVCInitGDIPlus@12@XZ@YAXXZ 0047b170 f i GlobeVar.obj
  0001:0007a1c0       ??__FstrHeap@?1??GetInstance@CAtlStringMgr@ATL@@SAPAUIAtlStringMgr@2@XZ@YAXXZ 0047b1c0 f i GlobeVar.obj
@@ -2620,6 +2620,9 @@
  0002:00000f50       ?cmddata@@3QBUt_cmddata@@B 0047df50     asmserv.obj
  0002:00003d18       ?vxdcmd@@3Ut_cmddata@@B    00480d18     asmserv.obj
  0002:00003d30       ?dangerous@@3QBUt_cmddata@@B 00480d30     asmserv.obj
+ 0002:00003d94       ??_C@_0N@PMLKJFOO@?J?G?$LH?q?$LB?$KD?$LE?f?N?D?$LM?$PO?$AA@ 00480d94     PETOOLSDlg.obj
+ 0002:00003da4       ??_C@_0CK@EGPBCGMD@TXT?5Files?$CI?$CK?4exe?$CJ?$HM?$CK?4exe?$HMAll?5Files@ 00480da4     PETOOLSDlg.obj
+ 0002:00003dd0       ??_C@_08NEEIFCHO@?A?m?$LE?f?$LD?I?$LJ?$KG?$AA@ 00480dd0     PETOOLSDlg.obj
  0002:000046f0       ??_C@_02CNCKMBBD@AL?$AA@   004816f0     asmserv.obj
  0002:000046f4       ??_C@_02COKOBFHN@CL?$AA@   004816f4     asmserv.obj
  0002:000046f8       ??_C@_02CLOBADPI@DL?$AA@   004816f8     asmserv.obj
@@ -3817,14 +3820,9 @@
  0002:0000e6a8       ??_C@_0BP@JGJJJPFN@?$LC?K?$LF?$KF?9?$LJ?$KG?D?$NM?9?H?$KF?V?X?$LG?$KI?N?$LL?$LB?m?3?H?$KF?$LD?$PN?$LD?I?$LJ?$KG?$CB?$AA@ 0048b6a8     PETOOLSDlg.obj
  0002:0000e6d0       ??_C@_0BC@NGEIOBLI@?V?X?$LG?$KI?N?$LL?$LB?m?H?$KF?$LD?$PN?$LD?I?$LJ?$KG?$CB?$AA@ 0048b6d0     PETOOLSDlg.obj
  0002:0000e6e8       ??_C@_08JCHGJIAJ@?N?$NO?$LF?$LM?H?k?$LB?m?$AA@ 0048b6e8     PETOOLSDlg.obj
- 0002:0000e6f4       ??_C@_0BA@NAEFGFDP@?$LF?$LM?H?k?$LB?m?$LM?S?C?$NM?$LD?I?$LJ?$KG?$CB?$AA@ 0048b6f4     PETOOLSDlg.obj
- 0002:0000e708       ??_C@_04IBNHJNAL@?$LB?$KD?$LE?f?$AA@ 0048b708     PETOOLSDlg.obj
- 0002:0000e710       ??_C@_0N@PMLKJFOO@?J?G?$LH?q?$LB?$KD?$LE?f?N?D?$LM?$PO?$AA@ 0048b710     PETOOLSDlg.obj
- 0002:0000e720       ??_C@_0CK@EGPBCGMD@TXT?5Files?$CI?$CK?4exe?$CJ?$HM?$CK?4exe?$HMAll?5Files@ 0048b720     PETOOLSDlg.obj
- 0002:0000e754       ??_C@_03JACLIBNI@exe?$AA@  0048b754     PETOOLSDlg.obj
- 0002:0000e758       ??_C@_08NEEIFCHO@?A?m?$LE?f?$LD?I?$LJ?$KG?$AA@ 0048b758     PETOOLSDlg.obj
- 0002:0000e764       ??_C@_09MJPHCMFD@?L?m?$LM?S?J?$KH?$LA?$NM?$CB?$AA@ 0048b764     PETOOLSDlg.obj
- 0002:0000e770       ??_C@_0BP@JJONBLOI@?$LC?K?$LF?$KF?9?$LJ?$KG?D?$NM?9?$LF?$LM?H?k?$LB?m?$LM?S?C?$NM?3?$LM?S?C?$NM?$LD?I?$LJ?$KG?$CB?$AA@ 0048b770     PETOOLSDlg.obj
+ 0002:0000e6f4       ??_C@_04IBNHJNAL@?$LB?$KD?$LE?f?$AA@ 0048b6f4     PETOOLSDlg.obj
+ 0002:0000e720       ??_C@_03JACLIBNI@exe?$AA@  0048b720     PETOOLSDlg.obj
+ 0002:0000e758       ??_C@_09MJPHCMFD@?L?m?$LM?S?J?$KH?$LA?$NM?$CB?$AA@ 0048b758     PETOOLSDlg.obj
  0002:0000e850       ?classCPosCalcDlg@CPosCalcDlg@@2UCRuntimeClass@@B 0048b850     PosCalcDlg.obj
  0002:0000e878       ??_7CPosCalcDlg@@6B@       0048b878     PosCalcDlg.obj
  0002:0000ea60       ??_C@_0M@GNLGBPE@CPosCalcDlg?$AA@ 0048ba60     PosCalcDlg.obj
@@ -5207,14 +5205,14 @@
  0004:00000bbc       __imp___controlfp_s        0049dbbc     ucrtd:ucrtbased.dll
  0004:00000bc0       __imp___wmakepath_s        0049dbc0     ucrtd:ucrtbased.dll
  0004:00000bc4       __imp___wsplitpath_s       0049dbc4     ucrtd:ucrtbased.dll
- 0004:00000bc8       __imp__strnicmp            0049dbc8     ucrtd:ucrtbased.dll
  0004:00000bc8       __imp___strnicmp           0049dbc8     ucrtd:ucrtbased.dll
- 0004:00000bcc       __imp___strupr             0049dbcc     ucrtd:ucrtbased.dll
+ 0004:00000bc8       __imp__strnicmp            0049dbc8     ucrtd:ucrtbased.dll
  0004:00000bcc       __imp__strupr              0049dbcc     ucrtd:ucrtbased.dll
- 0004:00000bd0       __imp__memicmp             0049dbd0     ucrtd:ucrtbased.dll
+ 0004:00000bcc       __imp___strupr             0049dbcc     ucrtd:ucrtbased.dll
  0004:00000bd0       __imp___memicmp            0049dbd0     ucrtd:ucrtbased.dll
- 0004:00000bd4       __imp__strlwr              0049dbd4     ucrtd:ucrtbased.dll
+ 0004:00000bd0       __imp__memicmp             0049dbd0     ucrtd:ucrtbased.dll
  0004:00000bd4       __imp___strlwr             0049dbd4     ucrtd:ucrtbased.dll
+ 0004:00000bd4       __imp__strlwr              0049dbd4     ucrtd:ucrtbased.dll
  0004:00000bd8       __imp___setmbcp            0049dbd8     ucrtd:ucrtbased.dll
  0004:00000bdc       __imp___recalloc           0049dbdc     ucrtd:ucrtbased.dll
  0004:00000be0       __imp__strcat              0049dbe0     ucrtd:ucrtbased.dll

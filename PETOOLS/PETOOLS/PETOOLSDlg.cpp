@@ -837,10 +837,12 @@ void CPETOOLSDlg::OnBnClickedMfcbutton11()
 		return;
 	}
 
-	mPEMake.EncryptImportTable();
+	if (mPEMake.EncryptImportTable())
+	{
+		OnSaveAs();
+	}
 	//更新界面
 	SendMessage(WM_UPDATEUI, NULL, NULL);
-	AfxMessageBox("导入表加密成功!");
 }
 
 BOOL CALLBACK CPETOOLSDlg::EnumChildProc(HWND hwnd,LPARAM lParam)
@@ -1030,11 +1032,12 @@ void CPETOOLSDlg::OnEncryptImportTable()
 		return;
 	}
 
-	mPEMake.EncryptImportTable();
-	DebugLog("菜单-功能-导入表加密:加密成功!");
+	if (mPEMake.EncryptImportTable())
+	{
+		OnSaveAs();
+	}
 	//更新界面
 	this->SendMessage(WM_UPDATEUI,NULL,NULL);
-	MessageBox("导入表加密成功!");
 }
 
 //功能-位置计算器
