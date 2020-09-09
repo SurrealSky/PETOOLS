@@ -1,6 +1,6 @@
  PETOOLS
 
- Timestamp is 5f584c73 (Wed Sep  9 11:30:59 2020)
+ Timestamp is 5f588b25 (Wed Sep  9 15:58:29 2020)
 
  Preferred load address is 00400000
 
@@ -60,18 +60,20 @@
   Address         Publics by Value              Rva+Base       Lib:Object
 
  0000:00000000       ___guard_iat_table         00000000     <absolute>
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
- 0000:00000000       ___guard_longjmp_count     00000000     <absolute>
- 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
  0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_count     00000000     <absolute>
  0000:0000002c       __tls_array                0000002c     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:00000110       ___safe_se_handler_count   00000110     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00007a70       ??$__vcrt_va_start_verify_argument_type@QBD@@YAXXZ 00408a70 f i asmserv.obj
+ 0001:00007a96       ?Protect1A@PEMake@@QAE_NXZ 00408a96 f   PELib:PELib.dll
  0001:00007aa0       ?Decodeaddress@@YAHKPADH0@Z 00408aa0 f   asmserv.obj
+ 0001:00007ac8       ?Protect2A@PEMake@@QAE_NXZ 00408ac8 f   PELib:PELib.dll
  0001:00007ad0       ?Disassembleback@@YAKPADKKKH@Z 00408ad0 f   asmserv.obj
  0001:00007d80       ?Disassembleforward@@YAKPADKKKH@Z 00408d80 f   asmserv.obj
  0001:00007f10       ?Isfilling@@YAHKPADKK@Z    00408f10 f   asmserv.obj
@@ -1246,8 +1248,8 @@
  0001:00048750       ??E?$_List_iterator@V?$_List_val@U?$_List_simple_types@U_ShellCode@@@std@@@std@@@std@@QAEAAV01@XZ 00449750 f i AddPatch.obj
  0001:000487b0       ??_GByteBuffer@@UAEPAXI@Z  004497b0 f i AddPatch.obj
  0001:000487b0       ??_EByteBuffer@@UAEPAXI@Z  004497b0 f i AddPatch.obj
- 0001:00048820       ??_GCAddPatch@@UAEPAXI@Z   00449820 f i AddPatch.obj
  0001:00048820       ??_ECAddPatch@@UAEPAXI@Z   00449820 f i AddPatch.obj
+ 0001:00048820       ??_GCAddPatch@@UAEPAXI@Z   00449820 f i AddPatch.obj
  0001:000488b0       ??_G_ShellCode@@QAEPAXI@Z  004498b0 f i AddPatch.obj
  0001:00048920       ?DoDataExchange@CAddPatch@@MAEXPAVCDataExchange@@@Z 00449920 f   AddPatch.obj
  0001:000489d0       ?GetApplicationPath@CAddPatch@@QAE?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@ATL@@XZ 004499d0 f   AddPatch.obj
@@ -1563,8 +1565,8 @@
  0001:00058630       ??B?$CTraceCategoryEx@$01$0A@@ATL@@QAEIXZ 00459630 f i GlobeVar.obj
  0001:00058670       ??B?$CTraceCategoryEx@$0CA@$0A@@ATL@@QAEIXZ 00459670 f i GlobeVar.obj
  0001:000586b0       ??RCTraceFileAndLineInfo@ATL@@QBAXHIPBDZZ 004596b0 f i GlobeVar.obj
- 0001:000587d0       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 004597d0 f i GlobeVar.obj
  0001:000587d0       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 004597d0 f i GlobeVar.obj
+ 0001:000587d0       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 004597d0 f i GlobeVar.obj
  0001:00058840       ??_ECWin32Heap@ATL@@UAEPAXI@Z 00459840 f i GlobeVar.obj
  0001:00058840       ??_GCWin32Heap@ATL@@UAEPAXI@Z 00459840 f i GlobeVar.obj
  0001:000588b0       ??_H@YGXPAXIIP6EPAX0@Z@Z   004598b0 f i GlobeVar.obj
@@ -1615,8 +1617,8 @@
  0001:0005ac70       __vsnprintf_s_l            0045bc70 f i GlobeVar.obj
  0001:0005ad20       ??0MFCEdit@@QAE@XZ         0045bd20 f   MFCEdit.obj
  0001:0005ad80       ??1MFCEdit@@UAE@XZ         0045bd80 f   MFCEdit.obj
- 0001:0005ade0       ??_EMFCEdit@@UAEPAXI@Z     0045bde0 f i MFCEdit.obj
  0001:0005ade0       ??_GMFCEdit@@UAEPAXI@Z     0045bde0 f i MFCEdit.obj
+ 0001:0005ade0       ??_EMFCEdit@@UAEPAXI@Z     0045bde0 f i MFCEdit.obj
  0001:0005ae70       ?GetMessageMap@MFCEdit@@MBEPBUAFX_MSGMAP@@XZ 0045be70 f   MFCEdit.obj
  0001:0005aec0       ?GetRuntimeClass@MFCEdit@@UBEPAUCRuntimeClass@@XZ 0045bec0 f   MFCEdit.obj
  0001:0005af00       ?GetThisClass@MFCEdit@@SGPAUCRuntimeClass@@XZ 0045bf00 f   MFCEdit.obj
@@ -1627,8 +1629,8 @@
  0001:0005b0e0       ?OnMouseLeave@MFCStatic@@QAEXXZ 0045c0e0 f   MFCStatic.obj
  0001:0005b160       ??0MFCStatic@@QAE@XZ       0045c160 f   MFCStatic.obj
  0001:0005b1c0       ??1MFCStatic@@UAE@XZ       0045c1c0 f   MFCStatic.obj
- 0001:0005b220       ??_GMFCStatic@@UAEPAXI@Z   0045c220 f i MFCStatic.obj
  0001:0005b220       ??_EMFCStatic@@UAEPAXI@Z   0045c220 f i MFCStatic.obj
+ 0001:0005b220       ??_GMFCStatic@@UAEPAXI@Z   0045c220 f i MFCStatic.obj
  0001:0005b2b0       ?GetMessageMap@MFCStatic@@MBEPBUAFX_MSGMAP@@XZ 0045c2b0 f   MFCStatic.obj
  0001:0005b300       ?GetRuntimeClass@MFCStatic@@UBEPAUCRuntimeClass@@XZ 0045c300 f   MFCStatic.obj
  0001:0005b340       ?GetThisClass@MFCStatic@@SGPAUCRuntimeClass@@XZ 0045c340 f   MFCStatic.obj
@@ -1638,8 +1640,8 @@
  0001:0005b4b0       ??0CRect@@QAE@XZ           0045c4b0 f i MFCStatus.obj
  0001:0005b520       ??0MFCStatus@@QAE@XZ       0045c520 f   MFCStatus.obj
  0001:0005b5e0       ??1MFCStatus@@UAE@XZ       0045c5e0 f   MFCStatus.obj
- 0001:0005b650       ??_GMFCStatus@@UAEPAXI@Z   0045c650 f i MFCStatus.obj
  0001:0005b650       ??_EMFCStatus@@UAEPAXI@Z   0045c650 f i MFCStatus.obj
+ 0001:0005b650       ??_GMFCStatus@@UAEPAXI@Z   0045c650 f i MFCStatus.obj
  0001:0005b6e0       ?GetMessageMap@MFCStatus@@MBEPBUAFX_MSGMAP@@XZ 0045c6e0 f   MFCStatus.obj
  0001:0005b730       ?GetRuntimeClass@MFCStatus@@UBEPAUCRuntimeClass@@XZ 0045c730 f   MFCStatus.obj
  0001:0005b770       ?GetThisClass@MFCStatus@@SGPAUCRuntimeClass@@XZ 0045c770 f   MFCStatus.obj
@@ -1654,8 +1656,8 @@
  0001:0005d060       ??A?$vector@U_ElementItem@@V?$allocator@U_ElementItem@@@std@@@std@@QAEAAU_ElementItem@@I@Z 0045e060 f i MyListCtrl.obj
  0001:0005d180       ??A?$vector@U_EntryDataItem@@V?$allocator@U_EntryDataItem@@@std@@@std@@QAEAAU_EntryDataItem@@I@Z 0045e180 f i MyListCtrl.obj
  0001:0005d2a0       ??A?$vector@U_ThunkItem@@V?$allocator@U_ThunkItem@@@std@@@std@@QAEAAU_ThunkItem@@I@Z 0045e2a0 f i MyListCtrl.obj
- 0001:0005d3c0       ??_GMyListCtrl@@UAEPAXI@Z  0045e3c0 f i MyListCtrl.obj
  0001:0005d3c0       ??_EMyListCtrl@@UAEPAXI@Z  0045e3c0 f i MyListCtrl.obj
+ 0001:0005d3c0       ??_GMyListCtrl@@UAEPAXI@Z  0045e3c0 f i MyListCtrl.obj
  0001:0005d450       ?Clear@MyListCtrl@@QAEXXZ  0045e450 f   MyListCtrl.obj
  0001:0005d500       ?GetHeaderCtrl@CMFCListCtrl@@UAEAAVCMFCHeaderCtrl@@XZ 0045e500 f i MyListCtrl.obj
  0001:0005d540       ?GetMessageMap@MyListCtrl@@MBEPBUAFX_MSGMAP@@XZ 0045e540 f   MyListCtrl.obj
@@ -1697,8 +1699,8 @@
  0001:0005e750       ?size@?$vector@U_ThunkItem@@V?$allocator@U_ThunkItem@@@std@@@std@@QBEIXZ 0045f750 f i MyListCtrl.obj
  0001:0005e7c0       ??0CPETOOLSApp@@QAE@XZ     0045f7c0 f   PETOOLS.obj
  0001:0005e830       ??1CPETOOLSApp@@UAE@XZ     0045f830 f i PETOOLS.obj
- 0001:0005e880       ??_ECPETOOLSApp@@UAEPAXI@Z 0045f880 f i PETOOLS.obj
  0001:0005e880       ??_GCPETOOLSApp@@UAEPAXI@Z 0045f880 f i PETOOLS.obj
+ 0001:0005e880       ??_ECPETOOLSApp@@UAEPAXI@Z 0045f880 f i PETOOLS.obj
  0001:0005e910       ?GetApplicationRecoveryParameter@CWinApp@@UAEPAXXZ 0045f910 f i PETOOLS.obj
  0001:0005e950       ?GetApplicationRecoveryPingInterval@CWinApp@@UAEKXZ 0045f950 f i PETOOLS.obj
  0001:0005e990       ?GetApplicationRestartFlags@CWinApp@@UAEKXZ 0045f990 f i PETOOLS.obj
@@ -1741,8 +1743,8 @@
  0001:00061630       ??0CPETOOLSDlg@@QAE@PAVCWnd@@@Z 00462630 f   PETOOLSDlg.obj
  0001:00061fc0       ??0CRect@@QAE@HHHH@Z       00462fc0 f i PETOOLSDlg.obj
  0001:00062030       ??1CPETOOLSDlg@@UAE@XZ     00463030 f   PETOOLSDlg.obj
- 0001:000627e0       ??_ECPETOOLSDlg@@UAEPAXI@Z 004637e0 f i PETOOLSDlg.obj
  0001:000627e0       ??_GCPETOOLSDlg@@UAEPAXI@Z 004637e0 f i PETOOLSDlg.obj
+ 0001:000627e0       ??_ECPETOOLSDlg@@UAEPAXI@Z 004637e0 f i PETOOLSDlg.obj
  0001:00062870       ?DoDataExchange@CPETOOLSDlg@@MAEXPAVCDataExchange@@@Z 00463870 f   PETOOLSDlg.obj
  0001:00063380       ?EnumChildProc@CPETOOLSDlg@@SGHPAUHWND__@@J@Z 00464380 f   PETOOLSDlg.obj
  0001:000634b0       ?GetMessageMap@CPETOOLSDlg@@MBEPBUAFX_MSGMAP@@XZ 004644b0 f   PETOOLSDlg.obj
@@ -1766,8 +1768,8 @@
  0001:000669f0       ??0CPosCalcDlg@@QAE@PAVCWnd@@@Z 004679f0 f   PosCalcDlg.obj
  0001:00066b20       ??1CPosCalcDlg@@UAE@XZ     00467b20 f   PosCalcDlg.obj
  0001:00066be0       ??HATL@@YA?AV?$CStringT@DV?$StrTraitMFC_DLL@DV?$ChTraitsCRT@D@ATL@@@@@0@PBDABV10@@Z 00467be0 f i PosCalcDlg.obj
- 0001:00066d90       ??_ECPosCalcDlg@@UAEPAXI@Z 00467d90 f i PosCalcDlg.obj
  0001:00066d90       ??_GCPosCalcDlg@@UAEPAXI@Z 00467d90 f i PosCalcDlg.obj
+ 0001:00066d90       ??_ECPosCalcDlg@@UAEPAXI@Z 00467d90 f i PosCalcDlg.obj
  0001:00066e20       ?DoDataExchange@CPosCalcDlg@@MAEXPAVCDataExchange@@@Z 00467e20 f   PosCalcDlg.obj
  0001:00066ed0       ?GetMessageMap@CPosCalcDlg@@MBEPBUAFX_MSGMAP@@XZ 00467ed0 f   PosCalcDlg.obj
  0001:00066f20       ?GetRuntimeClass@CPosCalcDlg@@UBEPAUCRuntimeClass@@XZ 00467f20 f   PosCalcDlg.obj
@@ -1805,8 +1807,8 @@
  0001:00067e10       ??0SectionsDlg@@QAE@PAVCWnd@@@Z 00468e10 f   SectionsDlg.obj
  0001:00067ee0       ??1SectionsDlg@@UAE@XZ     00468ee0 f   SectionsDlg.obj
  0001:00067f50       ??A?$vector@U_IMAGE_SECTION_HEADER@@V?$allocator@U_IMAGE_SECTION_HEADER@@@std@@@std@@QAEAAU_IMAGE_SECTION_HEADER@@I@Z 00468f50 f i SectionsDlg.obj
- 0001:00068070       ??_ESectionsDlg@@UAEPAXI@Z 00469070 f i SectionsDlg.obj
  0001:00068070       ??_GSectionsDlg@@UAEPAXI@Z 00469070 f i SectionsDlg.obj
+ 0001:00068070       ??_ESectionsDlg@@UAEPAXI@Z 00469070 f i SectionsDlg.obj
  0001:00068100       ?DoDataExchange@SectionsDlg@@MAEXPAVCDataExchange@@@Z 00469100 f   SectionsDlg.obj
  0001:00068180       ?GetMessageMap@SectionsDlg@@MBEPBUAFX_MSGMAP@@XZ 00469180 f   SectionsDlg.obj
  0001:000681d0       ?GetRuntimeClass@SectionsDlg@@UBEPAUCRuntimeClass@@XZ 004691d0 f   SectionsDlg.obj
@@ -1885,8 +1887,8 @@
  0001:0006a6b0       ??_Etype_info@@UAEPAXI@Z   0046b6b0 f i MSVCRTD:std_type_info_static.obj
  0001:0006a6f0       ??_U@YAPAXI@Z              0046b6f0 f   MSVCRTD:new_array.obj
  0001:0006a710       ??_V@YAXPAX@Z              0046b710 f   MSVCRTD:delete_array.obj
- 0001:0006a730       __chkstk                   0046b730 f   MSVCRTD:chkstk.obj
  0001:0006a730       __alloca_probe             0046b730 f   MSVCRTD:chkstk.obj
+ 0001:0006a730       __chkstk                   0046b730 f   MSVCRTD:chkstk.obj
  0001:0006ab40       ?get_app_type@__scrt_winmain_policy@@SA?AW4_crt_app_type@@XZ 0046bb40 f i MSVCRTD:exe_winmain.obj
  0001:0006ab90       _WinMainCRTStartup         0046bb90 f   MSVCRTD:exe_winmain.obj
  0001:0006ad40       ?_RTC_AllocaFailure@@YAXPAXPAU_RTC_ALLOCA_NODE@@H@Z 0046bd40 f   MSVCRTD:_error_.obj
@@ -1915,10 +1917,10 @@
  0001:0006b7f0       ??1exception@std@@UAE@XZ   0046c7f0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b820       ??_Gbad_alloc@std@@UAEPAXI@Z 0046c820 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b820       ??_Ebad_alloc@std@@UAEPAXI@Z 0046c820 f i MSVCRTD:throw_bad_alloc.obj
- 0001:0006b860       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0046c860 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b860       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0046c860 f i MSVCRTD:throw_bad_alloc.obj
- 0001:0006b8a0       ??_Gexception@std@@UAEPAXI@Z 0046c8a0 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:0006b860       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0046c860 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b8a0       ??_Eexception@std@@UAEPAXI@Z 0046c8a0 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:0006b8a0       ??_Gexception@std@@UAEPAXI@Z 0046c8a0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006b8e0       ?__scrt_throw_std_bad_alloc@@YAXXZ 0046c8e0 f   MSVCRTD:throw_bad_alloc.obj
  0001:0006b910       ?__scrt_throw_std_bad_array_new_length@@YAXXZ 0046c910 f   MSVCRTD:throw_bad_alloc.obj
  0001:0006b940       ?what@exception@std@@UBEPBDXZ 0046c940 f i MSVCRTD:throw_bad_alloc.obj
@@ -2584,23 +2586,23 @@
  0001:000718c4       _VariantChangeType@16      004728c4 f   oleaut32:OLEAUT32.dll
  0001:000718ca       _SetErrorInfo@8            004728ca f   oleaut32:OLEAUT32.dll
  0001:000718d0       _CreateErrorInfo@4         004728d0 f   oleaut32:OLEAUT32.dll
+ 0001:000718e0       ___scrt_stub_for_acrt_initialize 004728e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718e0       ___acrt_initialize         004728e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718e0       ___vcrt_initialize         004728e0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000718e0       ___scrt_stub_for_acrt_initialize 004728e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718f0       ___vcrt_thread_attach      004728f0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718f0       ___scrt_stub_for_acrt_thread_attach 004728f0 f   MSVCRTD:ucrt_stubs.obj
  0001:000718f0       ___acrt_thread_attach      004728f0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071900       ___vcrt_thread_detach      00472900 f   MSVCRTD:ucrt_stubs.obj
  0001:00071900       ___acrt_thread_detach      00472900 f   MSVCRTD:ucrt_stubs.obj
  0001:00071900       ___scrt_stub_for_acrt_thread_detach 00472900 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071900       ___vcrt_thread_detach      00472900 f   MSVCRTD:ucrt_stubs.obj
  0001:00071910       ___scrt_stub_for_acrt_uninitialize 00472910 f   MSVCRTD:ucrt_stubs.obj
  0001:00071910       ___acrt_uninitialize       00472910 f   MSVCRTD:ucrt_stubs.obj
  0001:00071910       ___vcrt_uninitialize       00472910 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071920       ___vcrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
  0001:00071920       ___acrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071920       ___vcrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
  0001:00071920       ___scrt_stub_for_acrt_uninitialize_critical 00472920 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071930       __is_c_termination_complete 00472930 f   MSVCRTD:ucrt_stubs.obj
  0001:00071930       ___scrt_stub_for_is_c_termination_complete 00472930 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071930       __is_c_termination_complete 00472930 f   MSVCRTD:ucrt_stubs.obj
  0001:0007a120       ??__Fcache@?1??GetCDCCacheInstance@CImage@ATL@@CAPAVCDCCache@12@XZ@YAXXZ 0047b120 f i GlobeVar.obj
  0001:0007a170       ??__FgdiPlus@?1??GetInitGDIPlusInstance@CImage@ATL@@CAPAVCInitGDIPlus@12@XZ@YAXXZ 0047b170 f i GlobeVar.obj
  0001:0007a1c0       ??__FstrHeap@?1??GetInstance@CAtlStringMgr@ATL@@SAPAUIAtlStringMgr@2@XZ@YAXXZ 0047b1c0 f i GlobeVar.obj
@@ -4778,7 +4780,9 @@
  0004:000002b0       __imp_?ClsRelocDataDirectory@PEMake@@QAE_NXZ 0049d2b0     PELib:PELib.dll
  0004:000002b4       __imp_?SetAnalysised@PEMake@@QAEX_N@Z 0049d2b4     PELib:PELib.dll
  0004:000002b8       __imp_?Analysis@PEMake@@QAE_NXZ 0049d2b8     PELib:PELib.dll
- 0004:000002bc       \177PELib_NULL_THUNK_DATA  0049d2bc     PELib:PELib.dll
+ 0004:000002bc       __imp_?Protect1A@PEMake@@QAE_NXZ 0049d2bc     PELib:PELib.dll
+ 0004:000002c0       __imp_?Protect2A@PEMake@@QAE_NXZ 0049d2c0     PELib:PELib.dll
+ 0004:000002c4       \177PELib_NULL_THUNK_DATA  0049d2c4     PELib:PELib.dll
  0004:000002f4       __imp__StrToIntA@4         0049d2f4     shlwapi:SHLWAPI.dll
  0004:000002f8       __imp__PathIsDirectoryA@4  0049d2f8     shlwapi:SHLWAPI.dll
  0004:000002fc       __imp__StrToInt64ExA@12    0049d2fc     shlwapi:SHLWAPI.dll
@@ -5205,10 +5209,10 @@
  0004:00000bbc       __imp___controlfp_s        0049dbbc     ucrtd:ucrtbased.dll
  0004:00000bc0       __imp___wmakepath_s        0049dbc0     ucrtd:ucrtbased.dll
  0004:00000bc4       __imp___wsplitpath_s       0049dbc4     ucrtd:ucrtbased.dll
- 0004:00000bc8       __imp___strnicmp           0049dbc8     ucrtd:ucrtbased.dll
  0004:00000bc8       __imp__strnicmp            0049dbc8     ucrtd:ucrtbased.dll
- 0004:00000bcc       __imp__strupr              0049dbcc     ucrtd:ucrtbased.dll
+ 0004:00000bc8       __imp___strnicmp           0049dbc8     ucrtd:ucrtbased.dll
  0004:00000bcc       __imp___strupr             0049dbcc     ucrtd:ucrtbased.dll
+ 0004:00000bcc       __imp__strupr              0049dbcc     ucrtd:ucrtbased.dll
  0004:00000bd0       __imp___memicmp            0049dbd0     ucrtd:ucrtbased.dll
  0004:00000bd0       __imp__memicmp             0049dbd0     ucrtd:ucrtbased.dll
  0004:00000bd4       __imp___strlwr             0049dbd4     ucrtd:ucrtbased.dll

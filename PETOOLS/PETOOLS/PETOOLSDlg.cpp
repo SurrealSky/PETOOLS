@@ -1066,7 +1066,10 @@ void CPETOOLSDlg::OnTest()
 		AfxMessageBox("请先分析PE文件");
 		return;
 	}
-	mPEMake.WriteCtx2VirMem();
+	if (mPEMake.Protect2A())
+	{
+		OnSaveAs();
+	}
 }
 
 
