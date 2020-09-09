@@ -43,7 +43,7 @@ private:
 	bool	WriteDosHeader();
 	bool	WriteDosStub();
 	bool	WriteNtHeader();
-	bool	ChangeSectionTable();//不影响节区数据的更改
+	bool	WriteSectionTable();//只更改节区表
 public:
 	//将Ctx结构写入VirMem
 	bool	WriteCtx2VirMem();

@@ -208,13 +208,6 @@ bool PeProtect::ClsRelocDataDirectory()
 	mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size=0;
 
 	//修改影像数据
-	//char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress=0;
-	//((NtHeader*)pTmp)->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size=0;
-	////清除重定位标志
-	//((NtHeader*)pTmp)->FileHeader.Characteristics|=IMAGE_FILE_RELOCS_STRIPPED;
-
-	//修改影像数据
 	WriteCtx2VirMem();
 	return true;
 }
@@ -496,8 +489,7 @@ bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size, STu32 chart
 	mSectionHeader.PointerToLinenumbers=0;
 	mSectionHeader.Characteristics= chartics;
 	
-
-	//修正影像数据
+	//尾部添加节区数据
 	STu8 *pTmp=NULL;
 	pTmp= MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc,mBaseCtx->size+FileAlignmentSize(size));
 	if(pTmp==NULL) return false;
@@ -507,19 +499,13 @@ bool PeProtect::AddSectionToEnd(const STu8 *pName,const size_t size, STu32 chart
 	mBaseCtx->pVirMem=pTmp;
 	pTmp=NULL;
 
-	//修正pe数据结构
+	//修正ctx数据结构
 	mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections++;
 	mBaseCtx->pe.mNtHeader.OptionalHeader.SizeOfImage=SectionAlignmentSize(mSectionHeader.VirtualAddress+mSectionHeader.SizeOfRawData);
 	mBaseCtx->pe.mSectionsVector.push_back(mSectionHeader);
 
 	//修正影像PE数据
-	pTmp=mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->FileHeader.NumberOfSections++;
-	((NtHeader*)pTmp)->OptionalHeader.SizeOfImage=SectionAlignmentSize(mSectionHeader.VirtualAddress+mSectionHeader.SizeOfRawData);
-	pTmp=NULL;
-	DWORD dwOffset = mBaseCtx->pe.mDosHeader.e_lfanew + sizeof(mBaseCtx->pe.mNtHeader) +
-		(mBaseCtx->pe.mNtHeader.FileHeader.NumberOfSections-1)*IMAGE_SIZEOF_SECTION_HEADER;
-	memcpy((char*)mBaseCtx->pVirMem+dwOffset,&mSectionHeader,IMAGE_SIZEOF_SECTION_HEADER);
+	WriteCtx2VirMem();
 	return true;
 }
 
@@ -693,7 +679,7 @@ bool PeProtect::EncryptImportTable()
 
 	//复制进内存
 	WriteCtx2VirMem();
-	memcpy(mBaseCtx->pVirMem+, pRam, offset4);
+	//memcpy(mBaseCtx->pVirMem+, pRam, offset4);
 
 	free(pRam);
 	return true;
@@ -716,15 +702,13 @@ bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int
 	DWORD dwOffset=RvaToFoa(mRetAddr);
 	memcpy(mBaseCtx->pVirMem+dwOffset,pPatch,dwSize);
 	
-	//修正pe OEP
 	DWORD _rva_oldOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
 	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint= mRetAddr;
-	//修正影像OEP
-	unsigned char *pTmp=(unsigned char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint= mRetAddr;
-	DWORD _rva_newOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
+	
+	WriteCtx2VirMem();
 
-	//尝试使用变量重定位方式
+	//修正JMP XX XX XX XX
+	DWORD _rva_newOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
 	DWORD _foa_newOEP=RvaToFoa(_rva_newOEP);
 	*(int*)(mBaseCtx->pVirMem+_foa_newOEP+mOffset)=_rva_oldOEP-_rva_newOEP-mOffset-4;
 	return true;
@@ -747,15 +731,13 @@ bool PeProtect::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const un
 	memcpy(mBaseCtx->pVirMem + dwOffset, pPatch, dwSize);
 	*(mBaseCtx->pVirMem + dwOffset + dwSize) = 0xe9;	//jmp
 
-	//修正pe OEP
 	DWORD _rva_oldOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
 	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint = mRetAddr;
-	//修正影像OEP
-	unsigned char *pTmp = (unsigned char*)mBaseCtx->pVirMem + mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint = mRetAddr;
-	DWORD _rva_newOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
+	
+	WriteCtx2VirMem();
 
-	//尝试使用变量重定位方式
+	//修正JMP XX XX XX XX
+	DWORD _rva_newOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
 	DWORD _foa_newOEP = RvaToFoa(_rva_newOEP);
 	*(int*)(mBaseCtx->pVirMem + _foa_newOEP + dwSize + 1) = _rva_oldOEP - _rva_newOEP - dwSize - 5;
 	return true;

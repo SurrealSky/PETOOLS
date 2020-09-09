@@ -782,10 +782,13 @@ bool PeClass::WriteNtHeader()
 	return true;
 }
 
-bool PeClass::ChangeSectionTable()
+bool PeClass::WriteSectionTable()
 {
 	char *pTmp= (char*)mBaseCtx->pVirMem + mBaseCtx->pe.mDosHeader.e_lfanew+sizeof(NtHeader);
 	CopyMemory(pTmp, &mBaseCtx->pe.mSectionsVector[0], mBaseCtx->pe.mSectionsVector.size() * sizeof(SectionHeader));
+	//最后一个清0
+	pTmp = pTmp + mBaseCtx->pe.mSectionsVector.size() * sizeof(SectionHeader);
+	ZeroMemory(pTmp, sizeof(SectionHeader));
 	return true;
 }
 
@@ -794,6 +797,6 @@ bool PeClass::WriteCtx2VirMem()
 	WriteDosHeader();
 	WriteDosStub();
 	WriteNtHeader();
-	ChangeSectionTable();
+	WriteSectionTable();
 	return true;
 }
