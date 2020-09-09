@@ -40,7 +40,7 @@ public:
 	bool Protect1B();	//第一类壳B（书本20.4节）EXE加锁器。弹用户名密码验证框，验证失败否则退出
 	bool Protect2A();	//第二类壳A（书本21章）EXE加密，外壳还原IAT，并对所有区段解密
 	bool Protect3A();	//yoda壳
-	bool Protect4A();
+	bool Protect4A();	//虚拟机壳
 public:
 	bool WriteCtx2VirMem();
 };
