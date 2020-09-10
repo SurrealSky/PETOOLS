@@ -1066,7 +1066,7 @@ void CPETOOLSDlg::OnTest()
 		AfxMessageBox("请先分析PE文件");
 		return;
 	}
-	if (mPEMake.Protect2A())
+	if (mPEMake.Protect1A())
 	{
 		OnSaveAs();
 	}
