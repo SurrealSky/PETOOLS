@@ -6,6 +6,7 @@
 #endif
 
 #include"PEStruct.h"
+#include<pack\ByteBuffer.h>
 
 extern class PeProtect;
 
@@ -32,6 +33,7 @@ public:
 	bool ClsRelocDataDirectory();
 	bool AddSectionToEnd(const STu8*, const STu32,const STu32);
 	bool EncryptImportTable();
+	bool FindCodeByPeFile(const STu8*, const STu32, ByteBuffer&);
 public:
 	bool AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset);
 	bool AddPatchAuto2OEP(const STu8*, const void *, const unsigned int);

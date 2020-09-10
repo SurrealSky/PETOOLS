@@ -83,6 +83,28 @@ bool PEMake::EncryptImportTable()
 	return ptrPeProtect->EncryptImportTable();
 }
 
+bool PEMake::FindCodeByPeFile(const STu8 *pe, const STu32 pesize, ByteBuffer &code)
+{
+	DosHeader dosHeader;
+	CopyMemory(&dosHeader, pe, sizeof(DosHeader));
+	if (dosHeader.e_magic == 0x5A4D)
+	{
+		NtHeader ntHeader;
+		CopyMemory(&ntHeader, pe + dosHeader.e_lfanew, sizeof(NtHeader));
+		if (ntHeader.Signature == 0x00004550)
+		{
+			SectionHeader text;
+			CopyMemory(&text, pe + dosHeader.e_lfanew + sizeof(NtHeader), sizeof(SectionHeader));
+
+			STu32 oep=ntHeader.OptionalHeader.AddressOfEntryPoint;
+			STu32 size = ntHeader.OptionalHeader.SizeOfCode;
+			code.append(pe + oep, size);
+			return true;
+		}
+	}
+	return false;
+}
+
 bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset)
 {
 	return ptrPeProtect->AddPatch(pName, pPatch, dwSize, mOffset);

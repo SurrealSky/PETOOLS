@@ -164,6 +164,7 @@ void CAddPatch::LoadShellCodes(std::list<ShellCode> &codes)
 	strPath += _T("shellcode\\");
 	strPath += _T("*.bin");
 	CFileFind find;
+	//查找bin文件
 	BOOL bIsFind = find.FindFile(strPath);
 	while (bIsFind)
 	{
@@ -193,6 +194,52 @@ void CAddPatch::LoadShellCodes(std::list<ShellCode> &codes)
 			codes.push_back(code);
 		}
 	}
+	find.Close();
+	//查找exe文件
+	strPath = GetApplicationPath();
+	strPath += _T("shellcode\\");
+	strPath += _T("*.exe");
+	//查找bin文件
+	bIsFind = find.FindFile(strPath);
+	while (bIsFind)
+	{
+		bIsFind = find.FindNextFile();
+
+		if (find.IsDots())
+			continue;
+		else if (find.IsDirectory())
+			continue;
+		else
+		{
+			CString strFileName = find.GetFileName();
+			CString strFile = strPath;
+			strFile.Replace(_T("*.exe"), strFileName);
+			ShellCode code;
+			code.strBinFile = strFile;
+
+			HANDLE handle=::LoadLibrary(strFile);
+			CPETOOLSDlg *pMainDlg = static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
+			if (pMainDlg->mPEMake.FindCodeByPeFile((STu8*)handle, -1, code.bin))
+			{
+				codes.push_back(code);
+			}
+
+	/*		CFile file;
+			file.Open(code.strBinFile, CFile::modeRead);
+			STu32 size = file.GetLength();
+			STu8 *buffer = new STu8[size];
+			file.Read(buffer, size);
+			CPETOOLSDlg *pMainDlg = static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
+			if (pMainDlg->mPEMake.FindCodeByPeFile(buffer, size, code.bin))
+			{
+				codes.push_back(code);
+			}
+			delete[] buffer;
+			buffer = NULL;*/
+			//file.Close();
+		}
+	}
+	find.Close();
 }
 
 void CAddPatch::OnCbnSelchangeCombo1()
