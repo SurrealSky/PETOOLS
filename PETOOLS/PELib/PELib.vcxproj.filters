@@ -172,8 +172,5 @@
     <CustomBuild Include="patch\patch4.asm">
       <Filter>patch</Filter>
     </CustomBuild>
-    <CustomBuild Include="patch\patch2.asm">
-      <Filter>patch</Filter>
-    </CustomBuild>
   </ItemGroup>
 </Project>
