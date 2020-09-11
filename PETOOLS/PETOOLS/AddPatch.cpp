@@ -8,6 +8,7 @@
 #include"PETOOLSDlg.h"
 #include"ProBarThread.h"
 #include<disasm/disasm.h>
+#include<Hex.h>
 
 
 // CAddPatch 对话框
@@ -29,6 +30,8 @@ void CAddPatch::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT1, mNameEdit);
 	DDX_Control(pDX, IDC_LIST1, mList);
 	DDX_Control(pDX, IDC_COMBO1, mBinFile);
+	DDX_Control(pDX, IDC_EDIT2, mJmpCode);
+	DDX_Control(pDX, IDC_CHECK1, mJmpChk);
 }
 
 
@@ -36,6 +39,7 @@ BEGIN_MESSAGE_MAP(CAddPatch, CDialogEx)
 	ON_BN_CLICKED(IDOK, &CAddPatch::OnBnClickedOk)
 	ON_CBN_SELCHANGE(IDC_COMBO1, &CAddPatch::OnCbnSelchangeCombo1)
 	ON_BN_CLICKED(IDOK2, &CAddPatch::OnBnClickedOk2)
+	ON_BN_CLICKED(IDC_CHECK1, &CAddPatch::OnBnClickedCheck1)
 END_MESSAGE_MAP()
 
 
@@ -48,6 +52,10 @@ BOOL CAddPatch::OnInitDialog()
 
 	mNameEdit.SetLimitText(8);
 	mNameEdit.SetWindowTextA(".xxx");
+	mJmpChk.SetWindowTextA("添加JMP");
+	mJmpChk.SetCheck(FALSE);
+	mJmpCode.EnableWindow(FALSE);
+	mJmpCode.SetWindowTextA("E9F0F0F0F0");
 	TCHAR  column[][MAX_HEADLENGTH]={"地址","HEX 数据","反汇编"};
 	this->mList.SetHeaders(column,sizeof(column)/sizeof(*column));
 	//改变对齐方式
@@ -91,7 +99,26 @@ void CAddPatch::OnBnClickedOk()
 	{
 		STu8 *pPatch = (STu8*)(buffer->contents());
 		STu32 dwSize = buffer->size();
-		bool bRet = pMainDlg->mPEMake.AddPatchAuto2OEP((STu8*)strName.GetBuffer(0), pPatch, dwSize);
+
+		bool bRet = FALSE;
+		if (IsDlgButtonChecked(IDC_CHECK1))
+		{
+			//修正JMP OEP
+			CString strJmp;
+			mJmpCode.GetWindowTextA(strJmp);
+			strJmp.Remove(' ');
+			SurrealHex::HexConvert mHex;
+			std::string strJmpCode = mHex.StrToHex((STu8*)strJmp.GetBuffer(0), strJmp.GetLength());
+
+			STu32 offset = MemofOffset(pPatch, dwSize, (STu8*)strJmpCode.c_str(), strJmpCode.size());
+			offset += 1;//跳过E9指令
+			bRet = pMainDlg->mPEMake.AddPatch((STu8*)strName.GetBuffer(0), pPatch, dwSize, offset);
+		}
+		else
+		{
+			//添加JMP OEP
+			bRet = pMainDlg->mPEMake.AddPatchAuto2OEP((STu8*)strName.GetBuffer(0), pPatch, dwSize);
+		}
 		if (bRet)
 			CDialogEx::OnOK();
 		else
@@ -99,6 +126,28 @@ void CAddPatch::OnBnClickedOk()
 		return;
 	}
 	CDialogEx::OnCancel();
+}
+
+STu32 CAddPatch::MemofOffset(const STu8 *data, const STu32 data_len, const STu8 *pbyte,const STu32 pbyte_len)
+{
+	bool ok = false;
+	int i, j;
+	for (i = 0; i <= data_len - pbyte_len; i++)
+	{
+		if (data[i] == pbyte[0] && data[i + pbyte_len - 1] == pbyte[pbyte_len - 1])
+		{
+			for (j = 1; j<pbyte_len - 1; j++)
+			{
+				if (pbyte[j] != 0x3f && pbyte[j] != data[i + j])break;
+			}
+			if (j == pbyte_len - 1) { ok = true; break; }
+		}
+	}
+	if (ok)
+		return i;
+	else
+		return -1;
+
 }
 
 BOOL CAddPatch::InitDisaDate(STu8 *pPatch, STu32 dwSize)
@@ -199,7 +248,6 @@ void CAddPatch::LoadShellCodes(std::list<ShellCode> &codes)
 	strPath = GetApplicationPath();
 	strPath += _T("shellcode\\");
 	strPath += _T("*.exe");
-	//查找bin文件
 	bIsFind = find.FindFile(strPath);
 	while (bIsFind)
 	{
@@ -217,26 +265,16 @@ void CAddPatch::LoadShellCodes(std::list<ShellCode> &codes)
 			ShellCode code;
 			code.strBinFile = strFile;
 
-			HANDLE handle=::LoadLibrary(strFile);
-			CPETOOLSDlg *pMainDlg = static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
-			if (pMainDlg->mPEMake.FindCodeByPeFile((STu8*)handle, -1, code.bin))
+			HMODULE handle=::LoadLibrary(strFile);
+			if (handle)
 			{
-				codes.push_back(code);
+				CPETOOLSDlg *pMainDlg = static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
+				if (pMainDlg->mPEMake.FindCodeByPeFile((STu8*)handle, -1, code.bin))
+				{
+					codes.push_back(code);
+				}
+				FreeLibrary(handle);
 			}
-
-	/*		CFile file;
-			file.Open(code.strBinFile, CFile::modeRead);
-			STu32 size = file.GetLength();
-			STu8 *buffer = new STu8[size];
-			file.Read(buffer, size);
-			CPETOOLSDlg *pMainDlg = static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
-			if (pMainDlg->mPEMake.FindCodeByPeFile(buffer, size, code.bin))
-			{
-				codes.push_back(code);
-			}
-			delete[] buffer;
-			buffer = NULL;*/
-			//file.Close();
 		}
 	}
 	find.Close();
@@ -260,4 +298,24 @@ void CAddPatch::OnBnClickedOk2()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	CDialogEx::OnCancel();
+}
+
+
+void CAddPatch::OnBnClickedCheck1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (IsDlgButtonChecked(IDC_CHECK1))
+	{
+		mJmpChk.SetWindowTextA("修正JMP");
+		mJmpChk.SetCheck(TRUE);
+		mJmpCode.EnableWindow(TRUE);
+		mJmpCode.SetWindowTextA("E9F0F0F0F0");
+	}
+	else
+	{
+		mJmpChk.SetWindowTextA("添加JMP");
+		mJmpChk.SetCheck(FALSE);
+		mJmpCode.EnableWindow(FALSE);
+		mJmpCode.SetWindowTextA("E9F0F0F0F0");
+	}
 }

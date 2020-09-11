@@ -34,13 +34,17 @@ public:
 	afx_msg void OnBnClickedOk();
 public:
 	CEdit mNameEdit;
+	CEdit mJmpCode;
+	CButton mJmpChk;
 	CComboBox mBinFile;
 	MyListCtrl mList;
 	std::list<ShellCode> shellcodes;
 	BOOL InitDisaDate(STu8*,STu32);
 	CString GetApplicationPath();
 	void LoadShellCodes(std::list<ShellCode>&);
+	STu32 MemofOffset(const STu8 *data, const STu32 data_len, const STu8 *pbyte, const STu32 pbyte_len);
 public:
 	afx_msg void OnCbnSelchangeCombo1();
 	afx_msg void OnBnClickedOk2();
+	afx_msg void OnBnClickedCheck1();
 };

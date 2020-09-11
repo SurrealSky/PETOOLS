@@ -177,18 +177,12 @@ public:
 	afx_msg void OnOpen();
 	afx_msg void OnDisa();
 	afx_msg void OnReset();
-	afx_msg void OnClsRelocData();
-	afx_msg void OnEncryptImportTable();
 	afx_msg void OnTest();
 protected:
 	afx_msg LRESULT OnUpdateUi(WPARAM wParam, LPARAM lParam);
 public:
 	afx_msg void OnSaveFile();
 	afx_msg void OnSaveAs();
-	afx_msg void OnAddPatch();
-	afx_msg void OnAddSection();
-	afx_msg void OnEncrypt();
-	afx_msg void OnPosCalc();
 	afx_msg void OnHexEditView();
 	afx_msg void OnBnClickedMfcbutton9();
 	afx_msg void OnBnClickedMfcbutton10();

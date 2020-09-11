@@ -686,7 +686,7 @@ bool PeProtect::EncryptImportTable()
 *参数一：区段名
 *参数二：补丁数据
 *参数三：补丁数据大小
-*参数四：E9 XX XX XX XX指令相对补丁起始偏移
+*参数四：(E9)XX XX XX XX指令相对补丁起始偏移
 */
 bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int dwSize,unsigned int mOffset)
 {
@@ -753,15 +753,15 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
 	if(!AddSectionData(pName,dwSize,iRetRvaAddr)) return false;
 	//复制补丁数据
 	DWORD dwOffset=RvaToFoa(iRetRvaAddr);
-	memcpy(mBaseCtx->pVirMem+dwOffset,pPatch,dwSize);
+	CopyMemory(mBaseCtx->pVirMem+dwOffset,pPatch,dwSize);
 	//首先将DataDirectory复制到补丁
-	unsigned char *pTmp=(unsigned char*)(mBaseCtx->pVirMem+dwOffset+0x5);
-	memcpy(pTmp,mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory,sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory));
+	STu8* pTmp=mBaseCtx->pVirMem+dwOffset+0x5;
+	CopyMemory(pTmp,mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory,sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory));
 	//数据目录表清0
 	memset(&(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory),0,sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory));
 	//保存加密基表
 	pTmp=pTmp+sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory);
-	unsigned char encrypt_table[256]={0};
+	STu8 encrypt_table[256]={0};
 	for(int i=0;i<sizeof(encrypt_table);i++)
 	{
 		encrypt_table[i]=i;
@@ -774,19 +774,19 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
         unsigned int index=rand()%(count-i)+i;     
         if(index!=i)  
         {  
-            unsigned char tmp=encrypt_table[i];  
+            STu8 tmp=encrypt_table[i];  
             encrypt_table[i]=encrypt_table[index];  
             encrypt_table[index]=tmp;  
         }  
     }  
 	memcpy(pTmp,encrypt_table,sizeof(encrypt_table));
 	//加密节区数据(此处若存在.txtbss段数据，则失败)
-	STu8 *_offset_stop=mBaseCtx->pVirMem+RvaToFoa(iRetRvaAddr);
+	STu8 *_offset_stop=mBaseCtx->pVirMem + RvaToFoa(iRetRvaAddr);
 	for(int i=0;i<mBaseCtx->pe.mSectionsVector.size();i++)
 	{
 		//当地址大于iRetRvaAddr补丁地址，不进行加密
-		pTmp=(unsigned char *)(mBaseCtx->pVirMem+mBaseCtx->pe.mSectionsVector[i].PointerToRawData);
-		DWORD j=mBaseCtx->pe.mSectionsVector[i].SizeOfRawData;
+		pTmp= mBaseCtx->pVirMem + mBaseCtx->pe.mSectionsVector[i].PointerToRawData;
+		STu32 j=mBaseCtx->pe.mSectionsVector[i].SizeOfRawData;
 
 		for(int k=0;k<j;k++)
 		{
@@ -796,23 +796,21 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
 		}
 	}
 	//填充一字节0数据
-	pTmp=(unsigned char*)mBaseCtx->pVirMem+dwOffset+0x5+sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory)+sizeof(encrypt_table);
+	pTmp=mBaseCtx->pVirMem + dwOffset + 0x5 + sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory)
+		+ sizeof(encrypt_table);
 	*(pTmp++)=0;
 	//保存最后一节原始大小
-	*(unsigned int*)pTmp=dwOffset-mBaseCtx->pe.mSectionsVector.back().PointerToRawData;
+	*(STu32*)pTmp=dwOffset-mBaseCtx->pe.mSectionsVector.back().PointerToRawData;
 
-	//修正pe目录项清0
-	pTmp=(unsigned char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	memset(&((NtHeader*)pTmp)->OptionalHeader.DataDirectory,0,sizeof(((NtHeader*)pTmp)->OptionalHeader.DataDirectory));
 	//清除重定位标志
 	ClsRelocDataDirectory();
 	//修正pe OEP
+	//修正pe目录项清0
 	DWORD _rva_oldOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
-	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint=iRetRvaAddr;
-	//修正影像OEP
-	pTmp=(unsigned char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;	
+	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint=iRetRvaAddr;	
 	DWORD _rva_newOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
+
+	WriteCtx2VirMem();
 
 	//尝试使用变量重定位方式
 	DWORD _foa_newOEP=RvaToFoa(_rva_newOEP);
@@ -1036,7 +1034,7 @@ bool PeProtect::EncryptTwo(const STu8 *pName,const void *pPatch,const unsigned i
 }
 
 /*
-*加密方式三
+*虚拟机壳
 */
 bool PeProtect::EncryptThree(const STu8 *strSectionName)
 {

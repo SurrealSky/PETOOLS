@@ -96,7 +96,7 @@ bool PEMake::FindCodeByPeFile(const STu8 *pe, const STu32 pesize, ByteBuffer &co
 			SectionHeader text;
 			CopyMemory(&text, pe + dosHeader.e_lfanew + sizeof(NtHeader), sizeof(SectionHeader));
 
-			STu32 oep=ntHeader.OptionalHeader.AddressOfEntryPoint;
+			STu32 oep= text.VirtualAddress;
 			STu32 size = ntHeader.OptionalHeader.SizeOfCode;
 			code.append(pe + oep, size);
 			return true;
@@ -124,11 +124,6 @@ bool PEMake::Protect1A()
 	bool bret=ptrPeProtect->AddPatch((STu8*)".PEMake",pData,mShell_nSize,(DWORD)&_patch1_offset_entry_jump-(DWORD)&_patch1_ShellCodeBegin_);
 	delete []pData;
 	return bret;
-}
-
-bool PEMake::Protect1B()
-{
-	return true;
 }
 
 bool PEMake::Protect2A()

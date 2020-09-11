@@ -156,16 +156,10 @@ BEGIN_MESSAGE_MAP(CPETOOLSDlg, CDialogEx)
 	ON_COMMAND(ID_32771, &CPETOOLSDlg::OnOpen)
 	ON_COMMAND(ID_Disa, &CPETOOLSDlg::OnDisa)
 	ON_COMMAND(ID_RESET, &CPETOOLSDlg::OnReset)
-	ON_COMMAND(ID_32778, &CPETOOLSDlg::OnClsRelocData)
-	ON_COMMAND(ID_32779, &CPETOOLSDlg::OnEncryptImportTable)
 	ON_COMMAND(ID_32780, &CPETOOLSDlg::OnTest)
 	ON_MESSAGE(WM_UPDATEUI, &CPETOOLSDlg::OnUpdateUi)
 	ON_COMMAND(ID_32781, &CPETOOLSDlg::OnSaveFile)
 	ON_COMMAND(ID_32782, &CPETOOLSDlg::OnSaveAs)
-	ON_COMMAND(ID_32783, &CPETOOLSDlg::OnAddPatch)
-	ON_COMMAND(ID_Menu32784, &CPETOOLSDlg::OnAddSection)
-	ON_COMMAND(ID_32785, &CPETOOLSDlg::OnEncrypt)
-	ON_COMMAND(ID_32786, &CPETOOLSDlg::OnPosCalc)
 	ON_COMMAND(ID_32787, &CPETOOLSDlg::OnHexEditView)
 	
 	ON_BN_CLICKED(IDC_MFCBUTTON9, &CPETOOLSDlg::OnBnClickedMfcbutton9)
@@ -920,7 +914,7 @@ void CPETOOLSDlg::OnReset()
 
 }
 
-//十六进制浏览
+//编辑-十六进制浏览
 void CPETOOLSDlg::OnHexEditView()
 {
 	Create16EditWindow((unsigned char *)(mPEMake.mPeCtx.pVirMem), mPEMake.mPeCtx.size, 0, 0);
@@ -940,122 +934,6 @@ void CPETOOLSDlg::OnDisa()
 	
 }
 
-//功能-添加区段
-void CPETOOLSDlg::OnAddSection()
-{
-	// TODO: 在此添加命令处理程序代码
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-	CAddSectionDlg mDlg(this);
-	if (mDlg.DoModal() == IDOK)
-	{
-		OnSaveAs();
-	}
-	else
-		AfxMessageBox("添加失败!");
-}
-
-//功能-去重定位表
-void CPETOOLSDlg::OnClsRelocData()
-{
-	
-	 //TODO: 在此添加命令处理程序代码
-	if(!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-	if(mPEMake.mPeCtx.pe.mRelocsVector.size()==0)
-	{
-		AfxMessageBox("无重定位表");
-		return;
-	}
-
-	if(mPEMake.ClsRelocDataDirectory())
-	{
-		OnSaveAs();
-	}
-
-	DebugLog("菜单-功能-去重定位表:去除成功!");
-	//更新界面
-	this->SendMessage(WM_UPDATEUI,NULL,NULL);
-	MessageBox("重定位表去除成功!");
-
-	//此种方法弊端，如果为DLL，则当无法加载到缺省基址，则代码无法进行重定位出错
-	//更好的方法是对代码中重定位项进行重新编码计算，参考《Windows PE》P182。
-	
-}
-
-//功能-添加补丁
-void CPETOOLSDlg::OnAddPatch()
-{
-	//首先添加区段
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-	CAddPatch mDlg(this);
-	if (mDlg.DoModal() == IDOK)
-	{
-		OnSaveAs();
-	}
-}
-
-//功能-加密
-void CPETOOLSDlg::OnEncrypt()
-{
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-
-}
-
-//功能-导入表加密
-void CPETOOLSDlg::OnEncryptImportTable()
-{
-	// TODO: 在此添加命令处理程序代码
-
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-	if (mPEMake.mPeCtx.pe.mImportsVector.size() == 0)
-	{
-		AfxMessageBox("无导入表");
-		return;
-	}
-
-	if (mPEMake.EncryptImportTable())
-	{
-		OnSaveAs();
-	}
-	//更新界面
-	this->SendMessage(WM_UPDATEUI,NULL,NULL);
-}
-
-//功能-位置计算器
-void CPETOOLSDlg::OnPosCalc()
-{
-	// TODO: 在此添加命令处理程序代码
-	if (!mPEMake.isAnalysised())
-	{
-		AfxMessageBox("请先分析PE文件");
-		return;
-	}
-	if (pPosCalcDlg == NULL)
-	{
-		pPosCalcDlg = new CPosCalcDlg(this);
-		pPosCalcDlg->Create(IDD_DIALOG8, this);
-	}
-	pPosCalcDlg->ShowWindow(SW_SHOW);
-}
 
 //功能-测试功能项
 void CPETOOLSDlg::OnTest()
@@ -1065,10 +943,6 @@ void CPETOOLSDlg::OnTest()
 	{
 		AfxMessageBox("请先分析PE文件");
 		return;
-	}
-	if (mPEMake.Protect1A())
-	{
-		OnSaveAs();
 	}
 }
 
