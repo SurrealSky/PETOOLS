@@ -755,7 +755,7 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
 	DWORD dwOffset=RvaToFoa(iRetRvaAddr);
 	CopyMemory(mBaseCtx->pVirMem+dwOffset,pPatch,dwSize);
 	//首先将DataDirectory复制到补丁
-	STu8* pTmp=mBaseCtx->pVirMem+dwOffset+0x5;
+	STu8* pTmp=mBaseCtx->pVirMem+dwOffset+0x5;//跳过补丁头部jmp start
 	CopyMemory(pTmp,mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory,sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory));
 	//数据目录表清0
 	memset(&(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory),0,sizeof(mBaseCtx->pe.mNtHeader.OptionalHeader.DataDirectory));
@@ -804,8 +804,8 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
 
 	//清除重定位标志
 	ClsRelocDataDirectory();
-	//修正pe OEP
-	//修正pe目录项清0
+
+	//修正OEP
 	DWORD _rva_oldOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
 	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint=iRetRvaAddr;	
 	DWORD _rva_newOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
