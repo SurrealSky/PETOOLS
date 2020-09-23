@@ -105,7 +105,7 @@ bool PEMake::FindCodeByPeFile(const STu8 *pe, const STu32 pesize, ByteBuffer &co
 	return false;
 }
 
-bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, const STu32 mOffset,const STu32 nopbytes)
+bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const STu32 dwSize, const STu32 mOffset,const STu32 nopbytes)
 {
 	return ptrPeProtect->AddPatch(pName, pPatch, dwSize, mOffset, nopbytes);
 }
