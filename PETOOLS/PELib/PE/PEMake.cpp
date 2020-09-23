@@ -105,14 +105,14 @@ bool PEMake::FindCodeByPeFile(const STu8 *pe, const STu32 pesize, ByteBuffer &co
 	return false;
 }
 
-bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset)
+bool PEMake::AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, const STu32 mOffset,const STu32 nopbytes)
 {
-	return ptrPeProtect->AddPatch(pName, pPatch, dwSize, mOffset);
+	return ptrPeProtect->AddPatch(pName, pPatch, dwSize, mOffset, nopbytes);
 }
 
-bool PEMake::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const unsigned int dwSize)
+bool PEMake::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const STu32 dwSize,const STu32 nopbytes)
 {
-	return ptrPeProtect->AddPatchAuto2OEP(pName, pPatch, dwSize);
+	return ptrPeProtect->AddPatchAuto2OEP(pName, pPatch, dwSize, nopbytes);
 }
 
 bool PEMake::Protect1A()
@@ -121,7 +121,7 @@ bool PEMake::Protect1A()
 	char *pData=new char[mShell_nSize];
 	memset(pData,0,mShell_nSize);
 	memcpy(pData,&_patch1_ShellCodeBegin_,mShell_nSize);
-	bool bret=ptrPeProtect->AddPatch((STu8*)".PEMake",pData,mShell_nSize,(DWORD)&_patch1_offset_entry_jump-(DWORD)&_patch1_ShellCodeBegin_);
+	bool bret=ptrPeProtect->AddPatch((STu8*)".PEMake",pData,mShell_nSize,(DWORD)&_patch1_offset_entry_jump-(DWORD)&_patch1_ShellCodeBegin_,0);
 	delete []pData;
 	return bret;
 }

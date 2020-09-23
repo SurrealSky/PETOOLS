@@ -17,7 +17,6 @@ using namespace SurrealMemMgr;
 
 #include"../OtherLib/16Edit/16EditDll.h"
 
-#pragma comment(lib,"MemoryPool.lib")
 #pragma comment(lib,"PELib.lib")
 #pragma comment(lib,"..\\OtherLib\\16Edit\\16Edit.lib")
 

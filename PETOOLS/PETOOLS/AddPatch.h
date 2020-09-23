@@ -35,7 +35,7 @@ public:
 public:
 	CEdit mNameEdit;
 	CEdit mJmpCode;
-	CButton mJmpChk;
+	CEdit mNopBytes;
 	CComboBox mBinFile;
 	MyListCtrl mList;
 	std::list<ShellCode> shellcodes;
@@ -46,5 +46,5 @@ public:
 public:
 	afx_msg void OnCbnSelchangeCombo1();
 	afx_msg void OnBnClickedOk2();
-	afx_msg void OnBnClickedCheck1();
+	afx_msg void OnBnClickedRadio1();
 };

@@ -31,7 +31,7 @@ void CAddPatch::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST1, mList);
 	DDX_Control(pDX, IDC_COMBO1, mBinFile);
 	DDX_Control(pDX, IDC_EDIT2, mJmpCode);
-	DDX_Control(pDX, IDC_CHECK1, mJmpChk);
+	DDX_Control(pDX, IDC_EDIT3, mNopBytes);
 }
 
 
@@ -39,7 +39,8 @@ BEGIN_MESSAGE_MAP(CAddPatch, CDialogEx)
 	ON_BN_CLICKED(IDOK, &CAddPatch::OnBnClickedOk)
 	ON_CBN_SELCHANGE(IDC_COMBO1, &CAddPatch::OnCbnSelchangeCombo1)
 	ON_BN_CLICKED(IDOK2, &CAddPatch::OnBnClickedOk2)
-	ON_BN_CLICKED(IDC_CHECK1, &CAddPatch::OnBnClickedCheck1)
+	ON_BN_CLICKED(IDC_RADIO1, &CAddPatch::OnBnClickedRadio1)
+	ON_BN_CLICKED(IDC_RADIO2, &CAddPatch::OnBnClickedRadio1)
 END_MESSAGE_MAP()
 
 
@@ -52,10 +53,11 @@ BOOL CAddPatch::OnInitDialog()
 
 	mNameEdit.SetLimitText(8);
 	mNameEdit.SetWindowTextA(".xxx");
-	mJmpChk.SetWindowTextA("添加JMP");
-	mJmpChk.SetCheck(FALSE);
+	
+	CheckDlgButton(IDC_RADIO1, TRUE);
 	mJmpCode.EnableWindow(FALSE);
 	mJmpCode.SetWindowTextA("E9F0F0F0F0");
+
 	TCHAR  column[][MAX_HEADLENGTH]={"地址","HEX 数据","反汇编"};
 	this->mList.SetHeaders(column,sizeof(column)/sizeof(*column));
 	//改变对齐方式
@@ -93,6 +95,11 @@ void CAddPatch::OnBnClickedOk()
 		AfxMessageBox("区段名为空!");
 		return;
 	}
+	STu32 nopbytes = 0;
+	CString strNopBytes;
+	mNopBytes.GetWindowTextA(strNopBytes);
+	nopbytes = strtoll(strNopBytes, 0, 0x10);
+
 	ByteBuffer *buffer = NULL;
 	buffer=(ByteBuffer*)mBinFile.GetItemDataPtr(mBinFile.GetCurSel());
 	if (buffer != NULL)
@@ -101,7 +108,7 @@ void CAddPatch::OnBnClickedOk()
 		STu32 dwSize = buffer->size();
 
 		bool bRet = FALSE;
-		if (IsDlgButtonChecked(IDC_CHECK1))
+		if (IsDlgButtonChecked(IDC_RADIO2))
 		{
 			//修正JMP OEP
 			CString strJmp;
@@ -112,12 +119,12 @@ void CAddPatch::OnBnClickedOk()
 
 			STu32 offset = MemofOffset(pPatch, dwSize, (STu8*)strJmpCode.c_str(), strJmpCode.size());
 			offset += 1;//跳过E9指令
-			bRet = pMainDlg->mPEMake.AddPatch((STu8*)strName.GetBuffer(0), pPatch, dwSize, offset);
+			bRet = pMainDlg->mPEMake.AddPatch((STu8*)strName.GetBuffer(0), pPatch, dwSize, offset, nopbytes);
 		}
 		else
 		{
 			//添加JMP OEP
-			bRet = pMainDlg->mPEMake.AddPatchAuto2OEP((STu8*)strName.GetBuffer(0), pPatch, dwSize);
+			bRet = pMainDlg->mPEMake.AddPatchAuto2OEP((STu8*)strName.GetBuffer(0), pPatch, dwSize, nopbytes);
 		}
 		if (bRet)
 			CDialogEx::OnOK();
@@ -301,21 +308,17 @@ void CAddPatch::OnBnClickedOk2()
 }
 
 
-void CAddPatch::OnBnClickedCheck1()
+void CAddPatch::OnBnClickedRadio1()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	if (IsDlgButtonChecked(IDC_CHECK1))
+	if (IsDlgButtonChecked(IDC_RADIO1))
 	{
-		mJmpChk.SetWindowTextA("修正JMP");
-		mJmpChk.SetCheck(TRUE);
-		mJmpCode.EnableWindow(TRUE);
+		mJmpCode.EnableWindow(FALSE);
 		mJmpCode.SetWindowTextA("E9F0F0F0F0");
 	}
-	else
+	else if (IsDlgButtonChecked(IDC_RADIO2))
 	{
-		mJmpChk.SetWindowTextA("添加JMP");
-		mJmpChk.SetCheck(FALSE);
-		mJmpCode.EnableWindow(FALSE);
+		mJmpCode.EnableWindow(TRUE);
 		mJmpCode.SetWindowTextA("E9F0F0F0F0");
 	}
 }

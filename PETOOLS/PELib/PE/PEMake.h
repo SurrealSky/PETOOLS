@@ -35,8 +35,8 @@ public:
 	bool EncryptImportTable();
 	bool FindCodeByPeFile(const STu8*, const STu32, ByteBuffer&);
 public:
-	bool AddPatch(const STu8 *pName, const void *pPatch, const unsigned int dwSize, unsigned int mOffset);
-	bool AddPatchAuto2OEP(const STu8*, const void *, const unsigned int);
+	bool AddPatch(const STu8 *pName, const void *pPatch, const STu32 dwSize, const STu32 mOffset, const STu32 nopbytes);
+	bool AddPatchAuto2OEP(const STu8*, const void *, const STu32, const STu32 nopbytes);
 public:
 	bool Protect1A();	//第一类壳A（书本13.3节）调用AddPatch函数，补丁技术，弹对话框
 	bool Protect2A();	//第二类壳A（书本21章）EXE加密，外壳还原IAT，并对所有区段解密

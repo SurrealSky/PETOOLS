@@ -688,25 +688,28 @@ bool PeProtect::EncryptImportTable()
 *参数三：补丁数据大小
 *参数四：(E9)XX XX XX XX指令相对补丁起始偏移
 */
-bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int dwSize,unsigned int mOffset)
+bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int dwSize,const unsigned int mOffset,const unsigned int nopbytes)
 {
 	//增加区段
 	DWORD mRetAddr=0;
-	if(!AddSectionData(pName,dwSize,mRetAddr)) return false;
+	if(!AddSectionData(pName, nopbytes + dwSize,mRetAddr)) return false;
 	
+	//填充滑板指令(默认为NOP=0x90)
+	DWORD dwOffset = RvaToFoa(mRetAddr);
+	memset(mBaseCtx->pVirMem + dwOffset, 0x90, nopbytes);
+
 	//复制补丁数据
-	DWORD dwOffset=RvaToFoa(mRetAddr);
-	memcpy(mBaseCtx->pVirMem+dwOffset,pPatch,dwSize);
+	memcpy(mBaseCtx->pVirMem + dwOffset + nopbytes,pPatch,dwSize);
 	
 	DWORD _rva_oldOEP=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
-	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint= mRetAddr;
+	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint= mRetAddr;//默认不跳过滑板指令
 	
 	WriteCtx2VirMem();
 
 	//修正JMP XX XX XX XX
 	DWORD _rva_newOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
 	DWORD _foa_newOEP=RvaToFoa(_rva_newOEP);
-	*(int*)(mBaseCtx->pVirMem+_foa_newOEP+mOffset)=_rva_oldOEP-_rva_newOEP-mOffset-4;
+	*(int*)(mBaseCtx->pVirMem + _foa_newOEP + nopbytes + mOffset)=_rva_oldOEP-_rva_newOEP - nopbytes -mOffset-4;
 	return true;
 }
 
@@ -716,16 +719,19 @@ bool PeProtect::AddPatch(const STu8 *pName,const void *pPatch,const unsigned int
 *参数二：补丁数据
 *参数三：补丁数据大小
 */
-bool PeProtect::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const unsigned int dwSize)
+bool PeProtect::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const unsigned int dwSize, const unsigned int nopbytes)
 {
 	//增加区段
 	DWORD mRetAddr = 0;
-	if (!AddSectionData(pName, dwSize + 5, mRetAddr)) return false;
+	if (!AddSectionData(pName, nopbytes + dwSize + 5, mRetAddr)) return false;
+
+	//填充滑板指令(默认为NOP=0x90)
+	DWORD dwOffset = RvaToFoa(mRetAddr);
+	memset(mBaseCtx->pVirMem + dwOffset, 0x90, nopbytes);
 
 	//复制补丁数据
-	DWORD dwOffset = RvaToFoa(mRetAddr);
-	memcpy(mBaseCtx->pVirMem + dwOffset, pPatch, dwSize);
-	*(mBaseCtx->pVirMem + dwOffset + dwSize) = 0xe9;	//jmp
+	memcpy(mBaseCtx->pVirMem + dwOffset + nopbytes, pPatch, dwSize);
+	*(mBaseCtx->pVirMem + dwOffset + nopbytes + dwSize) = 0xe9;	//jmp
 
 	DWORD _rva_oldOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;  //记录原始OEP
 	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint = mRetAddr;
@@ -735,7 +741,7 @@ bool PeProtect::AddPatchAuto2OEP(const STu8 *pName, const void *pPatch, const un
 	//修正JMP XX XX XX XX
 	DWORD _rva_newOEP = mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
 	DWORD _foa_newOEP = RvaToFoa(_rva_newOEP);
-	*(int*)(mBaseCtx->pVirMem + _foa_newOEP + dwSize + 1) = _rva_oldOEP - _rva_newOEP - dwSize - 5;
+	*(int*)(mBaseCtx->pVirMem + _foa_newOEP + nopbytes + dwSize + 1) = _rva_oldOEP - _rva_newOEP - nopbytes- dwSize - 5;
 	return true;
 }
 
