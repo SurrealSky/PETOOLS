@@ -15,8 +15,8 @@ _ApiGetProcAddress  typedef ptr _QLGetProcAddress  ;声明函数引用
 _QLLoadLib        typedef proto :dword
 _ApiLoadLib       typedef ptr _QLLoadLib
 
-_QLMessageBoxA    typedef proto :dword,:dword,:dword,:dword
-_ApiMessageBoxA   typedef ptr _QLMessageBoxA
+;_QLMessageBoxA    typedef proto :dword,:dword,:dword,:dword
+;_ApiMessageBoxA   typedef ptr _QLMessageBoxA
 
 _QLGetProcessID   typedef proto :dword
 _ApiGetProcessID  typedef ptr _QLGetProcessID
@@ -50,10 +50,10 @@ dwIATValue     dd  ?
 dbEncrptValue  db  ?
 dwSections     dd  ?
 
-szText         db  'HelloWorldPE',0
+;szText         db  'HelloWorldPE',0
 szGetProcAddr  db  'GetProcAddress',0
 szLoadLib      db  'LoadLibraryA',0
-szMessageBox   db  'MessageBoxA',0
+;szMessageBox   db  'MessageBoxA',0
 szGetProcessID db  'GetProcessId',0
 szOpenProcess  db  'OpenProcess',0
 szVirtualProtectEx    db  'VirtualProtectEx',0
@@ -501,7 +501,7 @@ _goThere  proc private _Base
    local @first
    local _getProcAddress:_ApiGetProcAddress   ;定义函数
    local _loadLibrary:_ApiLoadLib
-   local _messageBox:_ApiMessageBoxA
+   ;local _messageBox:_ApiMessageBoxA
    local _getProcessID:_ApiGetProcessID
    local _openProcess:_ApiOpenProcess
    local _writeProcessMemory:_ApiWriteProcessMemory
@@ -556,10 +556,10 @@ _goThere  proc private _Base
 
     ;使用GetProcAddress函数的首址，
     ;获得函数MessageBoxA的首址
-    mov eax,offset szMessageBox
-    add eax,_Base
-    invoke _getProcAddress,hUser32Base,eax
-    mov _messageBox,eax
+    ;mov eax,offset szMessageBox
+    ;add eax,_Base
+    ;invoke _getProcAddress,hUser32Base,eax
+    ;mov _messageBox,eax
 
     mov eax,offset szGetProcessID
     add eax,_Base
@@ -583,9 +583,9 @@ _goThere  proc private _Base
 
 
     ;调用函数MessageBoxA
-    mov eax,offset szText
-    add eax,_Base
-    invoke _messageBox,NULL,eax,NULL,MB_OK
+    ;mov eax,offset szText
+    ;add eax,_Base
+    ;invoke _messageBox,NULL,eax,NULL,MB_OK
 
     ;获取目标进程的基地址
     mov eax,offset dwImageBase
