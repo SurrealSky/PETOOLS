@@ -2332,6 +2332,7 @@ void PeProtect::FillWithShit(STu8* Base,DWORD dwSize)
 
 void PeProtect::CrypterPackerwithCall(STu8* pFuncBody,DWORD dwSize)
 {
+#ifndef DebugMode
 	DWORD l=0;
 	DWORD64 tmp,tmp1;
 	do
@@ -2347,6 +2348,7 @@ void PeProtect::CrypterPackerwithCall(STu8* pFuncBody,DWORD dwSize)
 			CopyMemory(pFuncBody+l,&tmp,8);
 		}
 	}while(l!=dwSize);
+#endif
 }
 
 DWORD PeProtect::GetChecksum(STu8* Base,DWORD FileSize)

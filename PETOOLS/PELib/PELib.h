@@ -16,3 +16,6 @@ using namespace SurrealMemMgr;
 #pragma comment(lib, "shlwapi.lib")
 #include"CompressLib\aplib.h"
 #pragma comment(lib,"CompressLib\\aplib.lib")
+
+//控制特定代码
+#define DebugMode
