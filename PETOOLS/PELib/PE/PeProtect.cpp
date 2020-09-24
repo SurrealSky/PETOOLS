@@ -825,7 +825,7 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
 }
 
 /*
-*加密方式一:第三类壳A-yoda
+*加密方式一:第三类壳A-yoda 1.02
 *参数一：区段名
 *参数二：补丁数据
 *参数三：补丁数据大小
