@@ -64,6 +64,7 @@ extern const char	*_szImageList_SetIconSize;
 #define SEC_PER_SIZE            0x30
 #define RSRC_PER_SIZE			0x12
 #define OEP_PER_SIZE            0x30
+#define PACK_PER_SIZE			0x30
 
 
 //extern char		*pDepackerCode;

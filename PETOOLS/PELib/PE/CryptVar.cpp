@@ -33,7 +33,7 @@ const char	*_szComCtl32			="ComCtl32.dll";
 const char	*_szImageList_SetIconSize="ImageList_SetIconSize";
 
 //char	*pDepackerCode;
-DWORD	DEPACKER_CODE_SIZE=(DWORD)&_patch2_ShellCodeEnd_-(DWORD)&_patch2_ShellCodeBegin_;
+DWORD	DEPACKER_CODE_SIZE=(DWORD)&_patch3_ShellCodeEnd_-(DWORD)&_patch3_ShellCodeBegin_;
 DWORD	IT_SIZE=0x60;
 DWORD	TLS_SIZE=0x1000;
 

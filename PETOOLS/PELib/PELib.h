@@ -18,4 +18,4 @@ using namespace SurrealMemMgr;
 #pragma comment(lib,"CompressLib\\aplib.lib")
 
 //控制特定代码
-#define DebugMode
+//#define DebugMode

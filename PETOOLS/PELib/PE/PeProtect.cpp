@@ -1006,9 +1006,9 @@ bool PeProtect::EncryptTwo(const STu8 *pName,const void *pPatch,const unsigned i
 	dwEncSize=(DWORD)&_patch3_PackEncrypt_END_-(DWORD)&_patch3_PackEncrypt_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
 	dwDecOffset=(DWORD)&_patch3_LABEL_PackDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new STu8[VAR_PER_SIZE];
-	mPer.MyMakePER(SecDecryptBuff,VAR_PER_SIZE);
-	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,VAR_PER_SIZE);
+	SecDecryptBuff=new STu8[PACK_PER_SIZE];
+	mPer.MyMakePER(SecDecryptBuff, PACK_PER_SIZE);
+	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff, PACK_PER_SIZE);
 	delete []SecDecryptBuff;
 	SecDecryptBuff=0;
 	//---------------------------------
@@ -2337,7 +2337,6 @@ void PeProtect::CrypterPackerwithCall(STu8* pFuncBody,DWORD dwSize)
 	DWORD64 tmp,tmp1;
 	do
 	{
-		l++;
 		CopyMemory(&tmp,pFuncBody+l,8);
 		if(tmp==0x9090909090909090)
 		{
@@ -2346,8 +2345,11 @@ void PeProtect::CrypterPackerwithCall(STu8* pFuncBody,DWORD dwSize)
 			tmp1=tmp1<<40;
 			tmp=tmp|tmp1;
 			CopyMemory(pFuncBody+l,&tmp,8);
+			l += 8;
 		}
-	}while(l!=dwSize);
+		else
+			l++;
+	}while(l<=dwSize);
 #endif
 }
 

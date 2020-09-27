@@ -909,7 +909,6 @@ PackDecryptLoop:
 		LODS BYTE PTR DS:[ESI]
 _patch3_LABEL_PackDecryptLoop	LABEL	DWORD
 		db	030h	dup(0FFh)
-		db	030h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP PackDecryptLoop
 _patch3_PackEncrypt_START_	LABEL DWORD
@@ -2179,7 +2178,7 @@ _DecryptBuff:
 DecryptBuffLoop1:
 		LODS BYTE PTR DS:[ESI]
 _patch3_SectionDecryptLoop LABEL DWORD
-		db 30h dup(90h)
+		db	030h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP DecryptBuffLoop1
 RETN
@@ -2434,7 +2433,7 @@ _CODEDecryptBuff:
 DecryptBuffLoop2:
 		LODS BYTE PTR DS:[ESI]
 _patch3_CODEDecryptLoop LABEL DWORD
-		db 30h dup(90h)
+		db	030h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP DecryptBuffLoop2
 RETN
@@ -2800,7 +2799,7 @@ _DATADecryptBuff:
 DecryptBuffLoop3:
 		LODS BYTE PTR DS:[ESI]
 _patch3_DATADecryptLoop LABEL DWORD
-		db 30h dup(90h)
+		db	030h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP DecryptBuffLoop3
 RETN
@@ -3225,7 +3224,7 @@ DataIsNotDirectory1:
 DecryptRSRCLoop1:
 			LODS BYTE PTR DS:[ESI]
 _patch3_RSRCDecryptLoop LABEL DWORD
-			db 12h dup(90h)
+			db	030h	dup(0FFh)
 			STOS BYTE PTR ES:[EDI]
 			LOOP DecryptRSRCLoop1
 			POP ESI
@@ -3270,7 +3269,7 @@ _IDATADecryptBuff:
 DecryptBuffLoop4:
 		LODS BYTE PTR DS:[ESI]
 _patch3_IDATADecryptLoop LABEL DWORD
-		db 30h dup(90h)
+		db	030h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP DecryptBuffLoop4
 RETN
@@ -3378,7 +3377,7 @@ _EDATADecryptBuff:
 DecryptBuffLoop5:
 		LODS BYTE PTR DS:[ESI]
 _patch3_EDATADecryptLoop LABEL DWORD
-		db 30h dup(90h)
+		db	030h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP DecryptBuffLoop5
 RETN
