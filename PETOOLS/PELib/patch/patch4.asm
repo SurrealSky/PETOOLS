@@ -706,6 +706,7 @@ _patch3_LABEL_VARIABLE_CRYPT_END_	LABEL	DWORD
 VARIABLE_CRYPT_END:
 
 DepackerCode:
+;--------------------junk code start------------------------------
 		;------some crazy work!------
 		NOP
 		NOP
@@ -739,7 +740,7 @@ DepackerCode:
 		NOP
 		;----------------------------
 		CALL FUCK1
-		;------some crazy work!------
+		;------some crazy work!------	
 		NOP
 		NOP
 		NOP
@@ -855,6 +856,7 @@ FUCK1:
 	DEC EBX
 	INT 3
 	RETN
+;--------------------junk code end------------------------------
 MAIN1:
 	;------some crazy work!------
 	NOP
@@ -1019,7 +1021,8 @@ VariableDecryptLoop:
 
 		; 0 - SI not found
 		; 1 - SI found
-		MOV AX,04h
+		;SehHandler1 更改 ax 04h
+		MOV AX,0FFh
 		JMP SM1
 		RETN;DB 0FFh
 SM1:
@@ -1030,7 +1033,7 @@ SICheck1_SP:
 	XOR  EBX, EBX
     POP  DWORD PTR FS:[EBX]
     ADD  ESP, 4
-	CMP AL,4	
+	CMP AL,4	;判断SehHandler1是否被执行
 	JE SkipSICheck1
 		JMP SM2
 	INT 3;DB 0E9h
@@ -1618,78 +1621,8 @@ SkipSICheck1:
 		NOP
 		NOP
 		;----------------------------
-		;IsSoftIce95Loaded()
-		;----------------------------------------------------------
-		MOV EDX,EBP
-		ADD EDX,OFFSET _RO_PROTECTION_FLAGS
-		TEST DWORD PTR [EDX],CHECK_SI_FLAG
-		JZ   SkipSICheck2
-			;------ CHECK FOR SOFTICE 95 ------
-			MOV EDX,EBP
-			ADD EDX,OFFSET _RO_szSoftICE95
-			LEA EDI,[EDX];ASCII "\\\\.\\SICE"
-			; map it...
-			PUSH NULL
-			PUSH FILE_ATTRIBUTE_NORMAL
-			PUSH OPEN_EXISTING
-			PUSH NULL
-			PUSH (FILE_SHARE_READ or FILE_SHARE_WRITE)
-			PUSH (GENERIC_READ or GENERIC_WRITE)
-			PUSH EDI
-			MOV EDX,EBP
-			ADD EDX,OFFSET _RO_CreateFile
-			CALL DWORD PTR[EDX]
-			CMP EAX,_INVALID_HANDLE_VALUE
-			JE CheckforNTICE2
-				MOV EDI,EAX	; edi -> file handle
-				PUSH EDI
-				MOV EDX,EBP
-				ADD EDX,OFFSET _RO_CloseHandle
-				CALL DWORD PTR[EDX];CloseHandle(handle);
-				PUSH 0
-				MOV EDX,EBP
-				ADD EDX,OFFSET _RO_ExitThread
-				CALL DWORD PTR[EDX];CloseHandle(handle);
-			;------ CHECK FOR SOFTICE NT ------
-CheckforNTICE2:
-		MOV EDX,EBP
-		ADD EDX,OFFSET _RO_szSoftICENT
-		LEA EDI,[EDX];ASCII "\\\\.\\NTICE"
-		; map it...
-		PUSH NULL
-		PUSH FILE_ATTRIBUTE_NORMAL
-		PUSH OPEN_EXISTING
-		PUSH NULL
-		PUSH (FILE_SHARE_READ OR FILE_SHARE_WRITE)
-		PUSH (GENERIC_READ OR GENERIC_WRITE)
-		PUSH EDI
-		MOV EDX,EBP
-		ADD EDX,OFFSET _RO_CreateFile
-		CALL DWORD PTR[EDX]
-		CMP EAX,_INVALID_HANDLE_VALUE
-		JE SkipSICheck2
-			MOV EDI,EAX	; edi -> file handle
-			PUSH EDI
-			MOV EDX,EBP
-			ADD EDX,OFFSET _RO_CloseHandle
-			CALL DWORD PTR[EDX];CloseHandle(handle);
-			PUSH 0
-			MOV EDX,EBP
-			ADD EDX,OFFSET _RO_ExitThread
-			CALL DWORD PTR[EDX];CloseHandle(handle);
-		;----------------------------------
-SkipSICheck2:
-	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	;----------------------------
-;AntiDebug()
+
+;AntiDebug()判断父进程是否为explorer.exe,以及反dump
 ;----------------------------------------------------------
 _AntiDebug1:
 	MOV ECX,49h
@@ -1820,8 +1753,7 @@ DoGetProcAddr:
 	CALL DWORD PTR[EDX]
 	RETN
 LoaderContinue1:
-	;----------------------------------------------------------
-	;------------------------ ANTI DUMP -----------------------
+	;------------------------ ANTI DUMP---------
 	MOV EDX,EBP
 	ADD EDX,OFFSET _RO_PROTECTION_FLAGS
 	TEST DWORD PTR [EDX],ANTI_DUMP_FLAG
@@ -4139,7 +4071,7 @@ NO_DEBUG_CHECK1:
 ;----------------------------------------------------------
 ;AntiDebug()
 ;----------------------------------------------------------
-;_AntiDebug2:
+_AntiDebug2:
 	XOR EAX,EAX
 	MOV ECX,49h
 	MOV EDX,EBP
@@ -5228,7 +5160,6 @@ SehHandler1:
 	POP EDI
 	LEAVE
 	RETN
-
 	;-------------- PRE VARIABLE PE LOADER CODE ---------------
 _patch3_PRE_VARIABLE_START_	LABEL	DWORD
 	_RO_dwCompressType:			;	DD 0
