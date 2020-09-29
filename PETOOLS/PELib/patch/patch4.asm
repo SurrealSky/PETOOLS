@@ -707,6 +707,20 @@ VARIABLE_CRYPT_END:
 
 DepackerCode:
 ;--------------------junk code start------------------------------
+		;------fake vc++ head-------------
+		PUSH EBP  
+		MOV EBP,ESP  
+		PUSH -1  
+		push 40ff12h
+		PUSH 40ff13h
+		MOV EAX,DWORD PTR FS:[0]  
+		PUSH EAX  
+		MOV DWORD PTR FS:[0],ESP  
+		ADD ESP,-6Ch 
+		PUSH EBX  
+		PUSH ESI  
+		PUSH EDI
+		;----------------------------
 		;------some crazy work!------
 		db	08h	dup(0EEh)
 		;----------------------------
