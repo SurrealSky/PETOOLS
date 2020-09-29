@@ -400,22 +400,24 @@ void PER::MakePER(STu8* pDecryptBuff,DWORD dwSize)
 
 void PER::MyMakePER(STu8 *pDecryptBuff,DWORD dwSize)
 {
-	FillMemory(pDecryptBuff,dwSize,0x90);
-	//BB BC000000   mov     ebx, 0BC
-	//33C3          xor     eax, ebx
-	pDecryptBuff[0]=0xBB;
-	pDecryptBuff[1]=0xBC;
-	pDecryptBuff[2]=0x00;
-	pDecryptBuff[3]=0x00;
-	pDecryptBuff[4]=0x00;
-	pDecryptBuff[5]=0x33;
-	pDecryptBuff[6]=0xC3;
+	//FillMemory(pDecryptBuff,dwSize,0x90);
+	////BB BC000000   mov     ebx, 0BC
+	////33C3          xor     eax, ebx
+	//pDecryptBuff[0]=0xBB;
+	//pDecryptBuff[1]=0xBC;
+	//pDecryptBuff[2]=0x00;
+	//pDecryptBuff[3]=0x00;
+	//pDecryptBuff[4]=0x00;
+	//pDecryptBuff[5]=0x33;
+	//pDecryptBuff[6]=0xC3;
+	MakePER(pDecryptBuff, dwSize);
 }
 
 void PER::MyEasyEncrypt(STu8* pDecryptBuff,DWORD dwSize)
 {
-	for(int i=0;i<dwSize;i++)
-	{
-		pDecryptBuff[i]^=0xBC;
-	}
+	//for(int i=0;i<dwSize;i++)
+	//{
+	//	pDecryptBuff[i]^=0xBC;
+	//}
+	EncryptBuff(pDecryptBuff, 0, dwSize);
 }

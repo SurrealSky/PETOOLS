@@ -708,91 +708,35 @@ VARIABLE_CRYPT_END:
 DepackerCode:
 ;--------------------junk code start------------------------------
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EBX,55h
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CALL FUCK1
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CALL FUCK1
 		;------some crazy work!------	
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CALL FUCK2
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CALL FUCK2
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CMP EBX,55h
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		JNZ CallMe2
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		RETN
 CallMe0:
@@ -810,28 +754,14 @@ CallMe1:
 MAIN0:	
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 CallMe2:
 	CALL FUCK3
 	CALL CallMe0
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 FUCK3:
 	XOR EAX,EAX
@@ -840,14 +770,7 @@ FUCK3:
 	INT 3
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 FUCK1:
 	XOR EAX,EAX
@@ -859,14 +782,7 @@ FUCK1:
 ;--------------------junk code end------------------------------
 MAIN1:
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 	;-------------------- DECRYPT MAIN BODY -------------------
 	XOR EBX,EBX
@@ -878,14 +794,7 @@ MAIN1:
 	MOV ESI,EDI
 	XOR EAX,EAX
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 Reserve_for_dll:
 	CALL PackDecrypt
@@ -908,20 +817,13 @@ PackDecrypt:
 PackDecryptLoop:
 		LODS BYTE PTR DS:[ESI]
 _patch3_LABEL_PackDecryptLoop	LABEL	DWORD
-		db	030h	dup(0FFh)
+		db	060h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP PackDecryptLoop
 _patch3_PackEncrypt_START_	LABEL DWORD
 LOADER_CRYPT_START:
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;------------------ DECRYPT PRE VARIABLE ------------------
 		XOR EBX,EBX
@@ -933,14 +835,7 @@ LOADER_CRYPT_START:
 		MOV ESI,EDI
 		XOR EAX,EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;FUNNY JUMP
 		MOV EDX,EBP
@@ -956,22 +851,14 @@ VariableDecrypt:
 VariableDecryptLoop:
 		LODS BYTE PTR DS:[ESI]
 		_patch3_LABEL_VariableDecryptLoop	LABEL	DWORD
-		db	030h	dup(0FFh)
-		db	030h	dup(0FFh)
+		db	060h	dup(0FFh)
 		STOS BYTE PTR ES:[EDI]
 	LOOP VariableDecryptLoop
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwDEPACKER_SECTION_NAME
 		MOV EAX,[EDX]
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;---------------------- DETECT WinNT ----------------------
 		MOV EDX,EBP
@@ -1041,14 +928,7 @@ SM2: POPAD
 
 SkipSICheck1:
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;----------------- GET BASE API ADDRESSES -----------------
 		MOV EDX,EBP
@@ -1102,28 +982,14 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_LoadLibrary
 		CALL DWORD PTR[EDX]
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwKernelBase
 		MOV ESI,EAX	; esi -> kernel base
 		MOV DWORD PTR [EDX], EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GetModuleHandle
 		MOV EDX,EBP
@@ -1134,14 +1000,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GetModuleHandle
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> VirtualProtect
 		MOV EDX,EBP
@@ -1152,14 +1011,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_VirtualProtect
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GetModuleFileName
 		MOV EDX,EBP
@@ -1170,14 +1022,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GetModuleFileName
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> CreateFile
 		MOV EDX,EBP
@@ -1188,14 +1033,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_CreateFile
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GlobalAlloc
 		MOV EDX,EBP
@@ -1206,14 +1044,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GlobalAlloc
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GlobalFree
 		MOV EDX,EBP
@@ -1224,14 +1055,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GlobalFree
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> ReadFile
 		MOV EDX,EBP
@@ -1242,14 +1066,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_ReadFile
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GetFileSize
 		MOV EDX,EBP
@@ -1260,14 +1077,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GetFileSize
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> CloseHandle
 		MOV EDX,EBP
@@ -1278,14 +1088,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_CloseHandle
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> IsDebuggerPresent
 		MOV EDX,EBP
@@ -1296,14 +1099,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_IsDebuggerPresent
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> CreateToolhelp32Snapshot
 		MOV EDX,EBP
@@ -1314,14 +1110,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_CreateToolhelp32Snapshot
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GetCurrentProcessId
 		MOV EDX,EBP
@@ -1340,14 +1129,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_Process32First
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> Process32Next
 		MOV EDX,EBP
@@ -1358,14 +1140,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_Process32Next
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> szModule32First
 		MOV EDX,EBP
@@ -1376,14 +1151,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_Module32First
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> szModule32Next	
 		MOV EDX,EBP
@@ -1394,14 +1162,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_Module32Next	
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> OpenProcess
 		MOV EDX,EBP
@@ -1412,14 +1173,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_OpenProcess
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> TerminateProcess
 		MOV EDX,EBP
@@ -1430,14 +1184,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_TerminateProcess
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> ExitThread
 		MOV EDX,EBP
@@ -1448,14 +1195,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_ExitThread
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GetWindowsDirectory
 		MOV EDX,EBP
@@ -1466,14 +1206,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GetWindowsDirectory
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> CreateWindow
 		MOV EDX,EBP
@@ -1484,14 +1217,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_CreateWindow
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> GetCurrentThread
 		MOV EDX,EBP
@@ -1502,14 +1228,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_GetCurrentThread
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> SetThreadPriority
 		MOV EDX,EBP
@@ -1520,14 +1239,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_SetThreadPriority
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> SuspendThread
 		MOV EDX,EBP
@@ -1538,14 +1250,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_SuspendThread
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> ResumeThread
 		MOV EDX,EBP
@@ -1556,14 +1261,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_ResumeThread
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		; get user base
 		MOV EDX,EBP
@@ -1575,14 +1273,7 @@ SkipSICheck1:
 		CALL DWORD PTR[EDX]
 		MOV ESI,EAX	; esi -> user base
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-> WaitForInputIdle
 		MOV EDX,EBP
@@ -1593,14 +1284,7 @@ SkipSICheck1:
 		ADD EDX,OFFSET _RO_WaitForInputIdle
 		MOV [EDX],EAX
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 
 		MOV EDX,EBP
@@ -1611,14 +1295,7 @@ SkipSICheck1:
 		SUB ECX,OFFSET _RO_szKernel32
 		REP STOS BYTE  PTR ES:[EDI]			;擦掉外壳输入表函数名
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 
 ;AntiDebug()判断父进程是否为explorer.exe,以及反dump
@@ -1732,14 +1409,7 @@ ENDOFCHECKPROCESS1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 ; it's in an own function to keep a the loader code small
 ; EAX = address of API string
@@ -1789,14 +1459,7 @@ LetDumpable:
 		RETN
 PARENT_EXIST1:
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 
 		;---------------- GET HEADER WRITE ACCESS -----------------
@@ -1934,14 +1597,7 @@ ALLOCATE_IS_VALID:
 		POP  EBX
 		; the calculated CRC will be compared at the start of the InitIT function >:-)
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		; FUNNY JUMP :)
 		MOV EDX,EBP
@@ -1950,14 +1606,7 @@ ALLOCATE_IS_VALID:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;-------------------- SECTIONS DECRYPTER ------------------
 _DecryptSectionsInfo:
@@ -2016,14 +1665,7 @@ _GetCheckSum:
 		POP EBP
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 AfterCRCCalcContinue:
 		; clean up
@@ -2043,82 +1685,40 @@ SkipChecksumCalcAndCleanUp:
 SkipChecksumCalc:
 DontCheckCRC:
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CALL _DecryptSectionsInfo
 		;----------------------- DECRYPTION ----------------------
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwImageBase
 		MOV EAX,[EDX]
 		CALL _ReBuiltSectionNames
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwImageBase
 		MOV EAX,[EDX]
 		CALL _CryptPE;CryptPE(Base)
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwImageBase
 		MOV EAX,[EDX]
 		CALL _DecompressPE
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwImageBase
 		MOV EAX,[EDX]
 		CALL _RemoveSectionNames
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET _RO_dwImageBase
@@ -2133,25 +1733,11 @@ DontCheckCRC:
 		CALL _RelocationRVA
 do_not_need_relocate:
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		CALL _RemoveSectionsInfo
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		MOV EDX,EBP
 		ADD EDX,OFFSET AfterDeCryptionContinue
@@ -2159,14 +1745,7 @@ do_not_need_relocate:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 _DecryptBuff:
 	MOV EDI,ESI
@@ -2183,14 +1762,7 @@ _patch3_SectionDecryptLoop LABEL DWORD
 	LOOP DecryptBuffLoop1
 RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 ;-------------------- SECTIONS ENCRYPTER ------------------
 _ReBuiltSectionNames:
@@ -2234,14 +1806,7 @@ sectionnamewrite:
 	;assume edi : nothing
 	RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 _RemoveSectionsInfo:
 	MOV EDX,EBP
@@ -2253,14 +1818,7 @@ _RemoveSectionsInfo:
 	REP STOS BYTE PTR ES:[EDI]
 	RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 ;------------------- RELOCATION SECTIONS ------------------
 _RelocationRVA:
@@ -2413,14 +1971,7 @@ finish_correction:
 	REP STOS BYTE  PTR ES:[EDI]
 	RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 	;-------------------- SECTIONS DECRYPTER ------------------
 _CODEDecryptBuff:
@@ -2438,14 +1989,7 @@ _patch3_CODEDecryptLoop LABEL DWORD
 	LOOP DecryptBuffLoop2
 RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		; void ReBuiltSectionNames(char* Base)
 _RemoveSectionNames:
@@ -2491,14 +2035,7 @@ SECTION_IS_NOT_ZERO4:
 	;assume edi : nothing
 	RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 	; void CryptPE(char* Base)
 _CryptPE:
@@ -2582,14 +2119,7 @@ _CHECK_IF_SIZE_IS_ZERO1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 _CODE_CHECK_IF_SIZE_IS_ZERO1:
 		CMP DWORD PTR DS:[ESI+14h],0
@@ -2617,14 +2147,7 @@ _CODE_CHECK_IF_SIZE_IS_ZERO1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 _DATA_CHECK_IF_SIZE_IS_ZERO1:
 		CMP DWORD PTR DS:[ESI+14h],0
@@ -2652,14 +2175,7 @@ _DATA_CHECK_IF_SIZE_IS_ZERO1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;----------------------------
 _IDATA_CHECK_IF_SIZE_IS_ZERO1:
@@ -2688,14 +2204,7 @@ _IDATA_CHECK_IF_SIZE_IS_ZERO1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 		;----------------------------
 _EDATA_CHECK_IF_SIZE_IS_ZERO1:
@@ -2724,14 +2233,7 @@ _EDATA_CHECK_IF_SIZE_IS_ZERO1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 _RSRC_CHECK_IF_SIZE_IS_ZERO1:
 		CMP DWORD PTR DS:[ESI+14h],0
@@ -2767,14 +2269,7 @@ _RSRC_CHECK_IF_SIZE_IS_ZERO1:
 		PUSH EAX
 		RETN
 		;------some crazy work!------
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
-		NOP
+		db	08h	dup(0EEh)
 		;----------------------------
 SecDecryptContinue1:	   
 		POP EDI
@@ -2804,14 +2299,7 @@ _patch3_DATADecryptLoop LABEL DWORD
 	LOOP DecryptBuffLoop3
 RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 	;----------------------- DECOMPRESS -----------------------
 lzo1f_decompress_asm_fast_safe:
@@ -3112,14 +2600,7 @@ endofbuffer:
 	POP EBP
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 	;-------------------- RESOURCE DECRYPTER ------------------
 _CryptResourceDirectory:
@@ -3224,7 +2705,7 @@ DataIsNotDirectory1:
 DecryptRSRCLoop1:
 			LODS BYTE PTR DS:[ESI]
 _patch3_RSRCDecryptLoop LABEL DWORD
-			db	030h	dup(0FFh)
+			db	012h	dup(0FFh)
 			STOS BYTE PTR ES:[EDI]
 			LOOP DecryptRSRCLoop1
 			POP ESI
@@ -3248,14 +2729,7 @@ EndOfRSRCDecrypt1:
 	POP EBP
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 
 	;-------------------- SECTIONS DECRYPTER ------------------
@@ -3274,14 +2748,7 @@ _patch3_IDATADecryptLoop LABEL DWORD
 	LOOP DecryptBuffLoop4
 RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 	;void FillMemory
 _FillMemory:
@@ -3306,14 +2773,7 @@ __memfill:
 	POP EBP
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 _GetFileNameFromPath:
 	PUSH EBP
@@ -3356,14 +2816,7 @@ NotFoundAnyPath:
 	POP EBP
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 
 	;-------------------- SECTIONS DECRYPTER ------------------
@@ -3382,14 +2835,7 @@ _patch3_EDATADecryptLoop LABEL DWORD
 	LOOP DecryptBuffLoop5
 RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 ;_StrNCmp:
 	PUSH EBP
@@ -3429,14 +2875,7 @@ endofbuffer2:
 	POP EBP
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 _aPsafe_depack_asm_fast:
 	PUSHAD
@@ -3477,14 +2916,7 @@ noerrHappen:
 	POPAD
 	RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 getbit1:
     ADD     DL, DL
@@ -3495,14 +2927,7 @@ getbit1:
 stillbitsleft1:
     RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 getgamma1:
     XOR    ECX, ECX
@@ -3515,14 +2940,7 @@ getgammaloop1:
     JC     getgammaloop1
     RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 _aP_depack_asm:
     PUSHAD
@@ -3613,14 +3031,7 @@ donedepacking1:
     POPAD
     RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 _aP_depack_asm_fast:
     PUSHAD
@@ -3854,14 +3265,7 @@ donedepacking2:
     POPAD
     RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 _DecompressPE:
 	MOV EDI,EAX
@@ -4010,14 +3414,7 @@ aPLib_COMPRESS:
 		PUSH EAX
 		RETN
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 SecDecryptContinue12:	   
 		POP EDI
@@ -4057,14 +3454,7 @@ AfterDeCryptionContinue:
 			CALL DWORD PTR[EDX]
 NO_DEBUG_CHECK1:
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 
 ;----------------------------------------------------------
@@ -4170,14 +3560,7 @@ IT_IS_NOT_MYCHILD2:
 			JNZ CHECKNEXTPROCESS2
 ENDOFCHECKPROCESS2:
 	;------some crazy work!------
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
-	NOP
+	db	08h	dup(0EEh)
 	;----------------------------
 
 ;------ PREPARE THE OEP JUMP EXCEPTION :) ------

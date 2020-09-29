@@ -964,53 +964,53 @@ bool PeProtect::EncryptTwo(const STu8 *pName,const void *pPatch,const unsigned i
 	CrypterPackerwithCall(mBaseCtx->pVirMem+RvaToFoa(mRetAddr)+IT_SIZE,DEPACKER_CODE_SIZE);//some crazy work
 
 	//----- ENCRYPT OEP JUMP CODE -----
+	DWORD dwDecOffset = (DWORD)&_patch3_LABEL_OepJumpDecryptLoop - (DWORD)&_patch3_ShellCodeBegin_;
+	STu8 *SecDecryptBuff = new STu8[OEP_PER_SIZE];
+	mPer.MyMakePER(SecDecryptBuff, OEP_PER_SIZE);
+	CopyMemory(mBaseCtx->pVirMem + IT_SIZE + RvaToFoa(mRetAddr) + dwDecOffset, SecDecryptBuff, OEP_PER_SIZE);
+	delete[]SecDecryptBuff;
+	SecDecryptBuff = 0;
 	DWORD dwEncOffset=(DWORD)&_patch3_LABEL_OEP_JUMP_CODE_START_-(DWORD)&_patch3_ShellCodeBegin_;
 	DWORD dwEncSize=(DWORD)&_patch3_LABEL_OEP_JUMP_CODE_END_-(DWORD)&_patch3_LABEL_OEP_JUMP_CODE_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
-	DWORD dwDecOffset=(DWORD)&_patch3_LABEL_OepJumpDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	STu8 *SecDecryptBuff=new STu8[OEP_PER_SIZE];
-	mPer.MyMakePER(SecDecryptBuff,OEP_PER_SIZE);
-	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,OEP_PER_SIZE);
-	delete []SecDecryptBuff;
-	SecDecryptBuff=0;
 	//---------------------------------
 
 	//----- ENCRYPT SectionInfo -----
+	dwDecOffset = (DWORD)&_patch3_LABEL_DecryptSectionsInfoLoop - (DWORD)&_patch3_ShellCodeBegin_;
+	SecDecryptBuff = new STu8[SEC_PER_SIZE];
+	mPer.MyMakePER(SecDecryptBuff, SEC_PER_SIZE);
+	CopyMemory(mBaseCtx->pVirMem + IT_SIZE + RvaToFoa(mRetAddr) + dwDecOffset, SecDecryptBuff, SEC_PER_SIZE);
+	delete[]SecDecryptBuff;
+	SecDecryptBuff = 0;
 	dwEncOffset=(DWORD)&_patch3_LABEL_RO_SectionNames_START_-(DWORD)&_patch3_ShellCodeBegin_;
 	dwEncSize=(DWORD)&_patch3_LABEL_RO_EXPLORER_EXE_END_-(DWORD)&_patch3_LABEL_RO_SectionNames_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
-	dwDecOffset=(DWORD)&_patch3_LABEL_DecryptSectionsInfoLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new STu8[SEC_PER_SIZE];
-	mPer.MyMakePER(SecDecryptBuff,SEC_PER_SIZE);
-	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,SEC_PER_SIZE);
-	delete []SecDecryptBuff;
-	SecDecryptBuff=0;
 	//---------------------------------
 
 	//-------- ENCRYPT LOADER ---------
 	// generate PER
 	//---------------------------------
+	dwDecOffset = (DWORD)&_patch3_LABEL_VariableDecryptLoop - (DWORD)&_patch3_ShellCodeBegin_;
+	SecDecryptBuff = new STu8[VAR_PER_SIZE];
+	mPer.MyMakePER(SecDecryptBuff, VAR_PER_SIZE);
+	CopyMemory(mBaseCtx->pVirMem + IT_SIZE + RvaToFoa(mRetAddr) + dwDecOffset, SecDecryptBuff, VAR_PER_SIZE);
+	delete[]SecDecryptBuff;
+	SecDecryptBuff = 0;
 	dwEncOffset=(DWORD)&_patch3_LABEL_VARIABLE_CRYPT_START_-(DWORD)&_patch3_ShellCodeBegin_;
 	dwEncSize=(DWORD)&_patch3_LABEL_VARIABLE_CRYPT_END_-(DWORD)&_patch3_LABEL_VARIABLE_CRYPT_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
-	dwDecOffset=(DWORD)&_patch3_LABEL_VariableDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new STu8[VAR_PER_SIZE];
-	mPer.MyMakePER(SecDecryptBuff,VAR_PER_SIZE);
-	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff,VAR_PER_SIZE);
-	delete []SecDecryptBuff;
-	SecDecryptBuff=0;
 	//---------------------------------
 
 	//---------------------------------
+	dwDecOffset = (DWORD)&_patch3_LABEL_PackDecryptLoop - (DWORD)&_patch3_ShellCodeBegin_;
+	SecDecryptBuff = new STu8[PACK_PER_SIZE];
+	mPer.MyMakePER(SecDecryptBuff, PACK_PER_SIZE);
+	CopyMemory(mBaseCtx->pVirMem + IT_SIZE + RvaToFoa(mRetAddr) + dwDecOffset, SecDecryptBuff, PACK_PER_SIZE);
+	delete[]SecDecryptBuff;
+	SecDecryptBuff = 0;
 	dwEncOffset=(DWORD)&_patch3_PackEncrypt_START_-(DWORD)&_patch3_ShellCodeBegin_;
 	dwEncSize=(DWORD)&_patch3_PackEncrypt_END_-(DWORD)&_patch3_PackEncrypt_START_;
 	mPer.MyEasyEncrypt(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwEncOffset,dwEncSize);
-	dwDecOffset=(DWORD)&_patch3_LABEL_PackDecryptLoop-(DWORD)&_patch3_ShellCodeBegin_;
-	SecDecryptBuff=new STu8[PACK_PER_SIZE];
-	mPer.MyMakePER(SecDecryptBuff, PACK_PER_SIZE);
-	CopyMemory(mBaseCtx->pVirMem+IT_SIZE+RvaToFoa(mRetAddr)+dwDecOffset,SecDecryptBuff, PACK_PER_SIZE);
-	delete []SecDecryptBuff;
-	SecDecryptBuff=0;
 	//---------------------------------
 
 	//ÐÞÕýOEP
@@ -2332,25 +2332,27 @@ void PeProtect::FillWithShit(STu8* Base,DWORD dwSize)
 
 void PeProtect::CrypterPackerwithCall(STu8* pFuncBody,DWORD dwSize)
 {
-#ifndef DebugMode
 	DWORD l=0;
 	DWORD64 tmp,tmp1;
 	do
 	{
 		CopyMemory(&tmp,pFuncBody+l,8);
-		if(tmp==0x9090909090909090)
+		if(tmp==0xEEEEEEEEEEEEEEEE)
 		{
 			tmp=0x00000003E8;
 			tmp1=GetCallOpCodeRandom();
 			tmp1=tmp1<<40;
 			tmp=tmp|tmp1;
+#ifndef DebugMode
 			CopyMemory(pFuncBody+l,&tmp,8);
+#else
+			FillMemory(pFuncBody + l, 8, 0x90);
+#endif
 			l += 8;
 		}
 		else
 			l++;
 	}while(l<=dwSize);
-#endif
 }
 
 DWORD PeProtect::GetChecksum(STu8* Base,DWORD FileSize)
