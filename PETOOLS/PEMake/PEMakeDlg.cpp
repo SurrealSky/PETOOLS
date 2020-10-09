@@ -199,7 +199,7 @@ void CPEMakeDlg::OnBnClickedMfcbutton1()
 //±£»¤
 void CPEMakeDlg::OnBnClickedButton1()
 {
-	bool bRet=mPEMake.Protect3A();
+	bool bRet=mPEMake.Protect4A();
 	if(bRet)
 	{
 		mPEMake.mPeCtx.path.append(".protect.exe");

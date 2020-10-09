@@ -1,13 +1,3 @@
-2019年6月18日
-修复了BUG。
-
-2019年7月5日
-问题：导入表解析，OriginalFirstThunk，FirstThunk（单桥结构）
-
-2019年7月13日：
-测试去除重定位表-通过
-测试添加区段-----通过
-测试添加补丁-----Protect1A(弹对话框补丁)通过
-				 Protect2A(导入表加密,区段加密)通过
-				 Protect3A(yoda壳)通过
-				 Protect4A(自定义壳)未通过
+2020年10.9
+测试 Protect3A(yoda壳)通过，DebugMode
+测试 Protect4A，有的简单程序可以通过，负责程序不行

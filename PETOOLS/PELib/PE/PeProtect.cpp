@@ -818,7 +818,7 @@ bool PeProtect::EncryptOne(const STu8 *pName,const void *pPatch,const unsigned i
 
 	WriteCtx2VirMem();
 
-	//尝试使用变量重定位方式
+	//尝试使用变量重定位方式,修正JMP OEP
 	DWORD _foa_newOEP=RvaToFoa(_rva_newOEP);
 	*(int*)(mBaseCtx->pVirMem+_foa_newOEP+mOffset)=_rva_oldOEP-_rva_newOEP-mOffset-4;
 	return true;
@@ -1107,9 +1107,10 @@ bool PeProtect::EncryptThree(const STu8 *strSectionName)
 
 	//修正OEP
 	mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint=mBaseCtx->pe.mNtHeader.OptionalHeader.BaseOfCode;
+	
+	
 	//修正影像OEP
-	char *pTmp=(char*)mBaseCtx->pVirMem+mBaseCtx->pe.mDosHeader.e_lfanew;
-	((NtHeader*)pTmp)->OptionalHeader.AddressOfEntryPoint=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
+	WriteCtx2VirMem();
 	return true;
 }
 
