@@ -153,6 +153,11 @@ bool PEMake::Protect4A()
 	return ptrPeProtect->EncryptThree((STu8*)".peMake");
 }
 
+bool PEMake::test()
+{
+	return ptrPeProtect->TestDis();
+}
+
 bool PEMake::WriteCtx2VirMem()
 {
 	return ptrPeProtect->WriteCtx2VirMem();

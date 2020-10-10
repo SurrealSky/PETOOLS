@@ -7,6 +7,8 @@
 #include"CryptVar.h"
 #include"../Patch.h"
 #include<time.h>
+#include<stack>
+#include <fstream> 
 
 
 PeProtect::PeProtect(void)
@@ -2411,12 +2413,10 @@ void PeProtect::OepJumpEncrypt(STu8* Base)
 //test dis
 bool PeProtect::TestDis()
 {
-	DWORD dwOEPVirAddress=0;
 	DWORD dwBaseCodeVirAddress=0;
 	DWORD dwCodeSize=0;
 	DWORD dwMode=0;
 
-	dwOEPVirAddress=mBaseCtx->pe.mNtHeader.OptionalHeader.AddressOfEntryPoint;
 	dwBaseCodeVirAddress=mBaseCtx->pe.mNtHeader.OptionalHeader.BaseOfCode;
 	dwCodeSize=mBaseCtx->pe.mNtHeader.OptionalHeader.SizeOfCode;
 
@@ -2427,15 +2427,55 @@ bool PeProtect::TestDis()
 	dwMode=64;//暂不支持
 #endif
 
-	char *pCode = (char *)mBaseCtx->pVirMem+RvaToFoa(dwOEPVirAddress);
-	dwOEPVirAddress+=mBaseCtx->pe.mNtHeader.OptionalHeader.ImageBase;
-	dwBaseCodeVirAddress+=mBaseCtx->pe.mNtHeader.OptionalHeader.ImageBase;
+	dwBaseCodeVirAddress += mBaseCtx->pe.mNtHeader.OptionalHeader.ImageBase;
+	char *pCode = (char *)mBaseCtx->pVirMem+RvaToFoa(mBaseCtx->pe.mNtHeader.OptionalHeader.BaseOfCode);
 
 	CCodeILFactory codefactory;
+	AVL<CodeNode, ulong> AVLTree;
+	list<AddrNode*> AddrNodes;
+	codefactory.Init(mBaseCtx->pe.mNtHeader.OptionalHeader.ImageBase + GetNewSection(), dwCodeSize);
+	codefactory.DisasmCodes(&AVLTree, &AddrNodes, pCode, dwCodeSize, dwBaseCodeVirAddress);
+
+	AVLNode<CodeNode, ulong> *pBeginNode = AVLTree.FindMin(AVLTree.Root());
+	AVLNode<CodeNode, ulong> *pEndNode = AVLTree.FindMax(AVLTree.Root());
+
+	ofstream ofs;
+	ofs.open("d://1.txt", ios::trunc);
+	if (AVLTree.Root() != NULL)
+	{
+		AVLNode<CodeNode, ulong>* p = AVLTree.Root();
+		stack<AVLNode<CodeNode, ulong>*> s;
+		while (!s.empty() || p)
+		{
+			if (p)
+			{
+				s.push(p);
+				p = p->lchild;
+			}
+			else
+			{
+				p = s.top();
+				s.pop();
+				{
+					CodeNode* code = &p->data;
+					//计算需要修正的绝对地址
+					if (code)
+					{
+						ofs << code->disasm.result << endl;
+					}
+				}
+				p = p->rchild;
+			}
+		}
+	}
+	ofs.close();
+
+
+	/*CCodeILFactory codefactory;
 	map<DWORD,CFunctionCode*> mFuncMap;
 	codefactory.Init(mBaseCtx->pe.mNtHeader.OptionalHeader.ImageBase+GetNewSection(),dwCodeSize);
 	codefactory.RecursiveScanFunctionDisasmCodes(mFuncMap,pCode,dwCodeSize,dwOEPVirAddress,dwBaseCodeVirAddress);
 	pCode=(char *)mBaseCtx->pVirMem+RvaToFoa(dwBaseCodeVirAddress-mBaseCtx->pe.mNtHeader.OptionalHeader.ImageBase);
-	codefactory.SeqScanByFuncCharacteristicDisasmCodes(mFuncMap,pCode,dwCodeSize,dwBaseCodeVirAddress);
+	codefactory.SeqScanByFuncCharacteristicDisasmCodes(mFuncMap,pCode,dwCodeSize,dwBaseCodeVirAddress);*/
 	return true;
 }

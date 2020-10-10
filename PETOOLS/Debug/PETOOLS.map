@@ -1,6 +1,6 @@
  PETOOLS
 
- Timestamp is 5f8050b4 (Fri Oct  9 19:59:48 2020)
+ Timestamp is 5f811a22 (Sat Oct 10 10:19:14 2020)
 
  Preferred load address is 00400000
 
@@ -59,13 +59,13 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
  0000:00000000       ___guard_iat_table         00000000     <absolute>
- 0000:00000000       ___guard_iat_count         00000000     <absolute>
  0000:00000000       ___guard_fids_table        00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
  0000:0000002c       __tls_array                0000002c     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:0000010d       ___safe_se_handler_count   0000010d     <absolute>
@@ -676,8 +676,8 @@
  0001:0002c060       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@std@@QAEPAXI@Z 0042d060 f i log4z.obj
  0001:0002c0d0       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ULoggerInfo@log4z@zsummer@@@std@@QAEPAXI@Z 0042d0d0 f i log4z.obj
  0001:0002c150       ??_G?$pair@_JV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QAEPAXI@Z 0042d150 f i log4z.obj
- 0001:0002c1c0       ??_GILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042d1c0 f i log4z.obj
  0001:0002c1c0       ??_EILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042d1c0 f i log4z.obj
+ 0001:0002c1c0       ??_GILog4zManager@log4z@zsummer@@UAEPAXI@Z 0042d1c0 f i log4z.obj
  0001:0002c230       ??_ELockHelper@log4z@zsummer@@UAEPAXI@Z 0042d230 f i log4z.obj
  0001:0002c230       ??_GLockHelper@log4z@zsummer@@UAEPAXI@Z 0042d230 f i log4z.obj
  0001:0002c2a0       ??_ELogerManager@log4z@zsummer@@UAEPAXI@Z 0042d2a0 f i log4z.obj
@@ -1399,8 +1399,8 @@
  0001:0004f490       ?OnBnClickedMfcbutton@DataDirectoryDlg@@QAEXI@Z 00450490 f   DataDirectoryDlg.obj
  0001:0004fb60       ??0DataDirectoryDlg@@QAE@PAVCWnd@@@Z 00450b60 f   DataDirectoryDlg.obj
  0001:0004fbe0       ??1DataDirectoryDlg@@UAE@XZ 00450be0 f   DataDirectoryDlg.obj
- 0001:0004fcd0       ??_GDataDirectoryDlg@@UAEPAXI@Z 00450cd0 f i DataDirectoryDlg.obj
  0001:0004fcd0       ??_EDataDirectoryDlg@@UAEPAXI@Z 00450cd0 f i DataDirectoryDlg.obj
+ 0001:0004fcd0       ??_GDataDirectoryDlg@@UAEPAXI@Z 00450cd0 f i DataDirectoryDlg.obj
  0001:0004fd60       ?DoDataExchange@DataDirectoryDlg@@MAEXPAVCDataExchange@@@Z 00450d60 f   DataDirectoryDlg.obj
  0001:0004fdc0       ?GetMessageMap@DataDirectoryDlg@@MBEPBUAFX_MSGMAP@@XZ 00450dc0 f   DataDirectoryDlg.obj
  0001:0004fe10       ?GetRuntimeClass@DataDirectoryDlg@@UBEPAUCRuntimeClass@@XZ 00450e10 f   DataDirectoryDlg.obj
@@ -1423,8 +1423,8 @@
  0001:00051ab0       ??A?$vector@U_ResourceItem@@V?$allocator@U_ResourceItem@@@std@@@std@@QAEAAU_ResourceItem@@I@Z 00452ab0 f i DialogFirst.obj
  0001:00051bd0       ??B_bstr_t@@QBEPADXZ       00452bd0 f i DialogFirst.obj
  0001:00051c50       ??_GData_t@_bstr_t@@AAEPAXI@Z 00452c50 f i DialogFirst.obj
- 0001:00051cc0       ??_GDialogFirst@@UAEPAXI@Z 00452cc0 f i DialogFirst.obj
  0001:00051cc0       ??_EDialogFirst@@UAEPAXI@Z 00452cc0 f i DialogFirst.obj
+ 0001:00051cc0       ??_GDialogFirst@@UAEPAXI@Z 00452cc0 f i DialogFirst.obj
  0001:00051d50       ?DoDataExchange@DialogFirst@@MAEXPAVCDataExchange@@@Z 00452d50 f   DialogFirst.obj
  0001:000520f0       ?EnumChildProc@DialogFirst@@CGHPAUHWND__@@J@Z 004530f0 f   DialogFirst.obj
  0001:00052220       ?GetMessageMap@DialogFirst@@MBEPBUAFX_MSGMAP@@XZ 00453220 f   DialogFirst.obj
@@ -1570,10 +1570,10 @@
  0001:00059320       ??B?$CTraceCategoryEx@$01$0A@@ATL@@QAEIXZ 0045a320 f i GlobeVar.obj
  0001:00059360       ??B?$CTraceCategoryEx@$0CA@$0A@@ATL@@QAEIXZ 0045a360 f i GlobeVar.obj
  0001:000593a0       ??RCTraceFileAndLineInfo@ATL@@QBAXHIPBDZZ 0045a3a0 f i GlobeVar.obj
- 0001:000594c0       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 0045a4c0 f i GlobeVar.obj
  0001:000594c0       ??_ECAtlStringMgr@ATL@@UAEPAXI@Z 0045a4c0 f i GlobeVar.obj
- 0001:00059530       ??_ECWin32Heap@ATL@@UAEPAXI@Z 0045a530 f i GlobeVar.obj
+ 0001:000594c0       ??_GCAtlStringMgr@ATL@@UAEPAXI@Z 0045a4c0 f i GlobeVar.obj
  0001:00059530       ??_GCWin32Heap@ATL@@UAEPAXI@Z 0045a530 f i GlobeVar.obj
+ 0001:00059530       ??_ECWin32Heap@ATL@@UAEPAXI@Z 0045a530 f i GlobeVar.obj
  0001:000595a0       ??_H@YGXPAXIIP6EPAX0@Z@Z   0045a5a0 f i GlobeVar.obj
  0001:00059650       ?AddRef@CStringData@ATL@@QAEXXZ 0045a650 f i GlobeVar.obj
  0001:000596f0       ?Allocate@?$CHeapPtr@DVCCRTAllocator@ATL@@@ATL@@QAE_NI@Z 0045a6f0 f i GlobeVar.obj
@@ -1622,8 +1622,8 @@
  0001:0005b960       __vsnprintf_s_l            0045c960 f i GlobeVar.obj
  0001:0005ba10       ??0MFCEdit@@QAE@XZ         0045ca10 f   MFCEdit.obj
  0001:0005ba70       ??1MFCEdit@@UAE@XZ         0045ca70 f   MFCEdit.obj
- 0001:0005bad0       ??_EMFCEdit@@UAEPAXI@Z     0045cad0 f i MFCEdit.obj
  0001:0005bad0       ??_GMFCEdit@@UAEPAXI@Z     0045cad0 f i MFCEdit.obj
+ 0001:0005bad0       ??_EMFCEdit@@UAEPAXI@Z     0045cad0 f i MFCEdit.obj
  0001:0005bb60       ?GetMessageMap@MFCEdit@@MBEPBUAFX_MSGMAP@@XZ 0045cb60 f   MFCEdit.obj
  0001:0005bbb0       ?GetRuntimeClass@MFCEdit@@UBEPAUCRuntimeClass@@XZ 0045cbb0 f   MFCEdit.obj
  0001:0005bbf0       ?GetThisClass@MFCEdit@@SGPAUCRuntimeClass@@XZ 0045cbf0 f   MFCEdit.obj
@@ -1704,8 +1704,8 @@
  0001:0005f440       ?size@?$vector@U_ThunkItem@@V?$allocator@U_ThunkItem@@@std@@@std@@QBEIXZ 00460440 f i MyListCtrl.obj
  0001:0005f4b0       ??0CPETOOLSApp@@QAE@XZ     004604b0 f   PETOOLS.obj
  0001:0005f520       ??1CPETOOLSApp@@UAE@XZ     00460520 f i PETOOLS.obj
- 0001:0005f570       ??_ECPETOOLSApp@@UAEPAXI@Z 00460570 f i PETOOLS.obj
  0001:0005f570       ??_GCPETOOLSApp@@UAEPAXI@Z 00460570 f i PETOOLS.obj
+ 0001:0005f570       ??_ECPETOOLSApp@@UAEPAXI@Z 00460570 f i PETOOLS.obj
  0001:0005f600       ?GetApplicationRecoveryParameter@CWinApp@@UAEPAXXZ 00460600 f i PETOOLS.obj
  0001:0005f640       ?GetApplicationRecoveryPingInterval@CWinApp@@UAEKXZ 00460640 f i PETOOLS.obj
  0001:0005f680       ?GetApplicationRestartFlags@CWinApp@@UAEKXZ 00460680 f i PETOOLS.obj
@@ -1795,8 +1795,8 @@
  0001:00067f10       ?_GetBaseClass@CProBarThread@@KGPAUCRuntimeClass@@XZ 00468f10 f   ProBarThread.obj
  0001:00067f60       ??0CProgressDialog@@QAE@PAVCWnd@@@Z 00468f60 f   ProgressDialog.obj
  0001:00068020       ??1CProgressDialog@@UAE@XZ 00469020 f   ProgressDialog.obj
- 0001:00068090       ??_GCProgressDialog@@UAEPAXI@Z 00469090 f i ProgressDialog.obj
  0001:00068090       ??_ECProgressDialog@@UAEPAXI@Z 00469090 f i ProgressDialog.obj
+ 0001:00068090       ??_GCProgressDialog@@UAEPAXI@Z 00469090 f i ProgressDialog.obj
  0001:00068120       ?DoDataExchange@CProgressDialog@@MAEXPAVCDataExchange@@@Z 00469120 f   ProgressDialog.obj
  0001:000681a0       ?GetMessageMap@CProgressDialog@@MBEPBUAFX_MSGMAP@@XZ 004691a0 f   ProgressDialog.obj
  0001:000681f0       ?GetRuntimeClass@CProgressDialog@@UBEPAUCRuntimeClass@@XZ 004691f0 f   ProgressDialog.obj
@@ -1882,8 +1882,8 @@
  0001:0006aa50       __aulldiv                  0046ba50 f   MSVCRTD:ulldiv.obj
  0001:0006aae0       __aullrem                  0046bae0 f   MSVCRTD:ullrem.obj
  0001:0006ab80       ??1type_info@@UAE@XZ       0046bb80 f   MSVCRTD:std_type_info_static.obj
- 0001:0006aba0       ??_Gtype_info@@UAEPAXI@Z   0046bba0 f i MSVCRTD:std_type_info_static.obj
  0001:0006aba0       ??_Etype_info@@UAEPAXI@Z   0046bba0 f i MSVCRTD:std_type_info_static.obj
+ 0001:0006aba0       ??_Gtype_info@@UAEPAXI@Z   0046bba0 f i MSVCRTD:std_type_info_static.obj
  0001:0006abe0       ??_U@YAPAXI@Z              0046bbe0 f   MSVCRTD:new_array.obj
  0001:0006ac00       ??_V@YAXPAX@Z              0046bc00 f   MSVCRTD:delete_array.obj
  0001:0006ac20       __chkstk                   0046bc20 f   MSVCRTD:chkstk.obj
@@ -1914,10 +1914,10 @@
  0001:0006bca0       ??1bad_alloc@std@@UAE@XZ   0046cca0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bcc0       ??1bad_array_new_length@std@@UAE@XZ 0046ccc0 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bce0       ??1exception@std@@UAE@XZ   0046cce0 f i MSVCRTD:throw_bad_alloc.obj
- 0001:0006bd10       ??_Ebad_alloc@std@@UAEPAXI@Z 0046cd10 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bd10       ??_Gbad_alloc@std@@UAEPAXI@Z 0046cd10 f i MSVCRTD:throw_bad_alloc.obj
- 0001:0006bd50       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0046cd50 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:0006bd10       ??_Ebad_alloc@std@@UAEPAXI@Z 0046cd10 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bd50       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0046cd50 f i MSVCRTD:throw_bad_alloc.obj
+ 0001:0006bd50       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0046cd50 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bd90       ??_Gexception@std@@UAEPAXI@Z 0046cd90 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bd90       ??_Eexception@std@@UAEPAXI@Z 0046cd90 f i MSVCRTD:throw_bad_alloc.obj
  0001:0006bdd0       ?__scrt_throw_std_bad_alloc@@YAXXZ 0046cdd0 f   MSVCRTD:throw_bad_alloc.obj
@@ -2591,23 +2591,23 @@
  0001:00071dc4       _VariantChangeType@16      00472dc4 f   oleaut32:OLEAUT32.dll
  0001:00071dca       _SetErrorInfo@8            00472dca f   oleaut32:OLEAUT32.dll
  0001:00071dd0       _CreateErrorInfo@4         00472dd0 f   oleaut32:OLEAUT32.dll
- 0001:00071de0       ___vcrt_initialize         00472de0 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071de0       ___scrt_stub_for_acrt_initialize 00472de0 f   MSVCRTD:ucrt_stubs.obj
  0001:00071de0       ___acrt_initialize         00472de0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071de0       ___scrt_stub_for_acrt_initialize 00472de0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071de0       ___vcrt_initialize         00472de0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071df0       ___scrt_stub_for_acrt_thread_attach 00472df0 f   MSVCRTD:ucrt_stubs.obj
  0001:00071df0       ___vcrt_thread_attach      00472df0 f   MSVCRTD:ucrt_stubs.obj
  0001:00071df0       ___acrt_thread_attach      00472df0 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071df0       ___scrt_stub_for_acrt_thread_attach 00472df0 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e00       ___acrt_thread_detach      00472e00 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e00       ___vcrt_thread_detach      00472e00 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e00       ___scrt_stub_for_acrt_thread_detach 00472e00 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071e10       ___vcrt_uninitialize       00472e10 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e10       ___acrt_uninitialize       00472e10 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e10       ___scrt_stub_for_acrt_uninitialize 00472e10 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071e10       ___vcrt_uninitialize       00472e10 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071e20       ___vcrt_uninitialize_critical 00472e20 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e20       ___acrt_uninitialize_critical 00472e20 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e20       ___scrt_stub_for_acrt_uninitialize_critical 00472e20 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071e20       ___vcrt_uninitialize_critical 00472e20 f   MSVCRTD:ucrt_stubs.obj
- 0001:00071e30       __is_c_termination_complete 00472e30 f   MSVCRTD:ucrt_stubs.obj
  0001:00071e30       ___scrt_stub_for_is_c_termination_complete 00472e30 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00071e30       __is_c_termination_complete 00472e30 f   MSVCRTD:ucrt_stubs.obj
  0001:0007a600       ??__Fcache@?1??GetCDCCacheInstance@CImage@ATL@@CAPAVCDCCache@12@XZ@YAXXZ 0047b600 f i GlobeVar.obj
  0001:0007a650       ??__FgdiPlus@?1??GetInitGDIPlusInstance@CImage@ATL@@CAPAVCInitGDIPlus@12@XZ@YAXXZ 0047b650 f i GlobeVar.obj
  0001:0007a6a0       ??__FstrHeap@?1??GetInstance@CAtlStringMgr@ATL@@SAPAUIAtlStringMgr@2@XZ@YAXXZ 0047b6a0 f i GlobeVar.obj
@@ -3311,7 +3311,7 @@
  0002:00006514       ??_C@_0M@GBDCECLF@LOCK?5prefix?$AA@ 00483514     disasm.obj
  0002:00006524       ??_C@_0BK@KDMBFBHJ@Unaligned?5stack?5operation?$AA@ 00483524     disasm.obj
  0002:00006544       ??_C@_17CNPHIMPH@?$AA?$CF?$AAl?$AAs?$AA?$AA@ 00483544     DebugLog.obj
- 0002:00006550       ??_C@_1JA@MLONGMJL@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00483550     DebugLog.obj
+ 0002:00006550       ??_C@_1JA@DKOIEICI@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00483550     DebugLog.obj
  0002:000065fc       ??_C@_1CG@JNLFBNGN@?$AA?$CC?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAa?$AAr?$AAg?$AAu?$AAm?$AAe?$AAn?$AAt?$AA?$CC?$AA?$AA@ 004835fc     DebugLog.obj
  0002:0000662c       ??_C@_0BN@HMCJOMKN@_Count?5?$DM?$DN?5?$CIsize_t?$CJ?$CI?91?$CJ?5?1?5_Sz?$AA@ 0048362c     DebugLog.obj
  0002:00006650       ??_C@_1EI@MLOBABC@?$AA?$CC?$AA_?$AAC?$AAo?$AAu?$AAn?$AAt?$AA?5?$AA?$DM?$AA?$DN?$AA?5?$AA?$CI?$AAs?$AAi?$AAz?$AAe?$AA_?$AAt?$AA?$CJ?$AA?$CI?$AA?9?$AA1?$AA?$CJ?$AA?5?$AA?1?$AA?5?$AA_?$AAS?$AAz?$AA?$CC?$AA?5?$AA?$CG@ 00483650     DebugLog.obj
@@ -3335,7 +3335,7 @@
  0002:00006b4c       ??_C@_09LKHEAJFI@LOG_FATAL?$AA@ 00483b4c     log4z.obj
  0002:00006b58       ??_C@_04KGFMLCPK@Main?$AA@ 00483b58     log4z.obj
  0002:00006b60       ??_C@_06GLOIENHC@?4?1log?1?$AA@ 00483b60     log4z.obj
- 0002:00006b68       ??_C@_1JA@DGAGLJDI@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00483b68     log4z.obj
+ 0002:00006b68       ??_C@_1JA@MHADJNIL@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00483b68     log4z.obj
  0002:00006c14       ??_C@_1DC@POOIKBAO@?$AAI?$AAT?$AAE?$AAR?$AAA?$AAT?$AAO?$AAR?$AA?5?$AAL?$AAI?$AAS?$AAT?$AA?5?$AAC?$AAO?$AAR?$AAR?$AAU?$AAP?$AAT?$AAE?$AAD?$AA?$CB?$AA?$AA@ 00483c14     log4z.obj
  0002:00006c50       ??_C@_0BE@LMNLACIC@_Ptr_container?5?$CB?$DN?50?$AA@ 00483c50     log4z.obj
  0002:00006c68       ??_C@_1DG@HGDKEBPG@?$AA?$CC?$AA_?$AAP?$AAt?$AAr?$AA_?$AAc?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?$CC?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA0?$AA?$AA@ 00483c68     log4z.obj
@@ -3403,23 +3403,23 @@
  0002:00007664       ??_C@_0BO@JCLBGKFM@?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?$CB?5?$AN?6?$AA@ 00484664     log4z.obj
  0002:00007688       ??_C@_0DJ@IAMOEBK@log4z?3?5closeLogger?5can?5not?5close@ 00484688     log4z.obj
  0002:000076d0       ??_C@_0EI@HICJOEIN@?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?9?5?5log4z?5thread?5@ 004846d0     log4z.obj
- 0002:00007728       ??_C@_0DD@DABCKCEF@f?3?2?$LD?L?P?r?2petools?2petools?2commonli@ 00484728     log4z.obj
+ 0002:00007728       ??_C@_0DD@HPBOEDCC@d?3?2?$LD?L?P?r?2petools?2petools?2commonli@ 00484728     log4z.obj
  0002:00007768       ??_C@_0L@DBMLCDJJ@logger?5id?$DN?$AA@ 00484768     log4z.obj
  0002:00007778       ??_C@_05JKEDABGG@?5key?$DN?$AA@ 00484778     log4z.obj
  0002:00007780       ??_C@_06NGDKEHGB@?5name?$DN?$AA@ 00484780     log4z.obj
  0002:00007788       ??_C@_06MKCPKPMM@?5path?$DN?$AA@ 00484788     log4z.obj
  0002:00007790       ??_C@_07CGMLJCBM@?5level?$DN?$AA@ 00484790     log4z.obj
  0002:0000779c       ??_C@_09KFDBCJFN@?5display?$DN?$AA@ 0048479c     log4z.obj
- 0002:000077a8       ??_C@_1IK@MNNBDCMH@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004847a8     log4z.obj
+ 0002:000077a8       ??_C@_1IK@BHJCIFB@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 004847a8     log4z.obj
  0002:00007850       ??_C@_1DO@CFEEPGGJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 00484850     log4z.obj
  0002:0000789c       ??_C@_0CI@FNPHFCCM@Standard?5C?$CL?$CL?5Libraries?5Invalid?5A@ 0048489c     log4z.obj
  0002:000078d0       ??_C@_1FO@GJIHNDLM@?$AA?$CC?$AAS?$AAt?$AAa?$AAn?$AAd?$AAa?$AAr?$AAd?$AA?5?$AAC?$AA?$CL?$AA?$CL?$AA?5?$AAL?$AAi?$AAb?$AAr?$AAa?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAI?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5@ 004848d0     log4z.obj
  0002:00007940       ??_C@_1BOI@HCKICPEB@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00484940     log4z.obj
- 0002:00007b90       ??_C@_1IM@IJKLJNJ@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00484b90     log4z.obj
+ 0002:00007b90       ??_C@_1IM@NCODKBJH@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00484b90     log4z.obj
  0002:00007c38       ??_C@_1DA@JIKEAPDO@?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAe?$AAm?$AAp?$AAt?$AAy?$AA?5?$AAb?$AAe?$AAf?$AAo?$AAr?$AAe?$AA?5?$AAp?$AAo?$AAp?$AA?$AA@ 00484c38     log4z.obj
- 0002:00007c78       ??_C@_1IK@IBPGHNBE@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00484c78     log4z.obj
+ 0002:00007c78       ??_C@_1IK@ENFOGHIC@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00484c78     log4z.obj
  0002:00007d20       ??_C@_1CO@FNIDKHMC@?$AAd?$AAe?$AAq?$AAu?$AAe?$AA?5?$AAe?$AAm?$AAp?$AAt?$AAy?$AA?5?$AAb?$AAe?$AAf?$AAo?$AAr?$AAe?$AA?5?$AAp?$AAo?$AAp?$AA?$AA@ 00484d20     log4z.obj
- 0002:00007d58       ??_C@_1IO@DNKBIMHM@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00484d58     log4z.obj
+ 0002:00007d58       ??_C@_1IO@EADHKMNI@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00484d58     log4z.obj
  0002:00007e04       ??_C@_1DM@GMPLOCPK@?$AAs?$AAt?$AAr?$AAi?$AAn?$AAg?$AA?5?$AAs?$AAu?$AAb?$AAs?$AAc?$AAr?$AAi?$AAp?$AAt?$AA?5?$AAo?$AAu?$AAt?$AA?5?$AAo?$AAf?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 00484e04     log4z.obj
  0002:00007e50       ??_C@_1EG@EHJFMBHJ@?$AAm?$AAa?$AAp?$AA?1?$AAs?$AAe?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAi?$AAn?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb@ 00484e50     log4z.obj
  0002:00007ea4       ??_C@_0CE@OFMIGAMM@Standard?5C?$CL?$CL?5Libraries?5Out?5of?5Ra@ 00484ea4     log4z.obj
@@ -3441,7 +3441,7 @@
  0002:00008af0       ??_C@_1BAG@NDHNNHBF@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAD?$AAe?$AAq?$AAu?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs@ 00485af0     log4z.obj
  0002:00008c2c       ??_C@_0BC@KBDMBKEH@deque?$DMT?$DO?5too?5long?$AA@ 00485c2c     log4z.obj
  0002:00008c48       ??_C@_1BKK@NKNEDAJK@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAT?$AAr?$AAe?$AAe?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00485c48     log4z.obj
- 0002:00008e48       ??_C@_1II@HAGJJDJA@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00485e48     log4z.obj
+ 0002:00008e48       ??_C@_1II@MMKOEKPG@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00485e48     log4z.obj
  0002:00008ef0       ??_C@_1EA@JDNDELPC@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAc?$AAr?$AAe?$AAm?$AAe?$AAn?$AAt?$AAa?$AAb?$AAl?$AAe?$AA?$AA@ 00485ef0     log4z.obj
  0002:00008f40       ??_C@_1BKI@HKIMBOED@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAL?$AAi?$AAs?$AAt?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00485f40     log4z.obj
  0002:00009140       ??_C@_1EC@HILJLMMC@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAn?$AAo?$AAt?$AA?5?$AAd?$AAe?$AAr?$AAe?$AAf?$AAe?$AAr?$AAe?$AAn?$AAc?$AAa?$AAb?$AAl?$AAe@ 00486140     log4z.obj
@@ -3460,9 +3460,9 @@
  0002:00009bac       ??_C@_1CK@EOPGIILJ@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAn?$AAu?$AAl?$AAl?$AA?5?$AAp?$AAo?$AAi?$AAn?$AAt?$AAe?$AAr?$AA?$AA@ 00486bac     log4z.obj
  0002:00009be0       ??_C@_0BB@MOGOBHAF@list?$DMT?$DO?5too?5long?$AA@ 00486be0     log4z.obj
  0002:00009bf4       ??_C@_1CO@DGLIKNHI@?$AAi?$AAn?$AAv?$AAa?$AAl?$AAi?$AAd?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAr?$AAa?$AAn?$AAg?$AAe?$AA?$AA@ 00486bf4     log4z.obj
- 0002:00009c30       ??_C@_1JC@LIDKICCJ@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00486c30     log4z.obj
+ 0002:00009c30       ??_C@_1JC@ELNBGKIG@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00486c30     log4z.obj
  0002:00009ce0       ??_C@_1EC@KLICFBGL@?$AAc?$AAo?$AAn?$AAt?$AAa?$AAi?$AAn?$AAe?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?5?$AAf?$AAo?$AAr?$AA?5?$AAs?$AAw?$AAa?$AAp@ 00486ce0     log4z.obj
- 0002:00009d30       ??_C@_1IG@KIOCJIGN@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00486d30     log4z.obj
+ 0002:00009d30       ??_C@_1IG@CDANFHMM@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00486d30     log4z.obj
  0002:00009dd0       ??_C@_1EG@BPNHNPIG@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAn?$AAs?$AAe?$AAr?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?5?$AAo?$AAu?$AAt?$AAs?$AAi?$AAd?$AAe?$AA?5?$AAr?$AAa?$AAn@ 00486dd0     log4z.obj
  0002:00009e24       ??_C@_1DI@MDELDGPI@?$AAl?$AAi?$AAs?$AAt?$AA?5?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AAs?$AA?5?$AAi?$AAn?$AAc?$AAo?$AAm?$AAp?$AAa?$AAt?$AAi?$AAb?$AAl?$AAe?$AA?$AA@ 00486e24     log4z.obj
  0002:00009e68       ??_C@_1BKI@CJEDELEH@?$AAs?$AAt?$AAd?$AA?3?$AA?3?$AA_?$AAL?$AAi?$AAs?$AAt?$AA_?$AAc?$AAo?$AAn?$AAs?$AAt?$AA_?$AAi?$AAt?$AAe?$AAr?$AAa?$AAt?$AAo?$AAr?$AA?$DM?$AAc?$AAl?$AAa?$AAs?$AAs?$AA?5@ 00486e68     log4z.obj
@@ -3479,7 +3479,7 @@
  0002:0000a818       ??_C@_0P@MBNHGHMI@atlTraceString?$AA@ 00487818     AddPatch.obj
  0002:0000a82c       ??_C@_17LGGGMOOB@?$AA?$CF?$AAh?$AAs?$AA?$AA@ 0048782c     AddPatch.obj
  0002:0000a838       ??_C@_1EO@EBPPKGOM@?$AAf?$AAa?$AAl?$AAs?$AAe?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AA?$CC?$AAT?$AAo?$AAo?$AA?5?$AAm?$AAa?$AAn?$AAy?$AA?5?$AAc?$AAa?$AAt?$AAe?$AAg?$AAo?$AAr?$AAi?$AAe?$AAs?$AA?5?$AAd?$AAe@ 00487838     AddPatch.obj
- 0002:0000a898       ??_C@_1KC@OKBBEKIO@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00487898     AddPatch.obj
+ 0002:0000a898       ??_C@_1KC@LMLKMJJ@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00487898     AddPatch.obj
  0002:0000a960       ??_7ByteBuffer@@6B@        00487960     AddPatch.obj
  0002:0000a968       ?classCAddPatch@CAddPatch@@2UCRuntimeClass@@B 00487968     AddPatch.obj
  0002:0000a990       ??_7CAddPatch@@6B@         00487990     AddPatch.obj
@@ -3634,7 +3634,7 @@
  0002:0000c564       ?CLSID_WinFormsControl@@3U_GUID@@B 00489564     GlobeVar.obj
  0002:0000c578       _IID_IAxWinAmbientDispatchEx 00489578     GlobeVar.obj
  0002:0000c58c       ??_C@_13COJANIEC@?$AA0?$AA?$AA@ 0048958c     GlobeVar.obj
- 0002:0000c590       ??_C@_1KC@JJLKCIAN@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489590     GlobeVar.obj
+ 0002:0000c590       ??_C@_1KC@HIGAMOBK@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489590     GlobeVar.obj
  0002:0000c654       ??_C@_0BA@MKMIKKJB@atlTraceGeneral?$AA@ 00489654     GlobeVar.obj
  0002:0000c668       ??_C@_0M@DGPFJEBB@atlTraceCOM?$AA@ 00489668     GlobeVar.obj
  0002:0000c678       ??_C@_0L@LHELAKBP@atlTraceQI?$AA@ 00489678     GlobeVar.obj
@@ -3662,22 +3662,22 @@
  0002:0000c818       ??_C@_1BM@GBBOFEAE@?$AA_?$AA_?$AAa?$AAt?$AAl?$AA_?$AAc?$AAo?$AAn?$AAd?$AAV?$AAa?$AAl?$AA?$AA@ 00489818     GlobeVar.obj
  0002:0000c840       ??_7CWin32Heap@ATL@@6B@    00489840     GlobeVar.obj
  0002:0000c858       ??_C@_1BG@CLPBKBHG@?$AAh?$AAH?$AAe?$AAa?$AAp?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 00489858     GlobeVar.obj
- 0002:0000c878       ??_C@_1JO@DEJPKBMH@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489878     GlobeVar.obj
+ 0002:0000c878       ??_C@_1JO@MDHCMBJF@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489878     GlobeVar.obj
  0002:0000c938       ??_C@_1BC@PMINONJG@?$AAb?$AAS?$AAu?$AAc?$AAc?$AAe?$AAs?$AAs?$AA?$AA@ 00489938     GlobeVar.obj
  0002:0000c950       ??_C@_1BE@BLGCOAPB@?$AAn?$AAR?$AAe?$AAf?$AAs?$AA?5?$AA?$DO?$AA?5?$AA0?$AA?$AA@ 00489950     GlobeVar.obj
- 0002:0000c968       ??_C@_1KG@IPBAGKCG@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489968     GlobeVar.obj
+ 0002:0000c968       ??_C@_1KG@EDGLFGGJ@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489968     GlobeVar.obj
  0002:0000ca30       ??_C@_1CA@MEFFJNJ@?$AAp?$AAS?$AAt?$AAr?$AAi?$AAn?$AAg?$AAM?$AAg?$AAr?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 00489a30     GlobeVar.obj
- 0002:0000ca58       ??_C@_1KA@BKPLDAJM@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489a58     GlobeVar.obj
- 0002:0000cb18       ??_C@_0FA@PONDLCDN@d?3?2program?5files?5?$CIx86?$CJ?2microsoft@ 00489b18     GlobeVar.obj
+ 0002:0000ca58       ??_C@_1KA@NPMEJJPP@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489a58     GlobeVar.obj
+ 0002:0000cb18       ??_C@_0FA@KKCFHKFG@c?3?2program?5files?5?$CIx86?$CJ?2microsoft@ 00489b18     GlobeVar.obj
  0002:0000cb78       ??_C@_0EA@EJEMLPD@ERROR?5?3?5Unable?5to?5initialize?5cri@ 00489b78     GlobeVar.obj
  0002:0000cbc8       ??_C@_0ED@GFNHMOFC@ERROR?5?3?5Unable?5to?5initialize?5cri@ 00489bc8     GlobeVar.obj
  0002:0000cc1c       ??_7CAtlStringMgr@ATL@@6B@ 00489c1c     GlobeVar.obj
- 0002:0000cc40       ??_C@_1JO@LMEBFGHE@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489c40     GlobeVar.obj
+ 0002:0000cc40       ??_C@_1JO@ELKMDGCG@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489c40     GlobeVar.obj
  0002:0000cd00       ??_C@_1BG@IEBIBJEI@?$AAp?$AAD?$AAa?$AAt?$AAa?$AA?5?$AA?$CB?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 00489d00     GlobeVar.obj
  0002:0000cd1c       ??_C@_1DE@KEEBDKDC@?$AAp?$AAD?$AAa?$AAt?$AAa?$AA?9?$AA?$DO?$AAp?$AAS?$AAt?$AAr?$AAi?$AAn?$AAg?$AAM?$AAg?$AAr?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AAt?$AAh?$AAi?$AAs?$AA?$AA@ 00489d1c     GlobeVar.obj
  0002:0000cd5c       ??_C@_0BE@KEBGCGNB@File?5access?5error?5?$CB?$AA@ 00489d5c     GlobeVar.obj
  0002:0000cd74       ??_C@_0N@EPLDCJJF@16EditLoader?$AA@ 00489d74     GlobeVar.obj
- 0002:0000cd88       ??_C@_1KI@MNLDLK@?$AAd?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489d88     GlobeVar.obj
+ 0002:0000cd88       ??_C@_1KI@FIEDFAIM@?$AAc?$AA?3?$AA?2?$AAp?$AAr?$AAo?$AAg?$AAr?$AAa?$AAm?$AA?5?$AAf?$AAi?$AAl?$AAe?$AAs?$AA?5?$AA?$CI?$AAx?$AA8?$AA6?$AA?$CJ?$AA?2?$AAm?$AAi?$AAc?$AAr?$AAo?$AAs?$AAo?$AAf?$AAt@ 00489d88     GlobeVar.obj
  0002:0000ce58       ??_C@_1EA@JHMKKLFC@?$AAn?$AAI?$AAn?$AAd?$AAe?$AAx?$AA?5?$AA?$DO?$AA?$DN?$AA?5?$AA0?$AA?5?$AA?$CG?$AA?$CG?$AA?5?$AAn?$AAI?$AAn?$AAd?$AAe?$AAx?$AA?5?$AA?$DM?$AA?5?$AAm?$AA_?$AAn?$AAS?$AAi?$AAz?$AAe?$AA?$AA@ 00489e58     GlobeVar.obj
  0002:0000cea4       ??_C@_1BK@NHECDDNK@?$AAm?$AA_?$AAp?$AAD?$AAa?$AAt?$AAa?$AA?5?$AA?$DN?$AA?$DN?$AA?5?$AA0?$AA?$AA@ 00489ea4     GlobeVar.obj
  0002:0000ceec       ?classMFCEdit@MFCEdit@@2UCRuntimeClass@@B 00489eec     MFCEdit.obj
@@ -4659,7 +4659,7 @@
  0003:00004a54       ?MainDlg@@3PAVCPETOOLSDlg@@A 0049ca54     PETOOLSDlg.obj
  0003:00004a58       ?gWait@@3HC                0049ca58     ProBarThread.obj
  0003:00004a5c       ?ProDialog@@3PAVCProgressDialog@@A 0049ca5c     ProBarThread.obj
- 0003:00004a64       ___@@_PchSym_@00@UKlsKprKroKluKopKrkUkvgllohUkvgllohUkvgllohUwvyftUhgwzucOlyq@5C90CC39D601F14 0049ca64     stdafx.obj
+ 0003:00004a64       ___@@_PchSym_@00@UKlsKprKroKluKopKrkUkvgllohUkvgllohUkvgllohUwvyftUhgwzucOlyq@9343CAE85F05E2CC 0049ca64     stdafx.obj
  0003:00004e64       ___scrt_current_native_startup_state 0049ce64     MSVCRTD:utility.obj
  0003:00004e68       ___scrt_native_startup_lock 0049ce68     MSVCRTD:utility.obj
  0003:00004ebc       __tls_index                0049cebc     MSVCRTD:tlssup.obj
@@ -5223,10 +5223,10 @@
  0004:00000be4       __imp___strnicmp           0049dbe4     ucrtd:ucrtbased.dll
  0004:00000be8       __imp___strupr             0049dbe8     ucrtd:ucrtbased.dll
  0004:00000be8       __imp__strupr              0049dbe8     ucrtd:ucrtbased.dll
- 0004:00000bec       __imp___memicmp            0049dbec     ucrtd:ucrtbased.dll
  0004:00000bec       __imp__memicmp             0049dbec     ucrtd:ucrtbased.dll
- 0004:00000bf0       __imp__strlwr              0049dbf0     ucrtd:ucrtbased.dll
+ 0004:00000bec       __imp___memicmp            0049dbec     ucrtd:ucrtbased.dll
  0004:00000bf0       __imp___strlwr             0049dbf0     ucrtd:ucrtbased.dll
+ 0004:00000bf0       __imp__strlwr              0049dbf0     ucrtd:ucrtbased.dll
  0004:00000bf4       __imp___setmbcp            0049dbf4     ucrtd:ucrtbased.dll
  0004:00000bf8       __imp___recalloc           0049dbf8     ucrtd:ucrtbased.dll
  0004:00000bfc       __imp__strcat              0049dbfc     ucrtd:ucrtbased.dll
