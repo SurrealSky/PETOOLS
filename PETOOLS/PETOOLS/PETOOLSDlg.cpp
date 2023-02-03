@@ -784,8 +784,6 @@ void CPETOOLSDlg::OnBnClickedMfcbutton8()
 //按钮-添加区段
 void CPETOOLSDlg::OnBnClickedMfcbutton9()
 {
-	// TODO: 在此添加控件通知处理程序代码
-	// TODO: 在此添加命令处理程序代码
 	if (!mPEMake.isAnalysised())
 	{
 		AfxMessageBox("请先分析PE文件");
