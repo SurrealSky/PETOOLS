@@ -32,69 +32,20 @@ void CAddSectionDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT8, mVirtualOffset);
 	DDX_Control(pDX, IDC_EDIT9, mVirtualSize);
 	DDX_Control(pDX, IDC_EDIT4, mSize);
+	DDX_Control(pDX, IDC_MFCEDITBROWSE1, mbinFile);
 }
 
 
 BEGIN_MESSAGE_MAP(CAddSectionDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CAddSectionDlg::OnBnClickedButton1)
 	ON_EN_CHANGE(IDC_EDIT4, &CAddSectionDlg::OnEnChangeEdit4)
+	ON_BN_CLICKED(IDC_CHECK8, &CAddSectionDlg::OnClickedCheck8)
 END_MESSAGE_MAP()
 
 
 // CAddSectionDlg 消息处理程序
 
-void CAddSectionDlg::OnBnClickedButton1()
-{
-	//// TODO: 在此添加控件通知处理程序代码
-	CPETOOLSDlg *pMainDlg=static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
-	CString strName;
-	mNameEdit.GetWindowTextA(strName);
-	if(strName.GetLength()==0) strName=".null";
-	CString strSize;
-	mSize.GetWindowTextA(strSize);
-	STu32 size= strtoll(strSize, 0, 16);
-	if (size == 0)
-	{
-		AfxMessageBox("输入大小有误");
-		CDialogEx::OnCancel();
-		return;
-	}
-	STu32 characteristics = 0;
-	if (((CButton*)GetDlgItem(IDC_CHECK1))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_MEM_SHARED;
-	}
-	if (((CButton*)GetDlgItem(IDC_CHECK2))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_MEM_EXECUTE;
-	}
-	if (((CButton*)GetDlgItem(IDC_CHECK3))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_MEM_READ;
-	}
-	if (((CButton*)GetDlgItem(IDC_CHECK4))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_MEM_WRITE;
-	}
-	if (((CButton*)GetDlgItem(IDC_CHECK5))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_CNT_CODE;
-	}
-	if (((CButton*)GetDlgItem(IDC_CHECK6))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_CNT_INITIALIZED_DATA;
-	}
-	if (((CButton*)GetDlgItem(IDC_CHECK7))->GetCheck())
-	{
-		characteristics |= IMAGE_SCN_CNT_UNINITIALIZED_DATA;
-	}
-	bool bRet=pMainDlg->mPEMake.AddSectionToEnd((STu8*)strName.GetBuffer(0),size, characteristics);
-	if(bRet)
-		CDialogEx::OnOK();
-	else
-		CDialogEx::OnCancel();
-		
-}
+
 
 
 BOOL CAddSectionDlg::OnInitDialog()
@@ -128,8 +79,110 @@ BOOL CAddSectionDlg::OnInitDialog()
 	((CButton*)GetDlgItem(IDC_CHECK6))->SetCheck(1);
 	((CButton*)GetDlgItem(IDC_CHECK7))->SetCheck(1);
 
+	::EnableWindow(mbinFile, FALSE);
+	::EnableWindow(mSize, TRUE);
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
+}
+
+void CAddSectionDlg::OnBnClickedButton1()
+{
+	//// TODO: 在此添加控件通知处理程序代码
+	CPETOOLSDlg* pMainDlg = static_cast<CPETOOLSDlg*>(AfxGetMainWnd());
+	CString strName;
+	mNameEdit.GetWindowTextA(strName);
+	if (strName.GetLength() == 0) strName = ".null";
+	
+	STu32 characteristics = 0;
+	if (((CButton*)GetDlgItem(IDC_CHECK1))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_MEM_SHARED;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK2))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_MEM_EXECUTE;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK3))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_MEM_READ;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK4))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_MEM_WRITE;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK5))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_CNT_CODE;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK6))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_CNT_INITIALIZED_DATA;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK7))->GetCheck())
+	{
+		characteristics |= IMAGE_SCN_CNT_UNINITIALIZED_DATA;
+	}
+	if (((CButton*)GetDlgItem(IDC_CHECK8))->GetCheck())
+	{
+		CString binFile = "";
+		mbinFile.GetWindowTextA(binFile);
+		HANDLE mHandle = CreateFile(binFile.GetBuffer(0), GENERIC_READ, NULL, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+		if (INVALID_HANDLE_VALUE == mHandle)
+		{
+			AfxMessageBox("文件打开失败!");
+			return;
+		}
+
+		DWORD dwSizeHigh = 0, dwSizeLow = 0;
+		dwSizeLow = GetFileSize(mHandle, &dwSizeHigh);
+		if (dwSizeLow == INVALID_FILE_SIZE || dwSizeHigh != 0)
+		{
+			CloseHandle(mHandle);
+			AfxMessageBox("文件太大!");
+			return;
+		}
+		STu8 * pVirMem = MemMgr::GetInstance().CommonAlloc(TypeSGIVirtualAllocTAlloc, dwSizeLow);
+		if (pVirMem == NULL)
+		{
+			CloseHandle(mHandle);
+			AfxMessageBox("内存分配失败!");
+			return;
+		}
+
+		DWORD readsize;
+		if (!ReadFile(mHandle, pVirMem, dwSizeLow, &readsize, NULL))
+		{
+			CloseHandle(mHandle);
+			AfxMessageBox("文件读取失败!");
+			return;
+		}
+		CloseHandle(mHandle);
+		bool bRet = pMainDlg->mPEMake.AddSectionToEnd((STu8*)strName.GetBuffer(0), pVirMem, readsize, characteristics);
+		if (bRet)
+			CDialogEx::OnOK();
+		else
+			CDialogEx::OnCancel();
+		MemMgr::GetInstance().CommonDeallocate(TypeSGIVirtualAllocTAlloc, pVirMem);
+	}
+	else
+	{
+		CString strSize;
+		mSize.GetWindowTextA(strSize);
+		STu32 size = strtoll(strSize, 0, 16);
+		if (size == 0)
+		{
+			AfxMessageBox("输入大小有误");
+			CDialogEx::OnCancel();
+			return;
+		}
+		bool bRet = pMainDlg->mPEMake.AddSectionToEnd((STu8*)strName.GetBuffer(0), NULL,size, characteristics);
+		if (bRet)
+			CDialogEx::OnOK();
+		else
+			CDialogEx::OnCancel();
+	}
+	
 }
 
 //物理大小改变
@@ -159,5 +212,25 @@ void CAddSectionDlg::OnEnChangeEdit4()
 	else
 	{
 		AfxMessageBox("输入大小有误");
+	}
+}
+
+
+void CAddSectionDlg::OnClickedCheck8()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	if (((CButton*)GetDlgItem(IDC_CHECK8))->GetCheck())
+	{
+		//设置区段数据
+		::EnableWindow(mbinFile, TRUE);
+		mSize.SetWindowTextA("----");
+		::EnableWindow(mSize, FALSE);
+	}
+	else
+	{
+		//不设置区段数据
+		::EnableWindow(mbinFile, FALSE);
+		mSize.SetWindowTextA("0");
+		::EnableWindow(mSize, TRUE);
 	}
 }

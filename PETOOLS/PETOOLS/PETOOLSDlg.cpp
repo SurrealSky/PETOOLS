@@ -674,28 +674,6 @@ void CPETOOLSDlg::OnBnClickedMfcbutton3()
 	}
 	DataDirectoryDlg dlg(this);
 	dlg.DoModal();
-	
-	
-	/*int dwIndex=m_ComboBox1.GetCurSel();
-	DWORD m_Size= mPEMake.mPeCtx.pe.mNtHeader.OptionalHeader.DataDirectory[dwIndex].Size;
-	if(m_Size==0) 
-	{
-		AfxMessageBox("N/A");
-		return;
-	}
-	if (pFrameDlg == NULL)
-	{
-		pFrameDlg = new DialogFirst(this);
-		pFrameDlg->Create(IDD_DIALOG1, this);
-	}
-	pFrameDlg->Init(dwIndex);
-	pFrameDlg->ShowWindow(SW_SHOW);
-*/
-	//模态显示
-	//DialogFirst mFrameDlg(this);
-	//mFrameDlg.SetArgu(dwIndex);
-	//mFrameDlg.DoModal();
-	
 }
 
 //按钮-区段

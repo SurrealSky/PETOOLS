@@ -29,4 +29,6 @@ public:
 	CEdit mSize;
 	virtual BOOL OnInitDialog();
 	afx_msg void OnEnChangeEdit4();
+	CMFCEditBrowseCtrl mbinFile;
+	afx_msg void OnClickedCheck8();
 };

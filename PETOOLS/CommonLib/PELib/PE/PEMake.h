@@ -31,7 +31,7 @@ public:
 	STu32 SectionAlignmentSize(STu32);
 	STu32 FileAlignmentSize(STu32);
 	bool ClsRelocDataDirectory();
-	bool AddSectionToEnd(const STu8*, const STu32,const STu32);
+	bool AddSectionToEnd(const STu8*, const STu8*, const STu32,const STu32);
 	bool EncryptImportTable();
 	bool FindCodeByPeFile(const STu8*, const STu32, ByteBuffer&);
 public:
