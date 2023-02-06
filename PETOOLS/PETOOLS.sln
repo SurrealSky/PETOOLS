@@ -1,31 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PETOOLS", "PETOOLS\PETOOLS.vcxproj", "{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F} = {0E580F73-5386-4B41-8BDD-3D0A9857D43F}
-		{49E180EF-03AF-433C-9678-CD556B56B7A1} = {49E180EF-03AF-433C-9678-CD556B56B7A1}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4858E49D-2D26-49A3-A94F-A9F6EC21FE67}"
 	ProjectSection(SolutionItems) = preProject
 		测试文档.txt = 测试文档.txt
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PELib", "PELib\PELib.vcxproj", "{49E180EF-03AF-433C-9678-CD556B56B7A1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F} = {0E580F73-5386-4B41-8BDD-3D0A9857D43F}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PEMake", "PEMake\PEMake.vcxproj", "{6BAB94D8-31A1-43A5-8666-2BC9789B446A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F} = {0E580F73-5386-4B41-8BDD-3D0A9857D43F}
-		{49E180EF-03AF-433C-9678-CD556B56B7A1} = {49E180EF-03AF-433C-9678-CD556B56B7A1}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemMgr", "MemoryPool\MemoryPool.vcxproj", "{0E580F73-5386-4B41-8BDD-3D0A9857D43F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,20 +22,15 @@ Global
 		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Debug|Win32.Build.0 = Debug|Win32
 		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Release|Win32.ActiveCfg = Release|Win32
 		{382BBBA3-9C9A-4C64-85C4-9D8D829D1A6E}.Release|Win32.Build.0 = Release|Win32
-		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Debug|Win32.ActiveCfg = Debug|Win32
-		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Debug|Win32.Build.0 = Debug|Win32
-		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Release|Win32.ActiveCfg = Release|Win32
-		{49E180EF-03AF-433C-9678-CD556B56B7A1}.Release|Win32.Build.0 = Release|Win32
 		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Debug|Win32.Build.0 = Debug|Win32
 		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Release|Win32.ActiveCfg = Release|Win32
 		{6BAB94D8-31A1-43A5-8666-2BC9789B446A}.Release|Win32.Build.0 = Release|Win32
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Debug|Win32.Build.0 = Debug|Win32
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|Win32.ActiveCfg = Release|Win32
-		{0E580F73-5386-4B41-8BDD-3D0A9857D43F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58929CCC-EA0B-4CC0-B752-8A7D56BA8A61}
 	EndGlobalSection
 EndGlobal

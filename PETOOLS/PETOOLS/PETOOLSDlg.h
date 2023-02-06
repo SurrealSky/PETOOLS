@@ -16,7 +16,6 @@
 #include <strsafe.h>
 #include"GlobeVar.h"
 #include"ProgressDialog.h"
-#include"../PELib/PE/PEMake.h"
 #include"PosCalcDlg.h"
 
 

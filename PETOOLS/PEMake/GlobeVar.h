@@ -2,16 +2,20 @@
 #pragma once
 #include<Windows.h>
 #include<typedef.h>
-#include"../PELib/PE/PEMake.h"
-#pragma comment(lib,"PELib.lib")
+#include<PELib/PE/PEMake.h>
+#ifdef _DEBUG
+#pragma comment(lib, "CommonLib\\PELib\\bind\\PELib.lib")
+#else
+#pragma comment(lib, "CommonLib\\PELib\\bin\\PELib.lib")
+#endif
 
-#include"../MemoryPool/MemMgr.h"
+#include<MemoryPool/MemMgr.h>
 using namespace SurrealMemMgr;
 
 #ifdef _DEBUG
-#pragma comment(lib, "..\\Debug\\MemMgr.lib")
+#pragma comment(lib, "CommonLib\\MemoryPool\\bind\\MemMgr.lib")
 #else
-#pragma comment(lib, "..\\Release\\MemMgr.lib")
+#pragma comment(lib, "CommonLib\\MemoryPool\\bin\\MemMgr.lib")
 #endif
 
 #ifdef UNICODE

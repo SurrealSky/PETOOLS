@@ -6,19 +6,32 @@
 #include<LogLib\DebugLog.h>
 using namespace SurrealDebugLog;
 
-#include"../MemoryPool/MemMgr.h"
+#include<PELib/PE/PEMake.h>
+#ifdef _DEBUG
+#pragma comment(lib, "CommonLib\\PELib\\bind\\PELib.lib")
+#else
+#pragma comment(lib, "CommonLib\\PELib\\bin\\PELib.lib")
+#endif
+
+#include<MemoryPool/MemMgr.h>
 using namespace SurrealMemMgr;
 
 #ifdef _DEBUG
-#pragma comment(lib, "..\\Debug\\MemMgr.lib")
+#pragma comment(lib, "CommonLib\\MemoryPool\\bind\\MemMgr.lib")
 #else
-#pragma comment(lib, "..\\Release\\MemMgr.lib")
+#pragma comment(lib, "CommonLib\\MemoryPool\\bin\\MemMgr.lib")
 #endif
 
-#include"../OtherLib/16Edit/16EditDll.h"
+#include<16Edit/16EditDll.h>
+#pragma comment(lib,"CommonLib\\16Edit\\16Edit.lib")
 
+
+#include<PELib/PE/PEMake.h>
+#ifdef _DEBUG
 #pragma comment(lib,"PELib.lib")
-#pragma comment(lib,"..\\OtherLib\\16Edit\\16Edit.lib")
+#else
+#pragma comment(lib,"PELib.lib")
+#endif
 
 #ifdef UNICODE
 
