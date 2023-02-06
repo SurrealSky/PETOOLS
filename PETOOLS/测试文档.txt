@@ -1,6 +1,0 @@
-2020年10.9
-测试 Protect3A(yoda壳)通过，DebugMode
-测试 Protect4A，有的简单程序可以通过，负责程序不行
-
-接下来工作：
-测试DisasmCodes的问题
